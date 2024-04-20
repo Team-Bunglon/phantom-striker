@@ -71,6 +71,7 @@ strike_down={
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Bounce"
 2d_physics/layer_3="Propel"
+2d_physics/layer_4="Hurt"
 
 [rendering]
 
