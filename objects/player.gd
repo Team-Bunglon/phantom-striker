@@ -4,18 +4,21 @@ class_name Player
 ## The speed of the character moving on either X axis
 @export var speed: float = 300.0
 
+## The launch speed
+@export var launch_speed: float = 300.0
+
 ## The maximum jump height the character can reach
 @export var jump_height: float = 400.0
 
-## The time it takes for the character to reach jump_height
+## The time (in seconds) it takes for the character to reach jump_height
 ## as long as the player keeps holding the jump button.
 ## The jump gravity will be calculated using this value.
-@export var jump_time_to_peak: float
+@export var jump_time_to_peak: float = 0.5
 
 ## The time it take for the character to descend from jump_height
 ## to the ground the player performs a jump on previously.
 ## The fall gravity will be calculated using this value.
-@export var jump_time_to_descend: float
+@export var jump_time_to_descend: float = 0.4
 
 ## The delay in frame before the character reacts to the input.
 ## This is to prevent diagonal input not being registered correctly due to a 
