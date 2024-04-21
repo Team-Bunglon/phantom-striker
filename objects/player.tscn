@@ -90,18 +90,6 @@ tracks/6/keys = {
 "update": 0,
 "values": [true]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("RayCastD:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_w5ufe"]
 resource_name = "idle"
@@ -228,18 +216,6 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("RayCastD:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_w8opk"]
@@ -397,18 +373,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.5708]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RayCastD:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5708]
-}
 
 [sub_resource type="Animation" id="Animation_ydxfe"]
 resource_name = "strike_right"
@@ -461,18 +425,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.5708]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RayCastD:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
-}
 
 [sub_resource type="Animation" id="Animation_4q1gk"]
 resource_name = "strike_up"
@@ -524,18 +476,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RayCastD:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.14159]
 }
 
 [sub_resource type="Animation" id="Animation_12x1y"]
@@ -757,9 +697,8 @@ states/strike_up_right/position = Vector2(747, 36)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_t4101"), "idle", "strike_down", SubResource("AnimationNodeStateMachineTransition_vd8px"), "strike_down", "idle", SubResource("AnimationNodeStateMachineTransition_07qio"), "idle", "strike_up", SubResource("AnimationNodeStateMachineTransition_2f55d"), "strike_up", "idle", SubResource("AnimationNodeStateMachineTransition_dq18c"), "idle", "strike_left", SubResource("AnimationNodeStateMachineTransition_e1qu6"), "strike_left", "idle", SubResource("AnimationNodeStateMachineTransition_q2flm"), "idle", "strike_right", SubResource("AnimationNodeStateMachineTransition_tteqp"), "strike_right", "idle", SubResource("AnimationNodeStateMachineTransition_p52mp"), "idle", "strike_up_left", SubResource("AnimationNodeStateMachineTransition_u1sde"), "idle", "strike_down_left", SubResource("AnimationNodeStateMachineTransition_cawg6"), "idle", "strike_down_right", SubResource("AnimationNodeStateMachineTransition_utttu"), "idle", "strike_up_right", SubResource("AnimationNodeStateMachineTransition_p8v1w"), "strike_up_left", "idle", SubResource("AnimationNodeStateMachineTransition_pl58u"), "strike_down_left", "idle", SubResource("AnimationNodeStateMachineTransition_0qbgc"), "strike_up_right", "idle", SubResource("AnimationNodeStateMachineTransition_etll1"), "strike_down_right", "idle", SubResource("AnimationNodeStateMachineTransition_artbv")]
 graph_offset = Vector2(34, 81)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxywp"]
-radius = 8.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptwje"]
+size = Vector2(14, 14)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lim73"]
 radius = 8.0
@@ -770,11 +709,9 @@ radius = 58.5491
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jlnm5")
-speed = null
-jump_height = null
-jump_time_to_peak = 0.5
-jump_time_to_descend = 0.4
-max_input_frame_delay = null
+
+[node name="StrikeDelayTimer" type="Timer" parent="."]
+wait_time = 0.2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
@@ -792,7 +729,7 @@ libraries = {
 texture = ExtResource("2_a4eee")
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_sxywp")
+shape = SubResource("RectangleShape2D_ptwje")
 
 [node name="SpriteBeam" type="Sprite2D" parent="."]
 visible = false
@@ -804,48 +741,48 @@ texture = ExtResource("3_bhosa")
 [node name="RayCastU" type="RayCast2D" parent="."]
 rotation = -3.14159
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastD" type="RayCast2D" parent="."]
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastL" type="RayCast2D" parent="."]
 rotation = 1.5708
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastR" type="RayCast2D" parent="."]
 rotation = -1.5708
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastUL" type="RayCast2D" parent="."]
 rotation = 2.35619
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastUR" type="RayCast2D" parent="."]
 rotation = -2.35619
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastDL" type="RayCast2D" parent="."]
 rotation = 0.785398
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastDR" type="RayCast2D" parent="."]
 rotation = -0.785398
 scale = Vector2(4, 1)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="StrikeArea" type="Area2D" parent="."]
@@ -864,7 +801,4 @@ visible = false
 shape = SubResource("CircleShape2D_uaqto")
 disabled = true
 
-[node name="StrikeDelay" type="Timer" parent="."]
-wait_time = 0.4
-
-[connection signal="timeout" from="StrikeDelay" to="." method="_on_strike_delay_timeout"]
+[connection signal="timeout" from="StrikeDelayTimer" to="." method="_on_strike_delay_timer_timeout"]
