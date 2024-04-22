@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name FuckPlayer
 
 ## The maximum speed of the character when moving on either X axis.
 @export var max_speed: float = 300.0
@@ -39,39 +39,29 @@ var launch_h_direction: float = 1.0
 ## before the character has reaches max_jump_height. It should be less than 1.0
 @export var jump_lost_multiplier: float = 0.5
 
-## The amount of frames (in 60FPS) that allows the character to still jump after walking off the floor edge 
-## (he will jump in midair as the result).
+## The amount of frame (in 60FPS) that allows the character to still jump after wallking off the floor edge.
 ## This is done to make jumping from the edge feels more forgiving.
 @export var max_coyote_frame: int =  10
 var coyote_frame: int = max_coyote_frame
 
-## The amount of frames (in 60FPS) that, if the character approaches the floor from a jump 
-## and the player presses the jump button before hitting the floor while within this period,
-## the character will automatically jump as soon as he touches the floor.
-## This is done to make jumping feels more smoother and not "sticky".
+## The amount of frame (in 60FPS) that applies when the player is approaching the floor from a jump. 
+## If the player presses the jump button before hitting the floor,
+## the character will jump as soon as he touches the floor.
 @export var max_jump_buffer_frame: int = 8
 var jump_buffer_frame: int = 0
 
-## The amount of frames (in 60FPS) that, if the player is launched in the air and hit the wall for this duration,
-## the horizontal launch speed will be reduced to 0.
-## This is done to allow the character to shortly slide off the edge of a wall while maintaining his launch momentium.
-@export var max_wall_stop_frame: int = 5
-var wall_stop_frame = max_wall_stop_frame
-
-## The delay in frame (in 60FPS) before the character reacts to player's launch input.
+## The delay in frame (in 60FPS) before the character reacts to the input.
 ## This is done to prevent diagonal input not being registered correctly due to a 
-## possible slight delay between pressing two different keys at the same time.
+## possible slight delay between pressing two diffeIf I was threaten rent keys at the same time.
 ## The delay for doing another strike is done with $StrikeDelayTimer node.
 @export var max_input_delay_frame: int = 1
 var input_delay_frame: int = max_input_delay_frame
-var on_strike_delay: bool = false	# Boolean for $StrikeDelayTimer, or when the character can perform the next strike.
+var on_strike_delay: bool = false	# Boolean for $StrikeDelayTimer
 var can_strike: bool = true			# Boolean to prevent the character from doing a continous striking when the strike input is being held.
 
 ## The delay in frame (in 60FPS) before the character can move again while launched.
-## This is done to give the player the sense of a strong push that the launch gives to the character
-## as well as prevent miscalculation on the character's velocity when the player performs a launch while holding the move button.
-@export var max_launch_delay_frame: int = 10
-var launch_delay_frame: int = 0
+## This is done to prevent miscalculation on speed when the player is launching while pressing the move button.
+@export var max_launch_delay_frame: int = 1
 
 # Prepare fixed variables on ready
 @onready var state: Variant = $AnimationTree.get("parameters/playback")
@@ -93,7 +83,7 @@ func move():
 		launch_h = move_toward(launch_h, 0, air_friction)
 	else:
 		launch_h = move_toward(launch_h, 0, air_friction*4)
-	if direction and launch_delay_frame == 0:
+	if direction:
 		if launch_h > 0.0:
 			# When being launched and the player is moving towards the launch direction,
 			# he should be moving as fast as the max_launch_h
@@ -104,18 +94,8 @@ func move():
 		else:
 			velocity.x = move_toward(velocity.x, direction * max_speed, acceleration)
 	else:
-		if launch_delay_frame > 0:
-			launch_delay_frame -= 1
 		if launch_h > 0.0:
 			velocity.x = launch_h * launch_h_direction
-			if is_on_wall():
-				if wall_stop_frame > 0:
-					wall_stop_frame -= 1
-				elif wall_stop_frame <= 0:
-					launch_h = 0
-					wall_stop_frame = max_wall_stop_frame
-			elif not is_on_wall():
-				wall_stop_frame = max_wall_stop_frame
 		else:
 			velocity.x = move_toward(velocity.x, 0, friction)
 
@@ -124,7 +104,7 @@ func get_gravity():
 	return jump_gravity if velocity.y < 0.0 else fall_gravity 
 
 func jump(delta):
-	velocity.y += get_gravity() * delta
+	velocity.y = get_gravity() * delta
 	if is_on_floor():
 		coyote_frame = max_coyote_frame
 	else:
@@ -151,10 +131,10 @@ func strike():
 		if input_delay_frame > 0:
 			input_delay_frame -= 1
 		else:
+			print(strike_dir[direction_xy])
 			state.travel(strike_dir[direction_xy][0])
 			strike_response(direction_xy, get_node(strike_dir[direction_xy][1]))
 			input_delay_frame = max_input_delay_frame
-			launch_delay_frame = max_launch_delay_frame
 			direction_xy = Vector2.ZERO
 			on_strike_delay = true
 			can_strike = false
@@ -169,6 +149,10 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 			if direction.x != 0:
 				launch_h_direction = -direction.x
 				launch_h = max_launch_h
+			# 	if direction.y == 0:
+			# 		velocity.x = -direction.x * max_launch_h * 1.2
+			# 	else:
+			# 		velocity.x = -direction.x * max_launch_h
 			if direction.y != 0:
 				velocity.y = jump_velocity * direction.y
 
@@ -179,6 +163,13 @@ func strike_hold_input():
 			not Input.is_action_pressed("strike_up") and \
 			not Input.is_action_pressed("strike_down"):
 			can_strike = true
+
+func launch_h_lost():
+	if launch_h > 0.0:
+		if not is_on_floor():
+			launch_h = move_toward(launch_h, 0, air_friction)
+		else:
+			launch_h = move_toward(launch_h, 0, friction)
 
 func jump_buffer_frame_countdown():
 	if jump_buffer_frame > 0:
@@ -193,9 +184,10 @@ func _ready():
 func _physics_process(delta):
 	jump_buffer_frame_countdown()
 	jump(delta)
+	move()
 	strike()
 	strike_hold_input()
-	move()
+	#launch_h_lost()
 	move_and_slide()
 
 func _on_strike_delay_timer_timeout():

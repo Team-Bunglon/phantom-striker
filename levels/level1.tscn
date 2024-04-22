@@ -39,9 +39,10 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_mcygu")]
 position = Vector2(101, 380)
-jump_height = 80.0
+max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+max_launch_delay_frame = 15
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_5p0by")
