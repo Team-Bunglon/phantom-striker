@@ -26,7 +26,7 @@ class_name Player
 
 @export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use the timer node for timer in seconds.
 @export var jump_buffer_frame:	int = 8	 ## Let the character perform a jump as soon as he touches the floor if the jump button is pressed before reaching it while within the frame duration.
-@export var coyote_frame:		int = 8  ## Let the character jump after walking off the platform's edge within the frame duration.
+@export var coyote_frame:		int = 5  ## Let the character jump after walking off the platform's edge within the frame duration.
 @export var wall_frame:			int = 4  ## Let the character to maintain his horizontal launch momentum when he hits a wall within the frame duration.
 @export var strike_delay_frame:	int = 1	 ## Input delay for launch action. This is done to correctly register diagonal launch action. 
 @export var move_delay_frame: int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.

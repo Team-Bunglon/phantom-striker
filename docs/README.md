@@ -1,3 +1,6 @@
+# Notes
+1. This is a Godot 4 project version 4.2.1
+
 # Guidelines
 1. Please only use English when involving everything within this repository (commit message, merge request, variables, comments, etc.)
 2. Always pull from `main`. Do NOT directly push to `main` branch. See [Merging](#merging).

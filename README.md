@@ -1,7 +1,7 @@
 For developers, please read this documents before doing any commits here:  
 [[DEVELOPER DOCUMENTS]](docs/README.md)
 
-# Phantom Striker
+# Phantom Striker (Godot 4)
 WIP
 
 ### Description
