@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cymvpxtr5hvfj"]
+[gd_scene load_steps=92 format=3 uid="uid://cymvpxtr5hvfj"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_jlnm5"]
 [ext_resource type="Texture2D" uid="uid://fcavorkwpf2v" path="res://assets/sprites/player_temp.png" id="2_a4eee"]
@@ -200,9 +200,67 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_i36sc"]
+resource_name = "crouch_left"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dvie2"]
+resource_name = "crouch_right"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67khg"]
 _data = {
 "RESET": SubResource("Animation_33vor"),
+"crouch_left": SubResource("Animation_i36sc"),
+"crouch_right": SubResource("Animation_dvie2"),
 "idle_left": SubResource("Animation_fticm"),
 "idle_right": SubResource("Animation_yp2vb"),
 "jump_left": SubResource("Animation_u3yoi"),
@@ -210,6 +268,12 @@ _data = {
 "walk_left": SubResource("Animation_tu77q"),
 "walk_right": SubResource("Animation_d6ams")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w8m3n"]
+animation = &"crouch_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_agrxb"]
+animation = &"crouch_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mbmeu"]
 animation = &"idle_left"
@@ -268,23 +332,51 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_va7xo"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yym2u"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f7m3a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_22414"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6w1fw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5vnl0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n6m0e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tr3aa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xklpx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rjl0x"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fvnbw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a5yn3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oc4lf"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ib0vx"]
-states/End/position = Vector2(700, 92)
-states/Start/position = Vector2(588, 92)
+states/End/position = Vector2(926, 94)
+states/Start/position = Vector2(775, 207)
+states/crouch_left/node = SubResource("AnimationNodeAnimation_w8m3n")
+states/crouch_left/position = Vector2(264, 295)
+states/crouch_right/node = SubResource("AnimationNodeAnimation_agrxb")
+states/crouch_right/position = Vector2(457, 295)
 states/idle_left/node = SubResource("AnimationNodeAnimation_mbmeu")
-states/idle_left/position = Vector2(267, 92)
+states/idle_left/position = Vector2(89, 207)
 states/idle_right/node = SubResource("AnimationNodeAnimation_pnpd8")
-states/idle_right/position = Vector2(457, 92)
+states/idle_right/position = Vector2(627, 207)
 states/jump_left/node = SubResource("AnimationNodeAnimation_1bxp5")
 states/jump_left/position = Vector2(264, -84)
 states/jump_right/node = SubResource("AnimationNodeAnimation_edei3")
 states/jump_right/position = Vector2(457, -84)
 states/walk_left/node = SubResource("AnimationNodeAnimation_kof76")
-states/walk_left/position = Vector2(147, 3)
+states/walk_left/position = Vector2(89, 3)
 states/walk_right/node = SubResource("AnimationNodeAnimation_ynkkn")
-states/walk_right/position = Vector2(598, 3)
-transitions = ["Start", "idle_right", SubResource("AnimationNodeStateMachineTransition_dymu1"), "idle_right", "walk_left", SubResource("AnimationNodeStateMachineTransition_xa8no"), "walk_left", "idle_left", SubResource("AnimationNodeStateMachineTransition_mgbge"), "idle_left", "walk_right", SubResource("AnimationNodeStateMachineTransition_8e23i"), "walk_right", "idle_right", SubResource("AnimationNodeStateMachineTransition_rvvo5"), "idle_right", "walk_right", SubResource("AnimationNodeStateMachineTransition_pndu2"), "idle_left", "walk_left", SubResource("AnimationNodeStateMachineTransition_ptmdw"), "jump_left", "jump_right", SubResource("AnimationNodeStateMachineTransition_eh0k6"), "jump_right", "jump_left", SubResource("AnimationNodeStateMachineTransition_mq12y"), "walk_left", "walk_right", SubResource("AnimationNodeStateMachineTransition_3j4mm"), "walk_right", "walk_left", SubResource("AnimationNodeStateMachineTransition_ai2ns"), "walk_left", "jump_left", SubResource("AnimationNodeStateMachineTransition_3xsp1"), "walk_right", "jump_right", SubResource("AnimationNodeStateMachineTransition_5t6yt"), "idle_left", "jump_left", SubResource("AnimationNodeStateMachineTransition_uakcq"), "idle_right", "jump_right", SubResource("AnimationNodeStateMachineTransition_1ami1"), "jump_left", "walk_left", SubResource("AnimationNodeStateMachineTransition_wy05t"), "jump_left", "idle_left", SubResource("AnimationNodeStateMachineTransition_4ka3v"), "jump_right", "idle_right", SubResource("AnimationNodeStateMachineTransition_1ckuy"), "jump_right", "walk_right", SubResource("AnimationNodeStateMachineTransition_va7xo")]
-graph_offset = Vector2(-64, -111)
+states/walk_right/position = Vector2(627, 3)
+transitions = ["Start", "idle_right", SubResource("AnimationNodeStateMachineTransition_dymu1"), "idle_right", "walk_left", SubResource("AnimationNodeStateMachineTransition_xa8no"), "walk_left", "idle_left", SubResource("AnimationNodeStateMachineTransition_mgbge"), "idle_left", "walk_right", SubResource("AnimationNodeStateMachineTransition_8e23i"), "walk_right", "idle_right", SubResource("AnimationNodeStateMachineTransition_rvvo5"), "idle_right", "walk_right", SubResource("AnimationNodeStateMachineTransition_pndu2"), "idle_left", "walk_left", SubResource("AnimationNodeStateMachineTransition_ptmdw"), "jump_left", "jump_right", SubResource("AnimationNodeStateMachineTransition_eh0k6"), "jump_right", "jump_left", SubResource("AnimationNodeStateMachineTransition_mq12y"), "walk_left", "walk_right", SubResource("AnimationNodeStateMachineTransition_3j4mm"), "walk_right", "walk_left", SubResource("AnimationNodeStateMachineTransition_ai2ns"), "walk_left", "jump_left", SubResource("AnimationNodeStateMachineTransition_3xsp1"), "walk_right", "jump_right", SubResource("AnimationNodeStateMachineTransition_5t6yt"), "idle_left", "jump_left", SubResource("AnimationNodeStateMachineTransition_uakcq"), "idle_right", "jump_right", SubResource("AnimationNodeStateMachineTransition_1ami1"), "jump_left", "walk_left", SubResource("AnimationNodeStateMachineTransition_wy05t"), "jump_left", "idle_left", SubResource("AnimationNodeStateMachineTransition_4ka3v"), "jump_right", "idle_right", SubResource("AnimationNodeStateMachineTransition_1ckuy"), "jump_right", "walk_right", SubResource("AnimationNodeStateMachineTransition_va7xo"), "idle_left", "crouch_left", SubResource("AnimationNodeStateMachineTransition_yym2u"), "walk_left", "crouch_left", SubResource("AnimationNodeStateMachineTransition_f7m3a"), "jump_left", "crouch_left", SubResource("AnimationNodeStateMachineTransition_22414"), "crouch_left", "jump_left", SubResource("AnimationNodeStateMachineTransition_6w1fw"), "crouch_left", "walk_left", SubResource("AnimationNodeStateMachineTransition_5vnl0"), "crouch_left", "idle_left", SubResource("AnimationNodeStateMachineTransition_n6m0e"), "crouch_right", "jump_right", SubResource("AnimationNodeStateMachineTransition_tr3aa"), "crouch_right", "walk_right", SubResource("AnimationNodeStateMachineTransition_xklpx"), "crouch_right", "idle_right", SubResource("AnimationNodeStateMachineTransition_rjl0x"), "jump_right", "crouch_right", SubResource("AnimationNodeStateMachineTransition_fvnbw"), "walk_right", "crouch_right", SubResource("AnimationNodeStateMachineTransition_a5yn3"), "idle_right", "crouch_right", SubResource("AnimationNodeStateMachineTransition_oc4lf")]
+graph_offset = Vector2(-130, -95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptwje"]
 size = Vector2(14, 14)
@@ -563,6 +655,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(65, 46)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 10
 script = ExtResource("1_jlnm5")
 
 [node name="StrikeDelayTimer" type="Timer" parent="."]

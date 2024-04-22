@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var dummy: bool= true	## Please ignore this value. I can't figure out why the description box won't show up without a variable outside of category.
+@export var strike_particle_length: float = 48 ## The length of the strike particle emission box. Does NOT affect the target position of any directional RayCast2D.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -49,6 +49,7 @@ var face: Dictionary = {
 
 # Variables that shouldn't be changed
 @onready var state: Variant = $AnimationTree.get("parameters/playback")
+@onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
 	Vector2(1,0):	["strike_right", "RayCastR"],
@@ -130,13 +131,26 @@ func strike():
 		if strike_delay_count > 0:
 			strike_delay_count -= 1
 		else:
-			state.travel(strike_dir[direction_xy][0])
-			strike_response(direction_xy, get_node(strike_dir[direction_xy][1]))
+			var strike_raycast: RayCast2D = get_node(strike_dir[direction_xy][1])
+			strike_response(direction_xy, strike_raycast)
+			strike_particle_create(strike_raycast)
 			strike_delay_count = strike_delay_frame
-			direction_xy = Vector2.ZERO
 			on_strike_delay = true
 			can_strike = false
+			direction_xy = Vector2.ZERO
 			$StrikeDelayTimer.start()
+
+func strike_particle_create(raycast: RayCast2D):
+	var strike_particle: Strike = strike_particle_preload.instantiate()
+	strike_particle.set_default_length(strike_particle_length)
+
+	var strike_length: float = strike_particle_length
+	if raycast.is_colliding():
+		var collide_length = global_position.distance_to(raycast.get_collision_point())
+		strike_length = collide_length * strike_particle_length / raycast.target_position.y
+
+	strike_particle.emitting(global_position, raycast.rotation, strike_length)
+	get_parent().add_child(strike_particle)
 
 func strike_response(direction: Vector2, raycast: RayCast2D):
 	var temp_mult = 1
@@ -194,13 +208,14 @@ func move_delay_countdown():
 func player_state(direction: int):	
 	face[0] = face[direction]
 	if is_on_floor() and velocity.x == 0:
-		state.travel("idle" + face[direction])
-	elif is_on_floor() and velocity.x == 0 and Input.is_action_pressed("crouch"):
-		state.travel("crouch" + face[direction])
+		if Input.is_action_pressed("crouch"):
+			$AnimationPlayer.play("crouch" + face[direction])
+		else:
+			$AnimationPlayer.play("idle" + face[direction])
 	elif is_on_floor() and velocity.x != 0:
-		state.travel("walk" + face[direction])
+		$AnimationPlayer.play("walk" + face[direction])
 	elif not is_on_floor():
-		state.travel("jump" + face[direction])
+		$AnimationPlayer.play("jump" + face[direction])
 
 func _on_strike_delay_timer_timeout():
 	on_strike_delay = false
