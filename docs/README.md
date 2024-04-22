@@ -24,7 +24,7 @@ This is more of a "suggestion" than a "rule" to help you come up with a good and
 2. The name should describe the level in one, short sentence. It could be what the level has or what the player must be doing to complete it. 
 3. Referencing other media (Literature, Music, Movie, TV, Other Games, etc.) is encouraged. Make sure the reference comes from a media that aren't too obscure in the general public.
 
-Check out the gameplay of [VVVVVV](thelettervsixtim.es) and [Katgon Dungeon](https://team-bunglon.itch.io/katgon-dungeon) whose room names are a great inspiration for the level name.
+Check out the gameplay of [VVVVVV](https://thelettervsixtim.es) and [Katgon Dungeon](https://team-bunglon.itch.io/katgon-dungeon) whose room names are a great inspiration for the level name.
 
 # Reources
 - [OpenGameArt.org](https://opengameart.org/) has a vast library of game assets we can use and this is the recommended place to find assets.

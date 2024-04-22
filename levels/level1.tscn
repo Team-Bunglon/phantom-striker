@@ -42,7 +42,6 @@ position = Vector2(101, 380)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-max_launch_delay_frame = 15
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_5p0by")
