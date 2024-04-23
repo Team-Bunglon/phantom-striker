@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var strike_particle_length: float = 48 ## The length of the strike particle emission box. Does NOT affect the target position of any directional RayCast2D.
+@export var strike_particle_length: float = 48 ## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -72,6 +72,10 @@ func _physics_process(delta):
 	move()
 	move_delay_countdown()
 	
+	# TO IVAN: This is an interesting implementation
+	# The way I would implemen it is to just create an area2D for the character as a hurtbox.
+	# If the hurtbox detects the spike tile, the character will die.
+	# Maybe this is a better implementation. I may encapsulate this in its own function.
 	var collision = move_and_slide()
 	if collision:
 		# Access collision information
@@ -80,7 +84,8 @@ func _physics_process(delta):
 		if collision_info:
 			var collider = collision_info.get_collider()
 			if collider.name == "SpikeMap":
-				get_tree().reload_current_scene()
+				# Moved to die() to handle death animation as well
+				die(false)
 				
 	#move_and_slide()
 	#var collision = move_and_collide(velocity * 1/3 * delta)
@@ -90,7 +95,7 @@ func _physics_process(delta):
 		#if collider and collider.name == "SpikeMap":
 			#get_tree().reload_current_scene()
 
-# Horizontal Movement
+## Horizontal Movement
 func move():
 	var direction = Input.get_axis("move_left", "move_right")
 	if not is_on_floor() and direction != launch_x_direction:
@@ -102,9 +107,15 @@ func move():
 
 	if direction and move_delay_count == 0:
 		if launch_x > 0.0:
-			if direction == launch_x_direction: # The character should maintain the launch speed when the player moves towards launch_x_direction
+			# The character should maintain the launch speed when the player moves towards launch_x_direction
+			if direction == launch_x_direction: 
 				velocity.x = max(launch_x_move, direction_move) if direction > 0 else min(launch_x_move, direction_move)
-			else:	# The character moves against the launch direction.
+				# If the launch speed is smaller thn the default movement speed, just set the launch speed to 0 altogether.
+				# Hopefully, this fixes the occasional "sticky" movement issue
+				if velocity.x == direction_move: 
+					launch_x = 0.0
+			# The character moves against the launch direction.
+			else:	
 				launch_x = move_toward(launch_x, 0, air_friction * 4)
 				if launch_x < 0.0:
 					launch_x = 0.0
@@ -119,7 +130,7 @@ func move():
 			velocity.x = move_toward(velocity.x, 0, floor_friction)
 	player_state(int(direction))
 
-# Vertical Movement
+## Vertical Movement
 func jump(delta):
 	velocity.y += get_gravity() * delta
 	coyote_countdown()
@@ -233,6 +244,11 @@ func player_state(direction: int):
 		$AnimationPlayer.play("walk" + face[direction])
 	elif not is_on_floor():
 		$AnimationPlayer.play("jump" + face[direction])
+
+## Kill the character and restart the level. Can be used when the player object is referenced in other script too!
+## quick_death skips the first animation before the character explodes to pieces
+func die(quick_death: bool):
+	get_tree().reload_current_scene()
 
 func _on_strike_delay_timer_timeout():
 	on_strike_delay = false
