@@ -71,7 +71,24 @@ func _physics_process(delta):
 	strike_hold_input()
 	move()
 	move_delay_countdown()
-	move_and_slide()
+	
+	var collision = move_and_slide()
+	if collision:
+		# Access collision information
+		var collision_info = get_last_slide_collision()
+		# Check if the collider is a SpikeMap
+		if collision_info:
+			var collider = collision_info.get_collider()
+			if collider.name == "SpikeMap":
+				get_tree().reload_current_scene()
+				
+	#move_and_slide()
+	#var collision = move_and_collide(velocity * 1/3 * delta)
+	#if collision:
+		##print(collision.get_collider())
+		#var collider = collision.get_collider()
+		#if collider and collider.name == "SpikeMap":
+			#get_tree().reload_current_scene()
 
 # Horizontal Movement
 func move():
