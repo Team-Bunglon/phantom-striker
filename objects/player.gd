@@ -24,12 +24,12 @@ class_name Player
 @export_category("Launching")
 @export var reduced_height_multiplier:	float = 1.5 ## The multiplier that reduces the height when striking the floor while crouching 
 
-@export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use the timer node for timer in seconds.
+@export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use (and create if needed) a timer node for timer in seconds.
 @export var jump_buffer_frame:	int = 8	 ## Let the character perform a jump as soon as he touches the floor if the jump button is pressed before reaching it while within the frame duration.
 @export var coyote_frame:		int = 5  ## Let the character jump after walking off the platform's edge within the frame duration.
 @export var wall_frame:			int = 4  ## Let the character to maintain his horizontal launch momentum when he hits a wall within the frame duration.
 @export var strike_delay_frame:	int = 1	 ## Input delay for launch action. This is done to correctly register diagonal launch action. 
-@export var move_delay_frame: int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.
+@export var move_delay_frame:	int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.
 
 # Variables that will change
 var launch_x:			float = 0.0	 # The current launch speed on either X axis.
@@ -41,6 +41,7 @@ var strike_delay_count: int = strike_delay_frame
 var move_delay_count:	int = 0
 var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the character can perform the next strike.
 var can_strike:			bool = true		# Boolean to prevent the character from doing a continous striking when the strike input is being held.
+var is_dying:			bool = false
 var face: Dictionary = {
 	-1: "_left",
 	0: "_right",
@@ -48,7 +49,7 @@ var face: Dictionary = {
 }
 
 # Variables that shouldn't be changed
-@onready var state: Variant = $AnimationTree.get("parameters/playback")
+@onready var camera: Camera2D = $"../Camera2D"
 @onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
@@ -63,9 +64,17 @@ var face: Dictionary = {
 }
 
 func _ready():
-	state.travel("idle_right")
+	$AnimationPlayer.play("idle_right")
+
+func _input(event):
+	if event.is_action_pressed("restart"):
+		die()
 
 func _physics_process(delta):
+	if is_dying:
+		velocity = Vector2.ZERO
+		return
+
 	jump(delta)
 	strike()
 	strike_hold_input()
@@ -147,6 +156,7 @@ func get_gravity():
 	return jump_gravity if velocity.y < 0.0 else fall_gravity 
 
 func jump_procedure():
+	Audio.play("Jump")
 	velocity.y = -jump_velocity
 	coyote_count = 0
 	jump_buffer_count = 0
@@ -235,6 +245,8 @@ func move_delay_countdown():
 ## Character animation. We don't need blend tree after all.
 func player_state(direction: int):	
 	face[0] = face[direction]
+	if is_dying:
+		return
 	if is_on_floor() and velocity.x == 0:
 		if Input.is_action_pressed("crouch"):
 			$AnimationPlayer.play("crouch" + face[direction])
@@ -248,7 +260,30 @@ func player_state(direction: int):
 ## Kill the character and restart the level. Can be used when the player object is referenced in other script too!
 ## quick_death skips the first animation before the character explodes to pieces
 func die(quick_death := false):
-	get_tree().reload_current_scene()
+	Global.death_count += 1
+	print(Global.death_count)
+	is_dying = true
+	if quick_death:
+		_explode()
+	else:
+		print("die" + face[0])
+		$AnimationPlayer.play("die" + face[0])
+
+func shake_camera():
+	pass
+
+func _explode():
+	$Sprite.visible = false
+	$DieParticle.emitting = true
+	$ExplodeTimer.start()
 
 func _on_strike_delay_timer_timeout():
 	on_strike_delay = false
+
+func _on_animation_player_animation_finished(anim_name:StringName):
+	if anim_name.begins_with("die"):
+		_explode()
+
+func _on_explode_timer_timeout():
+	get_tree().reload_current_scene()
+

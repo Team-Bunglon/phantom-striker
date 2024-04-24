@@ -35,6 +35,12 @@ offset_bottom = 480.0
 color = Color(0.196078, 0.196078, 0.196078, 0.588235)
 metadata/_edit_lock_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+
 [node name="Player" parent="." instance=ExtResource("2_mcygu")]
 position = Vector2(26, 441)
 max_jump_height = 80.0
@@ -64,12 +70,6 @@ shape = SubResource("RectangleShape2D_61ngw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(584, -9)
 shape = SubResource("RectangleShape2D_dduow")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
