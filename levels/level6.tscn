@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo4o4lq3w443r"]
+[gd_scene load_steps=10 format=3 uid="uid://bo4o4lq3w443r"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_c3jd6"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_w4ol5"]
+[ext_resource type="Script" path="res://levels/level_camera.gd" id="3_526cs"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_nbj4i"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_6xywi"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_bi71j"]
@@ -36,24 +37,20 @@ offset_bottom = 480.0
 color = Color(0.196078, 0.196078, 0.196078, 0.588235)
 metadata/_edit_lock_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("3_526cs")
+
 [node name="Player" parent="." instance=ExtResource("3_nbj4i")]
 position = Vector2(101, 380)
-strike_particle_length = null
-max_speed = null
-max_launch_x = null
 max_jump_height = 80.0
-acceleration = null
-floor_friction = null
-air_friction = null
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-jump_lost_multiplier = null
-reduced_height_multiplier = null
-jump_buffer_frame = null
-coyote_frame = null
-wall_frame = null
-strike_delay_frame = null
-move_delay_frame = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_6xywi")

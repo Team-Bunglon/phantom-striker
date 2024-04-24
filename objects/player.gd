@@ -50,7 +50,6 @@ var face: Dictionary = {
 }
 
 # Variables that shouldn't be changed
-#@onready var camera: Camera2D = $"../Camera2D"
 @onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
@@ -197,7 +196,9 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 	if Input.is_action_pressed("crouch"):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
-		if raycast.get_collider().name == "TileMap":
+		print(raycast.get_collider().name)
+		if raycast.get_collider().name == "TileMap" || raycast.get_collider().name == "BlackDiamond":
+			#$"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
@@ -207,6 +208,17 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 				velocity.y = jump_velocity * direction.y / temp_mult
 			elif direction.y > 0: # Going Down
 				velocity.y = jump_velocity * direction.y * 2
+		# TO NAUFAL: We may need to tweak this a little more. 
+		elif raycast.get_collider().name == "WhiteDiamond":
+			if direction.x != 0:
+				move_delay_count = move_delay_frame
+				launch_x_direction = direction.x
+				launch_x = max_launch_x
+				player_state(int(-launch_x_direction))
+			if direction.y < 0: # Going Up
+				velocity.y = -jump_velocity * direction.y / temp_mult
+			elif direction.y > 0: # Going Down
+				velocity.y = -jump_velocity * direction.y * 2
 
 func strike_hold_input():
 	if not can_strike:
@@ -261,6 +273,7 @@ func player_state(direction: int):
 ## quick_death skips the first animation before the character explodes to pieces
 func die(quick_death := false):
 	Global.death_count += 1
+	print(Global.death_count)
 	is_dying = true
 	if quick_death:
 		_explode()
@@ -268,6 +281,7 @@ func die(quick_death := false):
 		$AnimationPlayer.play("die" + face[0])
 
 func _explode():
+	#$"../Camera2D".shake()
 	$Sprite.visible = false
 	$DieParticle.emitting = true
 	$ExplodeTimer.start()

@@ -36,22 +36,9 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_d04lr")]
 position = Vector2(26, 441)
-strike_particle_length = null
-max_speed = null
-max_launch_x = null
 max_jump_height = 80.0
-acceleration = null
-floor_friction = null
-air_friction = null
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-jump_lost_multiplier = null
-reduced_height_multiplier = null
-jump_buffer_frame = null
-coyote_frame = null
-wall_frame = null
-strike_delay_frame = null
-move_delay_frame = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_yvocw")
