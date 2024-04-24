@@ -215,7 +215,7 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 			elif direction.y > 0: # Going Down
 				velocity.y = jump_velocity * direction.y * 2
 		# TO NAUFAL: We may need to tweak this a little more. 
-		elif raycast.get_collider().name == "WhiteDiamond":
+		elif raycast.get_collider().name.begins_with("WhiteDiamond"):
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = direction.x
