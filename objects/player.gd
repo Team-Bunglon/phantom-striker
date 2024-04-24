@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var strike_particle_length: float = 48 ## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
+@export var looking_left: bool = true ## The character will look left at the start of the level.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -64,11 +65,12 @@ var face: Dictionary = {
 }
 
 func _ready():
-	$AnimationPlayer.play("idle_right")
+	face[0] = face[-1] if looking_left else face[1]
+	$AnimationPlayer.play("idle" + face[0])
 
 func _input(event):
 	if event.is_action_pressed("restart"):
-		die()
+		die(true)
 
 func _physics_process(delta):
 	if is_dying:
@@ -245,8 +247,6 @@ func move_delay_countdown():
 ## Character animation. We don't need blend tree after all.
 func player_state(direction: int):	
 	face[0] = face[direction]
-	if is_dying:
-		return
 	if is_on_floor() and velocity.x == 0:
 		if Input.is_action_pressed("crouch"):
 			$AnimationPlayer.play("crouch" + face[direction])
@@ -261,16 +261,11 @@ func player_state(direction: int):
 ## quick_death skips the first animation before the character explodes to pieces
 func die(quick_death := false):
 	Global.death_count += 1
-	print(Global.death_count)
 	is_dying = true
 	if quick_death:
 		_explode()
 	else:
-		print("die" + face[0])
 		$AnimationPlayer.play("die" + face[0])
-
-func shake_camera():
-	pass
 
 func _explode():
 	$Sprite.visible = false
