@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://rn1v4rl2w1yc"]
+[gd_scene load_steps=9 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_akf2k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_bygm3"]
+[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
+[ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/blackdiamond.tscn" id="6_aqsy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
 size = Vector2(768, 16)
@@ -56,6 +58,12 @@ shape = SubResource("RectangleShape2D_61ngw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(601, -9)
 shape = SubResource("RectangleShape2D_dduow")
+
+[node name="WhiteDiamond" parent="." instance=ExtResource("5_bo5kk")]
+position = Vector2(199, 368)
+
+[node name="BlackDiamond" parent="." instance=ExtResource("6_aqsy6")]
+position = Vector2(333, 424)
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
