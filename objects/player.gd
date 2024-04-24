@@ -185,11 +185,22 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 	if Input.is_action_pressed("crouch"):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
-		if raycast.get_collider().name == "TileMap":
+		print(raycast.get_collider().name)
+		if raycast.get_collider().name == "TileMap" || raycast.get_collider().name == "BlackDiamond":
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
 				launch_x = max_launch_x
+				player_state(int(launch_x_direction))
+			if direction.y < 0: # Going Up
+				velocity.y = jump_velocity * direction.y / temp_mult
+			elif direction.y > 0: # Going Down
+				velocity.y = jump_velocity * direction.y * 2
+		elif raycast.get_collider().name == "WhiteDiamond":
+			if direction.x != 0:
+				move_delay_count = move_delay_frame
+				launch_x_direction = direction.x
+				launch_x = -max_launch_x
 				player_state(int(launch_x_direction))
 			if direction.y < 0: # Going Up
 				velocity.y = jump_velocity * direction.y / temp_mult

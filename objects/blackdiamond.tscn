@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://otb601806wvr"]
+
+[ext_resource type="Texture2D" uid="uid://3qgk5ki27rng" path="res://assets/sprites/diamond-amethyst.png" id="1_63l02"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8trr"]
+radius = 8.06226
+
+[node name="BlackDiamond" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(0.187041, 0.187041)
+texture = ExtResource("1_63l02")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n8trr")
