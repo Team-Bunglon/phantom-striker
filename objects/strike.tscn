@@ -1,17 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://u88p57mst16i"]
+[gd_scene load_steps=9 format=3 uid="uid://u88p57mst16i"]
 
 [ext_resource type="Script" path="res://objects/strike.gd" id="1_7bggd"]
 [ext_resource type="Texture2D" uid="uid://nmpsxlowdlmd" path="res://assets/sprites/particle1.png" id="1_20cuc"]
 
-[sub_resource type="Gradient" id="Gradient_so6pr"]
-offsets = PackedFloat32Array(0, 0.663399, 0.882353, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.341176, 0.0352941, 0.529412, 1, 0, 0, 0, 0.784314)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_24vfa"]
-gradient = SubResource("Gradient_so6pr")
-
 [sub_resource type="Curve" id="Curve_wbi5w"]
-_data = [Vector2(0, 0.800708), 0.0, 0.0, 0, 0, Vector2(0.732258, 0.589562), -1.4838, -1.4838, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.732258, 0.589562), -1.4838, -1.4838, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_ppomh"]
@@ -19,22 +12,16 @@ curve = SubResource("Curve_wbi5w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_im0uw"]
 particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.4, 1.4, 1)
 spread = 180.0
 initial_velocity_min = 10.0
 initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_ppomh")
-color_ramp = SubResource("GradientTexture1D_24vfa")
-
-[sub_resource type="Gradient" id="Gradient_8ys4w"]
-offsets = PackedFloat32Array(0, 0.114379, 0.767974, 1)
-colors = PackedColorArray(0.341176, 0.0352941, 0.529412, 1, 0.0278739, 0.00288351, 0.0432526, 1, 0.00997701, 0.0010321, 0.0154816, 1, 0, 0, 0, 0.784314)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ua8n"]
-gradient = SubResource("Gradient_8ys4w")
+color = Color(0.588235, 0.588235, 0.588235, 1)
 
 [sub_resource type="Curve" id="Curve_pkd1y"]
-_data = [Vector2(0, 0.747253), 0.0, 0.0, 0, 0, Vector2(0.502994, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.848602), 0.0, 0.0, 0, 0, Vector2(0.710526, 0.343944), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_d467f"]
@@ -43,32 +30,30 @@ curve = SubResource("Curve_pkd1y")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qm2bx"]
 lifetime_randomness = 0.15
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(4, 1, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 48, 1)
 angle_min = -180.0
 angle_max = 180.0
 direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_min = 5.0
+initial_velocity_max = 30.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -100.0
 linear_accel_max = 1.0
-radial_accel_min = -100.0
-radial_accel_max = -100.0
 tangential_accel_min = -10.0
 tangential_accel_max = 5.0
 scale_curve = SubResource("CurveTexture_d467f")
-color_ramp = SubResource("GradientTexture1D_6ua8n")
+color = Color(0.588235, 0.588235, 0.588235, 1)
 
 [node name="Strike" type="Node2D"]
 script = ExtResource("1_7bggd")
 
 [node name="StrikeBase" type="GPUParticles2D" parent="."]
-emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_im0uw")
 texture = ExtResource("1_20cuc")
 lifetime = 0.5
-one_shot = true
 explosiveness = 1.0
 
 [node name="StrikeParticle" type="GPUParticles2D" parent="."]
@@ -76,15 +61,15 @@ position = Vector2(0, 48)
 rotation = 3.14159
 scale = Vector2(1, -1)
 emitting = false
-amount = 200
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_qm2bx")
 texture = ExtResource("1_20cuc")
 lifetime = 0.5
 one_shot = true
+explosiveness = 1.0
 randomness = 0.25
 
 [node name="StrikeParticleSub" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(0, 48)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_qm2bx")
