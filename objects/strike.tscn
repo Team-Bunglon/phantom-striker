@@ -14,7 +14,7 @@ gradient = SubResource("Gradient_so6pr")
 _data = [Vector2(0, 0.800708), 0.0, 0.0, 0, 0, Vector2(0.732258, 0.589562), -1.4838, -1.4838, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_wcj86"]
+[sub_resource type="CurveTexture" id="CurveTexture_ppomh"]
 curve = SubResource("Curve_wbi5w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_im0uw"]
@@ -23,7 +23,7 @@ spread = 180.0
 initial_velocity_min = 10.0
 initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_wcj86")
+scale_curve = SubResource("CurveTexture_ppomh")
 color_ramp = SubResource("GradientTexture1D_24vfa")
 
 [sub_resource type="Gradient" id="Gradient_8ys4w"]

@@ -15,7 +15,7 @@ func _ready():
 
 func _on_kill_zone_body_entered(body:Node2D):
 	if body.name == "Player":
-		get_tree().reload_current_scene()
+		body.die(true)
 
 func _on_win_zone_body_entered(body:Node2D):
 	if body.name == "Player":

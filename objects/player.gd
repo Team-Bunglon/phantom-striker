@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var strike_particle_length: float = 48 ## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
+@export var looking_left: bool = true ## The character will look left at the start of the level.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -24,12 +25,12 @@ class_name Player
 @export_category("Launching")
 @export var reduced_height_multiplier:	float = 1.5 ## The multiplier that reduces the height when striking the floor while crouching 
 
-@export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use the timer node for timer in seconds.
+@export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use (and create if needed) a timer node for timer in seconds.
 @export var jump_buffer_frame:	int = 8	 ## Let the character perform a jump as soon as he touches the floor if the jump button is pressed before reaching it while within the frame duration.
 @export var coyote_frame:		int = 5  ## Let the character jump after walking off the platform's edge within the frame duration.
 @export var wall_frame:			int = 4  ## Let the character to maintain his horizontal launch momentum when he hits a wall within the frame duration.
 @export var strike_delay_frame:	int = 1	 ## Input delay for launch action. This is done to correctly register diagonal launch action. 
-@export var move_delay_frame: int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.
+@export var move_delay_frame:	int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.
 
 # Variables that will change
 var launch_x:			float = 0.0	 # The current launch speed on either X axis.
@@ -41,6 +42,7 @@ var strike_delay_count: int = strike_delay_frame
 var move_delay_count:	int = 0
 var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the character can perform the next strike.
 var can_strike:			bool = true		# Boolean to prevent the character from doing a continous striking when the strike input is being held.
+var is_dying:			bool = false
 var face: Dictionary = {
 	-1: "_left",
 	0: "_right",
@@ -48,7 +50,7 @@ var face: Dictionary = {
 }
 
 # Variables that shouldn't be changed
-@onready var state: Variant = $AnimationTree.get("parameters/playback")
+#@onready var camera: Camera2D = $"../Camera2D"
 @onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
@@ -63,9 +65,18 @@ var face: Dictionary = {
 }
 
 func _ready():
-	state.travel("idle_right")
+	face[0] = face[-1] if looking_left else face[1]
+	$AnimationPlayer.play("idle" + face[0])
+
+func _input(event):
+	if event.is_action_pressed("restart"):
+		die(true)
 
 func _physics_process(delta):
+	if is_dying:
+		velocity = Vector2.ZERO
+		return
+
 	jump(delta)
 	strike()
 	strike_hold_input()
@@ -85,7 +96,7 @@ func _physics_process(delta):
 			var collider = collision_info.get_collider()
 			if collider.name == "SpikeMap":
 				# Moved to die() to handle death animation as well
-				die(false)
+				die()
 				
 	#move_and_slide()
 	#var collision = move_and_collide(velocity * 1/3 * delta)
@@ -147,6 +158,7 @@ func get_gravity():
 	return jump_gravity if velocity.y < 0.0 else fall_gravity 
 
 func jump_procedure():
+	Audio.play("Jump")
 	velocity.y = -jump_velocity
 	coyote_count = 0
 	jump_buffer_count = 0
@@ -247,8 +259,26 @@ func player_state(direction: int):
 
 ## Kill the character and restart the level. Can be used when the player object is referenced in other script too!
 ## quick_death skips the first animation before the character explodes to pieces
-func die(quick_death: bool):
-	get_tree().reload_current_scene()
+func die(quick_death := false):
+	Global.death_count += 1
+	is_dying = true
+	if quick_death:
+		_explode()
+	else:
+		$AnimationPlayer.play("die" + face[0])
+
+func _explode():
+	$Sprite.visible = false
+	$DieParticle.emitting = true
+	$ExplodeTimer.start()
 
 func _on_strike_delay_timer_timeout():
 	on_strike_delay = false
+
+func _on_animation_player_animation_finished(anim_name:StringName):
+	if anim_name.begins_with("die"):
+		_explode()
+
+func _on_explode_timer_timeout():
+	get_tree().reload_current_scene()
+
