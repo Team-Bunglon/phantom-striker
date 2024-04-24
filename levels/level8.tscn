@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gkouv4hjefbo"]
+[gd_scene load_steps=10 format=3 uid="uid://og3ss00qyt1a"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_vyfr4"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_tu78h"]
