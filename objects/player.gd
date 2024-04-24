@@ -3,7 +3,7 @@ class_name Player
 
 @export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 @export var looking_left: bool = false			## The character will look left at the start of the level.
-@export var camera_shake: bool = false			## Allow camera shaking upon striking impact or death. 
+@export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
 @export var strikable_tiles: Array = ["TileMap", "SpikeMap"]  ## The tilemap name that the strike raycast will detect upon.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
@@ -30,7 +30,7 @@ class_name Player
 @export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use (and create if needed) a timer node for timer in seconds.
 @export var jump_buffer_frame:	int = 8	 ## Let the character perform a jump as soon as he touches the floor if the jump button is pressed before reaching it while within the frame duration.
 @export var coyote_frame:		int = 5  ## Let the character jump after walking off the platform's edge within the frame duration.
-@export var wall_frame:			int = 4  ## Let the character to maintain his horizontal launch momentum when he hits a wall within the frame duration.
+@export var wall_buffer_frame:	int = 4  ## Let the character to maintain his horizontal launch momentum when he hits a wall within the frame duration.
 @export var strike_delay_frame:	int = 1	 ## Input delay for launch action. This is done to correctly register diagonal launch action. 
 @export var move_delay_frame:	int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.
 
@@ -39,7 +39,7 @@ var launch_x:			float = 0.0	 # The current launch speed on either X axis.
 var launch_x_direction: float = 1.0  # The direction of the launch.
 var jump_buffer_count:	int = 0
 var coyote_count:		int = coyote_frame
-var wall_count:			int = wall_frame
+var wall_buffer_count:			int = wall_buffer_frame
 var strike_delay_count: int = strike_delay_frame
 var move_delay_count:	int = 0
 var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the character can perform the next strike.
@@ -111,6 +111,7 @@ func _physics_process(delta):
 ## Horizontal Movement
 func move():
 	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
+	print("launch speed: " + str(launch_x))
 	if not is_on_floor() and direction != launch_x_direction:
 		launch_x = move_toward(launch_x, 0, air_friction)
 	elif is_on_floor():
@@ -125,6 +126,7 @@ func move():
 				velocity.x = max(launch_x_move, direction_move) if direction > 0 else min(launch_x_move, direction_move)
 				# If the launch speed is smaller thn the default movement speed, just set the launch speed to 0 altogether.
 				# Hopefully, this fixes the occasional "sticky" movement issue
+				wall_buffer_countdown()
 				if velocity.x == direction_move: 
 					launch_x = 0.0
 			# The character moves against the launch direction.
@@ -138,7 +140,7 @@ func move():
 	else:
 		if launch_x > 0.0:
 			velocity.x = launch_x_move
-			wall_countdown()
+			wall_buffer_countdown()
 		else:
 			velocity.x = move_toward(velocity.x, 0, floor_friction)
 	player_state(int(direction))
@@ -246,15 +248,15 @@ func coyote_countdown():
 		if coyote_count > 0:
 			coyote_count -= 1
 
-func wall_countdown():
+func wall_buffer_countdown():
 	if is_on_wall():
-		if wall_count > 0:
-			wall_count -= 1
-		elif wall_count <= 0:
+		if wall_buffer_count > 0:
+			wall_buffer_count -= 1
+		elif wall_buffer_count <= 0:
 			launch_x = 0
-			wall_count = wall_frame
+			wall_buffer_count = wall_buffer_frame
 	elif not is_on_wall():
-		wall_count = wall_frame
+		wall_buffer_count = wall_buffer_frame
 
 func move_delay_countdown():
 	if move_delay_count > 0:
