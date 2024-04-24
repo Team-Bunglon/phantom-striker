@@ -197,7 +197,7 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
 		print(raycast.get_collider().name)
-		if raycast.get_collider().name == "TileMap" || raycast.get_collider().begins_with("BlackDiamond"):
+		if raycast.get_collider().name == "TileMap" || raycast.get_collider().name.begins_with("BlackDiamond"):
 			#$"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
@@ -209,7 +209,7 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 			elif direction.y > 0: # Going Down
 				velocity.y = jump_velocity * direction.y * 2
 		# TO NAUFAL: We may need to tweak this a little more. 
-		elif raycast.get_collider().name == "WhiteDiamond":
+		elif raycast.get_collider().name.begins_with("WhiteDiamond"):
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = direction.x
