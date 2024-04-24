@@ -212,12 +212,12 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = direction.x
-				launch_x = -max_launch_x
-				player_state(int(launch_x_direction))
+				launch_x = max_launch_x
+				player_state(int(-launch_x_direction))
 			if direction.y < 0: # Going Up
-				velocity.y = jump_velocity * direction.y / temp_mult
+				velocity.y = -jump_velocity * direction.y / temp_mult
 			elif direction.y > 0: # Going Down
-				velocity.y = jump_velocity * direction.y * 2
+				velocity.y = -jump_velocity * direction.y * 2
 
 func strike_hold_input():
 	if not can_strike:

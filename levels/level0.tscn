@@ -60,7 +60,7 @@ position = Vector2(601, -9)
 shape = SubResource("RectangleShape2D_dduow")
 
 [node name="WhiteDiamond" parent="." instance=ExtResource("5_bo5kk")]
-position = Vector2(199, 423)
+position = Vector2(199, 368)
 
 [node name="BlackDiamond" parent="." instance=ExtResource("6_aqsy6")]
 position = Vector2(333, 424)
