@@ -12,6 +12,8 @@ func next_level():
 func _ready():
 	print(name + ": " + room_name)
 	$Canvas/RoomName.text = room_name
+	await get_tree().create_timer(1).timeout
+
 
 func _on_kill_zone_body_entered(body:Node2D):
 	if body.name == "Player":
@@ -19,4 +21,5 @@ func _on_kill_zone_body_entered(body:Node2D):
 
 func _on_win_zone_body_entered(body:Node2D):
 	if body.name == "Player":
+		Audio.play("Start")
 		get_tree().change_scene_to_file(next_level())

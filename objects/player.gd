@@ -1,8 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-@export var strike_particle_length: float = 48 ## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
-@export var looking_left: bool = true ## The character will look left at the start of the level.
+@export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
+@export var looking_left: bool = false			## The character will look left at the start of the level.
+@export var camera_shake: bool = false			## Allow camera shaking upon striking impact or death. 
+@export var strikable_tiles: Array = ["TileMap", "SpikeMap"]  ## The tilemap name that the strike raycast will detect upon.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -41,8 +43,9 @@ var wall_count:			int = wall_frame
 var strike_delay_count: int = strike_delay_frame
 var move_delay_count:	int = 0
 var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the character can perform the next strike.
-var can_strike:			bool = true		# Boolean to prevent the character from doing a continous striking when the strike input is being held.
-var is_dying:			bool = false
+var can_move:			bool = false	# Boolean at the start of the level after the character spawns.
+var can_strike:			bool = false	# Boolean to prevent the character from doing a continous striking when the strike input is being held.
+var is_dying:			bool = false	# The character is in dying state (animation).
 var face: Dictionary = {
 	-1: "_left",
 	0: "_right",
@@ -107,7 +110,7 @@ func _physics_process(delta):
 
 ## Horizontal Movement
 func move():
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
 	if not is_on_floor() and direction != launch_x_direction:
 		launch_x = move_toward(launch_x, 0, air_friction)
 	elif is_on_floor():
@@ -165,7 +168,7 @@ func jump_procedure():
 func strike():
 	var direction_x = Input.get_axis("strike_left", "strike_right")	  # Left is -1, right is +1
 	var direction_y = Input.get_axis("strike_up", "strike_down") * -1 # Down is -1, up is +1
-	var direction_xy = Vector2(direction_x, direction_y)
+	var direction_xy = Vector2(direction_x, direction_y) if can_move else Vector2.ZERO
 	if not on_strike_delay and can_strike and direction_xy != Vector2.ZERO:
 		if strike_delay_count > 0:
 			strike_delay_count -= 1
@@ -177,6 +180,7 @@ func strike():
 			on_strike_delay = true
 			can_strike = false
 			direction_xy = Vector2.ZERO
+			Audio.play("Strike")
 			$StrikeDelayTimer.start()
 
 func strike_particle_create(raycast: RayCast2D):
@@ -197,8 +201,8 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
 		print(raycast.get_collider().name)
-		if raycast.get_collider().name == "TileMap" || raycast.get_collider().begins_with("BlackDiamond"):
-			#$"../Camera2D".shake(4,12)
+		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond"):
+			if camera_shake: $"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
@@ -222,11 +226,11 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 
 func strike_hold_input():
 	if not can_strike:
-		if not Input.is_action_pressed("strike_left") and \
-			not Input.is_action_pressed("strike_right") and \
-			not Input.is_action_pressed("strike_up") and \
-			not Input.is_action_pressed("strike_down"):
+		if _check_strike_input():
 			can_strike = true
+
+func _check_strike_input():
+	return not Input.is_action_pressed("strike_left") and not Input.is_action_pressed("strike_right") and not Input.is_action_pressed("strike_up") and not Input.is_action_pressed("strike_down")
 
 func jump_buffer_countdown():
 	if jump_buffer_count > 0:
@@ -278,10 +282,12 @@ func die(quick_death := false):
 	if quick_death:
 		_explode()
 	else:
+		Audio.play("Hit")
 		$AnimationPlayer.play("die" + face[0])
 
 func _explode():
-	#$"../Camera2D".shake()
+	if camera_shake: $"../Camera2D".shake()
+	Audio.play("Death")
 	$Sprite.visible = false
 	$DieParticle.emitting = true
 	$ExplodeTimer.start()
@@ -296,3 +302,7 @@ func _on_animation_player_animation_finished(anim_name:StringName):
 func _on_explode_timer_timeout():
 	get_tree().reload_current_scene()
 
+func _on_cooldown_timer_timeout():
+	can_move = true
+	if _check_strike_input(): can_strike = true
+	pass

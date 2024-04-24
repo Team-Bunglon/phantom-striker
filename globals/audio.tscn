@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=7 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
+[ext_resource type="AudioStream" uid="uid://bd0mbipr0yixd" path="res://assets/audio/strike.wav" id="3_1wihl"]
+[ext_resource type="AudioStream" uid="uid://dmcsmjqm4sk0y" path="res://assets/audio/hit.wav" id="4_bsjk2"]
+[ext_resource type="AudioStream" uid="uid://ca5h6qn7db55v" path="res://assets/audio/death.wav" id="5_ker2x"]
+[ext_resource type="AudioStream" uid="uid://bbkfx41e2b2xw" path="res://assets/audio/start.wav" id="6_w2uo1"]
 
 [node name="Audio" type="Node2D"]
 script = ExtResource("1_n4bf6")
@@ -9,3 +13,19 @@ script = ExtResource("1_n4bf6")
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qx440")
 pitch_scale = 1.1
+
+[node name="Strike" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1wihl")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bsjk2")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ker2x")
+volume_db = 1.0
+
+[node name="Start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w2uo1")
+pitch_scale = 1.4
