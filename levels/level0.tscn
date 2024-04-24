@@ -4,8 +4,8 @@
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_akf2k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_bygm3"]
-[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
-[ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/blackdiamond.tscn" id="6_aqsy6"]
+[ext_resource type="PackedScene" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
+[ext_resource type="PackedScene" path="res://objects/blackdiamond.tscn" id="6_aqsy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
 size = Vector2(768, 16)
@@ -38,9 +38,22 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_akf2k")]
 position = Vector2(24, 278)
+strike_particle_length = null
+max_speed = null
+max_launch_x = null
 max_jump_height = 80.0
+acceleration = null
+floor_friction = null
+air_friction = null
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+jump_lost_multiplier = null
+reduced_height_multiplier = null
+jump_buffer_frame = null
+coyote_frame = null
+wall_frame = null
+strike_delay_frame = null
+move_delay_frame = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_bygm3")
