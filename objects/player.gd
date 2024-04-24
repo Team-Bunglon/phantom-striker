@@ -50,7 +50,7 @@ var face: Dictionary = {
 }
 
 # Variables that shouldn't be changed
-@onready var camera: Camera2D = $"../Camera2D"
+#@onready var camera: Camera2D = $"../Camera2D"
 @onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
