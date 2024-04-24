@@ -85,7 +85,7 @@ func _physics_process(delta):
 			var collider = collision_info.get_collider()
 			if collider.name == "SpikeMap":
 				# Moved to die() to handle death animation as well
-				die(false)
+				die()
 				
 	#move_and_slide()
 	#var collision = move_and_collide(velocity * 1/3 * delta)
@@ -247,7 +247,7 @@ func player_state(direction: int):
 
 ## Kill the character and restart the level. Can be used when the player object is referenced in other script too!
 ## quick_death skips the first animation before the character explodes to pieces
-func die(quick_death: bool):
+func die(quick_death := false):
 	get_tree().reload_current_scene()
 
 func _on_strike_delay_timer_timeout():
