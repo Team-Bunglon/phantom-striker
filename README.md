@@ -18,5 +18,3 @@ IJKL/Arrow Keys: Strike
 
 ### External Assets
 - Insert every external assets and addon here.
-
-
