@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://3o4litqq32uf"]
+[gd_scene load_steps=8 format=3 uid="uid://3o4litqq32uf"]
 
 [ext_resource type="Script" path="res://menu/title.gd" id="1_0jyka"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_ibjwj"]
 [ext_resource type="PackedScene" uid="uid://d3sd5a738c3i8" path="res://menu/main_menu.tscn" id="3_dti36"]
+[ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="4_rm5kv"]
 
 [sub_resource type="Animation" id="Animation_c47d2"]
 length = 0.001
@@ -46,18 +47,22 @@ horizontal_alignment = 1
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 917.0
-offset_right = 615.0
-offset_bottom = 953.0
+offset_left = 8.0
+offset_top = 926.0
+offset_right = 620.0
+offset_bottom = 962.0
 theme_override_fonts/font = ExtResource("1_ibjwj")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 text = "Warning! This game is still in pre-alpha stage!"
 
 [node name="MainMenu" parent="." instance=ExtResource("3_dti36")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 600.0
-offset_bottom = 776.0
+layout_mode = 1
+offset_top = 494.0
+offset_bottom = 494.0
+
+[node name="OptionMenu" parent="." instance=ExtResource("4_rm5kv")]
+visible = false
+layout_mode = 1
+offset_top = 494.0
+offset_bottom = 494.0
+return_object = NodePath("../MainMenu")

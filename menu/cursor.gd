@@ -8,10 +8,14 @@ class_name CursorClass
 @export var cursor_offset: Vector2 ## The offset of which the cursor's sprite is located by its central point.
 
 @onready var menu_parent := get_node(menu_object)
+@onready var cursor_parent := get_parent()
 
 var cursor_index: int = 0
 
 func _process(_delta):
+	if not cursor_parent.visible:
+		return 
+
 	var input := Vector2.ZERO
 
 	if Input.is_action_just_pressed("ui_up"):

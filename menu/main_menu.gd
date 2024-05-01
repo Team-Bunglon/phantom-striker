@@ -13,5 +13,11 @@ func _input(event):
 func _on_start_selected():
 	_start_level("level1")
 
+func _on_options_selected():
+	visible = false
+	$"../OptionMenu".visible = true
+
 func _on_exit_selected():
 	get_tree().quit()
+
+

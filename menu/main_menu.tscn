@@ -59,4 +59,5 @@ text = "Exit
 script = ExtResource("4_dxtp1")
 
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_selected"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_selected"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_selected"]
