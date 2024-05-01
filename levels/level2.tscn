@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dugb71cmrhea5"]
+[gd_scene load_steps=11 format=3 uid="uid://dugb71cmrhea5"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_mrip6"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_f2frr"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="2_yvocw"]
+[ext_resource type="PackedScene" uid="uid://cffdc0mse6ebp" path="res://menu/pause_screen.tscn" id="3_3epov"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_d04lr"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="5_a8ykx"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_lxj3q"]
@@ -36,6 +37,9 @@ offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0.196078, 0.196078, 0.196078, 0.588235)
 metadata/_edit_lock_ = true
+
+[node name="PauseScreen" parent="Canvas" instance=ExtResource("3_3epov")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_d04lr")]
 position = Vector2(49, 376)

@@ -44,6 +44,7 @@ theme_override_font_sizes/font_size = 40
 text = "Scaling"
 script = ExtResource("4_060l5")
 can_decrease = true
+can_increase = true
 
 [node name="Fullscreen" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -51,6 +52,8 @@ theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 40
 text = "Fullscreen"
 script = ExtResource("4_060l5")
+can_decrease = true
+can_increase = true
 
 [node name="Return" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,6 +84,9 @@ theme_override_font_sizes/font_size = 40
 text = "No"
 
 [connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_decreased"]
+[connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_increased"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_selected"]
+[connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_decreased"]
+[connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_increased"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_selected"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Return" to="." method="_on_return_selected"]

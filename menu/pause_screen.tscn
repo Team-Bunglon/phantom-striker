@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cffdc0mse6ebp"]
+[gd_scene load_steps=5 format=3 uid="uid://cffdc0mse6ebp"]
 
 [ext_resource type="Script" path="res://menu/pause_screen.gd" id="1_kuke2"]
 [ext_resource type="PackedScene" uid="uid://485fwe28sgac" path="res://menu/pause_menu.tscn" id="1_rmae5"]
 [ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="2_lu6ax"]
+[ext_resource type="PackedScene" uid="uid://ccbyvma21rb1d" path="res://menu/confirm.tscn" id="4_o351n"]
 
 [node name="PauseScreen" type="Control"]
 process_mode = 3
+z_index = 100
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,4 +41,27 @@ return_object = NodePath("../PauseMenu")
 default_scaling = 2
 fullscreen = true
 
+[node name="ConfirmRestart" parent="." instance=ExtResource("4_o351n")]
+visible = false
+layout_mode = 1
+offset_top = 482.0
+offset_bottom = 482.0
+return_object = NodePath("../PauseMenu")
+line1_text = "Are you sure you want to restart from the first level?"
+line2_is_red = true
+
+[node name="ConfirmMenu" parent="." instance=ExtResource("4_o351n")]
+visible = false
+layout_mode = 1
+offset_top = 482.0
+offset_bottom = 482.0
+return_object = NodePath("../PauseMenu")
+line1_text = "Are you sure you want to quit to main menu?"
+line2_text = "Progress will be saved (UNIMPLEMENTED)"
+
+[connection signal="main_menu" from="PauseMenu" to="." method="_on_pause_menu_main_menu"]
+[connection signal="option" from="PauseMenu" to="." method="_on_pause_menu_option"]
+[connection signal="restart_game" from="PauseMenu" to="." method="_on_pause_menu_restart_game"]
 [connection signal="resume_game" from="PauseMenu" to="." method="_on_pause_menu_resume_game"]
+[connection signal="yes_selected" from="ConfirmRestart" to="." method="_on_confirm_restart_yes_selected"]
+[connection signal="yes_selected" from="ConfirmMenu" to="." method="_on_confirm_menu_yes_selected"]

@@ -42,7 +42,6 @@ theme_override_fonts/font = ExtResource("2_bjs65")
 theme_override_font_sizes/font_size = 40
 text = "Resume"
 script = ExtResource("3_6dyq7")
-can_decrease = true
 
 [node name="Options" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,3 +69,5 @@ script = ExtResource("3_6dyq7")
 
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_selected"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_selected"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/RestartGame" to="." method="_on_restart_game_selected"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_selected"]

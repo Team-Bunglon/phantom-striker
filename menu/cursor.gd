@@ -6,6 +6,7 @@ class_name CursorClass
 
 @export var menu_object: NodePath ## The container the label menu are located in. It should only be a VBoxContainer.
 @export var cursor_offset: Vector2 ## The offset of which the cursor's sprite is located by its central point.
+@export var cancel_labels: Array[String] = ["Resume", "Return", "No"]
 
 @onready var menu_parent := get_node(menu_object)
 @onready var cursor_parent := get_parent()
@@ -33,13 +34,21 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept") and cursor_can_choose:
 		var menu_item_current := get_menu_item(cursor_index)
 		if menu_item_current != null:
-			if menu_item_current.name in ["Resume", "Return"]:
+			if menu_item_current.name in cancel_labels:
 				Audio.play("Cancel")
 			elif menu_item_current.name == "Start":
 				print("Don't play anything")
 			else:
 				Audio.play("Accept")
 			select_menu(menu_item_current)
+
+	
+	if Input.is_action_just_pressed("ui_increase") and cursor_can_choose:
+		var menu_item_current := get_menu_item(cursor_index)
+		if menu_item_current != null:
+			if menu_item_current.can_increase:
+				Audio.play("Accept")
+			increase_menu(menu_item_current)
 
 	if Input.is_action_just_pressed("ui_decrease") and cursor_can_choose:
 		var menu_item_current := get_menu_item(cursor_index)
@@ -52,7 +61,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel") and cursor_can_choose:
 		var menu_item_current := get_menu_item(0)
 		if menu_item_current != null:
-			if menu_item_current.name == "Resume":
+			if menu_item_current.name in cancel_labels:
 				Audio.play("Cancel")
 				select_menu(menu_item_current)
 
@@ -70,6 +79,10 @@ func _process(_delta):
 func select_menu(item):
 	if item.has_method("select"):
 		item.select()
+
+func increase_menu(item):
+	if item.has_method("increase"):
+		item.increase()
 
 func decrease_menu(item):
 	if item.has_method("decrease"):

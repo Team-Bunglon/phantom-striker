@@ -518,7 +518,6 @@ room_name = "Debug Level Please Ignore"
 
 [node name="PauseScreen" parent="Canvas" instance=ExtResource("2_ks0se")]
 visible = false
-z_index = 100
 
 [node name="RoomName" type="Label" parent="Canvas"]
 z_index = 10

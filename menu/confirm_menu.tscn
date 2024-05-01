@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpg01xawf5j15"]
+
+[ext_resource type="Script" path="res://menu/confirm_menu.gd" id="1_65n4p"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_hwcaj"]
+[ext_resource type="PackedScene" uid="uid://cd0nf5ydgsylp" path="res://menu/cursor.tscn" id="3_pxlnl"]
+[ext_resource type="Script" path="res://menu/menu_item.gd" id="4_vl1ei"]
+
+[node name="ConfirmMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_65n4p")
+
+[node name="Warning1" type="Label" parent="."]
+layout_mode = 0
+offset_top = -125.0
+offset_right = 1280.0
+offset_bottom = -77.0
+theme_override_fonts/font = ExtResource("2_hwcaj")
+theme_override_font_sizes/font_size = 40
+text = "Are you sure you want to return to main menu?"
+horizontal_alignment = 1
+
+[node name="Warning2" type="Label" parent="."]
+layout_mode = 0
+offset_top = -78.0
+offset_right = 1280.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hwcaj")
+theme_override_font_sizes/font_size = 40
+text = "PROGRESS IS UNSAFED FOR NOW!"
+horizontal_alignment = 1
+
+[node name="Cursor" parent="." instance=ExtResource("3_pxlnl")]
+layout_mode = 1
+offset_left = 541.0
+offset_top = -3.0
+offset_right = -83.0
+offset_bottom = -467.0
+menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
+cursor_offset = Vector2(32, 18)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 152.0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="No" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hwcaj")
+theme_override_font_sizes/font_size = 40
+text = "No
+"
+script = ExtResource("4_vl1ei")
+
+[node name="Yes" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hwcaj")
+theme_override_font_sizes/font_size = 40
+text = "Yes
+
+"
+script = ExtResource("4_vl1ei")
+
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/No" to="." method="_on_no_selected"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Yes" to="." method="_on_yes_selected"]

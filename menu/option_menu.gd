@@ -25,6 +25,7 @@ func _ready_text():
 	scaling_value_text.text = str(Global.current_scaling) + "x"
 	fullscreen_text.text = Global.fullscreen
 
+## This should only run once since you won't change your screen resolution midgame anyway.
 func _get_maximum_scaling():
 	if Global.maximum_scaling == 0:
 		var screen_resolution := DisplayServer.screen_get_size()
@@ -49,7 +50,7 @@ func _update_value(setting_name: String):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			fullscreen_text.text = "Yes"
 			Global.fullscreen = "Yes"
-		else:
+		elif Global.fullscreen == "Yes":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			_update_resolution(Global.current_scaling)
 			fullscreen_text.text = "No"
@@ -58,11 +59,20 @@ func _update_value(setting_name: String):
 func _on_fullscreen_selected():
 	_update_value("fullscreen")
 
+func _on_fullscreen_increased():
+	_on_fullscreen_selected()
+
+func _on_fullscreen_decreased():
+	_on_fullscreen_selected()
+
 func _on_scaling_selected():
 	Global.current_scaling += 1
 	if Global.current_scaling > Global.maximum_scaling:
 		Global.current_scaling = 1
 	_update_value("scaling")
+
+func _on_scaling_increased():
+	_on_scaling_selected()
 
 func _on_scaling_decreased():
 	Global.current_scaling -= 1
@@ -73,6 +83,3 @@ func _on_scaling_decreased():
 func _on_return_selected():
 	visible = false
 	return_node.visible = true
-
-
-
