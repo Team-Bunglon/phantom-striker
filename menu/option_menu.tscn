@@ -16,8 +16,10 @@ script = ExtResource("1_q6l8g")
 
 [node name="Cursor" parent="." instance=ExtResource("2_xj1hb")]
 layout_mode = 1
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = 457.0
+offset_top = -1.00002
+offset_right = -167.0
+offset_bottom = -465.0
 menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
 cursor_offset = Vector2(32, 18)
 
@@ -26,6 +28,7 @@ layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 152.0
 alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -56,21 +59,26 @@ text = "Return
 "
 script = ExtResource("4_060l5")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="ScalingValue" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="ScalingValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 40
 text = "1x
 "
 
-[node name="FullscreenValue" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="FullscreenValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 40
-text = "yes"
+text = "No"
 
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_selected"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_selected"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Return" to="." method="_on_return_selected"]

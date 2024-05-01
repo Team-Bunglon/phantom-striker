@@ -32,7 +32,7 @@ libraries = {
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1280.0
-offset_bottom = 959.0
+offset_bottom = 961.0
 color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="."]
@@ -66,3 +66,5 @@ layout_mode = 1
 offset_top = 494.0
 offset_bottom = 494.0
 return_object = NodePath("../MainMenu")
+default_scaling = 2
+fullscreen = true

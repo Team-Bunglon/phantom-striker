@@ -9,11 +9,13 @@ class_name CursorClass
 
 @onready var menu_parent := get_node(menu_object)
 @onready var cursor_parent := get_parent()
+@onready var cursor_can_choose: bool = cursor_parent.visible
 
 var cursor_index: int = 0
 
 func _process(_delta):
 	if not cursor_parent.visible:
+		cursor_can_choose = false
 		return 
 
 	var input := Vector2.ZERO
@@ -28,11 +30,14 @@ func _process(_delta):
 	else:
 		assert(false, "The menu_object must be a VBoxContainer")
 
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select") and cursor_can_choose:
 		var menu_item_current := get_menu_item(cursor_index)
 		if menu_item_current != null:
 			if menu_item_current.has_method("select"):
 				menu_item_current.select()
+	
+	if Input.is_action_just_released("ui_select") and not cursor_can_choose:
+		cursor_can_choose = true
 
 func get_menu_item(index: int) -> Control:
 	if menu_parent == null:
