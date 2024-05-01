@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://485fwe28sgac"]
+
+[ext_resource type="Script" path="res://menu/pause_menu.gd" id="1_av6sr"]
+[ext_resource type="PackedScene" uid="uid://cd0nf5ydgsylp" path="res://menu/cursor.tscn" id="1_q5ocv"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_bjs65"]
+[ext_resource type="Script" path="res://menu/menu_item.gd" id="3_6dyq7"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_av6sr")
+
+[node name="Cursor" parent="." instance=ExtResource("1_q5ocv")]
+layout_mode = 1
+offset_left = 412.0
+offset_top = -4.99998
+offset_right = -212.0
+offset_bottom = -469.0
+menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
+cursor_offset = Vector2(32, 18)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 152.0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjs65")
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+script = ExtResource("3_6dyq7")
+can_decrease = true
+
+[node name="Options" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjs65")
+theme_override_font_sizes/font_size = 40
+text = "Options
+"
+script = ExtResource("3_6dyq7")
+
+[node name="RestartGame" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjs65")
+theme_override_font_sizes/font_size = 40
+text = "Restart Game
+"
+script = ExtResource("3_6dyq7")
+
+[node name="MainMenu" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjs65")
+theme_override_font_sizes/font_size = 40
+text = "Quit to Main Menu
+"
+script = ExtResource("3_6dyq7")
+
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_selected"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_selected"]

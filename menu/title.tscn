@@ -67,4 +67,4 @@ offset_top = 494.0
 offset_bottom = 494.0
 return_object = NodePath("../MainMenu")
 default_scaling = 2
-fullscreen = true
+apply_immediately = true

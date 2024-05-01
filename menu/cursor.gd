@@ -30,14 +30,50 @@ func _process(_delta):
 	else:
 		assert(false, "The menu_object must be a VBoxContainer")
 
-	if Input.is_action_just_pressed("ui_select") and cursor_can_choose:
+	if Input.is_action_just_pressed("ui_accept") and cursor_can_choose:
 		var menu_item_current := get_menu_item(cursor_index)
 		if menu_item_current != null:
-			if menu_item_current.has_method("select"):
-				menu_item_current.select()
-	
-	if Input.is_action_just_released("ui_select") and not cursor_can_choose:
+			if menu_item_current.name in ["Resume", "Return"]:
+				Audio.play("Cancel")
+			elif menu_item_current.name == "Start":
+				print("Don't play anything")
+			else:
+				Audio.play("Accept")
+			select_menu(menu_item_current)
+
+	if Input.is_action_just_pressed("ui_decrease") and cursor_can_choose:
+		var menu_item_current := get_menu_item(cursor_index)
+		if menu_item_current != null:
+			if menu_item_current.can_decrease:
+				Audio.play("Cancel")
+			decrease_menu(menu_item_current)
+
+	## Get the first option or the last option and choose them if the label name is "Resume" or "Return"
+	if Input.is_action_just_pressed("ui_cancel") and cursor_can_choose:
+		var menu_item_current := get_menu_item(0)
+		if menu_item_current != null:
+			if menu_item_current.name == "Resume":
+				Audio.play("Cancel")
+				select_menu(menu_item_current)
+
+		menu_item_current = get_menu_item(menu_parent.get_child_count()-1)
+		if menu_item_current != null:
+			if menu_item_current.name == "Return":
+				Audio.play("Cancel")
+				select_menu(menu_item_current)
+
+	if (Input.is_action_just_released("ui_accept") or \
+		Input.is_action_just_released("ui_decrease") or \
+		Input.is_action_just_released("ui_cancel")) and not cursor_can_choose:
 		cursor_can_choose = true
+
+func select_menu(item):
+	if item.has_method("select"):
+		item.select()
+
+func decrease_menu(item):
+	if item.has_method("decrease"):
+		item.decrease()
 
 func get_menu_item(index: int) -> Control:
 	if menu_parent == null:
@@ -60,4 +96,3 @@ func set_cursor(index: int) -> void:
 	global_position = Vector2(menu_post.x, menu_post.y + menu_size.y / 2.0) - (size / 2.0) - cursor_offset
 
 	cursor_index = index
-
