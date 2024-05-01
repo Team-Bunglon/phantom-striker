@@ -21,4 +21,11 @@ func _on_area_2d_body_exited(body):
 		set_process(false)
 
 func _on_timer_timeout():
-	queue_free()
+	#queue_free()
+	$AnimatedSprite.visible = false
+	$CollisionShape2D.disabled = true
+	$RespawnTimer.start(5)
+
+func _on_respawn_timer_timeout():
+	$AnimatedSprite.visible = true
+	$CollisionShape2D.disabled = false

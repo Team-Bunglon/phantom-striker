@@ -70,6 +70,9 @@ shape = SubResource("RectangleShape2D_h2f36")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="RespawnTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
