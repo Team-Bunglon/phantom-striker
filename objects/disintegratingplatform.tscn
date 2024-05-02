@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvigbor1cvnbw"]
+[gd_scene load_steps=11 format=3 uid="uid://dmipuah4vpsd2"]
 
 [ext_resource type="Texture2D" uid="uid://brrlat8ooauir" path="res://assets/sprites/disintegrate_platform_temp.png" id="1_q8hdv"]
 [ext_resource type="Script" path="res://levels/disintegratingplatform.gd" id="1_uqq7v"]

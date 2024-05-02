@@ -5,7 +5,7 @@ var time = 1
 func _ready():
 	set_process(false)
 
-func _process(delta):
+func _process(_delta):
 	time += 1
 	$AnimatedSprite.play()
 
@@ -22,10 +22,10 @@ func _on_area_2d_body_exited(body):
 
 func _on_timer_timeout():
 	#queue_free()
-	$AnimatedSprite.visible = false
+	#$AnimatedSprite.visible = false
 	$CollisionShape2D.disabled = true
 	$RespawnTimer.start(5)
 
 func _on_respawn_timer_timeout():
-	$AnimatedSprite.visible = true
+	#$AnimatedSprite.visible = true
 	$CollisionShape2D.disabled = false
