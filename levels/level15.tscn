@@ -124,8 +124,5 @@ position = Vector2(600, 120)
 [node name="DisintegratingPlatform13" parent="." instance=ExtResource("8_uxk08")]
 position = Vector2(616, 72)
 
-[node name="DisintegratingPlatform" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(152, 440)
-
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
