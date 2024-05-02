@@ -16,9 +16,10 @@ script = ExtResource("1_q6l8g")
 
 [node name="Cursor" parent="." instance=ExtResource("2_xj1hb")]
 layout_mode = 1
-offset_left = 236.0
-offset_top = 3.0
-offset_right = -388.0
+offset_left = 222.0
+offset_top = 2.0
+offset_right = -402.0
+offset_bottom = -462.0
 scale = Vector2(2, 2)
 menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
 cursor_offset = Vector2(24, 2)
@@ -34,9 +35,30 @@ metadata/_edit_lock_ = true
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="Music" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kxy6g")
+theme_override_font_sizes/font_size = 20
+text = "Music Volume
+"
+script = ExtResource("4_060l5")
+can_decrease = true
+can_increase = true
+
+[node name="Sound" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kxy6g")
+theme_override_font_sizes/font_size = 20
+text = "Sound Volume
+"
+script = ExtResource("4_060l5")
+can_decrease = true
+can_increase = true
 
 [node name="Scaling" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,6 +78,16 @@ script = ExtResource("4_060l5")
 can_decrease = true
 can_increase = true
 
+[node name="Speed" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kxy6g")
+theme_override_font_sizes/font_size = 20
+text = "Game Speed
+"
+script = ExtResource("4_060l5")
+can_decrease = true
+can_increase = true
+
 [node name="Return" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
@@ -71,6 +103,18 @@ theme_override_constants/margin_left = 20
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
 
+[node name="MusicValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kxy6g")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="SoundValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kxy6g")
+theme_override_font_sizes/font_size = 20
+text = "5"
+
 [node name="ScalingValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
@@ -84,10 +128,25 @@ theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "No"
 
+[node name="SpeedValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kxy6g")
+theme_override_font_sizes/font_size = 20
+text = "100%"
+
+[connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Music" to="." method="_on_music_decreased"]
+[connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Music" to="." method="_on_music_increased"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Music" to="." method="_on_music_selected"]
+[connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Sound" to="." method="_on_sound_decreased"]
+[connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Sound" to="." method="_on_sound_increased"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Sound" to="." method="_on_sound_selected"]
 [connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_decreased"]
 [connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_increased"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_selected"]
 [connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_decreased"]
 [connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_increased"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_selected"]
+[connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Speed" to="." method="_on_speed_decreased"]
+[connection signal="increased" from="HBoxContainer/MarginContainer/VBoxContainer/Speed" to="." method="_on_speed_increased"]
+[connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Speed" to="." method="_on_speed_selected"]
 [connection signal="selected" from="HBoxContainer/MarginContainer/VBoxContainer/Return" to="." method="_on_return_selected"]
