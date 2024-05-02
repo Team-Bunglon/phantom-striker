@@ -39,7 +39,7 @@ var launch_x:			float = 0.0	 # The current launch speed on either X axis.
 var launch_x_direction: float = 1.0  # The direction of the launch.
 var jump_buffer_count:	int = 0
 var coyote_count:		int = coyote_frame
-var wall_buffer_count:			int = wall_buffer_frame
+var wall_buffer_count:	int = wall_buffer_frame
 var strike_delay_count: int = strike_delay_frame
 var move_delay_count:	int = 0
 var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the character can perform the next strike.
@@ -86,7 +86,7 @@ func _physics_process(delta):
 	move_delay_countdown()
 	
 	# TO IVAN: This is an interesting implementation
-	# The way I would implemen it is to just create an area2D for the character as a hurtbox.
+	# The way I would implement it is to just create an area2D for the character as a hurtbox.
 	# If the hurtbox detects the spike tile, the character will die.
 	# Maybe this is a better implementation. I may encapsulate this in its own function.
 	var collision = move_and_slide()
@@ -103,19 +103,24 @@ func _physics_process(delta):
 	#move_and_slide()
 	#var collision = move_and_collide(velocity * 1/3 * delta)
 	#if collision:
-		##print(collision.get_collider())
+		##print(collision.get_collider())Engine.physics_ticks_per_second
 		#var collider = collision.get_collider()
 		#if collider and collider.name == "SpikeMap":
 			#get_tree().reload_current_scene()
 
 ## Horizontal Movement
 func move():
+	var acceleration_current: float = acceleration * (Global.gamespeed / 100.0)
+	var air_friction_current: float = air_friction * (Global.gamespeed / 100.0)
+	var floor_friction_current: float = floor_friction * (Global.gamespeed / 100.0)
+	print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
+
 	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
-	print("launch speed: " + str(launch_x))
+	#print("launch speed: " + str(launch_x))
 	if not is_on_floor() and direction != launch_x_direction:
-		launch_x = move_toward(launch_x, 0, air_friction)
+		launch_x = move_toward(launch_x, 0, air_friction_current)
 	elif is_on_floor():
-		launch_x = move_toward(launch_x, 0, air_friction*4)
+		launch_x = move_toward(launch_x, 0, air_friction_current*4)
 	var direction_move = direction * max_speed
 	var launch_x_move = launch_x_direction * launch_x
 
@@ -124,25 +129,25 @@ func move():
 			# The character should maintain the launch speed when the player moves towards launch_x_direction
 			if direction == launch_x_direction: 
 				velocity.x = max(launch_x_move, direction_move) if direction > 0 else min(launch_x_move, direction_move)
-				# If the launch speed is smaller thn the default movement speed, just set the launch speed to 0 altogether.
+				# If the launch speed is smaller than the default movement speed, just set the launch speed to 0 altogether.
 				# Hopefully, this fixes the occasional "sticky" movement issue
 				wall_buffer_countdown()
 				if velocity.x == direction_move: 
 					launch_x = 0.0
 			# The character moves against the launch direction.
 			else:	
-				launch_x = move_toward(launch_x, 0, air_friction * 4)
-				if launch_x < 0.0:
+				launch_x = move_toward(launch_x, 0, air_friction_current * 4)
+				if launch_x < 0.0 or is_on_wall:
 					launch_x = 0.0
 				velocity.x = launch_x * launch_x_direction
 		else:
-			velocity.x = move_toward(velocity.x, direction_move, acceleration)
+			velocity.x = move_toward(velocity.x, direction_move, acceleration_current)
 	else:
 		if launch_x > 0.0:
 			velocity.x = launch_x_move
 			wall_buffer_countdown()
 		else:
-			velocity.x = move_toward(velocity.x, 0, floor_friction)
+			velocity.x = move_toward(velocity.x, 0, floor_friction_current)
 	player_state(int(direction))
 
 ## Vertical Movement
@@ -159,7 +164,7 @@ func jump(delta):
 		velocity.y /= jump_lost_multiplier
 
 func get_gravity():
-	return jump_gravity if velocity.y < 0.0 else fall_gravity 
+	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func jump_procedure():
 	Audio.play("Jump")

@@ -18,6 +18,9 @@ var collectibles: int = 0:
 		save_game()
 
 # Saveable variable maybe??????
+var music_vol: int = 5
+var sound_vol: int = 5
+var gamespeed: int = 100
 var current_scaling: int = 1:
 	set(value):
 		current_scaling = value
@@ -42,13 +45,13 @@ func _ready():
 
 func save_game():
 	var save: Save = Save.new()
-	
+
 	save.settings = {
 		"current_scaling": current_scaling,
 		"maximum_scaling": maximum_scaling,
 		"fullscreen": fullscreen
 	}
-	
+
 	save.countables = {
 		"death_count": death_count,
 		"collectibles": collectibles
@@ -68,6 +71,6 @@ func load_game():
 	current_scaling = save.settings.get("current_scaling", 1)
 	maximum_scaling = save.settings.get("maximum_scaling", 0)
 	fullscreen = save.settings.get("fullscreen", "No")
-	
+
 	death_count = save.countables.get("death_count", 0)
 	collectibles = save.countables.get("collectibles", 0)

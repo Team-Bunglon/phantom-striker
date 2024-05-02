@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=10 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
+[ext_resource type="AudioStream" uid="uid://dreqpx67yrm81" path="res://assets/audio/temp_bgm_please_delete_later.wav" id="2_25c41"]
 [ext_resource type="AudioStream" uid="uid://bd0mbipr0yixd" path="res://assets/audio/strike.wav" id="3_1wihl"]
 [ext_resource type="AudioStream" uid="uid://dmcsmjqm4sk0y" path="res://assets/audio/hit.wav" id="4_bsjk2"]
 [ext_resource type="AudioStream" uid="uid://ca5h6qn7db55v" path="res://assets/audio/death.wav" id="5_ker2x"]
@@ -10,30 +11,42 @@
 [ext_resource type="AudioStream" uid="uid://bv18po1v1bypd" path="res://assets/audio/ui_cancel.wav" id="8_jdpph"]
 
 [node name="Audio" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_n4bf6")
+
+[node name="Music1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_25c41")
+bus = &"Music"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qx440")
 pitch_scale = 1.1
+bus = &"Sound"
 
 [node name="Strike" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1wihl")
 volume_db = -5.0
 pitch_scale = 0.9
+bus = &"Sound"
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_bsjk2")
+bus = &"Sound"
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ker2x")
 volume_db = 1.0
+bus = &"Sound"
 
 [node name="Start" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_w2uo1")
 pitch_scale = 1.4
+bus = &"Sound"
 
 [node name="Accept" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_s85mk")
+bus = &"Sound"
 
 [node name="Cancel" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_jdpph")
+bus = &"Sound"
