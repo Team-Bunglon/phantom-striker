@@ -1,13 +1,17 @@
-extends Control
-class_name PauseScreen
+extends CanvasLayer
+class_name PauseScreenGlobal
 
 @onready var default_speed = Engine.time_scale
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	$PauseMenu.visible = false
-	$OptionMenu.visible = false
+	_set_visible(false, false, false, false, false)
 
+## this: The pause screen itself
+## pause: pause menu (the one you select with your cursor in the pause screen)
+## option: option menu (the same one from the title)
+## confirm_restart: confirmation menu for resetting the game
+## confirm_menu: confirmation menu for going back to main menu
 func _set_visible(this: bool, pause: bool, option: bool, confirm_restart: bool, confirm_menu: bool):
 	visible = this
 	$PauseMenu.visible = pause
@@ -15,10 +19,16 @@ func _set_visible(this: bool, pause: bool, option: bool, confirm_restart: bool, 
 	$ConfirmRestart.visible = confirm_restart
 	$ConfirmMenu.visible = confirm_menu
 
+func _update_text():
+	$"HBoxCount/LabelDeath".text = str(Global.death_count)
+	$"HBoxCount/LabelCollect".text = str(Global.collectibles)
+	$"HBoxCount/LabelTime".text = "04:20"
+
 func _input(event):
-	if event.is_action_pressed("pause") and not Global.is_paused:
+	if event.is_action_pressed("pause") and not Global.is_paused and Global.game_running:
 		get_tree().paused = true
 		Audio.play("Accept")
+		_update_text()
 		_set_visible(true, true, false, false, false)
 		Global.is_paused = true
 
@@ -43,4 +53,32 @@ func _on_confirm_restart_yes_selected():
 func _on_confirm_menu_yes_selected():
 	_on_pause_menu_resume_game()
 	get_tree().change_scene_to_file("res://menu/title.tscn")
+
+func _on_option_menu_visibility_changed():
+	if $OptionMenu.visible:
+		$OptionMenu.update_text()
+		$Title.text = "OPTIONS"
+		$HBoxCount.visible = false
+	else:
+		_update_text()
+		$Title.text = "PAUSED"
+		$HBoxCount.visible = true
+
+func _on_confirm_restart_visibility_changed():
+	if $ConfirmRestart.visible:
+		$Title.visible = false
+		$HBoxCount.visible = false
+	else:
+		_update_text()
+		$Title.visible = true
+		$HBoxCount.visible = true
+
+func _on_confirm_menu_visibility_changed():
+	if $ConfirmMenu.visible:
+		$Title.visible = false
+		$HBoxCount.visible = false
+	else:
+		_update_text()
+		$Title.visible = true
+		$HBoxCount.visible = true
 

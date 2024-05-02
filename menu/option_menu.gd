@@ -13,15 +13,17 @@ class_name OptionMenu
 
 func _ready():
 	_get_maximum_scaling()
-	_ready_text()
-	if apply_immediately:
+	update_text()
+	if apply_immediately and not Global.has_applied_setting_on_launch:
 		Global.current_scaling = default_scaling
 		Global.fullscreen = "Yes" if fullscreen else "No"
 		_update_value("scaling")
 		if fullscreen:
 			_update_value("fullscreen")
+		Global.has_applied_setting_on_launch = true
+	print("scaling: " + str(Global.current_scaling))
 
-func _ready_text():
+func update_text():
 	scaling_value_text.text = str(Global.current_scaling) + "x"
 	fullscreen_text.text = Global.fullscreen
 

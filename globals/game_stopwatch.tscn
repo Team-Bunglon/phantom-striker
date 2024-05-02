@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://be6bptxy8yfh5"]
+
+[ext_resource type="Script" path="res://globals/game_stopwatch.gd" id="1_jbpsh"]
+
+[node name="GameStopwatch" type="Node"]
+script = ExtResource("1_jbpsh")
+process_callback = "Physics"

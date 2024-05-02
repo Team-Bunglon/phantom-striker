@@ -4,6 +4,7 @@ class_name MainMenu
 func _start_level(level_name: String):
 	Audio.play("Start")
 	Global.death_count = 0
+	Global.game_running = true
 	get_tree().change_scene_to_file("res://levels/" + level_name + ".tscn")
 
 func _input(event):
