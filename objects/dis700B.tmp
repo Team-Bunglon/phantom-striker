@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvigbor1cvnbw"]
+
+[ext_resource type="Script" path="res://objects/disintegratingplatform.gd" id="1_aojj7"]
+[ext_resource type="Texture2D" uid="uid://brrlat8ooauir" path="res://assets/sprites/disintegrate_platform_temp.png" id="1_q8hdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sup70"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u16s"]
+atlas = ExtResource("1_q8hdv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyyno"]
+atlas = ExtResource("1_q8hdv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_571oy"]
+atlas = ExtResource("1_q8hdv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlbh2"]
+atlas = ExtResource("1_q8hdv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytdgh"]
+atlas = ExtResource("1_q8hdv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwd6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u16s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyyno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_571oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlbh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytdgh")
+}],
+"loop": false,
+"name": &"disintegrate",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2f36"]
+size = Vector2(16, 2)
+
+[node name="DisintegratingPlatform" type="StaticBody2D"]
+script = ExtResource("1_aojj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sup70")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qwd6t")
+animation = &"disintegrate"
+frame = 4
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_h2f36")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

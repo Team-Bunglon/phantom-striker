@@ -203,7 +203,7 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
 		print(raycast.get_collider().name)
-		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond"):
+		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond") || raycast.get_collider().name.begins_with("DisintegratingPlatform"):
 			if camera_shake: $"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
