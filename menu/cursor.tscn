@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd0nf5ydgsylp"]
+
+[ext_resource type="Texture2D" uid="uid://hqfxmvxqv86p" path="res://assets/sprites/ui_cursor.png" id="1_b87st"]
+[ext_resource type="Script" path="res://menu/cursor.gd" id="2_4a5ap"]
+
+[node name="Cursor" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -618.0
+offset_bottom = -461.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("1_b87st")
+stretch_mode = 4
+script = ExtResource("2_4a5ap")
