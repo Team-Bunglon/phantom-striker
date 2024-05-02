@@ -16,16 +16,17 @@ script = ExtResource("1_q6l8g")
 
 [node name="Cursor" parent="." instance=ExtResource("2_xj1hb")]
 layout_mode = 1
-offset_left = 457.0
-offset_top = -1.00002
-offset_right = -167.0
-offset_bottom = -465.0
+offset_left = 236.0
+offset_top = 3.0
+offset_right = -388.0
+scale = Vector2(2, 2)
 menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
-cursor_offset = Vector2(32, 18)
+cursor_offset = Vector2(24, 2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 1280.0
+offset_left = -320.0
+offset_right = 960.0
 offset_bottom = 152.0
 alignment = 1
 metadata/_edit_lock_ = true
@@ -40,7 +41,7 @@ layout_mode = 2
 [node name="Scaling" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Scaling"
 script = ExtResource("4_060l5")
 can_decrease = true
@@ -49,7 +50,7 @@ can_increase = true
 [node name="Fullscreen" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Fullscreen"
 script = ExtResource("4_060l5")
 can_decrease = true
@@ -58,7 +59,7 @@ can_increase = true
 [node name="Return" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Return
 "
 script = ExtResource("4_060l5")
@@ -73,14 +74,14 @@ layout_mode = 2
 [node name="ScalingValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "1x
 "
 
 [node name="FullscreenValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kxy6g")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "No"
 
 [connection signal="decreased" from="HBoxContainer/MarginContainer/VBoxContainer/Scaling" to="." method="_on_scaling_decreased"]

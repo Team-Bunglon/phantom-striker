@@ -16,38 +16,43 @@ script = ExtResource("1_wukle")
 
 [node name="Warning1" type="Label" parent="."]
 layout_mode = 0
-offset_top = -128.0
-offset_right = 1280.0
-offset_bottom = -80.0
+offset_left = -320.0
+offset_top = -59.0
+offset_right = 960.0
+offset_bottom = -11.0
 theme_override_fonts/font = ExtResource("1_emdt6")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Are you sure you want to do something?"
 horizontal_alignment = 1
 
 [node name="Warning2" type="Label" parent="."]
 layout_mode = 0
-offset_top = -78.0
-offset_right = 1280.0
-offset_bottom = -30.0
+offset_left = -320.0
+offset_top = -35.0
+offset_right = 960.0
+offset_bottom = 13.0
 theme_override_fonts/font = ExtResource("1_emdt6")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "ALL PROGRESS WILL BE LOST!"
 horizontal_alignment = 1
 
 [node name="Cursor" parent="." instance=ExtResource("2_mjkwq")]
 layout_mode = 1
-offset_left = 541.0
-offset_top = -3.0
-offset_right = -83.0
-offset_bottom = -467.0
+offset_left = 286.0
+offset_top = 2.0
+offset_right = -338.0
+offset_bottom = -462.0
+scale = Vector2(2, 2)
 menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
-cursor_offset = Vector2(32, 18)
+cursor_offset = Vector2(24, 2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 1280.0
+offset_left = -320.0
+offset_right = 960.0
 offset_bottom = 151.0
 alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -59,7 +64,7 @@ layout_mode = 2
 [node name="No" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_emdt6")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "No
 "
 script = ExtResource("3_uo7nq")
@@ -67,7 +72,7 @@ script = ExtResource("3_uo7nq")
 [node name="Yes" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_emdt6")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Yes
 "
 script = ExtResource("3_uo7nq")

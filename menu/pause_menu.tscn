@@ -15,17 +15,20 @@ grow_vertical = 2
 script = ExtResource("1_av6sr")
 
 [node name="Cursor" parent="." instance=ExtResource("1_q5ocv")]
+texture_filter = 1
 layout_mode = 1
-offset_left = 412.0
-offset_top = -4.99998
-offset_right = -212.0
-offset_bottom = -469.0
+offset_left = 225.0
+offset_top = 2.0
+offset_right = -399.0
+offset_bottom = -462.0
+scale = Vector2(2, 2)
 menu_object = NodePath("../HBoxContainer/MarginContainer/VBoxContainer")
-cursor_offset = Vector2(32, 18)
+cursor_offset = Vector2(24, 2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 1280.0
+offset_left = -320.0
+offset_right = 960.0
 offset_bottom = 152.0
 alignment = 1
 
@@ -39,14 +42,14 @@ layout_mode = 2
 [node name="Resume" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bjs65")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Resume"
 script = ExtResource("3_6dyq7")
 
 [node name="Options" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bjs65")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Options
 "
 script = ExtResource("3_6dyq7")
@@ -54,7 +57,7 @@ script = ExtResource("3_6dyq7")
 [node name="RestartGame" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bjs65")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Restart Game
 "
 script = ExtResource("3_6dyq7")
@@ -62,7 +65,7 @@ script = ExtResource("3_6dyq7")
 [node name="MainMenu" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bjs65")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Quit to Main Menu
 "
 script = ExtResource("3_6dyq7")

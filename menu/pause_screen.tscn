@@ -1,67 +1,111 @@
-[gd_scene load_steps=5 format=3 uid="uid://cffdc0mse6ebp"]
+[gd_scene load_steps=9 format=3 uid="uid://cffdc0mse6ebp"]
 
 [ext_resource type="Script" path="res://menu/pause_screen.gd" id="1_kuke2"]
 [ext_resource type="PackedScene" uid="uid://485fwe28sgac" path="res://menu/pause_menu.tscn" id="1_rmae5"]
 [ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="2_lu6ax"]
 [ext_resource type="PackedScene" uid="uid://ccbyvma21rb1d" path="res://menu/confirm.tscn" id="4_o351n"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="5_58d74"]
+[ext_resource type="Texture2D" uid="uid://b5k8nxe2rejwd" path="res://assets/sprites/ui_death.png" id="6_ype3w"]
+[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/ui_collectible.png" id="7_mo58g"]
+[ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="8_kpruf"]
 
-[node name="PauseScreen" type="Control"]
+[node name="PauseScreen" type="CanvasLayer"]
 process_mode = 3
-z_index = 100
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_kuke2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 0.588235)
 
+[node name="Title" type="Label" parent="."]
+offset_right = 640.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("5_58d74")
+theme_override_font_sizes/font_size = 80
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PauseMenu" parent="." instance=ExtResource("1_rmae5")]
-layout_mode = 1
-offset_left = 2.0
-offset_top = 480.0
-offset_right = 2.0
-offset_bottom = 480.0
+offset_top = 238.0
+offset_bottom = 238.0
 
 [node name="OptionMenu" parent="." instance=ExtResource("2_lu6ax")]
 visible = false
-layout_mode = 1
-offset_top = 494.0
-offset_bottom = 494.0
+offset_top = 239.0
+offset_bottom = 239.0
 return_object = NodePath("../PauseMenu")
-default_scaling = 2
-fullscreen = true
 
 [node name="ConfirmRestart" parent="." instance=ExtResource("4_o351n")]
 visible = false
-layout_mode = 1
-offset_top = 482.0
-offset_bottom = 482.0
+offset_top = 238.0
+offset_bottom = 238.0
 return_object = NodePath("../PauseMenu")
 line1_text = "Are you sure you want to restart from the first level?"
 line2_is_red = true
 
 [node name="ConfirmMenu" parent="." instance=ExtResource("4_o351n")]
 visible = false
-layout_mode = 1
-offset_top = 482.0
-offset_bottom = 482.0
+offset_top = 238.0
+offset_bottom = 238.0
 return_object = NodePath("../PauseMenu")
 line1_text = "Are you sure you want to quit to main menu?"
 line2_text = "Progress will be saved (UNIMPLEMENTED)"
+
+[node name="HBoxCount" type="HBoxContainer" parent="."]
+offset_top = 153.0
+offset_right = 640.0
+offset_bottom = 185.0
+alignment = 1
+
+[node name="RectDeath" type="TextureRect" parent="HBoxCount"]
+layout_mode = 2
+texture = ExtResource("6_ype3w")
+expand_mode = 2
+
+[node name="LabelDeath" type="Label" parent="HBoxCount"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_58d74")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Margin1" type="MarginContainer" parent="HBoxCount"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="RectCollect" type="TextureRect" parent="HBoxCount"]
+layout_mode = 2
+texture = ExtResource("7_mo58g")
+expand_mode = 2
+
+[node name="LabelCollect" type="Label" parent="HBoxCount"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_58d74")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Margin2" type="MarginContainer" parent="HBoxCount"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="RectTime" type="TextureRect" parent="HBoxCount"]
+layout_mode = 2
+texture = ExtResource("8_kpruf")
+expand_mode = 2
+
+[node name="LabelTime" type="Label" parent="HBoxCount"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_58d74")
+theme_override_font_sizes/font_size = 20
+text = "00:00"
 
 [connection signal="main_menu" from="PauseMenu" to="." method="_on_pause_menu_main_menu"]
 [connection signal="option" from="PauseMenu" to="." method="_on_pause_menu_option"]
 [connection signal="restart_game" from="PauseMenu" to="." method="_on_pause_menu_restart_game"]
 [connection signal="resume_game" from="PauseMenu" to="." method="_on_pause_menu_resume_game"]
+[connection signal="visibility_changed" from="OptionMenu" to="." method="_on_option_menu_visibility_changed"]
+[connection signal="visibility_changed" from="ConfirmRestart" to="." method="_on_confirm_restart_visibility_changed"]
 [connection signal="yes_selected" from="ConfirmRestart" to="." method="_on_confirm_restart_yes_selected"]
+[connection signal="visibility_changed" from="ConfirmMenu" to="." method="_on_confirm_menu_visibility_changed"]
 [connection signal="yes_selected" from="ConfirmMenu" to="." method="_on_confirm_menu_yes_selected"]
