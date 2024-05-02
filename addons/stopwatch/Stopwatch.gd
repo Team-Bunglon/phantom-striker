@@ -166,7 +166,7 @@ static func get_time_as_formatted_string(time_in_seconds: float, format: String)
 	var hours : int = total_seconds / 3600
 	
 	@warning_ignore("integer_division")
-	var minutes : int = (total_seconds % 3600) / 60
+	var minutes : int = total_seconds / 60
 	
 	@warning_ignore("integer_division")
 	var seconds : int = total_seconds % 60
@@ -181,7 +181,7 @@ static func get_time_as_formatted_string(time_in_seconds: float, format: String)
 	if format.contains("{dd}"):
 		format = format.replace("{dd}", str(days).pad_zeros(2))
 	if format.contains("{hh}"):
-		format = format.replace("hh", str(hours).pad_zeros(2))
+		format = format.replace("{hh}", str(hours).pad_zeros(2))
 	if format.contains("{MM}"):
 		format = format.replace("{MM}", str(minutes).pad_zeros(2))
 	if format.contains("{ss}"):

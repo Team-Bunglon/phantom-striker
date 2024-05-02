@@ -7,6 +7,15 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_set_visible(false, false, false, false, false)
 
+func _input(event):
+	if event.is_action_pressed("pause") and not Global.is_paused and Global.game_running:
+		GameStopwatch.toggle_pause()
+		get_tree().paused = true
+		Audio.play("Accept")
+		_update_text()
+		_set_visible(true, true, false, false, false)
+		Global.is_paused = true
+
 ## this: The pause screen itself
 ## pause: pause menu (the one you select with your cursor in the pause screen)
 ## option: option menu (the same one from the title)
@@ -22,19 +31,12 @@ func _set_visible(this: bool, pause: bool, option: bool, confirm_restart: bool, 
 func _update_text():
 	$"HBoxCount/LabelDeath".text = str(Global.death_count)
 	$"HBoxCount/LabelCollect".text = str(Global.collectibles)
-	$"HBoxCount/LabelTime".text = "04:20"
-
-func _input(event):
-	if event.is_action_pressed("pause") and not Global.is_paused and Global.game_running:
-		get_tree().paused = true
-		Audio.play("Accept")
-		_update_text()
-		_set_visible(true, true, false, false, false)
-		Global.is_paused = true
+	$"HBoxCount/LabelTime".text = GameStopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}")
 
 func _on_pause_menu_resume_game():
 	get_tree().paused = false
 	_set_visible(false, false, false, false, false)
+	GameStopwatch.toggle_pause()
 	Global.is_paused = false
 	
 func _on_pause_menu_option():
@@ -48,10 +50,12 @@ func _on_pause_menu_main_menu():
 
 func _on_confirm_restart_yes_selected():
 	_on_pause_menu_resume_game()
+	Global.reset_global_value()
 	get_tree().change_scene_to_file("res://levels/level1.tscn")
 
 func _on_confirm_menu_yes_selected():
 	_on_pause_menu_resume_game()
+	Global.reset_global_value()
 	get_tree().change_scene_to_file("res://menu/title.tscn")
 
 func _on_option_menu_visibility_changed():
