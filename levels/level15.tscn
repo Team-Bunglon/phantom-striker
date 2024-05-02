@@ -18,7 +18,7 @@ size = Vector2(14, 47)
 
 [node name="Level#15" type="Node2D"]
 script = ExtResource("1_lcxwt")
-room_name = "..."
+room_name = "This or that?"
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
