@@ -68,7 +68,7 @@ metadata/_edit_lock_ = true
 [node name="SpikeMap" type="TileMap" parent="."]
 tile_set = ExtResource("7_47v7g")
 format = 2
-layer_0/tile_data = PackedInt32Array(1835018, 0, 0, 1835019, 0, 0, 1835020, 0, 0, 1835021, 0, 0, 1835022, 0, 0, 1835023, 0, 0, 1835024, 0, 0, 1835025, 0, 0, 1835026, 0, 0, 1835027, 0, 0, 1835028, 0, 0, 1835029, 0, 0, 1835030, 0, 0, 1835031, 0, 0, 1835032, 0, 0, 1835033, 0, 0, 1835034, 0, 0, 1835035, 0, 0, 1835036, 0, 0, 1835037, 0, 0, 1835038, 0, 0, 1835039, 0, 0, 1835040, 0, 0, 1835041, 0, 0, 1835042, 0, 0, 1835043, 0, 0, 1835044, 0, 0, 1835045, 0, 0, 1835046, 0, 0, 1835009, 0, 0, 1835010, 0, 0, 1835011, 0, 0, 1835017, 0, 0, 1835016, 0, 0, 1835015, 0, 0, 1835012, 0, 0, 1376268, 196608, 0, 1114130, 196608, 0, 720899, 196608, 0, 1376287, 196608, 0, 655381, 196608, 0, 458763, 196608, 0, 393246, 196608, 0, 196614, 196608, 0, 524296, 196608, 0, 458776, 196608, 0, 786467, 196608, 0, 720902, 131072, 0, 524298, 131072, 0, 458766, 131072, 0, 196617, 131072, 0, 262161, 131072, 0, 262159, 196608, 0, 1114133, 131072, 0, 1376271, 131072, 0, 851999, 131072, 0, 589854, 131072, 0, 393248, 131072, 0, 786470, 131072, 0, 1376291, 131072, 0, 1441819, 131072, 0, 1572885, 131072, 0, 1441816, 196608, 0, 655383, 131072, 0, 196629, 131072, 0, 196626, 196608, 0, 458779, 131072, 0, 1048591, 131072, 0, 1048587, 196608, 0, 1179678, 131072, 0, 1179674, 196608, 0, 851995, 196608, 0, 589851, 196608, 0)
+layer_0/tile_data = PackedInt32Array(1835018, 0, 0, 1835019, 0, 0, 1835020, 0, 0, 1835021, 0, 0, 1835022, 0, 0, 1835023, 0, 0, 1835024, 0, 0, 1835025, 0, 0, 1835026, 0, 0, 1835027, 0, 0, 1835028, 0, 0, 1835029, 0, 0, 1835030, 0, 0, 1835031, 0, 0, 1835032, 0, 0, 1835033, 0, 0, 1835034, 0, 0, 1835035, 0, 0, 1835036, 0, 0, 1835037, 0, 0, 1835038, 0, 0, 1835039, 0, 0, 1835040, 0, 0, 1835041, 0, 0, 1835042, 0, 0, 1835043, 0, 0, 1835044, 0, 0, 1835045, 0, 0, 1835046, 0, 0, 1835009, 0, 0, 1835010, 0, 0, 1835011, 0, 0, 1835017, 0, 0, 1835016, 0, 0, 1835015, 0, 0, 1835012, 0, 0, 1376268, 196608, 0, 1114130, 196608, 0, 720899, 196608, 0, 1376287, 196608, 0, 655381, 196608, 0, 458763, 196608, 0, 393246, 196608, 0, 196614, 196608, 0, 458776, 196608, 0, 786467, 196608, 0, 720902, 131072, 0, 458766, 131072, 0, 196617, 131072, 0, 262161, 131072, 0, 262159, 196608, 0, 1114133, 131072, 0, 1376271, 131072, 0, 851999, 131072, 0, 393248, 131072, 0, 786470, 131072, 0, 1376291, 131072, 0, 1441819, 131072, 0, 1572885, 131072, 0, 1441816, 196608, 0, 655383, 131072, 0, 196629, 131072, 0, 196626, 196608, 0, 458779, 131072, 0, 851995, 196608, 0, 1572881, 196608, 0, 1245211, 196608, 0, 1245214, 131072, 0, 1179683, 196608, 0, 1179686, 131072, 0, 1048609, 65536, 0, 393249, 131072, 0, 655398, 65536, 0, 851984, 65536, 0, 851981, 65536, 0, 851980, 65536, 0, 851982, 65536, 0, 851983, 65536, 0, 851985, 65536, 0, 851977, 65536, 0, 851978, 65536, 0, 851979, 65536, 0, 65558, 65536, 0)
 
 [node name="KillZone" type="Area2D" parent="."]
 
@@ -82,9 +82,6 @@ shape = SubResource("RectangleShape2D_61ngw")
 position = Vector2(320, 2)
 shape = SubResource("RectangleShape2D_dduow")
 
-[node name="DisintegratingPlatform4" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(136, 408)
-
 [node name="DisintegratingPlatform5" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(120, 408)
 
@@ -96,18 +93,6 @@ position = Vector2(232, 344)
 
 [node name="DisintegratingPlatform8" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(152, 360)
-
-[node name="DisintegratingPlatform9" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(168, 360)
-
-[node name="DisintegratingPlatform10" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(200, 264)
-
-[node name="DisintegratingPlatform11" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(216, 264)
-
-[node name="DisintegratingPlatform13" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(232, 264)
 
 [node name="DisintegratingPlatform14" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(312, 280)
@@ -136,14 +121,8 @@ position = Vector2(536, 344)
 [node name="DisintegratingPlatform22" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(552, 344)
 
-[node name="DisintegratingPlatform23" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(472, 216)
-
 [node name="DisintegratingPlatform24" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(488, 216)
-
-[node name="DisintegratingPlatform25" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(472, 296)
 
 [node name="DisintegratingPlatform26" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(584, 200)
@@ -154,14 +133,8 @@ position = Vector2(600, 200)
 [node name="DisintegratingPlatform28" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(360, 168)
 
-[node name="DisintegratingPlatform29" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(472, 152)
-
 [node name="DisintegratingPlatform30" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(408, 120)
-
-[node name="DisintegratingPlatform31" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(504, 104)
 
 [node name="DisintegratingPlatform32" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(264, 72)
@@ -171,9 +144,6 @@ position = Vector2(200, 120)
 
 [node name="DisintegratingPlatform34" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(216, 120)
-
-[node name="DisintegratingPlatform35" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(152, 136)
 
 [node name="DisintegratingPlatform36" parent="." instance=ExtResource("8_p30s3")]
 position = Vector2(120, 56)
@@ -197,16 +167,64 @@ position = Vector2(328, 56)
 position = Vector2(424, 120)
 
 [node name="DisintegratingPlatform3" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(440, 296)
+position = Vector2(456, 312)
+
+[node name="DisintegratingPlatform4" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(472, 312)
+
+[node name="DisintegratingPlatform9" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(584, 296)
 
 [node name="DisintegratingPlatform12" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(456, 296)
+position = Vector2(600, 296)
 
-[node name="DisintegratingPlatform41" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(456, 152)
+[node name="DisintegratingPlatform23" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(536, 248)
+
+[node name="DisintegratingPlatform25" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(472, 216)
+
+[node name="DisintegratingPlatform31" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(456, 216)
 
 [node name="DisintegratingPlatform42" parent="." instance=ExtResource("8_p30s3")]
-position = Vector2(456, 216)
+position = Vector2(504, 104)
+
+[node name="DisintegratingPlatform29" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(616, 152)
+
+[node name="DisintegratingPlatform41" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(520, 104)
+
+[node name="DisintegratingPlatform43" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(232, 200)
+
+[node name="DisintegratingPlatform44" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(248, 200)
+
+[node name="DisintegratingPlatform45" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(264, 200)
+
+[node name="DisintegratingPlatform46" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(216, 200)
+
+[node name="DisintegratingPlatform47" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(200, 200)
+
+[node name="DisintegratingPlatform48" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(280, 200)
+
+[node name="DisintegratingPlatform10" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(184, 200)
+
+[node name="DisintegratingPlatform11" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(168, 200)
+
+[node name="DisintegratingPlatform13" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(152, 200)
+
+[node name="DisintegratingPlatform35" parent="." instance=ExtResource("8_p30s3")]
+position = Vector2(296, 392)
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
