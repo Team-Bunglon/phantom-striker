@@ -5,3 +5,4 @@ extends CanvasLayer
 
 func _ready():
 	Global.game_running = false
+	Audio.play("Music1")
