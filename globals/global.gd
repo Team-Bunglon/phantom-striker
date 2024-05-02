@@ -13,3 +13,9 @@ var collectibles: int = 0
 var current_scaling: int = 1
 var maximum_scaling: int = 0
 var fullscreen: String = "No"
+
+# Some function
+func reset_global_value():
+	death_count = 0
+	collectibles = 0
+	GameStopwatch.reset()
