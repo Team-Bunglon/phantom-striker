@@ -4,7 +4,7 @@ class_name Player
 @export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 @export var looking_left: bool = false			## The character will look left at the start of the level.
 @export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
-@export var strikable_tiles: Array = ["TileMap", "SpikeMap"]  ## The tilemap name that the strike raycast will detect upon.
+@export var strikable_tiles: Array = ["TileMap", "SpikeMap", "DestroyablePlatform"]  ## The tilemap name that the strike raycast will detect upon.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -80,7 +80,7 @@ func _physics_process(delta):
 		return
 
 	jump(delta)
-	strike()
+	strike(delta)
 	strike_hold_input()
 	move()
 	move_delay_countdown()
@@ -90,6 +90,7 @@ func _physics_process(delta):
 	# If the hurtbox detects the spike tile, the character will die.
 	# Maybe this is a better implementation. I may encapsulate this in its own function.
 	var collision = move_and_slide()
+	
 	if collision:
 		# Access collision information
 		var collision_info = get_last_slide_collision()
@@ -99,6 +100,8 @@ func _physics_process(delta):
 			if collider.name == "SpikeMap":
 				# Moved to die() to handle death animation as well
 				die()
+		
+				
 				
 	#move_and_slide()
 	#var collision = move_and_collide(velocity * 1/3 * delta)
@@ -167,14 +170,16 @@ func jump_procedure():
 	coyote_count = 0
 	jump_buffer_count = 0
 
-func strike():
+func strike(delta):
 	var direction_x = Input.get_axis("strike_left", "strike_right")	  # Left is -1, right is +1
 	var direction_y = Input.get_axis("strike_up", "strike_down") * -1 # Down is -1, up is +1
 	var direction_xy = Vector2(direction_x, direction_y) if can_move else Vector2.ZERO
+	
 	if not on_strike_delay and can_strike and direction_xy != Vector2.ZERO:
 		if strike_delay_count > 0:
 			strike_delay_count -= 1
 		else:
+			#var collision2 = move_and_collide(delta*velocity)
 			var strike_raycast: RayCast2D = get_node(strike_dir[direction_xy][1])
 			strike_response(direction_xy, strike_raycast)
 			strike_particle_create(strike_raycast)
@@ -184,6 +189,9 @@ func strike():
 			direction_xy = Vector2.ZERO
 			Audio.play("Strike")
 			$StrikeDelayTimer.start()
+			
+			
+				
 
 func strike_particle_create(raycast: RayCast2D):
 	var strike_particle: Strike = strike_particle_preload.instantiate()
@@ -204,6 +212,10 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 	if raycast.is_colliding():
 		print(raycast.get_collider().name)
 		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond"):
+			var cell = raycast.get_collider()
+			if cell.name == "DestroyablePlatform":
+				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
+				cell.break_platform(cell.local_to_map(coords))
 			if camera_shake: $"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
@@ -225,6 +237,7 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 				velocity.y = -jump_velocity * direction.y / temp_mult
 			elif direction.y > 0: # Going Down
 				velocity.y = -jump_velocity * direction.y * 2
+		
 
 func strike_hold_input():
 	if not can_strike:
