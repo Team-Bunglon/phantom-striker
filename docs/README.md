@@ -5,7 +5,7 @@
 # Guidelines
 1. Please only use English when involving everything within this repository (commit message, merge request, variables, comments, etc.)
 2. Always pull from `main`. Do NOT directly push to `main` branch. See [Merging](#merging).
-    - Ignore `staging` branch as it is a temporary branch to test some things out before being pushed to `main`.
+	- Ignore `staging` branch as it is a temporary branch to test some things out before being pushed to `main`.
 3. As an extention to previous rule, always base your branch with the latest commit from `main` before pushing.
 4. Only use lowercase name for every created file and directory except markdown files (e.g. `README.md`).
 5. Try to make your changes as minimal and efficient as possible. 
@@ -27,13 +27,13 @@
 5. Any bottomless pit will always kill the player. NO EXCEPTION!
 6. The player shouldn't go out of bound from either side of the wall. If there's no tilemap that serves as the wall on either side, add an invisible collision outside of the viewport.
 7. The win area should always be on top of the level.
-    -  Make sure that there's always one path that leads to the win area.
-    - The win area can be in any size. If there's no tilemap that serves as the ceiling, the win area would have the size of the entire width of the viewport.
+	-  Make sure that there's always one path that leads to the win area.
+	- The win area can be in any size. If there's no tilemap that serves as the ceiling, the win area would have the size of the entire width of the viewport.
 8. The player character doesn't always need to start at the bottom of the level. You can put him anywhere as long as there's any challege to reach the win area.
 9. Don't be spiteful. That is designing a level that feels like you hate your player. The rule of thumb is just don't do what Cat Mario or other "rage game" does. The following is the example, but not limited, to level design that can be considered as "spiteful".
-    - Creating a fake win path that kills you instead of proceeding the player to the next level (blind guessing).
-    - Hiding hazard behind foreground (let the player see every hazard).
-    - Anything that against what the player has been taught indirectly from the previous level (like putting the win area at the bottom. They've learned that they need to avoid any bottomless pit so they'll try to avoid it as well).
+	- Creating a fake win path that kills you instead of proceeding the player to the next level (blind guessing).
+	- Hiding hazard behind foreground (let the player see every hazard).
+	- Anything that against what the player has been taught indirectly from the previous level (like putting the win area at the bottom. They've learned that they need to avoid any bottomless pit so they'll try to avoid it as well).
 
 ### Note
 Some of the level might be readjusted by me for any reason from finetuning the difficulty to removing any violating element as previously mention. I may or may not mention this directly at the discord server so look at the commit message if I happen to change your level.
