@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://blfi543j4p7bm"]
+
+[ext_resource type="Script" path="res://objects/movingplatform.gd" id="1_7qsga"]
+[ext_resource type="Texture2D" uid="uid://bul5e224h74vp" path="res://assets/sprites/moving_platform.png" id="2_debv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um11w"]
+size = Vector2(64, 15)
+
+[sub_resource type="Animation" id="Animation_x5qid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_efe31"]
+resource_name = "up_loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ocnho"]
+resource_name = "down"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 60), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lwc8o"]
+resource_name = "left"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-85, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ronno"]
+resource_name = "right"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(85, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3aw81"]
+_data = {
+"RESET": SubResource("Animation_x5qid"),
+"down": SubResource("Animation_ocnho"),
+"left": SubResource("Animation_lwc8o"),
+"right": SubResource("Animation_ronno"),
+"up": SubResource("Animation_efe31")
+}
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_7qsga")
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+texture = ExtResource("2_debv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_um11w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform"]
+libraries = {
+"": SubResource("AnimationLibrary_3aw81")
+}
