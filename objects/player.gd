@@ -113,7 +113,7 @@ func move():
 	var acceleration_current: float = acceleration * (Global.gamespeed / 100.0)
 	var air_friction_current: float = air_friction * (Global.gamespeed / 100.0)
 	var floor_friction_current: float = floor_friction * (Global.gamespeed / 100.0)
-	print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
+	#print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
 
 	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
 	#print("launch speed: " + str(launch_x))
