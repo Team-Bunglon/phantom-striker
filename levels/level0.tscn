@@ -592,6 +592,11 @@ metadata/_edit_lock_ = true
 
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
 position = Vector2(268, 422)
+identifier = 1
+
+[node name="Collectible2" parent="." instance=ExtResource("12_03yfn")]
+position = Vector2(362, 422)
+identifier = 2
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

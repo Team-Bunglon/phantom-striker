@@ -16,11 +16,21 @@ var collectibles: int = 0:
 		collectibles = value
 		print("collect " + str(collectibles))
 		save_game()
+var collected: Array = []
 
 # Saveable variable maybe??????
-var music_vol: int = 5
-var sound_vol: int = 5
-var gamespeed: int = 100
+var music_vol: int = 5:
+	set(value):
+		music_vol = value
+		save_game()
+var sound_vol: int = 5:
+	set(value):
+		sound_vol = value
+		save_game()
+var gamespeed: int = 100:
+	set(value):
+		gamespeed = value
+		save_game()
 var current_scaling: int = 1:
 	set(value):
 		current_scaling = value
@@ -47,6 +57,9 @@ func save_game():
 	var save: Save = Save.new()
 
 	save.settings = {
+		"music_vol": music_vol,
+		"sound_vol": sound_vol,
+		"gamespeed": gamespeed,
 		"current_scaling": current_scaling,
 		"maximum_scaling": maximum_scaling,
 		"fullscreen": fullscreen
@@ -54,7 +67,8 @@ func save_game():
 
 	save.countables = {
 		"death_count": death_count,
-		"collectibles": collectibles
+		"collectibles": collectibles,
+		"collected": collected
 	}
 
 	@warning_ignore("unused_variable")
@@ -67,10 +81,14 @@ func load_game():
 		save = ResourceLoader.load("user://save.tres")
 	else:
 		return
-
+	
+	music_vol = save.settings.get("music_vol", 5)
+	sound_vol = save.settings.get("sound_vol", 5)
+	gamespeed = save.settings.get("gamespeed", 100)
 	current_scaling = save.settings.get("current_scaling", 1)
 	maximum_scaling = save.settings.get("maximum_scaling", 0)
 	fullscreen = save.settings.get("fullscreen", "No")
 
 	death_count = save.countables.get("death_count", 0)
 	collectibles = save.countables.get("collectibles", 0)
+	collected = save.countables.get("collected", [])
