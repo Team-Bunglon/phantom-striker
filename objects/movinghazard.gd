@@ -16,3 +16,8 @@ func _ready():
 			anim_player.play("left")
 		"right":
 			anim_player.play("right")
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		body.die()
