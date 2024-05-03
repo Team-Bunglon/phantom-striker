@@ -1,42 +1,40 @@
 extends StaticBody2D
+class_name DisintegratingPlatform
 
-var isTouched = false
+@onready var state = $AnimationTree.get("parameters/playback")
+var readyToRespawn: bool = false
+var isPlayerInside: bool = false
 
-func _ready():
-	set_process(false)
+func play_audio():
+	Audio.play("Disintegrate")
 
-func _process(delta):
-	$AnimationPlayer.play("disintegrate")
+func disintegrate():
+	state.travel("broken")
 
+func respawn():
+	if readyToRespawn and not isPlayerInside:
+		readyToRespawn = false
+		state.travel("solid")
+
+## The area2d that detect if the player steps on it
 func _on_area_2d_body_entered(body):
-	# first time entry
-	print($Timer.get_time_left())
-	print(isTouched)
-	if body.name == "Player" and isTouched == false: 
-		set_process(true)
-		$Timer.start(1)
-	if body.name == "Player" and isTouched:
-		set_process(true)
-		$Timer.start($Timer.get_time_left())
+	if body.name == "Player": 
+		disintegrate()
 
-func _on_area_2d_body_exited(body):
-	if body.name == "Player":
-		isTouched = true
-		$RespawnTimer.start(5)
-		$Timer.set_paused(true)
-		$AnimationPlayer.pause()
-		set_process(false)
-
-func _on_timer_timeout():
-	#queue_free()
-	isTouched = false
-	$CollisionShape2D.disabled = true
-	$Sprite2D.visible = false
-	$LastFrame.visible = true
-	$RespawnTimer.start(5)
+func _on_animation_tree_animation_finished(anim_name:StringName):
+	if anim_name == "disintegrate":
+		$RespawnTimer.start()
 
 func _on_respawn_timer_timeout():
-	isTouched = false
-	$CollisionShape2D.disabled = false
-	$Sprite2D.visible = true
-	$LastFrame.visible = false
+	readyToRespawn = true
+	respawn()
+
+func _on_area_2d_sprite_body_entered(body:Node2D):
+	if body.name == "Player":
+		isPlayerInside = true
+
+func _on_area_2d_sprite_body_exited(body:Node2D):
+	if body.name == "Player":
+		isPlayerInside = false
+		respawn()
+

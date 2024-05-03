@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/blackdiamond.tscn" id="6_aqsy6"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="8_qwcse"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="9_38ph4"]
-[ext_resource type="PackedScene" uid="uid://dmipuah4vpsd2" path="res://objects/disintegratingplatform.tscn" id="9_gvq81"]
+[ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegratingplatform.tscn" id="9_gvq81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te7is"]
 texture = ExtResource("5_h51gk")
@@ -573,7 +573,7 @@ position = Vector2(199, 368)
 position = Vector2(335, 369)
 
 [node name="DisintegratingPlatform" parent="." instance=ExtResource("9_gvq81")]
-position = Vector2(72, 280)
+position = Vector2(168, 424)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

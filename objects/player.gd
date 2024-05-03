@@ -137,7 +137,7 @@ func move():
 			# The character moves against the launch direction.
 			else:	
 				launch_x = move_toward(launch_x, 0, air_friction_current * 4)
-				if launch_x < 0.0 or is_on_wall:
+				if launch_x < 0.0 or is_on_wall_only():
 					launch_x = 0.0
 				velocity.x = launch_x * launch_x_direction
 		else:
