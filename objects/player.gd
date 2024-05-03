@@ -96,7 +96,7 @@ func _physics_process(delta):
 		# Check if the collider is a SpikeMap
 		if collision_info:
 			var collider = collision_info.get_collider()
-			if collider.name == "SpikeMap":
+			if collider.name == "SpikeMap" || collider.name.begins_with("MovingHazard"):
 				# Moved to die() to handle death animation as well
 				die()
 				
