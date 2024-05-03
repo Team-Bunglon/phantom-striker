@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvigbor1cvnbw"]
+[gd_scene load_steps=9 format=3 uid="uid://dvigbor1cvnbw"]
 
 [ext_resource type="Script" path="res://objects/disintegratingplatform.gd" id="1_cdr2g"]
 [ext_resource type="Texture2D" uid="uid://brrlat8ooauir" path="res://assets/sprites/disintegrate_platform_temp.png" id="2_2cm2g"]
@@ -36,10 +36,14 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_y02h8"]
+resource_name = "last_frame"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wmqiv"]
 _data = {
 "RESET": SubResource("Animation_j5q7v"),
-"disintegrate": SubResource("Animation_sax4x")
+"disintegrate": SubResource("Animation_sax4x"),
+"last_frame": SubResource("Animation_y02h8")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2f36"]
@@ -54,6 +58,12 @@ shape = SubResource("RectangleShape2D_sup70")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2cm2g")
 hframes = 5
+
+[node name="LastFrame" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_2cm2g")
+hframes = 5
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

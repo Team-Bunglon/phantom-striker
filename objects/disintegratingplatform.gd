@@ -21,8 +21,10 @@ func _on_timer_timeout():
 	#queue_free()
 	$CollisionShape2D.disabled = true
 	$Sprite2D.visible = false
+	$LastFrame.visible = true
 	$RespawnTimer.start(5)
 
 func _on_respawn_timer_timeout():
 	$CollisionShape2D.disabled = false
 	$Sprite2D.visible = true
+	$LastFrame.visible = false
