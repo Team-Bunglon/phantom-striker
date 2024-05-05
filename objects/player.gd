@@ -113,7 +113,7 @@ func move():
 	var acceleration_current: float = acceleration * (Global.gamespeed / 100.0)
 	var air_friction_current: float = air_friction * (Global.gamespeed / 100.0)
 	var floor_friction_current: float = floor_friction * (Global.gamespeed / 100.0)
-	print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
+	#print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
 
 	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
 	#print("launch speed: " + str(launch_x))
@@ -137,7 +137,7 @@ func move():
 			# The character moves against the launch direction.
 			else:	
 				launch_x = move_toward(launch_x, 0, air_friction_current * 4)
-				if launch_x < 0.0 or is_on_wall:
+				if launch_x < 0.0 or is_on_wall_only():
 					launch_x = 0.0
 				velocity.x = launch_x * launch_x_direction
 		else:
