@@ -16,7 +16,6 @@ size = Vector2(50, 18)
 
 [node name="Level#5" type="Node2D"]
 script = ExtResource("1_mxs2c")
-room_name = "Spike, spike, and spike!"
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 

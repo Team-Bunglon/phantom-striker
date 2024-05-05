@@ -1,6 +1,6 @@
 # Notes
 1. This is a Godot 4 project. Make sure you use Godot 4 version 4.2.X
-2. Last document update: 04/28
+2. Last document update: 05/05
 
 # Guidelines
 1. Please only use English when involving everything within this repository (commit message, merge request, variables, comments, etc.)
@@ -8,13 +8,14 @@
 	- Ignore `staging` branch as it is a temporary branch to test some things out before being pushed to `main`.
 3. As an extention to previous rule, always base your branch with the latest commit from `main` before pushing.
 4. Only use lowercase name for every created file and directory except markdown files (e.g. `README.md`).
+	- Use `snake_case` naming convention.
 5. Try to make your changes as minimal and efficient as possible. 
 6. Try to finish your task before the set deadline. 
 7. If you need to use godot addon or external assets, make sure you have the right license or permission to use. Credit them at the repo's README.
 8. If you use an external editor, put any unimportant directories or files that the editor may generate into `.gitignore` (e.g. `.idea` for Intellij IDE).
 
 # Merging
-1. Create a new branch from `main`. I recommend using your name as a branch.
+1. Create a new branch from `main`. You can name your branch with anything (Your name, feature name, etc.)
 2. After committing your changes, __always do a git pull from `main`__. I recommend setting your pull strategy to `rebase`.
 3. Once you have the latest commit from `main` in your branch, push into the new branch.
 4. Create a merge request. Any new request will be automatically notified through Discord.
@@ -34,6 +35,8 @@
 	- Creating a fake win path that kills you instead of proceeding the player to the next level (blind guessing).
 	- Hiding hazard behind foreground (let the player see every hazard).
 	- Anything that against what the player has been taught indirectly from the previous level (like putting the win area at the bottom. They've learned that they need to avoid any bottomless pit so they'll try to avoid it as well).
+10. Do NOT change the player export variable except `looking_left`. Changing it means the player has to relearn how the player control and that's a spiteful game design. Every level MUST have consistent variables for the player. 
+11. Please discuss with me first if you need to do something that requires a change of the fundamental mechanic, rule, and flow of the game in your level.
 
 ### Note
 Some of the level might be readjusted by me for any reason from finetuning the difficulty to removing any violating element as previously mention. I may or may not mention this directly at the discord server so look at the commit message if I happen to change your level.

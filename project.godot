@@ -37,6 +37,12 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/stopwatch/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://docs/": "gray"
+}
+
 [input]
 
 ui_accept={

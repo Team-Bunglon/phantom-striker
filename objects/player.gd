@@ -113,6 +113,11 @@ func _physics_process(delta):
 
 ## Horizontal Movement
 func move():
+	var acceleration_current: float = acceleration * (Global.gamespeed / 100.0)
+	var air_friction_current: float = air_friction * (Global.gamespeed / 100.0)
+	var floor_friction_current: float = floor_friction * (Global.gamespeed / 100.0)
+	#print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
+
 	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
 	print("launch speed: " + str(launch_x))
 	if not is_on_floor() and direction != launch_x_direction:
@@ -134,8 +139,8 @@ func move():
 					launch_x = 0.0
 			# The character moves against the launch direction.
 			else:	
-				launch_x = move_toward(launch_x, 0, air_friction * 4)
-				if launch_x < 0.0:
+				launch_x = move_toward(launch_x, 0, air_friction_current * 4)
+				if launch_x < 0.0 or is_on_wall_only():
 					launch_x = 0.0
 				velocity.x = launch_x * launch_x_direction
 		else:
@@ -170,7 +175,7 @@ func jump_procedure():
 	coyote_count = 0
 	jump_buffer_count = 0
 
-func strike(delta):
+func strike():
 	var direction_x = Input.get_axis("strike_left", "strike_right")	  # Left is -1, right is +1
 	var direction_y = Input.get_axis("strike_up", "strike_down") * -1 # Down is -1, up is +1
 	var direction_xy = Vector2(direction_x, direction_y) if can_move else Vector2.ZERO
@@ -179,7 +184,6 @@ func strike(delta):
 		if strike_delay_count > 0:
 			strike_delay_count -= 1
 		else:
-			#var collision2 = move_and_collide(delta*velocity)
 			var strike_raycast: RayCast2D = get_node(strike_dir[direction_xy][1])
 			strike_response(direction_xy, strike_raycast)
 			strike_particle_create(strike_raycast)
@@ -189,9 +193,6 @@ func strike(delta):
 			direction_xy = Vector2.ZERO
 			Audio.play("Strike")
 			$StrikeDelayTimer.start()
-			
-			
-				
 
 func strike_particle_create(raycast: RayCast2D):
 	var strike_particle: Strike = strike_particle_preload.instantiate()
@@ -212,11 +213,11 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 	if raycast.is_colliding():
 		print(raycast.get_collider().name)
 		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond"):
+			if camera_shake: $"../Camera2D".shake(4,12)
 			var cell = raycast.get_collider()
 			if cell.name == "DestroyablePlatform":
 				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
 				cell.break_platform(cell.local_to_map(coords))
-			if camera_shake: $"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
@@ -237,7 +238,6 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 				velocity.y = -jump_velocity * direction.y / temp_mult
 			elif direction.y > 0: # Going Down
 				velocity.y = -jump_velocity * direction.y * 2
-		
 
 func strike_hold_input():
 	if not can_strike:
