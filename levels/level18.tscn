@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsqgeqgst1qdj"]
+[gd_scene load_steps=11 format=3 uid="uid://p24rk7o5jcjq"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_niem0"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_ufmiw"]
@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_lwgcg"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_oe3v4"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_qw3v0"]
-[ext_resource type="PackedScene" uid="uid://blfi543j4p7bm" path="res://objects/movingplatform.tscn" id="8_r0h8m"]
+[ext_resource type="PackedScene" path="res://objects/movingplatform.tscn" id="8_r0h8m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 46.25)

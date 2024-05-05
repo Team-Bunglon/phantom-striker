@@ -209,6 +209,10 @@ func strike_response(direction: Vector2, raycast: RayCast2D):
 	if raycast.is_colliding():
 		print(raycast.get_collider().name)
 		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond") || raycast.get_collider().name.begins_with("DisintegratingPlatform"):
+			var cell = raycast.get_collider()
+			if cell.name == "DestroyablePlatform":
+				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
+				cell.break_platform(cell.local_to_map(coords))
 			if camera_shake: $"../Camera2D".shake(4,12)
 			if direction.x != 0:
 				move_delay_count = move_delay_frame
