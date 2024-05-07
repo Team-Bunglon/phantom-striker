@@ -2,17 +2,11 @@ extends Control
 class_name OptionMenu
 
 @export var return_object: NodePath 
-@export var default_music_vol: int = 5
-@export var default_sound_vol: int = 5
 @export var volume_step: float = 0.2
 @export var volume_max_value: int = 5
-@export var default_gamespeed : int = 100
 @export var gamespeed_step: int = 10
 @export var gamespeed_min_value: int = 50
 @export var default_resolution: Vector2i = Vector2i(640, 480)
-@export var default_scaling: int = 1
-@export var fullscreen: bool = false
-@export var apply_immediately: bool = false
 
 @onready var scaling_value_text: Label = find_child("ScalingValue")
 @onready var fullscreen_text: Label = find_child("FullscreenValue")
@@ -24,18 +18,12 @@ class_name OptionMenu
 func _ready():
 	_get_maximum_scaling()
 	update_text()
-	if apply_immediately and not Global.has_applied_setting_on_launch:
-		Global.sound_vol = default_sound_vol
-		Global.music_vol = default_music_vol
-		Global.gamespeed = default_gamespeed
-		Global.current_scaling = default_scaling
-		Global.fullscreen = "Yes" if fullscreen else "No"
+	if not Global.has_applied_setting_on_launch:
 		_update_value("music")
 		_update_value("sound")
 		_update_value("speed")
 		_update_value("scaling")
-		if fullscreen:
-			_update_value("fullscreen")
+		_update_value("fullscreen", Global.fullscreen)
 		Global.has_applied_setting_on_launch = true
 	print("scaling: " + str(Global.current_scaling))
 
@@ -62,14 +50,14 @@ func _update_resolution(scaling: int):
 		var center_y: int = (DisplayServer.screen_get_size().y - new_resolution.y) / 2
 		DisplayServer.window_set_position(Vector2i(center_x,center_y))
 
-func _update_value(setting_name: String):
+func _update_value(setting_name: String, fullscreen = "No"):
 	if setting_name == "scaling":
 		_update_resolution(Global.current_scaling)
 	elif setting_name == "fullscreen":
-		if Global.fullscreen == "No":
+		if fullscreen == "Yes":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			Global.fullscreen = "Yes"
-		elif Global.fullscreen == "Yes":
+		elif fullscreen == "No":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			_update_resolution(Global.current_scaling)
 			Global.fullscreen = "No"
@@ -81,11 +69,11 @@ func _update_value(setting_name: String):
 		AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume_step * Global.sound_vol))
 	elif setting_name == "speed":
 		Engine.time_scale = Global.gamespeed / 100.0
-		#Engine.physics_ticks_per_second = 60 * Global.gamespeed / 100
 	update_text()
 
 func _on_fullscreen_selected():
-	_update_value("fullscreen")
+	var fullscreen_new := "Yes" if Global.fullscreen == "No" else "No"
+	_update_value("fullscreen", fullscreen_new)
 
 func _on_fullscreen_increased():
 	_on_fullscreen_selected()

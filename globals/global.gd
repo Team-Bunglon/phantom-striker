@@ -75,7 +75,6 @@ func save_game():
 	var res = ResourceSaver.save(save, "user://save.tres")
 
 func load_game():
-	has_applied_setting_on_launch = true
 	var save: Save
 	if ResourceLoader.exists("user://save.tres"):
 		save = ResourceLoader.load("user://save.tres")

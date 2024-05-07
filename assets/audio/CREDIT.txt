@@ -1,0 +1,11 @@
+mus_menu.mp3
+==========
+Lazy Dayze by DBOYD
+License: CC BY-NC-SA 3.0 Deed
+https://galaxyswimteam.bandcamp.com/album/paradise-ep-gst-13
+
+mus_name.mp3
+==========
+Title Name by Artist Name
+License: PUT ITS LICENSE HERE!
+https://example.com

@@ -1,22 +1,319 @@
-[gd_scene load_steps=8 format=3 uid="uid://3o4litqq32uf"]
+[gd_scene load_steps=17 format=3 uid="uid://3o4litqq32uf"]
 
 [ext_resource type="Script" path="res://menu/title.gd" id="1_0jyka"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_ibjwj"]
+[ext_resource type="Shader" path="res://menu/title.gdshader" id="2_dousj"]
 [ext_resource type="PackedScene" uid="uid://d3sd5a738c3i8" path="res://menu/main_menu.tscn" id="3_dti36"]
 [ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="4_rm5kv"]
+[ext_resource type="Texture2D" uid="uid://jn3imajvoy83" path="res://assets/sprites/title_fg1.png" id="4_tg8wl"]
+[ext_resource type="Texture2D" uid="uid://bsl756u6a4gyn" path="res://assets/sprites/title_fg2.png" id="5_gttri"]
+[ext_resource type="Texture2D" uid="uid://dhak7ge0tfif6" path="res://assets/sprites/logo.png" id="5_ihkdo"]
+[ext_resource type="Texture2D" uid="uid://3gm4qoj6s3f8" path="res://assets/sprites/title_bg.png" id="6_dm6yc"]
 
 [sub_resource type="Animation" id="Animation_c47d2"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleBg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Version:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleFg:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 360)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleFg:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
 
-[sub_resource type="Animation" id="Animation_vbkek"]
+[sub_resource type="Animation" id="Animation_xdxtn"]
 resource_name = "idle"
-loop_mode = 1
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleBg:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Version:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleFg:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 85)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainMenu")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_cursor"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mykyv"]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleBg:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 480), Vector2(320, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Version:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleFg:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.1, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 360), Vector2(320, 85)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleFg:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="Animation" id="Animation_3g7qt"]
+resource_name = "logo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ed7lp"]
 _data = {
 "RESET": SubResource("Animation_c47d2"),
-"idle": SubResource("Animation_vbkek")
+"idle": SubResource("Animation_xdxtn"),
+"intro": SubResource("Animation_mykyv"),
+"logo": SubResource("Animation_3g7qt")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfm7u"]
+shader = ExtResource("2_dousj")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34mvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tg8wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gttri")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Title" type="CanvasLayer"]
 script = ExtResource("1_0jyka")
@@ -27,29 +324,40 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 961.0
-color = Color(0, 0, 0, 1)
-
-[node name="Title" type="Label" parent="."]
 offset_right = 640.0
-offset_bottom = 192.0
-theme_override_fonts/font = ExtResource("1_ibjwj")
-theme_override_font_sizes/font_size = 80
-text = "Phantom Striker"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_bottom = 480.0
+
+[node name="Logo" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_tfm7u")
+position = Vector2(320, 240)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_ihkdo")
+
+[node name="TitleBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(320, 480)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_dm6yc")
+
+[node name="TitleFg" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 360)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_34mvu")
+frame_progress = 0.753736
 
 [node name="Version" type="Label" parent="."]
+visible = false
 offset_left = 2.0
-offset_top = 465.0
+offset_top = 454.0
 offset_right = 614.0
-offset_bottom = 501.0
+offset_bottom = 490.0
 theme_override_fonts/font = ExtResource("1_ibjwj")
-theme_override_font_sizes/font_size = 10
-text = "Warning! This game is still in pre-alpha stage!"
+theme_override_font_sizes/font_size = 20
+text = "Version Alpha"
 
 [node name="MainMenu" parent="." instance=ExtResource("3_dti36")]
+visible = false
 offset_top = 239.0
 offset_bottom = 239.0
 
@@ -58,5 +366,5 @@ visible = false
 offset_top = 238.0
 offset_bottom = 238.0
 return_object = NodePath("../MainMenu")
-default_scaling = 2
-apply_immediately = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
