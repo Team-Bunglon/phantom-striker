@@ -62,3 +62,5 @@ bus = &"Sound"
 stream = ExtResource("10_5tgbh")
 pitch_scale = 1.2
 bus = &"Sound"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

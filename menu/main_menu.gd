@@ -26,6 +26,7 @@ func _on_start_selected():
 
 func _on_options_selected():
 	visible = false
+	$"../OptionMenu/Cursor".cursor_index = 0
 	$"../OptionMenu".visible = true
 
 func _on_exit_selected():

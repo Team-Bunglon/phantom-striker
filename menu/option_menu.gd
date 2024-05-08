@@ -25,7 +25,6 @@ func _ready():
 		_update_value("scaling")
 		_update_value("fullscreen", Global.fullscreen)
 		Global.has_applied_setting_on_launch = true
-	print("scaling: " + str(Global.current_scaling))
 
 func update_text():
 	music_text.text = str(Global.music_vol)
@@ -67,6 +66,7 @@ func _update_value(setting_name: String, fullscreen = "No"):
 	elif setting_name == "sound":
 		var bus_index = AudioServer.get_bus_index("Sound")
 		AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume_step * Global.sound_vol))
+		print(linear_to_db(volume_step * Global.sound_vol))
 	elif setting_name == "speed":
 		Engine.time_scale = Global.gamespeed / 100.0
 	update_text()
