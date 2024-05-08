@@ -3,7 +3,7 @@ extends Node2D
 @export var identifier: int = 0
 
 func _ready():
-	if Global.collected.has(identifier):
+	if Global.collected.has(float(identifier)):
 		$Sprite2D.visible = false
 		$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
 
