@@ -1,0 +1,7 @@
+Due to me forgetting to specifying the usage of snake_case in all file name, I end up creating a new naming convention just for this folder:
+
+This directory will have all lowercase, no space in its file name ("fileone.tscn", "fileone.gd")
+
+Every other directory but this MUST be in snake_case ("file_two.tscn", "file_two.gd")
+
+I'm sorry that I forgot to tell you about this. Don't worry, this is completely my fault.
