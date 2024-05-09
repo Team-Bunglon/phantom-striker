@@ -1,5 +1,7 @@
 extends Node
 
+@export var save_location: String = "user://save.json"
+
 # Booleans when the game process is running
 var has_applied_setting_on_launch: bool = false 
 var game_running: bool = false
@@ -70,14 +72,13 @@ func save_game():
 		"collectibles": collectibles,
 		"collected": collected
 	}
-
-	@warning_ignore("unused_variable")
-	var res = ResourceSaver.save(save, "user://save.tres")
+	
+	save_file(save)
 
 func load_game():
 	var save: Save
-	if ResourceLoader.exists("user://save.tres"):
-		save = ResourceLoader.load("user://save.tres")
+	if save_exists():
+		save = load_file()
 	else:
 		return
 	
@@ -87,7 +88,33 @@ func load_game():
 	current_scaling = save.settings.get("current_scaling", 1)
 	maximum_scaling = save.settings.get("maximum_scaling", 0)
 	fullscreen = save.settings.get("fullscreen", "No")
-
+	
 	death_count = save.countables.get("death_count", 0)
 	collectibles = save.countables.get("collectibles", 0)
 	collected = save.countables.get("collected", [])
+
+func save_exists():
+	return FileAccess.file_exists(save_location)
+
+func save_file(save: Save):
+	var file = FileAccess.open(save_location, FileAccess.WRITE)
+	
+	var data := {
+		"settings": save.settings,
+		"countables": save.countables
+	}
+	
+	file.store_string(JSON.stringify(data))
+	file.close()
+
+func load_file():
+	var file = FileAccess.open(save_location, FileAccess.READ)
+	var content = file.get_as_text()
+	file.close()
+	
+	var data: Dictionary = JSON.parse_string(content)
+	var save = Save.new()
+	save.settings = data.get("settings")
+	save.countables = data.get("countables")
+	
+	return save
