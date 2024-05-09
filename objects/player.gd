@@ -4,7 +4,8 @@ class_name Player
 @export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 @export var looking_left: bool = false			## The character will look left at the start of the level.
 @export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
-@export var strikable_tiles: Array = ["TileMap", "SpikeMap"]  ## The tilemap name that the strike raycast will detect upon.
+@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "DisintegratingPlatform", "DestroyablePlatform"]  ## The tilemap/object that the strike raycast will detect upon. The string will be checked using "begins_with()" method.
+@export var kill_tiles: Array[String]	   = ["SpikeMap", "MovingHazard"] ## The tilemap/object that will kill the character upon contact. The string will be checked using "begins_with()" method.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -78,101 +79,88 @@ func _physics_process(delta):
 	if is_dying:
 		velocity = Vector2.ZERO
 		return
+	_jump(delta)
+	_strike()
+	_strike_hold_input()
+	_move()
+	_move_delay_countdown()
+	_move_procedure()
 
-	jump(delta)
-	strike()
-	strike_hold_input()
-	move()
-	move_delay_countdown()
-	
-	# TO IVAN: This is an interesting implementation
-	# The way I would implement it is to just create an area2D for the character as a hurtbox.
-	# If the hurtbox detects the spike tile, the character will die.
-	# Maybe this is a better implementation. I may encapsulate this in its own function.
-	var collision = move_and_slide()
-	if collision:
-		# Access collision information
-		var collision_info = get_last_slide_collision()
-		# Check if the collider is a SpikeMap
-		if collision_info:
-			var collider = collision_info.get_collider()
-			if collider.name == "SpikeMap" || collider.name.begins_with("MovingHazard"):
-				# Moved to die() to handle death animation as well
-				die()
-				
-	#move_and_slide()
-	#var collision = move_and_collide(velocity * 1/3 * delta)
-	#if collision:
-		##print(collision.get_collider())Engine.physics_ticks_per_second
-		#var collider = collision.get_collider()
-		#if collider and collider.name == "SpikeMap":
-			#get_tree().reload_current_scene()
-
-## Horizontal Movement
-func move():
+## Horizontal movement.
+## This part is already so smooth I'm scared of changing anything.
+func _move():
 	var acceleration_current: float = acceleration * (Global.gamespeed / 100.0)
 	var air_friction_current: float = air_friction * (Global.gamespeed / 100.0)
 	var floor_friction_current: float = floor_friction * (Global.gamespeed / 100.0)
-	#print("normal vs speed: " + str(air_friction) + " " + str(air_friction_current))
 
 	var direction = Input.get_axis("move_left", "move_right") if can_move else 0.0
-	#print("launch speed: " + str(launch_x))
+
 	if not is_on_floor() and direction != launch_x_direction:
 		launch_x = move_toward(launch_x, 0, air_friction_current)
 	elif is_on_floor():
 		launch_x = move_toward(launch_x, 0, air_friction_current*4)
+
 	var direction_move = direction * max_speed
 	var launch_x_move = launch_x_direction * launch_x
 
-	if direction and move_delay_count == 0:
-		if launch_x > 0.0:
-			# The character should maintain the launch speed when the player moves towards launch_x_direction
-			if direction == launch_x_direction: 
+	if direction and move_delay_count == 0: # When the input is pressed.
+		if launch_x > 0.0: # Launch speed logic
+			if direction == launch_x_direction: # Towards the launch direction. They should maintain its speed
 				velocity.x = max(launch_x_move, direction_move) if direction > 0 else min(launch_x_move, direction_move)
-				# If the launch speed is smaller than the default movement speed, just set the launch speed to 0 altogether.
-				# Hopefully, this fixes the occasional "sticky" movement issue
-				wall_buffer_countdown()
-				if velocity.x == direction_move: 
+				_wall_buffer_countdown()
+				if velocity.x == direction_move: # If launch speed < movement speed, set it to 0.
 					launch_x = 0.0
-			# The character moves against the launch direction.
-			else:	
+			else: # Against the launch direction.
 				launch_x = move_toward(launch_x, 0, air_friction_current * 4)
-				if launch_x < 0.0 or is_on_wall_only():
+				if launch_x < 0.0 or is_on_wall_only(): # Stop when launch speed is 0 or on the wall.
 					launch_x = 0.0
 				velocity.x = launch_x * launch_x_direction
-		else:
+		else: # Normal walking logic
 			velocity.x = move_toward(velocity.x, direction_move, acceleration_current)
-	else:
+	else: # When the input is not pressed.
 		if launch_x > 0.0:
 			velocity.x = launch_x_move
-			wall_buffer_countdown()
+			_wall_buffer_countdown()
 		else:
 			velocity.x = move_toward(velocity.x, 0, floor_friction_current)
-	player_state(int(direction))
+	_player_state(int(direction))
+
+## Performing said horizonal movement
+func _move_procedure():
+	var collision = move_and_slide()
+	if collision:
+		var collision_info = get_last_slide_collision() # Access collision information
+		if collision_info: # Check if the collider is a SpikeMap or MovingHazard
+			var collider = collision_info.get_collider()
+			if collider.name.trim_suffix(str(collider.name.to_int())) in kill_tiles:
+				die()
+
+## Get gravity depending if the character is jumping or falling.
+func _get_gravity():
+	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 ## Vertical Movement
-func jump(delta):
-	velocity.y += get_gravity() * delta
-	coyote_countdown()
-	jump_buffer_countdown()
+func _jump(delta):
+	velocity.y += _get_gravity() * delta
+	_coyote_countdown()
+	_jump_buffer_countdown()
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor() or coyote_count > 0:
-			jump_procedure()
-		elif not is_on_floor():
+		if (is_on_floor() or coyote_count > 0) and can_move:
+			_jump_procedure()
+		elif not is_on_floor() or not can_move:
 			jump_buffer_count = jump_buffer_frame
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y /= jump_lost_multiplier
 
-func get_gravity():
-	return jump_gravity if velocity.y < 0.0 else fall_gravity
-
-func jump_procedure():
+## Performing said vertical movement
+func _jump_procedure():
 	Audio.play("Jump")
 	velocity.y = -jump_velocity
 	coyote_count = 0
 	jump_buffer_count = 0
 
-func strike():
+## The striking function
+func _strike():
 	var direction_x = Input.get_axis("strike_left", "strike_right")	  # Left is -1, right is +1
 	var direction_y = Input.get_axis("strike_up", "strike_down") * -1 # Down is -1, up is +1
 	var direction_xy = Vector2(direction_x, direction_y) if can_move else Vector2.ZERO
@@ -181,8 +169,8 @@ func strike():
 			strike_delay_count -= 1
 		else:
 			var strike_raycast: RayCast2D = get_node(strike_dir[direction_xy][1])
-			strike_response(direction_xy, strike_raycast)
-			strike_particle_create(strike_raycast)
+			_strike_response(direction_xy, strike_raycast)
+			_strike_particle_create(strike_raycast)
 			strike_delay_count = strike_delay_frame
 			on_strike_delay = true
 			can_strike = false
@@ -190,7 +178,8 @@ func strike():
 			Audio.play("Strike")
 			$StrikeDelayTimer.start()
 
-func strike_particle_create(raycast: RayCast2D):
+## Create particle for strike
+func _strike_particle_create(raycast: RayCast2D):
 	var strike_particle: Strike = strike_particle_preload.instantiate()
 	strike_particle.set_default_length(strike_particle_length)
 
@@ -202,62 +191,72 @@ func strike_particle_create(raycast: RayCast2D):
 	strike_particle.emitting(global_position, raycast.rotation, strike_length)
 	get_parent().add_child(strike_particle)
 
-func strike_response(direction: Vector2, raycast: RayCast2D):
-	var temp_mult = 1
+## Getting reaction from said strike
+func _strike_response(direction: Vector2, raycast: RayCast2D):
+	var temp_mult := 1.0
 	if Input.is_action_pressed("crouch"):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
-		print(raycast.get_collider().name)
-		if raycast.get_collider().name in strikable_tiles || raycast.get_collider().name.begins_with("BlackDiamond") || raycast.get_collider().name.begins_with("DisintegratingPlatform"):
-			var cell = raycast.get_collider()
-			if cell.name == "DestroyablePlatform":
-				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
-				cell.break_platform(cell.local_to_map(coords))
+		var collider := raycast.get_collider()
+		if collider.name.trim_suffix(str(collider.name.to_int())) in strikable_tiles:
 			if camera_shake: $"../Camera2D".shake(4,12)
-			if direction.x != 0:
+			if collider.name == "DestroyablePlatform":
+				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
+				collider.break_platform(collider.local_to_map(coords))
+			if direction.x != 0.0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
 				launch_x = max_launch_x
-				player_state(int(launch_x_direction))
-			if direction.y < 0: # Going Up
+				_player_state(int(launch_x_direction))
+			if direction.y < 0.0: # Going Up
 				velocity.y = jump_velocity * direction.y / temp_mult
-			elif direction.y > 0: # Going Down
+			elif direction.y > 0.0: # Going Down
 				velocity.y = jump_velocity * direction.y * 2
-		# TO NAUFAL: We may need to tweak this a little more. 
 		elif raycast.get_collider().name.begins_with("WhiteDiamond"):
-			if direction.x != 0:
+			if direction.x != 0.0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = direction.x
 				launch_x = max_launch_x
-				player_state(int(-launch_x_direction))
-			if direction.y < 0: # Going Up
+				_player_state(int(-launch_x_direction))
+			if direction.y < 0.0: # Going Up
 				velocity.y = -jump_velocity * direction.y / temp_mult
-			elif direction.y > 0: # Going Down
+			elif direction.y > 0.0: # Going Down
 				velocity.y = -jump_velocity * direction.y * 2
 
-func strike_hold_input():
+## A wrapper to check if none of the strike button are pressed.
+## I'm sure there's a better way than this.
+func _check_strike_input():
+	return not Input.is_action_pressed("strike_left") and not Input.is_action_pressed("strike_right") and not Input.is_action_pressed("strike_up") and not Input.is_action_pressed("strike_down")
+
+## Prevent the character from holding down the strike button and continuously striking.
+func _strike_hold_input():
 	if not can_strike:
 		if _check_strike_input():
 			can_strike = true
 
-func _check_strike_input():
-	return not Input.is_action_pressed("strike_left") and not Input.is_action_pressed("strike_right") and not Input.is_action_pressed("strike_up") and not Input.is_action_pressed("strike_down")
-
-func jump_buffer_countdown():
+## When the player presses the jump button just before landing on the ground or when can_move is false,
+## jump_buffer_count will start counting down.
+## The character will automatically jump as soon as he touches the ground or can_move is true
+## as long as the count is above zero
+func _jump_buffer_countdown():
 	if jump_buffer_count > 0:
 		jump_buffer_count -= 1
-		if is_on_floor() and jump_buffer_count > 0:
-			print("You jump before hitting the ground")
-			jump_procedure()
+		if is_on_floor() and can_move and jump_buffer_count > 0:
+			_jump_procedure()
 
-func coyote_countdown():
+## When a character is walking off the ledge, coyote_count will start counting down.
+## As long as the count is above zero, the player can jump in midair.
+func _coyote_countdown():
 	if is_on_floor():
 		coyote_count = coyote_frame
 	else:
 		if coyote_count > 0:
 			coyote_count -= 1
 
-func wall_buffer_countdown():
+## When the character is launched and touches a wall, 
+## wall_buffer_count will start count down while still keeping his launch speed. 
+## After wall_buffer_frame of frame has passed, he loses all launch speed.
+func _wall_buffer_countdown():
 	if is_on_wall():
 		if wall_buffer_count > 0:
 			wall_buffer_count -= 1
@@ -267,12 +266,15 @@ func wall_buffer_countdown():
 	elif not is_on_wall():
 		wall_buffer_count = wall_buffer_frame
 
-func move_delay_countdown():
+## When the character gain horizontal launch speed through a strike, 
+## move_delay_count will start counting down.
+## The character cannot move as long as the count is above zero. 
+func _move_delay_countdown():
 	if move_delay_count > 0:
 		move_delay_count -= 1
 
 ## Character animation. We don't need blend tree after all.
-func player_state(direction: int):	
+func _player_state(direction: int):	
 	face[0] = face[direction]
 	if is_on_floor() and velocity.x == 0:
 		if Input.is_action_pressed("crouch"):
@@ -284,8 +286,8 @@ func player_state(direction: int):
 	elif not is_on_floor():
 		$AnimationPlayer.play("jump" + face[direction])
 
-## Kill the character and restart the level. Can be used when the player object is referenced in other script too!
-## quick_death skips the first animation before the character explodes to pieces
+## Kill the character and restart the level. Should be called when killing him on other script.
+## quick_death skips the first animation before the character explodes.
 func die(quick_death := false):
 	Global.death_count += 1
 	is_dying = true
@@ -295,6 +297,7 @@ func die(quick_death := false):
 		Audio.play("Hit")
 		$AnimationPlayer.play("die" + face[0])
 
+## Explode animation for the character
 func _explode():
 	if camera_shake: $"../Camera2D".shake()
 	Audio.play("Death")
@@ -302,12 +305,9 @@ func _explode():
 	$DieParticle.emitting = true
 	$ExplodeTimer.start()
 
+# signal function stuff
 func _on_strike_delay_timer_timeout():
 	on_strike_delay = false
-
-func _on_animation_player_animation_finished(anim_name:StringName):
-	if anim_name.begins_with("die"):
-		_explode()
 
 func _on_explode_timer_timeout():
 	get_tree().reload_current_scene()
@@ -315,4 +315,7 @@ func _on_explode_timer_timeout():
 func _on_cooldown_timer_timeout():
 	can_move = true
 	if _check_strike_input(): can_strike = true
-	pass
+
+func _on_animation_player_animation_finished(anim_name:StringName):
+	if anim_name.begins_with("die"):
+		_explode()
