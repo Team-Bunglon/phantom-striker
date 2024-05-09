@@ -1,10 +1,10 @@
 extends Control
 class_name Confirm ## Menu for confirmation
 
-@export var return_object: NodePath 
-@export var line1_text: String = "Are you sure you want to do something?"
-@export var line2_text: String = "ALL PROGRESS WILL BE LOST!"
-@export var line2_is_red: bool = false
+@export var return_object: NodePath		## The menu object the player will return to when they click the return button.
+@export var line1_text: String = "Are you sure you want to do something?" ## First line of the confirmation message
+@export var line2_text: String = "ALL PROGRESS WILL BE LOST!"			  ## Second line of the confirmation message
+@export var line2_is_red: bool = false	## Self explanatory. Used to make the secoind line as a warning message.
 
 @onready var return_node := get_node(return_object)
 

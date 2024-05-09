@@ -1,13 +1,12 @@
 extends Control
 class_name OptionMenu
 
-@export var return_object: NodePath 
-@export var volume_step: float = 0.2
-@export var volume_max_value: int = 5
-@export var gamespeed_step: int = 10
-@export var gamespeed_min_value: int = 50
-@export var default_resolution: Vector2i = Vector2i(640, 480)
+@export var return_object: NodePath		  ## The menu object the player will return to when they click the return button.
+@export var volume_max_value: int = 5	  ## The maximum value of the volume. The range would be from 0 to this value with the step of 1. Note that increasing this value doesn't increase the maximum volume, it only makes the audio adjustment more precise.
+@export var gamespeed_min_value: int = 50 ## The minimal value of the gamespeed in percent. The maximum value is hardcoded to be 100% for now.
+@export var gamespeed_step: int = 10	  ## The value of the gamespeed that the player can adjust.
 
+@onready var default_resolution: Vector2i = Vector2i(640, 480)
 @onready var scaling_value_text: Label = find_child("ScalingValue")
 @onready var fullscreen_text: Label = find_child("FullscreenValue")
 @onready var music_text: Label = find_child("MusicValue")
@@ -61,25 +60,14 @@ func _update_value(setting_name: String, fullscreen = "No"):
 			_update_resolution(Global.current_scaling)
 			Global.fullscreen = "No"
 	elif setting_name == "music":
-		var bus_index = AudioServer.get_bus_index("Music")
-		AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume_step * Global.music_vol))
+		var bus_index := AudioServer.get_bus_index("Music")
+		AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_vol / float(volume_max_value)))
 	elif setting_name == "sound":
-		var bus_index = AudioServer.get_bus_index("Sound")
-		AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume_step * Global.sound_vol))
-		print(linear_to_db(volume_step * Global.sound_vol))
+		var bus_index := AudioServer.get_bus_index("Sound")
+		AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.sound_vol / float(volume_max_value)))
 	elif setting_name == "speed":
 		Engine.time_scale = Global.gamespeed / 100.0
 	update_text()
-
-func _on_fullscreen_selected():
-	var fullscreen_new := "Yes" if Global.fullscreen == "No" else "No"
-	_update_value("fullscreen", fullscreen_new)
-
-func _on_fullscreen_increased():
-	_on_fullscreen_selected()
-
-func _on_fullscreen_decreased():
-	_on_fullscreen_selected()
 
 func _on_scaling_selected():
 	Global.current_scaling += 1
@@ -96,9 +84,15 @@ func _on_scaling_decreased():
 		Global.current_scaling = Global.maximum_scaling
 	_update_value("scaling")
 
-func _on_return_selected():
-	visible = false
-	return_node.visible = true
+func _on_fullscreen_selected():
+	var fullscreen_new := "Yes" if Global.fullscreen == "No" else "No"
+	_update_value("fullscreen", fullscreen_new)
+
+func _on_fullscreen_increased():
+	_on_fullscreen_selected()
+
+func _on_fullscreen_decreased():
+	_on_fullscreen_selected()
 
 func _on_music_selected():
 	if Global.music_vol < volume_max_value:
@@ -139,3 +133,8 @@ func _on_speed_decreased():
 	if Global.gamespeed > gamespeed_min_value:
 		Global.gamespeed -= gamespeed_step
 	_update_value("speed")
+
+func _on_return_selected():
+	visible = false
+	return_node.visible = true
+

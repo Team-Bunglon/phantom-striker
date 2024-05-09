@@ -7,30 +7,34 @@ func enable_cursor():
 	$Cursor.cursor_can_choose = true
 
 func _ready():
-	if not $"HBoxContainer/MarginContainer/VBoxContainer/Continue".selectable:
+	if Global.has_started_game: 
+		$"HBoxContainer/MarginContainer/VBoxContainer/Continue".set_selectable(true)
+		$Cursor.cursor_index = 0
+	else:
+		$"HBoxContainer/MarginContainer/VBoxContainer/Continue".set_selectable(false)
 		$Cursor.cursor_index = 1
 
-func _start_level(level_name: String):
+func _start_level(level_name: String, new_game := true):
+	if new_game:
+		Global.reset_global_value()
 	Audio.play("Start")
 	Audio.music_play("Music1")
-	Global.death_count = 0
 	Global.game_running = true
 	# The weirdest thing is that to "Start" a stopwatch, you have to unpause it 
 	# since it is already has the elapsed time of 0 seconds from the time this node gets initialzied.
-	GameStopwatch.toggle_pause() 
+	GameStopwatch.paused = false
 	get_tree().change_scene_to_file("res://levels/" + level_name + ".tscn")
 
 func _input(event):
-	print(debug_level)
 	if event.is_action_pressed("debug"):
 		_start_level("level" + str(debug_level))
 
 func _on_start_selected():
+	Global.has_started_game = true
 	_start_level("level1")
 
 func _on_continue_selected():
-	# Copy _on_start_selected() for now
-	_on_start_selected()
+	_start_level("level" + str(Global.current_level), false)
 
 func _on_options_selected():
 	visible = false

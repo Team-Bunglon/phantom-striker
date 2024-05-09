@@ -9,7 +9,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("pause") and not Global.is_paused and Global.game_running:
-		GameStopwatch.toggle_pause()
+		GameStopwatch.paused = true
 		get_tree().paused = true
 		Audio.play("Accept")
 		_update_text()
@@ -36,7 +36,7 @@ func _update_text():
 func _on_pause_menu_resume_game():
 	get_tree().paused = false
 	_set_visible(false, false, false, false, false)
-	GameStopwatch.toggle_pause()
+	GameStopwatch.paused = false
 	Global.is_paused = false
 	
 func _on_pause_menu_option():
@@ -58,9 +58,10 @@ func _on_confirm_restart_yes_selected():
 
 func _on_confirm_menu_yes_selected():
 	_on_pause_menu_resume_game()
-	Global.reset_global_value()
 	$"PauseMenu/Cursor".cursor_index = 0
 	$"ConfirmMenu/Cursor".cursor_index = 0
+	# Quitting the game is equivalent to restarting the game, which counts as death
+	Global.death_count += 1
 	get_tree().change_scene_to_file("res://menu/title.tscn")
 
 func _on_option_menu_visibility_changed():

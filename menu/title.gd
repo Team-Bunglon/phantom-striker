@@ -7,6 +7,7 @@ func _ready():
 	$TitleFg.play("default")
 	$Version.text = $Version.text + " " + ProjectSettings.get_setting("application/config/version")
 	Global.game_running = false
+	GameStopwatch.paused = true
 	Audio.music_play("MusicMenu", false)
 
 func _input(event):

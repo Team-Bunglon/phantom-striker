@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://menu/title.gd" id="1_0jyka"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_ibjwj"]
-[ext_resource type="Shader" path="res://menu/title.gdshader" id="2_dousj"]
 [ext_resource type="PackedScene" uid="uid://d3sd5a738c3i8" path="res://menu/main_menu.tscn" id="3_dti36"]
 [ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="4_rm5kv"]
 [ext_resource type="Texture2D" uid="uid://jn3imajvoy83" path="res://assets/sprites/title_fg1.png" id="4_tg8wl"]
@@ -298,8 +297,19 @@ _data = {
 "logo": SubResource("Animation_3g7qt")
 }
 
+[sub_resource type="Shader" id="Shader_nigm1"]
+code = "shader_type canvas_item;
+
+uniform vec4 solid_color : hint_color;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+    COLOR = vec4(mix(texture_color.rgb, solid_color.rgb, solid_color.a), texture_color.a);
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfm7u"]
-shader = ExtResource("2_dousj")
+shader = SubResource("Shader_nigm1")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_34mvu"]
 animations = [{
