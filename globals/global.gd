@@ -11,22 +11,18 @@ var is_paused: bool = false		## A flag for other script to know if the game is p
 var has_started_game = false: ## Check if the player has pressed the start button for continue button. It is greyed out if the game is launched for the first time or after the player has finished the game.
 	set(value):
 		has_started_game = value
-		print("has started? " + str(has_started_game))
 		save_game()
 var current_level: int = 1:	## The current level the player has reached.
 	set(value):
 		current_level = value
-		print("level " + str(death_count))
 		save_game()
 var death_count: int = 0: ## How many death the player has experienced. Restarting and quiting to main menu count as one.
 	set(value):
 		death_count = value
-		print("ded " + str(death_count))
 		save_game()
 var collectibles: int = 0: ## How many collectibles the player has obtain.
 	set(value):
 		collectibles = value
-		print("collect " + str(collectibles))
 		save_game()
 var collected: Array = [] ## Keep track of the collected collectible so the player doesn't have to collect it again if they die.
 
@@ -89,6 +85,7 @@ func save_game():
 	}
 	
 	save_file(save)
+	print("Save Val | Start: " + str(has_started_game) + ", lvl: " + str(death_count) + ", ded: " + str(death_count) + ", collect: " + str(collectibles) + ", list: " + str(collected))
 
 func load_game():
 	var save: Save
