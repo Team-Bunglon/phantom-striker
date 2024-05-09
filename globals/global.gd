@@ -1,7 +1,7 @@
 extends Node
 
 # Booleans when the game process is running
-var has_applied_setting_on_launch: bool = false
+var has_applied_setting_on_launch: bool = false 
 var game_running: bool = false
 var is_paused: bool = false
 

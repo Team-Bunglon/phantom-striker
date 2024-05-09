@@ -6,6 +6,10 @@ class_name MainMenu
 func enable_cursor():
 	$Cursor.cursor_can_choose = true
 
+func _ready():
+	if not $"HBoxContainer/MarginContainer/VBoxContainer/Continue".selectable:
+		$Cursor.cursor_index = 1
+
 func _start_level(level_name: String):
 	Audio.play("Start")
 	Audio.music_play("Music1")
@@ -24,6 +28,10 @@ func _input(event):
 func _on_start_selected():
 	_start_level("level1")
 
+func _on_continue_selected():
+	# Copy _on_start_selected() for now
+	_on_start_selected()
+
 func _on_options_selected():
 	visible = false
 	$"../OptionMenu/Cursor".cursor_index = 0
@@ -31,4 +39,5 @@ func _on_options_selected():
 
 func _on_exit_selected():
 	get_tree().quit()
+
 

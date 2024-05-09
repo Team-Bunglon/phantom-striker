@@ -1,10 +1,10 @@
-extends Node2D
+extends Node
 class_name AudioGlobal
 
 ## The duration of which the music would cross fade
 @export var fade_duration: float = 2.0
 
-# These two variables should have a placeholder "None" string on start
+# These two variables should be null on start
 @onready var music_node: AudioStreamPlayer
 @onready var music_prev: AudioStreamPlayer
 @onready var default_db: Dictionary = {}

@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bv18po1v1bypd" path="res://assets/audio/ui_cancel.wav" id="8_jdpph"]
 [ext_resource type="AudioStream" uid="uid://c1xt0o7ki4ryg" path="res://assets/audio/disintegrate.wav" id="10_5tgbh"]
 
-[node name="Audio" type="Node2D"]
+[node name="Audio" type="Node"]
 process_mode = 3
 script = ExtResource("1_n4bf6")
 
