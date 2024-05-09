@@ -16,18 +16,17 @@ size = Vector2(50, 46.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt656"]
 size = Vector2(768, 16)
 
-[node name="Level#25" type="Node2D"]
+[node name="Level#31" type="Node2D"]
 script = ExtResource("1_nj708")
-room_name = "Cao Ci Bai"
+room_name = "Weee!"
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="RoomName" type="Label" parent="Canvas"]
 z_index = 10
-offset_left = 21.0
-offset_top = 459.0
-offset_right = 661.0
-offset_bottom = 492.0
+offset_top = 454.0
+offset_right = 640.0
+offset_bottom = 487.0
 theme_override_fonts/font = ExtResource("2_sijal")
 theme_override_font_sizes/font_size = 20
 text = "Sample Room Name"

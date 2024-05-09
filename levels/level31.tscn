@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c42ctbl6dvfna"]
+
+[ext_resource type="Script" path="res://levels/level_class.gd" id="1_o6j5x"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_6gv1r"]
+[ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_0ag72"]
+[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_sao0e"]
+[ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_41254"]
+[ext_resource type="Script" path="res://levels/level_camera.gd" id="6_eeiqd"]
+[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_t1q4n"]
+[ext_resource type="PackedScene" path="res://objects/destroyableplatform.tscn" id="8_srcg3"]
+
+[node name="Level#31" type="Node2D"]
+script = ExtResource("1_o6j5x")
+room_name = "Fruit of Life"
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="RoomName" type="Label" parent="Canvas"]
+z_index = 10
+offset_top = 454.0
+offset_right = 640.0
+offset_bottom = 487.0
+theme_override_fonts/font = ExtResource("2_6gv1r")
+theme_override_font_sizes/font_size = 20
+text = "Sample Room Name"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Canvas"]
+offset_top = 464.0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.196078, 0.196078, 0.196078, 0.588235)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_0ag72")]
+position = Vector2(320, 256)
+max_jump_height = 80.0
+jump_time_to_peak = 0.4
+jump_time_to_descend = 0.35
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_sao0e")
+format = 2
+layer_0/tile_data = PackedInt32Array(1966080, 65537, 1, 1966081, 65537, 1, 1966082, 65537, 1, 1966083, 65537, 1, 1966084, 65537, 1, 1966085, 65537, 1, 1966086, 65537, 1, 1966087, 65537, 1, 1966089, 65537, 1, 1966088, 65537, 1, 1966090, 65537, 1, 1966091, 65537, 1, 1966092, 65537, 1, 1966093, 65537, 1, 1966094, 65537, 1, 1966095, 65537, 1, 1966096, 65537, 1, 1966097, 65537, 1, 1966098, 65537, 1, 1966099, 65537, 1, 1966100, 65537, 1, 1966101, 65537, 1, 1966102, 65537, 1, 1966103, 65537, 1, 1966104, 65537, 1, 1966105, 65537, 1, 1966106, 65537, 1, 1966107, 65537, 1, 1966108, 65537, 1, 1966109, 65537, 1, 1966110, 65537, 1, 1966111, 65537, 1, 1966112, 65537, 1, 1966113, 65537, 1, 1966114, 65537, 1, 1966115, 65537, 1, 1966116, 65537, 1, 1966117, 65537, 1, 1966118, 65537, 1, 1966119, 65537, 1, 2031615, 65537, 1, 1966079, 65537, 1, 1900543, 65537, 1, 1835007, 65537, 1, 1769471, 65537, 1, 1703935, 65537, 1, 1638399, 65537, 1, 1572863, 65537, 1, 1507327, 65537, 1, 1441791, 65537, 1, 1376255, 65537, 1, 1310719, 65537, 1, 1245183, 65537, 1, 1179647, 65537, 1, 1114111, 65537, 1, 1048575, 65537, 1, 983039, 65537, 1, 917503, 65537, 1, 851967, 65537, 1, 786431, 65537, 1, 720895, 65537, 1, 655359, 65537, 1, 589823, 65537, 1, 524287, 65537, 1, 458751, 65537, 1, 393215, 65537, 1, 327679, 65537, 1, 262143, 65537, 1, 196607, 65537, 1, -1, 65537, 1, 65535, 65537, 1, 131071, 65537, 1, -65496, 65537, 1, 40, 65537, 1, 65576, 65537, 1, 131112, 65537, 1, 196648, 65537, 1, 262184, 65537, 1, 327720, 65537, 1, 393256, 65537, 1, 458792, 65537, 1, 524328, 65537, 1, 589864, 65537, 1, 655400, 65537, 1, 720936, 65537, 1, 786472, 65537, 1, 852008, 65537, 1, 917544, 65537, 1, 983080, 65537, 1, 1048616, 65537, 1, 1114152, 65537, 1, 1179688, 65537, 1, 1245224, 65537, 1, 1310760, 65537, 1, 1376296, 65537, 1, 1441832, 65537, 1, 1507368, 65537, 1, 1572904, 65537, 1, 1638440, 65537, 1, 1703976, 65537, 1, 1769512, 65537, 1, 1835048, 65537, 1, 1900584, 65537, 1, 1966120, 65537, 1)
+
+[node name="SpikeMap" type="TileMap" parent="."]
+tile_set = ExtResource("5_41254")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_eeiqd")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_t1q4n")
+metadata/_edit_lock_ = true
+
+[node name="DestroyablePlatform" parent="." instance=ExtResource("8_srcg3")]
