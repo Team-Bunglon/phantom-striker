@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpnilu3rm6idw"]
+
+[ext_resource type="Texture2D" uid="uid://ukioie2ddyml" path="res://assets/sprites/fruit_of_life_temp.png" id="1_3qayc"]
+[ext_resource type="Script" path="res://objects/fruitoflife.gd" id="1_ms2t1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ygaq"]
+radius = 14.0
+height = 38.0
+
+[node name="FruitOfLife" type="Area2D"]
+script = ExtResource("1_ms2t1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3qayc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5ygaq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
