@@ -288,7 +288,6 @@ func player_state(direction: int):
 ## quick_death skips the first animation before the character explodes to pieces
 func die(quick_death := false):
 	Global.death_count += 1
-	print(Global.death_count)
 	is_dying = true
 	if quick_death:
 		_explode()

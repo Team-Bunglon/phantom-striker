@@ -5,15 +5,19 @@ class_name Level
 
 func next_level():
 	if "#" in name:
-		return "res://levels/level" + str(int(name.get_slice("#",1))+1) + ".tscn"
+		var next_level_number: String = str(_get_number() + 1)
+		return "res://levels/level" + next_level_number + ".tscn"
 	else:
 		assert(false, name + ": The name of the root node of this level must be 'level#[int]'")
+
+func _get_number() -> int:
+	return int(name.get_slice("#",1))
 
 func _ready():
 	print(name + ": " + room_name)
 	$Canvas/RoomName.text = room_name
-	await get_tree().create_timer(1).timeout
-
+	Global.current_level = _get_number()
+	Global.save_game() # this will save the game on every level change or restart
 
 func _on_kill_zone_body_entered(body:Node2D):
 	if body.name == "Player":

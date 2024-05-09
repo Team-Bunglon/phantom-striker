@@ -20,6 +20,8 @@
 3. Once you have the latest commit from `main` in your branch, push into the new branch.
 4. Create a merge request. Any new request will be automatically notified through Discord.
 
+There's no specific guideline for commit message so write what you want as long as you are clear on what you are adding.
+
 # Level Design
 1. Try to make your level geometry looks as if it is indeed located inside of a tree, for aesthetic purposes.
 2. Make sure that you can beat the level on your own. If you can't beat it, nobody can.
@@ -37,6 +39,7 @@
 	- Anything that against what the player has been taught indirectly from the previous level (like putting the win area at the bottom. They've learned that they need to avoid any bottomless pit so they'll try to avoid it as well).
 10. Do NOT change the player export variable except `looking_left`. Changing it means the player has to relearn how the player control and that's a spiteful game design. Every level MUST have consistent variables for the player. 
 11. Please discuss with me first if you need to do something that requires a change of the fundamental mechanic, rule, and flow of the game in your level.
+12. Try to not make the player stuck on the level in such a way that they can't complete the level and have to press the restart button (softlock). The more way the player can be softlocked, the more frustrating the game can become. 
 
 ### Note
 Some of the level might be readjusted by me for any reason from finetuning the difficulty to removing any violating element as previously mention. I may or may not mention this directly at the discord server so look at the commit message if I happen to change your level.
