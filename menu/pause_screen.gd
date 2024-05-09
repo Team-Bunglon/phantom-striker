@@ -62,7 +62,7 @@ func _on_confirm_menu_yes_selected():
 	$"ConfirmMenu/Cursor".cursor_index = 0
 	# Quitting the game is equivalent to restarting the game, which counts as death
 	Global.death_count += 1
-	get_tree().change_scene_to_file("res://menu/title.tscn")
+	get_tree().change_scene_to_file("res://menu/main_screen.tscn")
 
 func _on_option_menu_visibility_changed():
 	if $OptionMenu.visible:
@@ -91,4 +91,3 @@ func _on_confirm_menu_visibility_changed():
 		_update_text()
 		$Title.visible = true
 		$HBoxCount.visible = true
-

@@ -10,8 +10,8 @@ var is_paused: bool = false		## A flag for other script to know if the game is p
 # Countables
 var has_started_game = false: ## Check if the player has pressed the start button for continue button. It is greyed out if the game is launched for the first time or after the player has finished the game.
 	set(value):
-		has_started_game = true
-		print("The game is started")
+		has_started_game = value
+		print("has started? " + str(has_started_game))
 		save_game()
 var current_level: int = 1:	## The current level the player has reached.
 	set(value):

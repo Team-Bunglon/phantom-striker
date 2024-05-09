@@ -20,5 +20,6 @@ func _on_yes_selected():
 	emit_signal("yes_selected")
 
 func _on_no_selected():
+	$Cursor.cursor_index = 0
 	visible = false
 	return_node.visible = true

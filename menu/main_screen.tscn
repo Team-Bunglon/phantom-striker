@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://3o4litqq32uf"]
+[gd_scene load_steps=16 format=3 uid="uid://3o4litqq32uf"]
 
-[ext_resource type="Script" path="res://menu/title.gd" id="1_0jyka"]
-[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_ibjwj"]
-[ext_resource type="PackedScene" uid="uid://d3sd5a738c3i8" path="res://menu/main_menu.tscn" id="3_dti36"]
-[ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="4_rm5kv"]
-[ext_resource type="Texture2D" uid="uid://jn3imajvoy83" path="res://assets/sprites/title_fg1.png" id="4_tg8wl"]
-[ext_resource type="Texture2D" uid="uid://bsl756u6a4gyn" path="res://assets/sprites/title_fg2.png" id="5_gttri"]
-[ext_resource type="Texture2D" uid="uid://dhak7ge0tfif6" path="res://assets/sprites/logo.png" id="5_ihkdo"]
-[ext_resource type="Texture2D" uid="uid://3gm4qoj6s3f8" path="res://assets/sprites/title_bg.png" id="6_dm6yc"]
+[ext_resource type="Script" path="res://menu/main_screen.gd" id="1_5x4pu"]
+[ext_resource type="Texture2D" uid="uid://dhak7ge0tfif6" path="res://assets/sprites/logo.png" id="2_tuxra"]
+[ext_resource type="Texture2D" uid="uid://3gm4qoj6s3f8" path="res://assets/sprites/title_bg.png" id="3_o2gi6"]
+[ext_resource type="Texture2D" uid="uid://jn3imajvoy83" path="res://assets/sprites/title_fg1.png" id="4_g6fja"]
+[ext_resource type="Texture2D" uid="uid://bsl756u6a4gyn" path="res://assets/sprites/title_fg2.png" id="5_v380f"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="6_1t8xw"]
+[ext_resource type="PackedScene" uid="uid://d3sd5a738c3i8" path="res://menu/main_menu.tscn" id="7_hl2f1"]
+[ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="8_lv5bq"]
+[ext_resource type="PackedScene" uid="uid://ccbyvma21rb1d" path="res://menu/confirm.tscn" id="9_ptg2x"]
 
 [sub_resource type="Animation" id="Animation_c47d2"]
 length = 0.001
@@ -297,36 +298,22 @@ _data = {
 "logo": SubResource("Animation_3g7qt")
 }
 
-[sub_resource type="Shader" id="Shader_nigm1"]
-code = "shader_type canvas_item;
-
-uniform vec4 solid_color : hint_color;
-
-void fragment() {
-    vec4 texture_color = texture(TEXTURE, UV);
-    COLOR = vec4(mix(texture_color.rgb, solid_color.rgb, solid_color.a), texture_color.a);
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfm7u"]
-shader = SubResource("Shader_nigm1")
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_34mvu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_tg8wl")
+"texture": ExtResource("4_g6fja")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_gttri")
+"texture": ExtResource("5_v380f")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Title" type="CanvasLayer"]
-script = ExtResource("1_0jyka")
+[node name="MainScreen" type="CanvasLayer"]
+script = ExtResource("1_5x4pu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -339,16 +326,15 @@ offset_bottom = 480.0
 
 [node name="Logo" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_tfm7u")
 position = Vector2(320, 240)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_ihkdo")
+texture = ExtResource("2_tuxra")
 
 [node name="TitleBg" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(320, 480)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_dm6yc")
+texture = ExtResource("3_o2gi6")
 
 [node name="TitleFg" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 360)
@@ -362,19 +348,42 @@ offset_left = 2.0
 offset_top = 454.0
 offset_right = 614.0
 offset_bottom = 490.0
-theme_override_fonts/font = ExtResource("1_ibjwj")
+theme_override_fonts/font = ExtResource("6_1t8xw")
 theme_override_font_sizes/font_size = 20
 text = "Version Alpha"
 
-[node name="MainMenu" parent="." instance=ExtResource("3_dti36")]
+[node name="MainMenu" parent="." instance=ExtResource("7_hl2f1")]
 visible = false
 offset_top = 239.0
 offset_bottom = 239.0
 
-[node name="OptionMenu" parent="." instance=ExtResource("4_rm5kv")]
+[node name="OptionMenu" parent="." instance=ExtResource("8_lv5bq")]
 visible = false
 offset_top = 238.0
 offset_bottom = 238.0
 return_object = NodePath("../MainMenu")
 
+[node name="ConfirmStart" parent="." instance=ExtResource("9_ptg2x")]
+visible = false
+offset_top = 298.0
+offset_bottom = 298.0
+return_object = NodePath("../MainMenu")
+line1_text = "Are you sure you want to start a new game?"
+line2_text = "ALL PREVIOUS PROGRESS WILL BE RESET!"
+line2_is_red = true
+
+[node name="ConfirmQuit" parent="." instance=ExtResource("9_ptg2x")]
+visible = false
+offset_top = 298.0
+offset_bottom = 298.0
+return_object = NodePath("../MainMenu")
+line1_text = "Are you sure you want to quit?"
+line2_text = "All progress will be saved"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="continue_game" from="MainMenu" to="." method="_on_main_menu_continue_game"]
+[connection signal="option" from="MainMenu" to="." method="_on_main_menu_option"]
+[connection signal="quit" from="MainMenu" to="." method="_on_main_menu_quit"]
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="yes_selected" from="ConfirmStart" to="." method="_on_confirm_start_yes_selected"]
+[connection signal="yes_selected" from="ConfirmQuit" to="." method="_on_confirm_quit_yes_selected"]
