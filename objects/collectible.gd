@@ -14,5 +14,5 @@ func _on_collectible_area_body_entered(body):
 	if body.name == "Player":
 		$Sprite2D.visible = false
 		$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
-		Global.collected.append(identifier)  # collected must be before collectibles
+		Global.collected.append(identifier)
 		Global.collectibles += 1

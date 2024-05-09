@@ -4,14 +4,14 @@ class_name Level
 @export var room_name: String = "Sample Room Name"
 
 func next_level():
-	if "#" in name:
-		var next_level_number: String = str(get_number() + 1)
-		return "res://levels/level" + next_level_number + ".tscn"
-	else:
-		assert(false, name + ": The name of the root node of this level must be 'level#[int]'")
+	var next_level_number: String = str(get_number() + 1)
+	return "res://levels/level" + next_level_number + ".tscn"
 
 func get_number() -> int:
-	return int(name.get_slice("#",1))
+	if "#" in name:
+		return int(name.get_slice("#",1))
+	else:
+		return name.to_int()
 
 func _ready():
 	print(name + ": " + room_name)
