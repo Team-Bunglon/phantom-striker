@@ -1,6 +1,6 @@
 # Notes
 1. This is a Godot 4 project. Make sure you use Godot 4 version 4.2.X
-2. Last document update: 05/05
+2. Last document update: 05/09
 
 # Guidelines
 1. Please only use English when involving everything within this repository (commit message, merge request, variables, comments, etc.)
