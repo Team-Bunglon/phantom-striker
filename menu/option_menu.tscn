@@ -42,6 +42,7 @@ layout_mode = 2
 
 [node name="Music" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "Music Volume
@@ -52,6 +53,7 @@ can_increase = true
 
 [node name="Sound" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "Sound Volume
@@ -62,6 +64,7 @@ can_increase = true
 
 [node name="Scaling" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "Scaling"
@@ -71,6 +74,7 @@ can_increase = true
 
 [node name="Fullscreen" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "Fullscreen"
@@ -80,6 +84,7 @@ can_increase = true
 
 [node name="Speed" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "Game Speed
@@ -90,6 +95,7 @@ can_increase = true
 
 [node name="Return" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "Return
@@ -105,18 +111,21 @@ layout_mode = 2
 
 [node name="MusicValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "5"
 
 [node name="SoundValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "5"
 
 [node name="ScalingValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "1x
@@ -124,12 +133,14 @@ text = "1x
 
 [node name="FullscreenValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "No"
 
 [node name="SpeedValue" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_kxy6g")
 theme_override_font_sizes/font_size = 20
 text = "100%"

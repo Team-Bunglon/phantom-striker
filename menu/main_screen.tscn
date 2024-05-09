@@ -321,6 +321,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
 offset_right = 640.0
 offset_bottom = 480.0
 
@@ -348,6 +349,7 @@ offset_left = 2.0
 offset_top = 454.0
 offset_right = 614.0
 offset_bottom = 490.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1t8xw")
 theme_override_font_sizes/font_size = 20
 text = "Version Alpha"

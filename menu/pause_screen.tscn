@@ -21,6 +21,7 @@ color = Color(0, 0, 0, 0.588235)
 [node name="Title" type="Label" parent="."]
 offset_right = 640.0
 offset_bottom = 192.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_58d74")
 theme_override_font_sizes/font_size = 80
 text = "PAUSED"

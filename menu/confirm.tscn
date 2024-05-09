@@ -20,6 +20,7 @@ offset_left = -320.0
 offset_top = -59.0
 offset_right = 960.0
 offset_bottom = -11.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_emdt6")
 theme_override_font_sizes/font_size = 20
 text = "Are you sure you want to do something?"
@@ -31,6 +32,7 @@ offset_left = -320.0
 offset_top = -35.0
 offset_right = 960.0
 offset_bottom = 13.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_emdt6")
 theme_override_font_sizes/font_size = 20
 text = "ALL PROGRESS WILL BE LOST!"
@@ -63,6 +65,7 @@ layout_mode = 2
 
 [node name="No" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_emdt6")
 theme_override_font_sizes/font_size = 20
 text = "No
@@ -71,6 +74,7 @@ script = ExtResource("3_uo7nq")
 
 [node name="Yes" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_emdt6")
 theme_override_font_sizes/font_size = 20
 text = "Yes
