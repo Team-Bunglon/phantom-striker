@@ -1,6 +1,21 @@
 extends Node2D
+class_name Collectible
 
-var identifier: String	# Specific identifier for uniqueness. It needs to be a string since godot has a terrible job at autoconverting value inside an array.
+## The text that appears when the collectible is obtained.
+## Feel free to edit this for your own level with your own text.
+@export var obtain_text: Array[String] = [
+	"awesome!",
+	"obtain!",
+	"yippe!",
+	"great!",
+	"nice!",
+	"good!",
+	"yes!",
+	"1000"
+	]
+
+## Specific identifier for uniqueness. It needs to be a string since godot is terrible at autoconverting value from a json save.
+var identifier: String	
 
 func _ready():
 	if name != "Collectible": # The name MUST be "Collectible" to prevent more than one collectible per level. DO NOT DELETE!
@@ -9,10 +24,14 @@ func _ready():
 	if Global.collected.has(float(identifier)):
 		$Sprite2D.visible = false
 		$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
+	else:
+		$AnimationPlayer.play("idle")
 
 func _on_collectible_area_body_entered(body):
 	if body.name == "Player":
-		$Sprite2D.visible = false
+		Audio.play("Obtain")
+		$Obtain.text = obtain_text[randi() % len(obtain_text)]
+		$AnimationPlayer.play("obtained")
 		$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
 		Global.collected.append(identifier)
 		Global.collectibles += 1

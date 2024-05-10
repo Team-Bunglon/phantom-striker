@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cymvpxtr5hvfj"]
+[gd_scene load_steps=61 format=3 uid="uid://cymvpxtr5hvfj"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_jlnm5"]
 [ext_resource type="Texture2D" uid="uid://fcavorkwpf2v" path="res://assets/sprites/player_temp.png" id="2_a4eee"]
@@ -256,7 +256,65 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_jmc7l"]
+resource_name = "walk_right_slow"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 7, 6, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_tu77q"]
+resource_name = "walk_left_fast"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 6, 8, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fkumy"]
 resource_name = "walk_left"
 length = 0.8
 loop_mode = 1
@@ -287,7 +345,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8vipd"]
 resource_name = "walk_right"
-length = 0.8
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -296,10 +354,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7, 8, 7, 6, 5]
+"values": [4, 6, 8, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -325,8 +383,10 @@ _data = {
 "idle_right": SubResource("Animation_yp2vb"),
 "jump_left": SubResource("Animation_u3yoi"),
 "jump_right": SubResource("Animation_pw1n1"),
-"walk_left": SubResource("Animation_tu77q"),
-"walk_right": SubResource("Animation_8vipd")
+"walk_left": SubResource("Animation_fkumy"),
+"walk_left_fast": SubResource("Animation_tu77q"),
+"walk_right": SubResource("Animation_8vipd"),
+"walk_right_slow": SubResource("Animation_jmc7l")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qtler"]
@@ -657,7 +717,7 @@ hframes = 5
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -3.4741)
 scale = Vector2(1, 0.732701)
-polygon = PackedVector2Array(-7, -4.8122, -6, -7.54182, -1, -8.90664, 1, -8.90664, 6, -7.54182, 7, -4.8122, 7, 21.1193, -7, 21.1193)
+polygon = PackedVector2Array(-7, -4.8122, -5, -7.54182, -1, -8.90664, 1, -8.90664, 5, -7.54182, 7, -4.8122, 7, 21.1193, -7, 21.1193)
 
 [node name="DieParticle" type="GPUParticles2D" parent="."]
 emitting = false
@@ -670,55 +730,47 @@ preprocess = 0.1
 explosiveness = 1.0
 
 [node name="RayCastU" type="RayCast2D" parent="."]
-visible = false
 rotation = -3.14159
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastD" type="RayCast2D" parent="."]
-visible = false
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastL" type="RayCast2D" parent="."]
-visible = false
 rotation = 1.5708
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastR" type="RayCast2D" parent="."]
-visible = false
 rotation = -1.5708
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastUL" type="RayCast2D" parent="."]
-visible = false
 rotation = 2.35619
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastUR" type="RayCast2D" parent="."]
-visible = false
 rotation = -2.35619
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastDL" type="RayCast2D" parent="."]
-visible = false
 rotation = 0.785398
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastDR" type="RayCast2D" parent="."]
-visible = false
 rotation = -0.785398
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)

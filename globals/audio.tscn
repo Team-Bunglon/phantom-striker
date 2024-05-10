@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dr8rrhgmt3hv3" path="res://assets/audio/ui_accept.wav" id="7_s85mk"]
 [ext_resource type="AudioStream" uid="uid://bv18po1v1bypd" path="res://assets/audio/ui_cancel.wav" id="8_jdpph"]
 [ext_resource type="AudioStream" uid="uid://c1xt0o7ki4ryg" path="res://assets/audio/disintegrate.wav" id="10_5tgbh"]
+[ext_resource type="AudioStream" uid="uid://coffmew8smrh8" path="res://assets/audio/obtain.wav" id="12_ldmbr"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
@@ -76,4 +77,8 @@ stream = ExtResource("10_5tgbh")
 pitch_scale = 1.2
 bus = &"Sound"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Obtain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ldmbr")
+pitch_scale = 0.8
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]

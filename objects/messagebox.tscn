@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpqqe8wdbikrv"]
+[gd_scene load_steps=4 format=3 uid="uid://cibr418efis5b"]
 
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_2g2nj"]
 [ext_resource type="Script" path="res://objects/messagebox.gd" id="1_vkfqa"]
@@ -19,11 +19,10 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -155.5
-offset_top = 37.0
+offset_top = 36.0
 offset_right = 155.5
-offset_bottom = 148.0
+offset_bottom = 147.0
 grow_horizontal = 2
-scale = Vector2(0.809694, 0.681927)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/margin_left = 20
@@ -40,7 +39,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 7
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 7
 theme_override_constants/margin_bottom = 7
 

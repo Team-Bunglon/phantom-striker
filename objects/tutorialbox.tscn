@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3ljmo3jdi2xc"]
+[gd_scene load_steps=4 format=3 uid="uid://gd4ksfsvmsui"]
 
 [ext_resource type="Script" path="res://objects/tutorialbox.gd" id="1_7t0ub"]
 [ext_resource type="Texture2D" uid="uid://bgcckpjila25r" path="res://assets/sprites/tutorial_box.png" id="1_efgy8"]
