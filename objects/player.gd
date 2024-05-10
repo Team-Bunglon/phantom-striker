@@ -100,7 +100,10 @@ func _move():
 	elif is_on_floor():
 		launch_x = move_toward(launch_x, 0, air_friction_current*4)
 
-	var direction_move = direction * max_speed
+	var max_speed_current = max_speed
+	if Input.is_action_pressed("slow"):
+		max_speed_current /= 3
+	var direction_move = direction * max_speed_current
 	var launch_x_move = launch_x_direction * launch_x
 
 	if direction and move_delay_count == 0: # When the input is pressed.

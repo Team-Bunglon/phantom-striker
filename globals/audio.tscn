@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=15 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
