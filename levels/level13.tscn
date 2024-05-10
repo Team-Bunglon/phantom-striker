@@ -74,6 +74,5 @@ metadata/_edit_lock_ = true
 
 [node name="Collectible" parent="." instance=ExtResource("8_00g63")]
 position = Vector2(321, 86)
-identifier = 13
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
