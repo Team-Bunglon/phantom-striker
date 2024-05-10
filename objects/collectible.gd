@@ -21,7 +21,7 @@ func _ready():
 	if name != "Collectible": # The name MUST be "Collectible" to prevent more than one collectible per level. DO NOT DELETE!
 		assert(false, "A level can only have one collectible")
 	identifier = str(get_parent().get_number())
-	if Global.collected.has(float(identifier)):
+	if Global.collected.has(identifier):
 		$Sprite2D.visible = false
 		$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
 	else:
@@ -33,5 +33,5 @@ func _on_collectible_area_body_entered(body):
 		$Obtain.text = obtain_text[randi() % len(obtain_text)]
 		$AnimationPlayer.play("obtained")
 		$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
-		Global.collected.append(identifier)
+		Global.collected[identifier] = "0"
 		Global.collectibles += 1

@@ -24,7 +24,7 @@ var collectibles: int = 0: ## How many collectibles the player has obtain.
 	set(value):
 		collectibles = value
 		save_game()
-var collected: Array = [] ## Keep track of the collected collectible so the player doesn't have to collect it again if they die.
+var collected: Dictionary = {} ## Keep track of the collected collectible so the player doesn't have to collect it again if they die.
 
 # Saveable variable maybe??????
 var music_vol: int = 5:
@@ -57,7 +57,7 @@ func reset_global_value():
 	current_level = 1
 	death_count = 0
 	collectibles = 0
-	collected = []
+	collected = {}
 	GameStopwatch.reset()
 
 func _ready():
@@ -105,7 +105,7 @@ func load_game():
 	current_level = save.countables.get("current_level", 1)
 	death_count = save.countables.get("death_count", 0)
 	collectibles = save.countables.get("collectibles", 0)
-	collected = save.countables.get("collected", [])
+	collected = save.countables.get("collected", {})
 	GameStopwatch.set_elapsed_time_in_seconds(save.countables.get("time", 0))
 
 func save_exists():
