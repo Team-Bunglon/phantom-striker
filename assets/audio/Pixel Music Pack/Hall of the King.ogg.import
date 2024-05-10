@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8p68lttxxpc4"
+path="res://.godot/imported/Hall of the King.ogg-cd56aa398987979c44a7a3c75c8534cf.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Pixel Music Pack/Hall of the King.ogg"
+dest_files=["res://.godot/imported/Hall of the King.ogg-cd56aa398987979c44a7a3c75c8534cf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

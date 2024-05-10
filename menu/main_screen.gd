@@ -22,7 +22,6 @@ func _start_level(level_name: String, new_game := true):
 		Global.has_started_game = true
 		Global.reset_global_value()
 	Audio.play("Start")
-	Audio.music_play("Music1") # PLEASE CHANGE THIS!!!
 	Global.game_running = true
 	GameStopwatch.paused = false
 	get_tree().change_scene_to_file("res://levels/" + level_name + ".tscn")

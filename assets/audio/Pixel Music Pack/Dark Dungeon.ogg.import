@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bw18lj3gsfig2"
+path="res://.godot/imported/Dark Dungeon.ogg-da0308a32b1b7cc651ce7ede414753e5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Pixel Music Pack/Dark Dungeon.ogg"
+dest_files=["res://.godot/imported/Dark Dungeon.ogg-da0308a32b1b7cc651ce7ede414753e5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
