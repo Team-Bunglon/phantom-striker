@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_sijal"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_5alrh"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_a3m7r"]
-[ext_resource type="PackedScene" path="res://objects/destroyableplatform.tscn" id="4_yc5hj"]
+[ext_resource type="PackedScene" uid="uid://dc8xtnlvitx8p" path="res://objects/destroyableplatform.tscn" id="4_yc5hj"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_qhxk4"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_xsnq0"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_6t6lo"]

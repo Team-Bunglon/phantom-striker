@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_fd8f5"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_ewhtx"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_sbbf0"]
-[ext_resource type="PackedScene" path="res://objects/destroyableplatform.tscn" id="6_4yhsd"]
+[ext_resource type="PackedScene" uid="uid://dc8xtnlvitx8p" path="res://objects/destroyableplatform.tscn" id="6_4yhsd"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_23f4y"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_wgqji"]
 [ext_resource type="PackedScene" path="res://objects/movinghazard.tscn" id="9_y5egg"]
