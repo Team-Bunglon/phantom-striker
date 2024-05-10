@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://gd4ksfsvmsui"]
+
+[ext_resource type="Script" path="res://objects/tutorialbox.gd" id="1_7t0ub"]
+[ext_resource type="Texture2D" uid="uid://bgcckpjila25r" path="res://assets/sprites/tutorial_box.png" id="1_efgy8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74g87"]
+size = Vector2(16, 16)
+
+[node name="TutorialBox" type="Node2D"]
+
+[node name="TutorialBoxArea" type="Area2D" parent="."]
+script = ExtResource("1_7t0ub")
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialBoxArea"]
+texture = ExtResource("1_efgy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialBoxArea"]
+shape = SubResource("RectangleShape2D_74g87")
+
+[connection signal="body_entered" from="TutorialBoxArea" to="TutorialBoxArea" method="_on_body_entered"]
+[connection signal="body_exited" from="TutorialBoxArea" to="TutorialBoxArea" method="_on_body_exited"]

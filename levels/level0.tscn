@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://rn1v4rl2w1yc"]
+[gd_scene load_steps=20 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegratingplatform.tscn" id="9_gvq81"]
 [ext_resource type="PackedScene" uid="uid://dc8xtnlvitx8p" path="res://objects/destroyableplatform.tscn" id="10_dv218"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="12_03yfn"]
+[ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/messagebox.tscn" id="14_4vonv"]
+[ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorialbox.tscn" id="15_nag0m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te7is"]
 texture = ExtResource("5_h51gk")
@@ -594,9 +596,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_38ph4")
 metadata/_edit_lock_ = true
 
+[node name="TutorialBox" parent="." instance=ExtResource("15_nag0m")]
+position = Vector2(245, 310)
+
+[node name="MessageBox" parent="." instance=ExtResource("14_4vonv")]
+
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
-position = Vector2(268, 422)
-identifier = 1
+position = Vector2(200, 424)
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

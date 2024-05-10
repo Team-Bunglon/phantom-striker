@@ -15,6 +15,7 @@ func play(audio_name: String):
 
 ## Use this to play music as well as changing to other music.
 func music_play(music_name: String, is_fading = true):
+	print(music_name)
 	var fade_out_tween := create_tween()
 	var fade_in_tween := create_tween()
 	fade_out_tween.finished.connect(_on_music_faded)
@@ -26,6 +27,8 @@ func music_play(music_name: String, is_fading = true):
 
 	# During mid game when music is changed
 	elif music_node != null:
+		if music_node.get_name() == music_name:
+			return
 		music_prev = music_node
 		music_node = _get_music(music_name)
 		if is_fading:

@@ -9,3 +9,11 @@ mus_name.mp3
 Title Name by Artist Name
 License: PUT ITS LICENSE HERE!
 https://example.com
+
+Pixel Music Pack
+==========
+Dark Dungeon by alkakrab
+Ghost Castle by alkakrab
+Hall of the King by alkakrab
+License: "Absolutely Free For Commercial use"
+https://alkakrab.itch.io/free-12-tracks-pixel-rpg-game-music-pack

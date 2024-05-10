@@ -52,6 +52,7 @@ func _on_pause_menu_main_menu():
 func _on_confirm_restart_yes_selected():
 	_on_pause_menu_resume_game()
 	Global.reset_global_value()
+	Audio.play("Start")
 	$"PauseMenu/Cursor".cursor_index = 0
 	$"ConfirmRestart/Cursor".cursor_index = 0
 	get_tree().change_scene_to_file("res://levels/level1.tscn")

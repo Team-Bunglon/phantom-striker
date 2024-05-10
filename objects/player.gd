@@ -4,7 +4,7 @@ class_name Player
 @export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 @export var looking_left: bool = false			## The character will look left at the start of the level.
 @export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
-@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "DisintegratingPlatform", "DestroyablePlatform"]  ## The tilemap/object that the strike raycast will detect upon. The string will be checked using "begins_with()" method.
+@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "DisintegratingPlatform", "DestroyablePlatform", "MovingPlatform"]  ## The tilemap/object that the strike raycast will detect upon. The string will be checked using "begins_with()" method.
 @export var kill_tiles: Array[String]	   = ["SpikeMap", "MovingHazard"] ## The tilemap/object that will kill the character upon contact. The string will be checked using "begins_with()" method.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
@@ -80,6 +80,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 	_jump(delta)
+	_jump_push()
 	_strike()
 	_strike_hold_input()
 	_move()
@@ -100,7 +101,10 @@ func _move():
 	elif is_on_floor():
 		launch_x = move_toward(launch_x, 0, air_friction_current*4)
 
-	var direction_move = direction * max_speed
+	var max_speed_current = max_speed
+	if Input.is_action_pressed("slow"):
+		max_speed_current /= 3
+	var direction_move = direction * max_speed_current
 	var launch_x_move = launch_x_direction * launch_x
 
 	if direction and move_delay_count == 0: # When the input is pressed.
@@ -158,6 +162,19 @@ func _jump_procedure():
 	velocity.y = -jump_velocity
 	coyote_count = 0
 	jump_buffer_count = 0
+
+## Pushing the player when the portion of his head hits the celling instead of stopping him.
+func _jump_push():
+	if velocity.y >= 0.0:
+		return
+	if $RayPushL.is_colliding() and \
+		not $RayPushM.is_colliding() and \
+		not $RayPushR.is_colliding():
+			global_position.x += 6
+	elif $RayPushR.is_colliding() and \
+		not $RayPushM.is_colliding() and \
+		not $RayPushL.is_colliding():
+			global_position.x -= 6
 
 ## The striking function
 func _strike():
