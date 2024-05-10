@@ -18,6 +18,12 @@ func _ready():
 	$Canvas/RoomName.text = room_name
 	Global.current_level = get_number()
 	Global.save_game() # this will save the game on every level change or restart
+	# Music
+	var current_level = get_number()
+	if current_level >= 0 and current_level < 21:
+		Audio.music_play("Music120")
+	else:
+		Audio.music_play("Music2130")
 
 func _on_kill_zone_body_entered(body:Node2D):
 	if body.name == "Player":
