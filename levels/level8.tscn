@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://og3ss00qyt1a"]
+[gd_scene load_steps=11 format=3 uid="uid://og3ss00qyt1a"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_vyfr4"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_tu78h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_prwhr"]
 [ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/blackdiamond.tscn" id="7_n2vhs"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="8_heap4"]
+[ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="9_t138a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 18)
@@ -50,7 +51,7 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 1, 131072, 1, 1, 196608,
 [node name="SpikeMap" type="TileMap" parent="."]
 tile_set = ExtResource("5_d685k")
 format = 2
-layer_0/tile_data = PackedInt32Array(1507358, 131072, 0, 1376286, 131072, 0, 1441815, 196608, 0, 1507351, 196608, 0, 1376279, 196608, 0, 1441822, 131072, 0, 1048608, 196608, 0, 983072, 196608, 0, 917536, 196608, 0, 851993, 131072, 0, 917529, 131072, 0, 786457, 131072, 0, 851986, 196608, 0, 917522, 196608, 0, 786450, 196608, 0, 720911, 131072, 0, 786447, 131072, 0, 655375, 131072, 0, 786440, 196608, 0, 720904, 196608, 0, 655368, 196608, 0, 458760, 131072, 0, 393224, 131072, 0, 327688, 131072, 0, 327681, 196608, 0, 393217, 196608, 0, 458753, 196608, 0, 1769489, 0, 0, 1769490, 0, 0, 1769491, 0, 0, 1769492, 0, 0, 1769493, 0, 0, 1769494, 0, 0, 1769495, 0, 0, 1769496, 0, 0, 1769497, 0, 0, 1769498, 0, 0, 1769499, 0, 0, 1769500, 0, 0, 1769501, 0, 0, 1769473, 0, 0, 1769474, 0, 0, 1769479, 0, 0, 1769480, 0, 0, 1769481, 0, 0, 1769483, 0, 0, 1769484, 0, 0, 1769485, 0, 0, 1769482, 0, 0)
+layer_0/tile_data = PackedInt32Array(1507358, 131072, 0, 1376286, 131072, 0, 1441815, 196608, 0, 1507351, 196608, 0, 1376279, 196608, 0, 1441822, 131072, 0, 1048608, 196608, 0, 983072, 196608, 0, 917536, 196608, 0, 851993, 131072, 0, 917529, 131072, 0, 786457, 131072, 0, 851986, 196608, 0, 917522, 196608, 0, 786450, 196608, 0, 720911, 131072, 0, 786447, 131072, 0, 655375, 131072, 0, 786440, 196608, 0, 720904, 196608, 0, 655368, 196608, 0, 458760, 131072, 0, 393224, 131072, 0, 327688, 131072, 0, 327681, 196608, 0, 393217, 196608, 0, 458753, 196608, 0, 1769489, 0, 0, 1769490, 0, 0, 1769491, 0, 0, 1769492, 0, 0, 1769493, 0, 0, 1769494, 0, 0, 1769495, 0, 0, 1769496, 0, 0, 1769497, 0, 0, 1769498, 0, 0, 1769499, 0, 0, 1769500, 0, 0, 1769501, 0, 0, 1769473, 0, 0, 1769474, 0, 0, 1769479, 0, 0, 1769480, 0, 0, 1769481, 0, 0, 1769483, 0, 0, 1769484, 0, 0, 1769485, 0, 0, 1769482, 0, 0, 1769502, 0, 0, 1769503, 0, 0, 1769504, 0, 0, 1769505, 0, 0)
 
 [node name="WinZone" type="Area2D" parent="."]
 
@@ -77,5 +78,8 @@ position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("8_heap4")
 metadata/_edit_lock_ = true
+
+[node name="Collectible" parent="." instance=ExtResource("9_t138a")]
+position = Vector2(600, 441)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
