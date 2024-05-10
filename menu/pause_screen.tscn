@@ -52,7 +52,7 @@ offset_top = 238.0
 offset_bottom = 238.0
 return_object = NodePath("../PauseMenu")
 line1_text = "Are you sure you want to quit to main menu?"
-line2_text = "Progress will be saved"
+line2_text = "All progress will be saved"
 
 [node name="HBoxCount" type="HBoxContainer" parent="."]
 offset_top = 153.0
