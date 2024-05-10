@@ -80,6 +80,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 	_jump(delta)
+	_jump_push()
 	_strike()
 	_strike_hold_input()
 	_move()
@@ -161,6 +162,19 @@ func _jump_procedure():
 	velocity.y = -jump_velocity
 	coyote_count = 0
 	jump_buffer_count = 0
+
+## Pushing the player when the portion of his head hits the celling instead of stopping him.
+func _jump_push():
+	if velocity.y >= 0.0:
+		return
+	if $RayPushL.is_colliding() and \
+		not $RayPushM.is_colliding() and \
+		not $RayPushR.is_colliding():
+			global_position.x += 6
+	elif $RayPushR.is_colliding() and \
+		not $RayPushM.is_colliding() and \
+		not $RayPushL.is_colliding():
+			global_position.x -= 6
 
 ## The striking function
 func _strike():
