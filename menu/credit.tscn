@@ -1,0 +1,341 @@
+[gd_scene load_steps=8 format=3 uid="uid://ntq75wuam6vt"]
+
+[ext_resource type="Script" path="res://menu/credit.gd" id="1_dxt3q"]
+[ext_resource type="Texture2D" uid="uid://dhak7ge0tfif6" path="res://assets/sprites/logo.png" id="1_e16ll"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_vs1t1"]
+[ext_resource type="Texture2D" uid="uid://ceg5b0l8ggr83" path="res://icon.svg" id="4_thq15"]
+[ext_resource type="Texture2D" uid="uid://pul8s0lksqe7" path="res://assets/sprites/Logo_Aseprite.png" id="5_8gpn6"]
+[ext_resource type="Script" path="res://menu/Continue.gd" id="7_4sjr5"]
+[ext_resource type="Texture2D" uid="uid://c0s4r252ya5cy" path="res://assets/sprites/happyghost2.png" id="7_5t864"]
+
+[node name="Credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dxt3q")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 192.0
+offset_right = 1472.0
+offset_bottom = 961.0
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 0
+texture = ExtResource("1_e16ll")
+stretch_mode = 5
+
+[node name="Credit1" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+offset_left = 200.0
+offset_top = 124.0
+offset_right = 440.0
+offset_bottom = 284.0
+
+[node name="Label" type="Label" parent="Credit1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Congratulations! You have reached the fruit of life and recieve the gift of a physical body."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Credit1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Now how do you get off from the tree top?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Credit2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 124.0
+offset_right = 440.0
+offset_bottom = 288.0
+
+[node name="Label6" type="Label" parent="Credit2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.678431, 0.372549, 0.588235, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Team Bunglon"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credit2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Rayhan Ryu"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Credit2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Ramadhan Azka Dhamawan"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credit2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Naufal Zhafari Zahran"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Credit2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Ivan Rabbani Cezeliano"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Credit2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Alvaro Luqman Widyadharma"
+horizontal_alignment = 1
+
+[node name="Credit3" type="VBoxContainer" parent="."]
+visible = false
+clip_contents = true
+offset_left = 160.0
+offset_top = 96.0
+offset_right = 496.0
+offset_bottom = 232.0
+
+[node name="Label6" type="Label" parent="Credit3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.984314, 0.313726, 0.337255, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Third Party Assets"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credit3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label6" type="Label" parent="Credit3/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Sound Effects by:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credit3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Juhani Junkala"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Credit3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label3" type="Label" parent="Credit3/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Stopwatch Addon by:"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credit3/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "GuaraProductions"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Credit3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.984314, 0.313726, 0.337255, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Musics"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Credit3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label3" type="Label" parent="Credit3/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Lazy Dayze"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credit3/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "DBOYD"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Credit3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label3" type="Label" parent="Credit3/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Dark Dungeon"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credit3/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "alkakrab"
+horizontal_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Credit3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label3" type="Label" parent="Credit3/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Ghost Castle"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credit3/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "alkakrab"
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Credit3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label3" type="Label" parent="Credit3/HBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Hall of the King"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credit3/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "alkakrab"
+horizontal_alignment = 1
+
+[node name="Credit4" type="VBoxContainer" parent="."]
+visible = false
+clip_contents = true
+offset_left = 152.0
+offset_top = 128.0
+offset_right = 488.0
+offset_bottom = 300.0
+theme_override_constants/separation = 20
+
+[node name="Label6" type="Label" parent="Credit4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.333333, 0.443137, 1, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Technology Used:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credit4"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Credit4/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_thq15")
+
+[node name="TextureRect2" type="TextureRect" parent="Credit4/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_8gpn6")
+
+[node name="Credit5" type="VBoxContainer" parent="."]
+visible = false
+clip_contents = true
+offset_left = 152.0
+offset_top = 136.0
+offset_right = 488.0
+offset_bottom = 272.0
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label6" type="Label" parent="Credit5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 0.654902, 0.356863, 1)
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Thank You For Playing!"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="Credit5"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_vs1t1")
+theme_override_font_sizes/font_size = 20
+text = "Continue"
+flat = true
+script = ExtResource("7_4sjr5")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 328.0
+offset_right = 609.0
+offset_bottom = 688.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_5t864")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="Credit5/Continue" to="Credit5/Continue" method="_on_pressed"]
