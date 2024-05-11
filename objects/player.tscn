@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://cymvpxtr5hvfj"]
+[gd_scene load_steps=23 format=3 uid="uid://cymvpxtr5hvfj"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_jlnm5"]
-[ext_resource type="Texture2D" uid="uid://fcavorkwpf2v" path="res://assets/sprites/player_temp.png" id="2_a4eee"]
 [ext_resource type="Texture2D" uid="uid://f58i8o5y2e4l" path="res://assets/sprites/player.png" id="2_gd2j6"]
 [ext_resource type="Texture2D" uid="uid://nmpsxlowdlmd" path="res://assets/sprites/particle1.png" id="3_ntvri"]
 
@@ -101,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [4]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -129,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [4]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -213,7 +212,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -241,7 +240,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -256,8 +255,8 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_jmc7l"]
-resource_name = "walk_right_slow"
+[sub_resource type="Animation" id="Animation_fkumy"]
+resource_name = "walk_left"
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -270,7 +269,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7, 8, 7, 6, 5]
+"values": [5, 6, 7, 8, 9, 8, 7, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -282,7 +281,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tu77q"]
@@ -314,8 +313,8 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_fkumy"]
-resource_name = "walk_left"
+[sub_resource type="Animation" id="Animation_jmc7l"]
+resource_name = "walk_right_slow"
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -340,12 +339,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_8vipd"]
+[sub_resource type="Animation" id="Animation_5jti5"]
 resource_name = "walk_right"
-length = 0.4
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -354,10 +353,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 6, 8, 6]
+"values": [5, 6, 7, 8, 9, 8, 7, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -385,14 +384,14 @@ _data = {
 "jump_right": SubResource("Animation_pw1n1"),
 "walk_left": SubResource("Animation_fkumy"),
 "walk_left_fast": SubResource("Animation_tu77q"),
-"walk_right": SubResource("Animation_8vipd"),
+"walk_right": SubResource("Animation_5jti5"),
 "walk_right_slow": SubResource("Animation_jmc7l")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qtler"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1c70r"]
-size = Vector2(12, 28.6611)
+size = Vector2(12, 21)
 
 [sub_resource type="Curve" id="Curve_icnat"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.732258, 0.589562), -1.4838, -1.4838, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -416,6 +415,31 @@ color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_jlnm5")
+strike_particle_length = null
+looking_left = null
+camera_shake = null
+strikable_tiles = null
+kill_tiles = null
+max_speed = null
+max_launch_x = null
+max_jump_height = null
+acceleration = null
+floor_friction = null
+air_friction = null
+jump_time_to_peak = null
+jump_time_to_descend = null
+jump_lost_multiplier = null
+reduced_height_multiplier = null
+jump_buffer_frame = null
+coyote_frame = null
+wall_buffer_frame = null
+strike_delay_frame = null
+move_delay_frame = null
+stretch_vector = null
+stretch_multiplier = null
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(0, -12)
 
 [node name="StrikeDelayTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -436,17 +460,12 @@ libraries = {
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_qtler")
 texture = ExtResource("2_gd2j6")
-hframes = 9
-
-[node name="SpriteOld" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("CanvasItemMaterial_qtler")
-texture = ExtResource("2_a4eee")
+offset = Vector2(0, -12)
 hframes = 5
+vframes = 2
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
-scale = Vector2(1, 0.732701)
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_1c70r")
 
 [node name="DieParticle" type="GPUParticles2D" parent="."]
@@ -460,62 +479,70 @@ preprocess = 0.1
 explosiveness = 1.0
 
 [node name="RayCastU" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = -3.14159
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastD" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastL" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = 1.5708
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastR" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = -1.5708
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastUL" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = 2.35619
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastUR" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = -2.35619
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastDL" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = 0.785398
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayCastDR" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 rotation = -0.785398
 scale = Vector2(4, 1)
 target_position = Vector2(0, 92)
 collision_mask = 7
 
 [node name="RayPushL" type="RayCast2D" parent="."]
-position = Vector2(-5, -9)
+position = Vector2(-5, -21)
 target_position = Vector2(0, -5)
 
 [node name="RayPushM" type="RayCast2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -21)
 target_position = Vector2(0, -5)
 
 [node name="RayPushR" type="RayCast2D" parent="."]
-position = Vector2(5, -9)
+position = Vector2(5, -21)
 target_position = Vector2(0, -5)
 
 [connection signal="timeout" from="StrikeDelayTimer" to="." method="_on_strike_delay_timer_timeout"]
