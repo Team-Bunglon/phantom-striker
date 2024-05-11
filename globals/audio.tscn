@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
-[ext_resource type="AudioStream" uid="uid://csf24f2s8t0xh" path="res://assets/audio/mus_menu.mp3" id="2_hqb76"]
+[ext_resource type="AudioStream" uid="uid://mu5mrrwrhviu" path="res://assets/audio/Pixel Music Pack/In the Castle.ogg" id="2_jyyqj"]
 [ext_resource type="AudioStream" uid="uid://bd0mbipr0yixd" path="res://assets/audio/strike.wav" id="3_1wihl"]
 [ext_resource type="AudioStream" uid="uid://bw18lj3gsfig2" path="res://assets/audio/Pixel Music Pack/Dark Dungeon.ogg" id="3_sy5ww"]
 [ext_resource type="AudioStream" uid="uid://dmcsmjqm4sk0y" path="res://assets/audio/hit.wav" id="4_bsjk2"]
@@ -20,8 +20,8 @@ process_mode = 3
 script = ExtResource("1_n4bf6")
 
 [node name="MusicMenu" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_hqb76")
-volume_db = -6.0
+stream = ExtResource("2_jyyqj")
+volume_db = -2.0
 bus = &"Music"
 
 [node name="Music120" type="AudioStreamPlayer" parent="."]
