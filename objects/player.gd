@@ -35,7 +35,14 @@ class_name Player
 @export var strike_delay_frame:	int = 1	 ## Input delay for launch action. This is done to correctly register diagonal launch action. 
 @export var move_delay_frame:	int = 10 ## Prevent the character from manually moving though the X axis after gaining horizontal launch within the frame duration.
 
+@export_category("Sprite Stretch")
+@export var stretch_vector:	Vector2 = Vector2(0.7, 1.3)	## The vector the sprite scale would change when being stretched or squashed.
+@export var stretch_multiplier: float = 1.0				## The multiplier of how fast the gradual scalling would take
+
 # Variables that will change
+var velocity_prev:		Vector2 = Vector2.ZERO
+var is_airborne:		bool = false
+var is_falling_stretch: bool = false
 var launch_x:			float = 0.0	 # The current launch speed on either X axis.
 var launch_x_direction: float = 1.0  # The direction of the launch.
 var jump_buffer_count:	int = 0
@@ -86,6 +93,8 @@ func _physics_process(delta):
 	_move()
 	_move_delay_countdown()
 	_move_procedure()
+	_squash_sprite()
+	_unstretch_sprite_delta(delta)
 
 ## Horizontal movement.
 ## This part is already so smooth I'm scared of changing anything.
@@ -106,6 +115,7 @@ func _move():
 		max_speed_current /= 3
 	var direction_move = direction * max_speed_current
 	var launch_x_move = launch_x_direction * launch_x
+	velocity_prev.x = velocity.x
 
 	if direction and move_delay_count == 0: # When the input is pressed.
 		if launch_x > 0.0: # Launch speed logic
@@ -145,7 +155,12 @@ func _get_gravity():
 
 ## Vertical Movement
 func _jump(delta):
+	velocity_prev.y = velocity.y
 	velocity.y += _get_gravity() * delta
+	if _get_gravity() == fall_gravity and not is_on_floor() and can_move:
+		is_airborne = true
+		if velocity.y >= fall_gravity * jump_time_to_descend * 0.4:
+			_stretch_sprite_delta(delta)
 	_coyote_countdown()
 	_jump_buffer_countdown()
 	if Input.is_action_just_pressed("jump"):
@@ -158,6 +173,7 @@ func _jump(delta):
 
 ## Performing said vertical movement
 func _jump_procedure():
+	_stretch_sprite()
 	Audio.play("Jump")
 	velocity.y = -jump_velocity
 	coyote_count = 0
@@ -201,11 +217,12 @@ func _strike_particle_create(raycast: RayCast2D):
 	strike_particle.set_default_length(strike_particle_length)
 
 	var strike_length: float = strike_particle_length
+	var strike_position: Vector2 = $Center.global_position
 	if raycast.is_colliding():
-		var collide_length = global_position.distance_to(raycast.get_collision_point())
+		var collide_length = strike_position.distance_to(raycast.get_collision_point())
 		strike_length = collide_length * strike_particle_length / raycast.target_position.y
 
-	strike_particle.emitting(global_position, raycast.rotation, strike_length)
+	strike_particle.emitting(strike_position, raycast.rotation, strike_length)
 	get_parent().add_child(strike_particle)
 
 ## Getting reaction from said strike
@@ -229,6 +246,9 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 				velocity.y = jump_velocity * direction.y / temp_mult
 			elif direction.y > 0.0: # Going Down
 				velocity.y = jump_velocity * direction.y * 2
+			# Sprite Stretching Function
+			if direction.x == 0.0 and direction.y != 0.0: _stretch_sprite()
+			elif direction.x != 0.0: _unstretch_sprite()
 		elif raycast.get_collider().name.begins_with("WhiteDiamond"):
 			if direction.x != 0.0:
 				move_delay_count = move_delay_frame
@@ -303,11 +323,42 @@ func _player_state(direction: int):
 	elif not is_on_floor():
 		$AnimationPlayer.play("jump" + face[direction])
 
+## Stretch the sprite immediately when jumping or launching vertically (but not-diagonally).
+func _stretch_sprite():
+	is_airborne = true
+	is_falling_stretch = false
+	$Sprite.scale = stretch_vector
+
+## Stretch the sprite gradually when falling.
+func _stretch_sprite_delta(delta):
+	is_airborne = true
+	is_falling_stretch = true
+	$Sprite.scale.x = move_toward($Sprite.scale.x, stretch_vector.x, stretch_multiplier * delta)
+	$Sprite.scale.y = move_toward($Sprite.scale.y, stretch_vector.y, stretch_multiplier * delta)
+
+## Squash the sprite immediately when landing.
+func _squash_sprite():
+	if is_on_floor() and is_airborne and not is_dying:
+		is_airborne = false
+		is_falling_stretch = false
+		$Sprite.scale = Vector2(stretch_vector.y, stretch_vector.x)
+
+## Unstretch the sprite immediately
+func _unstretch_sprite():
+	$Sprite.scale = Vector2.ONE
+
+## Unstretch the sprite gradually
+func _unstretch_sprite_delta(delta):
+	if not is_falling_stretch:
+		$Sprite.scale.x = move_toward($Sprite.scale.x, 1, stretch_multiplier * delta)
+		$Sprite.scale.y = move_toward($Sprite.scale.y, 1, stretch_multiplier * delta)
+
 ## Kill the character and restart the level. Should be called when killing him on other script.
 ## quick_death skips the first animation before the character explodes.
 func die(quick_death := false):
 	Global.death_count += 1
 	is_dying = true
+	$Sprite.scale = Vector2.ONE
 	if quick_death:
 		_explode()
 	else:
