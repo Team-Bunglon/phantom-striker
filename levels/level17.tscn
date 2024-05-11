@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnihnc8kc7pqg"]
+[gd_scene load_steps=10 format=3 uid="uid://cnihnc8kc7pqg"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_xgsho"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_ifiyx"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_1ecga"]
 [ext_resource type="PackedScene" uid="uid://e4hdbp7efx78" path="res://objects/movinghazard.tscn" id="8_honyv"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="8_x8pww"]
-[ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="9_uay7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 52.5)
@@ -88,8 +87,5 @@ direction = "left"
 [node name="MovingHazard5" parent="." instance=ExtResource("8_honyv")]
 position = Vector2(394, 425)
 direction = "right"
-
-[node name="Collectible" parent="." instance=ExtResource("9_uay7l")]
-position = Vector2(148, 133)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
