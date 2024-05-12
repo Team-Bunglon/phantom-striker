@@ -8,7 +8,7 @@
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_qhxk4"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_xsnq0"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_6t6lo"]
-[ext_resource type="PackedScene" path="res://objects/movinghazard.tscn" id="9_x0ifj"]
+[ext_resource type="PackedScene" uid="uid://e4hdbp7efx78" path="res://objects/movinghazard.tscn" id="9_x0ifj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 46.25)

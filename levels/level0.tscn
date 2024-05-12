@@ -542,7 +542,6 @@ position = Vector2(24, 288)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-stretch_multiplier = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_bygm3")
