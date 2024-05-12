@@ -542,7 +542,6 @@ position = Vector2(24, 288)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-stretch_multiplier = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_bygm3")
@@ -581,7 +580,7 @@ position = Vector2(335, 369)
 position = Vector2(168, 424)
 
 [node name="DestroyablePlatform" parent="." instance=ExtResource("10_dv218")]
-layer_0/tile_data = PackedInt32Array(1572888, 0, 0, 1572889, 0, 0, 1572890, 0, 0, 1572891, 0, 0, 1572892, 0, 0)
+layer_0/tile_data = PackedInt32Array(1572888, 0, 0, 1572889, 0, 0, 1572890, 0, 0, 1572891, 0, 0, 1572892, 0, 0, 1703956, 0, 0, 1703957, 0, 0, 1703958, 0, 0, 1703959, 0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
