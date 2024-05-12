@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://blfi543j4p7bm" path="res://objects/movingplatform.tscn" id="10_mp18u"]
 [ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegratingplatform.tscn" id="11_2tiwl"]
 [ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamond.tscn" id="12_u6eg6"]
+[ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratableplatform.tscn" id="13_ganj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 46.25)
@@ -113,18 +114,6 @@ direction = "down"
 [node name="MovingPlatform" parent="." instance=ExtResource("10_mp18u")]
 position = Vector2(592, 392)
 
-[node name="DisintegratingPlatform" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(520, 408)
-
-[node name="DisintegratingPlatform2" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(504, 408)
-
-[node name="DisintegratingPlatform3" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(536, 408)
-
-[node name="DisintegratingPlatform4" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(488, 408)
-
 [node name="MovingPlatform2" parent="." instance=ExtResource("10_mp18u")]
 position = Vector2(416, 408)
 
@@ -146,17 +135,11 @@ direction = "down"
 [node name="MovingPlatform4" parent="." instance=ExtResource("10_mp18u")]
 position = Vector2(160, 408)
 
-[node name="DisintegratingPlatform5" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(216, 136)
-
-[node name="DisintegratingPlatform6" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(424, 232)
-
 [node name="WhiteDiamond" parent="." instance=ExtResource("12_u6eg6")]
 position = Vector2(248, 120)
 
-[node name="DisintegratingPlatform7" parent="." instance=ExtResource("11_2tiwl")]
-position = Vector2(472, 408)
+[node name="DisintegratablePlatform" parent="." instance=ExtResource("13_ganj4")]
+layer_0/tile_data = PackedInt32Array(1638429, 0, 0, 1638430, 0, 0, 1638431, 0, 0, 1638432, 0, 0, 1638433, 0, 0, 524301, 0, 0, 917530, 0, 0)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="4_g1dff"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="5_5uelr"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="6_sgt68"]
+[ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratableplatform.tscn" id="7_uqpp5"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="7_xi5pi"]
-[ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegratingplatform.tscn" id="8_uxk08"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="9_54gw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
@@ -66,10 +66,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_sgt68")
 metadata/_edit_lock_ = true
 
+[node name="DisintegratablePlatform" parent="." instance=ExtResource("7_uqpp5")]
+layer_0/tile_data = PackedInt32Array(1310730, 0, 0, 1310731, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 851978, 0, 0, 851979, 0, 0, 983076, 0, 0, 393252, 0, 0, 393253, 0, 0, 655397, 0, 0, 655398, 0, 0)
+
 [node name="SpikeMap" type="TileMap" parent="."]
 tile_set = ExtResource("7_xi5pi")
 format = 2
-layer_0/tile_data = PackedInt32Array(196642, 196608, 0, 262178, 196608, 0, 327714, 196608, 0, 393250, 196608, 0, 458786, 196608, 0, 524322, 196608, 0, 589858, 196608, 0, 655394, 196608, 0, 720930, 196608, 0, 786466, 196608, 0, 852002, 196608, 0, 917538, 196608, 0, 1245203, 65536, 0, 1245205, 65536, 0, 1114137, 65536, 0, 1441827, 65536, 0, 851981, 196608, 0, 589841, 0, 0, 589844, 0, 0, 720921, 0, 0, 851996, 0, 0, 983071, 0, 0, 65550, 65536, 0, 65551, 65536, 0, 65552, 65536, 0, 65553, 65536, 0, 65554, 65536, 0, 65555, 65536, 0, 65556, 65536, 0, 65557, 65536, 0, 65558, 65536, 0, 65559, 65536, 0, 65560, 65536, 0, 65561, 65536, 0, 65562, 65536, 0, 65564, 65536, 0, 65563, 65536, 0, 65565, 65536, 0, 196609, 131072, 0, 262145, 131072, 0, 327681, 131072, 0, 393217, 131072, 0, 458753, 131072, 0, 524289, 131072, 0, 589825, 131072, 0, 655361, 131072, 0, 720897, 131072, 0, 786433, 131072, 0, 851969, 131072, 0, 917505, 131072, 0, 983041, 131072, 0, 1048577, 131072, 0, 1114113, 131072, 0, 1179649, 131072, 0, 1245185, 131072, 0, 1310721, 131072, 0, 1376257, 131072, 0, 1441793, 131072, 0, 1507329, 131072, 0, 1572865, 131072, 0, 1769489, 0, 0, 1638420, 0, 0, 1769508, 0, 0, 1441818, 0, 0, 1507354, 65536, 0, 1507352, 0, 0, 1245214, 65536, 0, 1310752, 65536, 0, 65549, 65536, 0, 65548, 65536, 0, 65547, 65536, 0, 65546, 65536, 0, 65545, 65536, 0, 65544, 65536, 0, 65543, 65536, 0, 65542, 65536, 0, 65541, 65536, 0, 65540, 65536, 0, 65539, 65536, 0, 65566, 65536, 0, 65567, 65536, 0, 65568, 65536, 0, 262163, 196608, 0, 262164, 131072, 0, 393241, 0, 0, 458777, 65536, 0, 655390, 65536, 0, 589854, 0, 0, 1310729, 196608, 0, 1310732, 131072, 0, 1114120, 131072, 0, 1114116, 196608, 0, 983077, 131072, 0, 851980, 131072, 0, 851977, 196608, 0, 327687, 196608, 0, 327688, 131072, 0, 327692, 0, 0, 393228, 65536, 0, 589828, 65536, 0, 524292, 0, 0, 1376287, 131072, 0, 1376286, 196608, 0, 1769505, 0, 0, 1769502, 0, 0, 720933, 65536, 0, 720934, 65536, 0, 458788, 65536, 0, 458789, 65536, 0)
+layer_0/tile_data = PackedInt32Array(196642, 196608, 0, 262178, 196608, 0, 327714, 196608, 0, 393250, 196608, 0, 458786, 196608, 0, 524322, 196608, 0, 589858, 196608, 0, 655394, 196608, 0, 720930, 196608, 0, 786466, 196608, 0, 1245203, 65536, 0, 1245205, 65536, 0, 1114137, 65536, 0, 1441827, 65536, 0, 851981, 196608, 0, 589841, 0, 0, 589844, 0, 0, 720921, 0, 0, 851996, 0, 0, 983071, 0, 0, 65550, 65536, 0, 65551, 65536, 0, 65552, 65536, 0, 65553, 65536, 0, 65554, 65536, 0, 65555, 65536, 0, 65556, 65536, 0, 65557, 65536, 0, 65558, 65536, 0, 65559, 65536, 0, 65560, 65536, 0, 65561, 65536, 0, 65562, 65536, 0, 65564, 65536, 0, 65563, 65536, 0, 65565, 65536, 0, 196609, 131072, 0, 262145, 131072, 0, 327681, 131072, 0, 393217, 131072, 0, 458753, 131072, 0, 524289, 131072, 0, 589825, 131072, 0, 655361, 131072, 0, 720897, 131072, 0, 786433, 131072, 0, 851969, 131072, 0, 917505, 131072, 0, 983041, 131072, 0, 1048577, 131072, 0, 1114113, 131072, 0, 1179649, 131072, 0, 1245185, 131072, 0, 1310721, 131072, 0, 1376257, 131072, 0, 1441793, 131072, 0, 1507329, 131072, 0, 1572865, 131072, 0, 1769489, 0, 0, 1638420, 0, 0, 1769508, 0, 0, 1441818, 0, 0, 1507354, 65536, 0, 1507352, 0, 0, 1245214, 65536, 0, 1310752, 65536, 0, 65549, 65536, 0, 65548, 65536, 0, 65547, 65536, 0, 65546, 65536, 0, 65545, 65536, 0, 65544, 65536, 0, 65543, 65536, 0, 65542, 65536, 0, 65541, 65536, 0, 65540, 65536, 0, 65539, 65536, 0, 65566, 65536, 0, 65567, 65536, 0, 65568, 65536, 0, 262163, 196608, 0, 262164, 131072, 0, 393241, 0, 0, 458777, 65536, 0, 655390, 65536, 0, 589854, 0, 0, 1310729, 196608, 0, 1310732, 131072, 0, 1114120, 131072, 0, 1114116, 196608, 0, 983077, 131072, 0, 851980, 131072, 0, 851977, 196608, 0, 327687, 196608, 0, 327688, 131072, 0, 327692, 0, 0, 393228, 65536, 0, 589828, 65536, 0, 524292, 0, 0, 1376287, 131072, 0, 1376286, 196608, 0, 1769505, 0, 0, 1769502, 0, 0, 720933, 65536, 0, 720934, 65536, 0, 458788, 65536, 0, 458789, 65536, 0)
 
 [node name="KillZone" type="Area2D" parent="."]
 
@@ -82,42 +85,6 @@ shape = SubResource("RectangleShape2D_61ngw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(634, 40.5)
 shape = SubResource("RectangleShape2D_dduow")
-
-[node name="DisintegratingPlatform3" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(168, 328)
-
-[node name="DisintegratingPlatform4" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(184, 328)
-
-[node name="DisintegratingPlatform7" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(168, 216)
-
-[node name="DisintegratingPlatform8" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(184, 216)
-
-[node name="DisintegratingPlatform15" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(584, 248)
-
-[node name="DisintegratingPlatform2" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(120, 280)
-
-[node name="DisintegratingPlatform5" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(104, 280)
-
-[node name="DisintegratingPlatform6" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(88, 280)
-
-[node name="DisintegratingPlatform9" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(600, 168)
-
-[node name="DisintegratingPlatform10" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(616, 168)
-
-[node name="DisintegratingPlatform11" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(584, 104)
-
-[node name="DisintegratingPlatform12" parent="." instance=ExtResource("8_uxk08")]
-position = Vector2(600, 104)
 
 [node name="Collectible" parent="." instance=ExtResource("9_54gw0")]
 position = Vector2(605, 435)

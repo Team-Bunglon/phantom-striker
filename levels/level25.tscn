@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlyv3wuogbl3k"]
+[gd_scene load_steps=11 format=3 uid="uid://dlyv3wuogbl3k"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_nj708"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_sijal"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_5alrh"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_a3m7r"]
-[ext_resource type="PackedScene" uid="uid://dc8xtnlvitx8p" path="res://objects/destroyableplatform.tscn" id="4_yc5hj"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_qhxk4"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_xsnq0"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_6t6lo"]
@@ -16,7 +15,7 @@ size = Vector2(50, 46.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt656"]
 size = Vector2(768, 16)
 
-[node name="Level#31" type="Node2D"]
+[node name="Level#25" type="Node2D"]
 script = ExtResource("1_nj708")
 room_name = "Weee!"
 
@@ -40,7 +39,7 @@ color = Color(0.196078, 0.196078, 0.196078, 0.588235)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_5alrh")]
-position = Vector2(40, 408)
+position = Vector2(32, 416)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
@@ -80,8 +79,6 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(318, 490)
 shape = SubResource("RectangleShape2D_xt656")
-
-[node name="DestroyablePlatform" parent="." instance=ExtResource("4_yc5hj")]
 
 [node name="MovingHazard" parent="." instance=ExtResource("9_x0ifj")]
 position = Vector2(56, 104)
