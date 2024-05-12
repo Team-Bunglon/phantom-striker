@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7dkw3r6wr4xd"]
+
+[ext_resource type="Texture2D" uid="uid://ctkykbxfvc6h7" path="res://assets/sprites/disintegrate.png" id="1_w2qak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev1y0"]
+atlas = ExtResource("1_w2qak")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h7nd"]
+atlas = ExtResource("1_w2qak")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei18d"]
+atlas = ExtResource("1_w2qak")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsq87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev1y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h7nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei18d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="DisintegratableSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vsq87")

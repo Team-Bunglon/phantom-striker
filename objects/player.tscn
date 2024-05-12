@@ -415,28 +415,6 @@ color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_jlnm5")
-strike_particle_length = null
-looking_left = null
-camera_shake = null
-strikable_tiles = null
-kill_tiles = null
-max_speed = null
-max_launch_x = null
-max_jump_height = null
-acceleration = null
-floor_friction = null
-air_friction = null
-jump_time_to_peak = null
-jump_time_to_descend = null
-jump_lost_multiplier = null
-reduced_height_multiplier = null
-jump_buffer_frame = null
-coyote_frame = null
-wall_buffer_frame = null
-strike_delay_frame = null
-move_delay_frame = null
-stretch_vector = null
-stretch_multiplier = null
 
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(0, -12)

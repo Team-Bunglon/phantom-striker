@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://br48ymmvs4x35"]
+
+[ext_resource type="TileSet" uid="uid://bmcsklpnndjbb" path="res://assets/sprites/disintegratableplatform.tres" id="1_hcwjc"]
+[ext_resource type="Script" path="res://objects/disintegratableplatform.gd" id="1_htl75"]
+
+[node name="DisintegratablePlatform" type="TileMap"]
+tile_set = ExtResource("1_hcwjc")
+format = 2
+script = ExtResource("1_htl75")
+respawn_timer = null

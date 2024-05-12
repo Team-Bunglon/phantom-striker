@@ -4,7 +4,8 @@ class_name Player
 @export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 @export var looking_left: bool = false			## The character will look left at the start of the level.
 @export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
-@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "DisintegratingPlatform", "DestroyablePlatform", "MovingPlatform"]  ## The tilemap/object that the strike raycast will detect upon. The string will be checked using "begins_with()" method.
+@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform"]  ## The tilemap/object that the strike raycast will detect upon and the character will bounce. The string will be checked using "begins_with()" method.
+@export var reacting_tiles: Array[String]  = ["DisintegratingPlatform", "DisintegratablePlatform", "DestroyablePlatform"]  ## The tilemap/object that will react when being struck upon. The character will still bounce.
 @export var kill_tiles: Array[String]	   = ["SpikeMap", "MovingHazard"] ## The tilemap/object that will kill the character upon contact. The string will be checked using "begins_with()" method.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
@@ -61,6 +62,7 @@ var face: Dictionary = {
 }
 
 # Variables that shouldn't be changed
+@onready var all_strikeable_tiles: Array[String] = strikable_tiles + reacting_tiles
 @onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
@@ -232,11 +234,14 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
 		var collider := raycast.get_collider()
-		if collider.name.trim_suffix(str(collider.name.to_int())) in strikable_tiles:
-			if camera_shake: $"../Camera2D".shake(4,12)
-			if collider.name == "DestroyablePlatform":
+		var collider_name: String = collider.name.trim_suffix(str(collider.name.to_int()))
+		if collider_name in all_strikeable_tiles:
+			if camera_shake:
+				$"../Camera2D".shake(4,12)
+			if collider_name in reacting_tiles: 
 				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
-				collider.break_platform(collider.local_to_map(coords))
+				if collider.has_method("break_platform"):
+					collider.break_platform(collider.local_to_map(coords))
 			if direction.x != 0.0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
