@@ -45,28 +45,9 @@ script = ExtResource("3_4bqle")
 
 [node name="Player" parent="." instance=ExtResource("2_mcygu")]
 position = Vector2(26, 441)
-strike_particle_length = null
-looking_left = null
-camera_shake = null
-strikable_tiles = null
-kill_tiles = null
-max_speed = null
-max_launch_x = null
 max_jump_height = 80.0
-acceleration = null
-floor_friction = null
-air_friction = null
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-jump_lost_multiplier = null
-reduced_height_multiplier = null
-jump_buffer_frame = null
-coyote_frame = null
-wall_buffer_frame = null
-strike_delay_frame = null
-move_delay_frame = null
-stretch_vector = null
-stretch_multiplier = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_5p0by")
