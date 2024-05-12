@@ -27,6 +27,7 @@ func break_platform(coord):
 	respawn_tile[coord] = true
 
 	# Start the disintegrating animation
+	Audio.play("Disintegrate")
 	set_cell(0, coord, 0, Vector2i(3,0))
 	var sprite := _create_sprite(coord)
 	await(sprite.animation_finished)

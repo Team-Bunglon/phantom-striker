@@ -11,6 +11,7 @@ func break_platform(coord):
 	respawn_tile[coord] = true
 
 	# Set to broken strate and Create area 2D to hold that state when the player is inside. 
+	Audio.play("Destroy")
 	set_cell(0, coord, 0, Vector2i(1,0))
 	var area := _create_area(coord)
 
