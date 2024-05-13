@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_akf2k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_bygm3"]
-[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
+[ext_resource type="PackedScene" uid="uid://bb3g2sedbhtr2" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_gtbkc"]
 [ext_resource type="Texture2D" uid="uid://dxed0eouv8oai" path="res://assets/sprites/tiles_unstrikable.png" id="5_h51gk"]
 [ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/blackdiamond.tscn" id="6_aqsy6"]
@@ -585,7 +585,6 @@ layer_0/tile_data = PackedInt32Array(1572888, 0, 0, 1572889, 0, 0, 1572890, 0, 0
 
 [node name="DisintegratablePlatform" parent="." instance=ExtResource("11_drwpo")]
 layer_0/tile_data = PackedInt32Array(1638413, 0, 0, 1638414, 0, 0, 1638415, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1245194, 0, 0, 1245193, 0, 0)
-respawn_timer = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

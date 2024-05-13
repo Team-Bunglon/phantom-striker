@@ -235,6 +235,8 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 	if raycast.is_colliding():
 		var collider := raycast.get_collider()
 		var collider_name: String = collider.name.trim_suffix(str(collider.name.to_int()))
+		if collider.has_method("struck"):
+			collider.struck()
 		if collider_name in all_strikeable_tiles:
 			if camera_shake:
 				$"../Camera2D".shake(4,12)
