@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rn1v4rl2w1yc"]
+[gd_scene load_steps=22 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="12_03yfn"]
 [ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/messagebox.tscn" id="14_4vonv"]
 [ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorialbox.tscn" id="15_nag0m"]
+[ext_resource type="PackedScene" uid="uid://d28tu6uihh8rw" path="res://objects/movingplatformpoint.tscn" id="16_ypduf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te7is"]
 texture = ExtResource("5_h51gk")
@@ -606,6 +607,10 @@ metadata/_edit_lock_ = true
 [node name="TutorialBox" parent="." instance=ExtResource("15_nag0m")]
 position = Vector2(245, 310)
 message_object = NodePath("../MessageBox")
+
+[node name="MovingPlatformPoint" parent="." instance=ExtResource("16_ypduf")]
+position = Vector2(160, 264)
+direction = Vector2(0, -128)
 
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
 position = Vector2(200, 424)
