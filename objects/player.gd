@@ -194,7 +194,7 @@ func _jump_push():
 		not $RayPushL.is_colliding():
 			global_position.x -= 6
 
-## The striking function
+## The strike function
 func _strike():
 	var direction_x = Input.get_axis("strike_left", "strike_right")	  # Left is -1, right is +1
 	var direction_y = Input.get_axis("strike_up", "strike_down") * -1 # Down is -1, up is +1
@@ -233,7 +233,11 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 		temp_mult = reduced_height_multiplier
 	if raycast.is_colliding():
 		var collider := raycast.get_collider()
-		var collider_name: String = collider.name.trim_suffix(str(collider.name.to_int()))
+		var collider_name: String
+		if collider.name.begins_with("@AnimatableBody2D") and collider.has_method("get_strike_name"):
+			collider_name = collider.get_strike_name()
+		else:
+			collider_name = collider.name.trim_suffix(str(collider.name.to_int()))
 		if collider.has_method("struck"):
 			collider.struck()
 		if collider_name in all_strikeable_tiles:

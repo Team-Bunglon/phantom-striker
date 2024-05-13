@@ -78,11 +78,11 @@ position = Vector2(224, 48)
 obtain_text = Array[String](["buttercup!"])
 
 [node name="MessageBox" parent="." instance=ExtResource("8_kk8ix")]
-visible = false
 line_one = "Hold down S while striking"
 line_two = "to reduce your bounce height"
 
 [node name="TutorialBox" parent="." instance=ExtResource("9_ttx3h")]
 position = Vector2(32, 408)
+message_object = NodePath("../MessageBox")
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

@@ -20,7 +20,6 @@ func _ready():
 		breaking_tile[coord] = false
 		respawn_tile[coord] = true
 
-
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
 	if breaking_tile[coord]:

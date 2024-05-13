@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://rn1v4rl2w1yc"]
+[gd_scene load_steps=24 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
@@ -17,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/messagebox.tscn" id="14_4vonv"]
 [ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorialbox.tscn" id="15_nag0m"]
 [ext_resource type="PackedScene" uid="uid://d28tu6uihh8rw" path="res://objects/movingplatformpoint.tscn" id="16_ypduf"]
-[ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/movinghazardpoint.tscn" id="17_f0j1r"]
+[ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/movinghazardpoint.tscn" id="17_gc0uw"]
+[ext_resource type="PackedScene" uid="uid://60ybqx0xxej3" path="res://objects/movingspawner.tscn" id="18_bfgx0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te7is"]
 texture = ExtResource("5_h51gk")
@@ -613,9 +614,17 @@ message_object = NodePath("../MessageBox")
 position = Vector2(160, 264)
 direction = Vector2(0, -128)
 
-[node name="MovingHazardPoint" parent="." instance=ExtResource("17_f0j1r")]
-position = Vector2(448, 200)
-direction = Vector2(0, 128)
+[node name="MovingHazardPoint" parent="." instance=ExtResource("17_gc0uw")]
+position = Vector2(504, 256)
+direction = Vector2(100, -100)
+
+[node name="Movingspawner" parent="." instance=ExtResource("18_bfgx0")]
+position = Vector2(600, 296)
+gizmo_extents = 75.7
+object_to_spawn = 0
+direction = Vector2(-400, 0)
+speed = 50.0
+frequency = 1.5
 
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
 position = Vector2(200, 424)
