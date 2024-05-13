@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://e4hdbp7efx78" path="res://objects/movinghazard.tscn" id="9_y5egg"]
 [ext_resource type="PackedScene" uid="uid://blfi543j4p7bm" path="res://objects/movingplatform.tscn" id="10_mp18u"]
 [ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegratingplatform.tscn" id="11_2tiwl"]
-[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamond.tscn" id="12_u6eg6"]
+[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamondold.tscn" id="12_u6eg6"]
 [ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratableplatform.tscn" id="13_ganj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]

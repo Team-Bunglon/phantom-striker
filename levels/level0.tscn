@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_86eoc"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_akf2k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_bygm3"]
-[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
+[ext_resource type="PackedScene" uid="uid://diwkm22biu3hv" path="res://objects/whitediamondold.tscn" id="5_bo5kk"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_gtbkc"]
 [ext_resource type="Texture2D" uid="uid://dxed0eouv8oai" path="res://assets/sprites/tiles_unstrikable.png" id="5_h51gk"]
 [ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/blackdiamond.tscn" id="6_aqsy6"]

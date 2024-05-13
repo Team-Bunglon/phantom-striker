@@ -238,6 +238,8 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 		if collider_name in all_strikeable_tiles:
 			if camera_shake:
 				$"../Camera2D".shake(4,12)
+			if collider.has_method("struck"):
+				collider.struck()
 			if collider_name in reacting_tiles: 
 				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
 				if collider.has_method("break_platform"):
