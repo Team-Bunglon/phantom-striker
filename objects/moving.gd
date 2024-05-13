@@ -11,12 +11,14 @@ class_name Moving
 @onready var end_point := global_position + direction
 @onready var towards_end := true
 
+var prev_position := global_position
 var strike_name = name
 
 func _physics_process(delta):
 	_move(delta)
 
 func _move(delta):
+	prev_position = global_position
 	if towards_end:
 		global_position = global_position.move_toward(end_point, speed * delta)
 		if global_position == end_point:
@@ -40,4 +42,11 @@ func create(start: Vector2, dir: Vector2, spd: float, obj_name: String):
 func get_strike_name():
 	return strike_name
 
-
+## For debugging purpose
+func calculate_distance(time: float, msg := ""):
+	var start_x := global_position.x
+	var start_y := global_position.y
+	await(get_tree().create_timer(time).timeout)
+	var end_x := global_position.x
+	var end_y := global_position.y
+	print(msg + " Dist.x: " + str(abs(end_x - start_x)) + " | Dist.y: " + str(abs(end_y - start_y)))

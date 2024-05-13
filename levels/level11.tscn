@@ -82,7 +82,7 @@ layer_0/tile_data = PackedInt32Array(327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 3
 [node name="BlackDiamond" parent="." instance=ExtResource("10_e78tx")]
 position = Vector2(88, 168)
 
-[node name="BlackDiamond" parent="BlackDiamond" instance=ExtResource("10_e78tx")]
-position = Vector2(464, 0)
+[node name="BlackDiamond2" parent="." instance=ExtResource("10_e78tx")]
+position = Vector2(552, 168)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

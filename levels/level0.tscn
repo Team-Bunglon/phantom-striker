@@ -619,7 +619,7 @@ position = Vector2(504, 256)
 direction = Vector2(100, -100)
 
 [node name="Movingspawner" parent="." instance=ExtResource("18_bfgx0")]
-position = Vector2(600, 296)
+position = Vector2(488, 296)
 gizmo_extents = 75.7
 object_to_spawn = 0
 direction = Vector2(-400, 0)

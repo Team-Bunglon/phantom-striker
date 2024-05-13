@@ -55,6 +55,7 @@ var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the c
 var can_move:			bool = false	# Boolean at the start of the level after the character spawns.
 var can_strike:			bool = false	# Boolean to prevent the character from doing a continous striking when the strike input is being held.
 var is_dying:			bool = false	# The character is in dying state (animation).
+var on_moving_platform:	bool = false
 var face: Dictionary = {
 	-1: "_left",
 	0: "_right",
@@ -148,8 +149,17 @@ func _move_procedure():
 		var collision_info = get_last_slide_collision() # Access collision information
 		if collision_info: # Check if the collider is a SpikeMap or MovingHazard
 			var collider = collision_info.get_collider()
-			if collider.name.trim_suffix(str(collider.name.to_int())) in kill_tiles:
+			var collider_name: String
+			if collider.name.begins_with("@AnimatableBody2D") and collider.has_method("get_strike_name"):
+				collider_name = collider.get_strike_name()
+			else:
+				collider_name = collider.name.trim_suffix(str(collider.name.to_int()))
+			if collider_name in kill_tiles:
 				die()
+			if collider_name.begins_with("MovingPlatform") and Input.is_action_pressed("crouch"):
+				on_moving_platform = true
+			else:
+				on_moving_platform = false
 
 ## Get gravity depending if the character is jumping or falling.
 func _get_gravity():
@@ -166,7 +176,9 @@ func _jump(delta):
 	_coyote_countdown()
 	_jump_buffer_countdown()
 	if Input.is_action_just_pressed("jump"):
-		if (is_on_floor() or coyote_count > 0) and can_move:
+		if on_moving_platform:
+			global_position.y += 4
+		elif (is_on_floor() or coyote_count > 0) and can_move:
 			_jump_procedure()
 		elif not is_on_floor() or not can_move:
 			jump_buffer_count = jump_buffer_frame

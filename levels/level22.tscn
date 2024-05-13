@@ -1,0 +1,214 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqalw1vl2ii0j"]
+
+[ext_resource type="Script" path="res://levels/level_class.gd" id="1_a4pjh"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_n4vdy"]
+[ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_xsp7q"]
+[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_p7and"]
+[ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_qit3l"]
+[ext_resource type="Script" path="res://levels/level_camera.gd" id="6_rquyx"]
+[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_n81s1"]
+[ext_resource type="PackedScene" uid="uid://60ybqx0xxej3" path="res://objects/movingspawner.tscn" id="8_cw0i1"]
+[ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/movinghazardpoint.tscn" id="9_tqdrd"]
+[ext_resource type="PackedScene" uid="uid://d28tu6uihh8rw" path="res://objects/movingplatformpoint.tscn" id="10_2gla5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
+size = Vector2(128, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h40i0"]
+size = Vector2(768, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fy8s"]
+size = Vector2(20, 505)
+
+[node name="Level#22" type="Node2D"]
+script = ExtResource("1_a4pjh")
+room_name = "Nice Job"
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="RoomName" type="Label" parent="Canvas"]
+z_index = 10
+offset_top = 454.0
+offset_right = 640.0
+offset_bottom = 487.0
+theme_override_fonts/font = ExtResource("2_n4vdy")
+theme_override_font_sizes/font_size = 20
+text = "Sample Room Name"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Canvas"]
+offset_top = 464.0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.196078, 0.196078, 0.196078, 0.588235)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_xsp7q")]
+position = Vector2(320, 416)
+max_jump_height = 80.0
+jump_time_to_peak = 0.4
+jump_time_to_descend = 0.35
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_p7and")
+format = 2
+layer_0/tile_data = PackedInt32Array(39, 65537, 0, 12, 65537, 0, 13, 65537, 0, 14, 131073, 0, 15, 1, 1, 24, 131073, 1, 25, 1, 0, 26, 65537, 0, 27, 65537, 0, 28, 65537, 0, 29, 65537, 0, 30, 65537, 0, 31, 65537, 0, 32, 65537, 0, 33, 65537, 0, 34, 65537, 0, 35, 65537, 0, 36, 65537, 0, 37, 65537, 0, 38, 65537, 0, 40, 262145, 1, -65496, 262145, 0, -65497, 65537, 2, -65498, 65537, 2, -65499, 65537, 2, -65500, 65537, 2, -65501, 65537, 2, -65502, 65537, 2, -65503, 65537, 2, -65504, 65537, 2, -65505, 65537, 2, -65506, 65537, 2, -65507, 65537, 2, -65508, 65537, 2, -65509, 65537, 2, -65510, 65537, 2, -65511, 65537, 2, -65512, 196609, 0, -65521, 262145, 0, -65522, 65537, 2, -65523, 65537, 2, -65524, 65537, 2, 65551, 262145, 1, 65550, 196609, 1, 11, 65537, 0, 10, 65537, 0, 9, 65537, 0, 8, 65537, 0, 7, 65537, 0, 6, 65537, 0, 5, 65537, 0, 4, 65537, 0, 3, 65537, 0, 2, 65537, 0, 1, 65537, 0, 0, 65537, 0, -65525, 65537, 2, -65526, 65537, 2, -65527, 65537, 2, -65528, 65537, 2, -65529, 65537, 2, -65530, 65537, 2, -65531, 65537, 2, -65532, 65537, 2, -65533, 65537, 2, -65534, 65537, 2, -65535, 65537, 2, -65536, 65537, 2, 65535, 196609, 1, -1, 196609, 0, 65561, 262145, 1, 65560, 196609, 1, 1835027, 131073, 1, 1835028, 1, 1, 1769491, 131073, 0, 1769492, 1, 0, 1703955, 65537, 2, 1703956, 65537, 2, 1703954, 1, 4, 1703957, 65537, 4, 1966100, 262145, 1, 1900564, 1, 1, 1966099, 196609, 1, 1900563, 131073, 1, 1769490, 196609, 1, 1769493, 262145, 1, 1703953, 393217, 2, 1703958, 327681, 2)
+
+[node name="SpikeMap" type="TileMap" parent="."]
+tile_set = ExtResource("5_qit3l")
+format = 2
+
+[node name="WinZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
+position = Vector2(320, -8.5)
+shape = SubResource("RectangleShape2D_dduow")
+
+[node name="KillZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(320, 504)
+shape = SubResource("RectangleShape2D_h40i0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_rquyx")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_n81s1")
+metadata/_edit_lock_ = true
+
+[node name="MovingSpawner" parent="." instance=ExtResource("8_cw0i1")]
+position = Vector2(656, 368)
+object_to_spawn = 0
+direction = Vector2(-800, 0)
+speed = 120.0
+frequency = 1.2
+
+[node name="MovingSpawner2" parent="." instance=ExtResource("8_cw0i1")]
+position = Vector2(-32, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+frequency = 0.6
+
+[node name="MovingSpawner3" parent="." instance=ExtResource("8_cw0i1")]
+position = Vector2(-32, 232)
+object_to_spawn = 0
+direction = Vector2(800, 0)
+speed = 250.0
+frequency = 0.6
+
+[node name="MovingSpawner4" parent="." instance=ExtResource("8_cw0i1")]
+position = Vector2(672, 136)
+gizmo_extents = 278.2
+direction = Vector2(-800, 0)
+speed = 300.0
+frequency = 0.5
+
+[node name="MovingSpawner5" parent="." instance=ExtResource("8_cw0i1")]
+position = Vector2(704, 96)
+gizmo_extents = 278.2
+object_to_spawn = 0
+direction = Vector2(-800, 0)
+speed = 270.0
+frequency = 0.7
+
+[node name="MovingHazardPoint" parent="." instance=ExtResource("9_tqdrd")]
+position = Vector2(90, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingHazardPoint2" parent="." instance=ExtResource("9_tqdrd")]
+position = Vector2(212, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingHazardPoint3" parent="." instance=ExtResource("9_tqdrd")]
+position = Vector2(332, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingHazardPoint4" parent="." instance=ExtResource("9_tqdrd")]
+position = Vector2(452, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingHazardPoint5" parent="." instance=ExtResource("9_tqdrd")]
+position = Vector2(572, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(512, 368)
+direction = Vector2(-800, 0)
+speed = 120.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint2" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(368, 368)
+direction = Vector2(-800, 0)
+speed = 120.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint3" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(224, 368)
+direction = Vector2(-800, 0)
+speed = 120.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint4" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(80, 368)
+direction = Vector2(-800, 0)
+speed = 120.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint5" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(114, 232)
+direction = Vector2(800, 0)
+speed = 250.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint6" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(260, 232)
+direction = Vector2(800, 0)
+speed = 250.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint7" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(406, 232)
+direction = Vector2(800, 0)
+speed = 250.0
+back_and_forth = false
+
+[node name="MovingPlatformPoint8" parent="." instance=ExtResource("10_2gla5")]
+position = Vector2(552, 232)
+direction = Vector2(800, 0)
+speed = 250.0
+back_and_forth = false
+
+[node name="InvisibleBlock" type="StaticBody2D" parent="."]
+position = Vector2(664, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleBlock"]
+position = Vector2(-14, 219)
+shape = SubResource("RectangleShape2D_3fy8s")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleBlock"]
+position = Vector2(-674, 225)
+shape = SubResource("RectangleShape2D_3fy8s")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

@@ -4,9 +4,9 @@ class_name MovingSpawner
 
 enum OBJ {PLATFORM, HAZARD}
 @export var object_to_spawn: OBJ
-@export var direction: Vector2 ## The direction you want to give to the spawned object
-@export var speed: float = 100.0
-@export var frequency: float = 1.0
+@export var direction: Vector2		## The direction you want to give to the spawned object
+@export var speed: float = 100.0	## The speed you want to give to the spawned object
+@export var frequency: float = 1.0	## The frequency of which this spawner creates a new moving object in seconds
 
 @onready var platform_preload: Resource = preload("res://objects/movingplatformpoint.tscn")
 @onready var hazard_preload: Resource = preload("res://objects/movinghazardpoint.tscn")
@@ -23,11 +23,13 @@ func _spawn_object():
 			var object_moving: MovingPlatformPoint = platform_preload.instantiate()
 			object_moving.create(global_position, direction, speed, "MovingPlatformPoint")
 			get_parent().add_child(object_moving)
+			#object_moving.calculate_distance(frequency, name)
 		OBJ.HAZARD:
 			var object_moving: MovingHazardPoint = hazard_preload.instantiate()
 			object_moving.create(global_position, direction, speed, "MovingHazardPoint")
 			get_parent().add_child(object_moving)
+			#object_moving.calculate_distance(frequency, name)
 
-	await(get_tree().create_timer(frequency).timeout)
+	await(get_tree().create_timer(frequency, false).timeout)
 
 	_spawn_object()

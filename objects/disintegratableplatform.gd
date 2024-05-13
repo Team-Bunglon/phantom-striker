@@ -41,7 +41,7 @@ func break_platform(coord):
 	var area := _create_area(coord, AREA)
 	
 	# Waiting Timer
-	await(get_tree().create_timer(respawn_timer).timeout)
+	await(get_tree().create_timer(respawn_timer, false).timeout)
 
 	# Repawn procedure. If the player is still inside the tile, hold it until he leaves the area2D.
 	if not respawn_tile[coord]:

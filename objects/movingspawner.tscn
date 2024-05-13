@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://objects/movingspawner.gd" id="1_yibdy"]
 
 [node name="MovingSpawner" type="Marker2D"]
+process_mode = 1
 gizmo_extents = 20.0
 script = ExtResource("1_yibdy")
 object_to_spawn = 1
