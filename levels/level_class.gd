@@ -3,7 +3,7 @@ class_name Level
 
 @export var room_name: String = "Sample Room Name"
 
-func next_level():
+func next_level() -> String:
 	var next_level_number: String = str(get_number() + 1)
 	return "res://levels/level" + next_level_number + ".tscn"
 

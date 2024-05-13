@@ -56,6 +56,7 @@ var can_move:			bool = false	# Boolean at the start of the level after the chara
 var can_strike:			bool = false	# Boolean to prevent the character from doing a continous striking when the strike input is being held.
 var is_dying:			bool = false	# The character is in dying state (animation).
 var on_moving_platform:	bool = false
+var on_vertical_launch: bool = false
 var face: Dictionary = {
 	-1: "_left",
 	0: "_right",
@@ -169,7 +170,8 @@ func _get_gravity():
 func _jump(delta):
 	velocity_prev.y = velocity.y
 	velocity.y += _get_gravity() * delta
-	if _get_gravity() == fall_gravity and not is_on_floor() and can_move:
+	if velocity.y >= 0 and not is_on_floor() and can_move:
+		on_vertical_launch = false
 		is_airborne = true
 		if velocity.y >= fall_gravity * jump_time_to_descend * 0.4:
 			_stretch_sprite_delta(delta)
@@ -182,7 +184,7 @@ func _jump(delta):
 			_jump_procedure()
 		elif not is_on_floor() or not can_move:
 			jump_buffer_count = jump_buffer_frame
-	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+	if Input.is_action_just_released("jump") and velocity.y < 0.0 and not on_vertical_launch:
 		velocity.y /= jump_lost_multiplier
 
 ## Performing said vertical movement
@@ -200,11 +202,15 @@ func _jump_push():
 	if $RayPushL.is_colliding() and \
 		not $RayPushM.is_colliding() and \
 		not $RayPushR.is_colliding():
-			global_position.x += 6
+			var collider_name: String = $RayPushL.get_collider().name
+			if not collider_name in kill_tiles:
+				global_position.x += 6
 	elif $RayPushR.is_colliding() and \
 		not $RayPushM.is_colliding() and \
 		not $RayPushL.is_colliding():
-			global_position.x -= 6
+			var collider_name: String = $RayPushR.get_collider().name
+			if not collider_name in kill_tiles:
+				global_position.x -= 6
 
 ## The strike function
 func _strike():
@@ -265,6 +271,7 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 				launch_x = max_launch_x
 				_player_state(int(launch_x_direction))
 			if direction.y < 0.0: # Going Up
+				on_vertical_launch = true
 				velocity.y = jump_velocity * direction.y / temp_mult
 			elif direction.y > 0.0: # Going Down
 				velocity.y = jump_velocity * direction.y * 2
@@ -277,10 +284,14 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 				launch_x_direction = direction.x
 				launch_x = max_launch_x
 				_player_state(int(-launch_x_direction))
-			if direction.y < 0.0: # Going Up
-				velocity.y = -jump_velocity * direction.y / temp_mult
-			elif direction.y > 0.0: # Going Down
-				velocity.y = -jump_velocity * direction.y * 2
+			if direction.y < 0.0: # Going Down
+				velocity.y = -jump_velocity * direction.y * 4
+			elif direction.y > 0.0: # Going Up
+				on_vertical_launch = true
+				velocity.y = -jump_velocity * direction.y * 1.5
+			# Sprite Stretching Function
+			if direction.x == 0.0 and direction.y != 0.0: _stretch_sprite()
+			elif direction.x != 0.0: _unstretch_sprite()
 
 ## A wrapper to check if none of the strike button are pressed.
 ## I'm sure there's a better way than this.

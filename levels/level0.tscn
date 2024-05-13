@@ -560,7 +560,7 @@ layer_0/tile_data = PackedInt32Array(1310737, 393216, 2, 1310738, 196608, 3, 131
 [node name="SpikeMap" type="TileMap" parent="."]
 tile_set = ExtResource("5_gtbkc")
 format = 2
-layer_0/tile_data = PackedInt32Array(1769502, 0, 0, 1769503, 0, 0, 1769504, 0, 0, 1769505, 0, 0, 1769506, 0, 0, 1769507, 0, 0, 1507365, 0, 0, 1507366, 0, 0)
+layer_0/tile_data = PackedInt32Array(1769502, 0, 0, 1769503, 0, 0, 1769504, 0, 0, 1769505, 0, 0, 1769506, 0, 0, 1769507, 0, 0, 1507365, 0, 0, 1507366, 0, 0, 1376282, 65536, 0, 1310747, 131072, 0)
 
 [node name="KillZone" type="Area2D" parent="."]
 
