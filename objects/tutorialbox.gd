@@ -1,8 +1,8 @@
 extends Area2D
 class_name TutorialBox
 
-@export var message_object: NodePath 
-@onready var message_node: MessageBox
+@export var message_object: NodePath	## The MessageBox scene. It's recommended to put it right here instead of searching it using get_parent().
+@onready var message_node: MessageBox 
 
 ## You really, really shouldn't search the message box node
 ## every single time the player approaches the tutorial box.
@@ -11,12 +11,13 @@ func _ready():
 	if message_object.is_empty():
 		message_node = get_parent().get_node_or_null("MessageBox")
 		if message_node == null:
-			assert(false, "Please add the MessageBox scene into your level.")
+			assert(false, "Please add the MessageBox scene in your level.")
 	else:
 		message_node = get_node(message_object)
 
 func _on_body_entered(body):
 	if (body.name == "Player"):
+		Audio.play("Tutorial")
 		$Sprite2D.frame = 1
 		message_node.show_textbox()
 

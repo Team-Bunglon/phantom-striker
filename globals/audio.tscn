@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=18 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
@@ -15,76 +15,97 @@
 [ext_resource type="AudioStream" uid="uid://c1xt0o7ki4ryg" path="res://assets/audio/disintegrate.wav" id="10_5tgbh"]
 [ext_resource type="AudioStream" uid="uid://coffmew8smrh8" path="res://assets/audio/obtain.wav" id="12_ldmbr"]
 [ext_resource type="AudioStream" uid="uid://hucyck3l1251" path="res://assets/audio/destroy.wav" id="14_wkykv"]
+[ext_resource type="AudioStream" uid="uid://bvs1606q4rq7s" path="res://assets/audio/diamond.wav" id="16_3pwgv"]
+[ext_resource type="AudioStream" uid="uid://d0lvhus8kfa6u" path="res://assets/audio/tutorial.wav" id="17_ou1hp"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
 script = ExtResource("1_n4bf6")
 
-[node name="MusicMenu" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="Node" parent="."]
+
+[node name="MusicMenu" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_jyyqj")
 volume_db = -2.0
 bus = &"Music"
 
-[node name="Music120" type="AudioStreamPlayer" parent="."]
+[node name="Music120" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_sy5ww")
 volume_db = -2.0
 bus = &"Music"
 
-[node name="Music2130" type="AudioStreamPlayer" parent="."]
+[node name="Music2130" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("4_upgxl")
 volume_db = -2.0
 bus = &"Music"
 
-[node name="MusicCredit" type="AudioStreamPlayer" parent="."]
+[node name="MusicCredit" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("5_j67sh")
 volume_db = -2.0
 bus = &"Music"
 
-[node name="Jump" type="AudioStreamPlayer" parent="."]
+[node name="Sound" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("1_qx440")
 pitch_scale = 1.1
 bus = &"Sound"
 
-[node name="Strike" type="AudioStreamPlayer" parent="."]
+[node name="Strike" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("3_1wihl")
 volume_db = -5.0
 pitch_scale = 0.9
 bus = &"Sound"
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("4_bsjk2")
 bus = &"Sound"
 
-[node name="Death" type="AudioStreamPlayer" parent="."]
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("5_ker2x")
 volume_db = 1.0
 bus = &"Sound"
 
-[node name="Start" type="AudioStreamPlayer" parent="."]
+[node name="Start" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("6_w2uo1")
 volume_db = -4.0
 pitch_scale = 1.4
 bus = &"Sound"
 
-[node name="Accept" type="AudioStreamPlayer" parent="."]
+[node name="Accept" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("7_s85mk")
 bus = &"Sound"
 
-[node name="Cancel" type="AudioStreamPlayer" parent="."]
+[node name="Cancel" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("8_jdpph")
 bus = &"Sound"
 
-[node name="Disintegrate" type="AudioStreamPlayer" parent="."]
+[node name="Disintegrate" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("10_5tgbh")
 pitch_scale = 1.2
 bus = &"Sound"
 
-[node name="Destroy" type="AudioStreamPlayer" parent="."]
+[node name="Destroy" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("14_wkykv")
 pitch_scale = 1.2
 bus = &"Sound"
 
-[node name="Obtain" type="AudioStreamPlayer" parent="."]
+[node name="Obtain" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("12_ldmbr")
 pitch_scale = 0.8
+bus = &"Sound"
+
+[node name="DiamondBlack" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("16_3pwgv")
+pitch_scale = 0.8
+bus = &"Sound"
+
+[node name="DiamondWhite" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("16_3pwgv")
+bus = &"Sound"
+
+[node name="Tutorial" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("17_ou1hp")
+volume_db = -4.0
+pitch_scale = 0.7
 bus = &"Sound"

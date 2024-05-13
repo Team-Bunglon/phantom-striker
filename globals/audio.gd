@@ -11,11 +11,10 @@ class_name AudioGlobal
 
 ## Play a sound effect. Do NOT play music using this, use music_play().
 func play(audio_name: String):
-	get_node(audio_name).playing = true
+	get_node("Sound/" + audio_name).playing = true
 
 ## Use this to play music as well as changing to other music.
 func music_play(music_name: String, is_fading = true):
-	print(music_name)
 	var fade_out_tween := create_tween()
 	var fade_in_tween := create_tween()
 	fade_out_tween.finished.connect(_on_music_faded)
@@ -52,7 +51,7 @@ func _change_music_prev_volume(value: float):
 	music_prev.volume_db = linear_to_db(value) + default_db[music_prev.name]
 
 func _get_music(music_name: String) -> AudioStreamPlayer:
-	var new_music_node := get_node(music_name)
+	var new_music_node := get_node("Music/" + music_name)
 	if not default_db.has(music_name):
 		default_db[music_name] = new_music_node.volume_db
 	return new_music_node

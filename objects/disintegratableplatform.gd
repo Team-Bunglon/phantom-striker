@@ -5,6 +5,7 @@ extends TileMap
 @onready var disarea_preload: Resource = preload("res://objects/disintegratablearea.tscn")
 @onready var area_preload: Resource = preload("res://objects/tilearea.tscn")
 
+var inside_disarea: Dictionary = {}
 var breaking_tile: Dictionary = {}
 var respawn_tile: Dictionary = {}
 
@@ -15,7 +16,10 @@ enum {AREA, DISAREA}
 func _ready():
 	for coord in get_used_cells(0):
 		_create_area(coord, DISAREA)
+		inside_disarea[coord] = false
 		breaking_tile[coord] = false
+		respawn_tile[coord] = true
+
 
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
@@ -50,6 +54,10 @@ func break_platform(coord):
 	sprite.queue_free()
 	breaking_tile[coord] = false
 
+	# Restart this function again if the player is still inside the disarea Area2D
+	if inside_disarea[coord]:
+		break_platform(coord)
+
 ## Create animated sprite. We have to create animation from each tile.
 func _create_sprite(coord) -> AnimatedSprite2D:
 	var sprite: AnimatedSprite2D = sprite_preload.instantiate()
@@ -76,7 +84,13 @@ func _create_area(coord: Vector2i, area_enum) -> Area2D:
 		area.connect("body_entered", func(body):
 			var coord_new := local_to_map(area.global_position + Vector2(1,0))
 			if body.name == "Player":
+				inside_disarea[coord_new] = true
 				break_platform(coord_new)
+			)
+		area.connect("body_exited", func(body):
+			var coord_new := local_to_map(area.global_position + Vector2(1,0))
+			if body.name == "Player":
+				inside_disarea[coord_new] = false
 			)
 	area.global_position = map_to_local(coord)
 	add_child(area)

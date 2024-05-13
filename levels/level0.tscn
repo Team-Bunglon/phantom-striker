@@ -585,6 +585,7 @@ layer_0/tile_data = PackedInt32Array(1572888, 0, 0, 1572889, 0, 0, 1572890, 0, 0
 
 [node name="DisintegratablePlatform" parent="." instance=ExtResource("11_drwpo")]
 layer_0/tile_data = PackedInt32Array(1638413, 0, 0, 1638414, 0, 0, 1638415, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1245194, 0, 0, 1245193, 0, 0)
+respawn_timer = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
