@@ -600,10 +600,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_38ph4")
 metadata/_edit_lock_ = true
 
+[node name="MessageBox" parent="." instance=ExtResource("14_4vonv")]
+
 [node name="TutorialBox" parent="." instance=ExtResource("15_nag0m")]
 position = Vector2(245, 310)
-
-[node name="MessageBox" parent="." instance=ExtResource("14_4vonv")]
+message_object = NodePath("../MessageBox")
 
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
 position = Vector2(200, 424)

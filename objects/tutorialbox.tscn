@@ -6,16 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74g87"]
 size = Vector2(16, 16)
 
-[node name="TutorialBox" type="Node2D"]
-
-[node name="TutorialBoxArea" type="Area2D" parent="."]
+[node name="TutorialBox" type="Area2D"]
 script = ExtResource("1_7t0ub")
 
-[node name="Sprite2D" type="Sprite2D" parent="TutorialBoxArea"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_efgy8")
+hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialBoxArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_74g87")
 
-[connection signal="body_entered" from="TutorialBoxArea" to="TutorialBoxArea" method="_on_body_entered"]
-[connection signal="body_exited" from="TutorialBoxArea" to="TutorialBoxArea" method="_on_body_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

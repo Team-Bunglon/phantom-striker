@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name MessageBox
 
 @export var line_one: String = "This is a sample text"
 @export var line_two: String = "This is a sample text too"
