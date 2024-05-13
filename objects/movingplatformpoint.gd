@@ -1,4 +1,6 @@
 extends Node2D
+## A more flexible version of the previous MovingPlatform
+class_name MovingPlatformPoint
 
 @export var direction: Vector2
 @export var speed: float = 100.0

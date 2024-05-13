@@ -1,4 +1,6 @@
 extends Node2D
+## You agree to not kill the character when he's squeezed, right?
+class_name MovingPlatformThatCanKillYouButLetsJustNotUseIt
 
 @export var direction: Vector2
 @export var speed: float = 100.0
