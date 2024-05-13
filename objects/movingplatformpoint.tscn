@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bul5e224h74vp" path="res://assets/sprites/moving_platform.png" id="2_vfme0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um11w"]
-size = Vector2(64, 15)
+size = Vector2(64, 13)
 
 [node name="MovingPlatformPoint" type="AnimatableBody2D"]
 collision_layer = 3
@@ -14,6 +14,6 @@ script = ExtResource("1_knnyg")
 texture = ExtResource("2_vfme0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_um11w")
 one_way_collision = true
