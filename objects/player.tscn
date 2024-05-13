@@ -462,12 +462,14 @@ rotation = -3.14159
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastD" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastL" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -475,6 +477,7 @@ rotation = 1.5708
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastR" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -482,6 +485,7 @@ rotation = -1.5708
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastUL" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -489,6 +493,7 @@ rotation = 2.35619
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastUR" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -496,6 +501,7 @@ rotation = -2.35619
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastDL" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -503,6 +509,7 @@ rotation = 0.785398
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayCastDR" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -510,6 +517,7 @@ rotation = -0.785398
 scale = Vector2(4, 1)
 target_position = Vector2(0, 96)
 collision_mask = 7
+hit_from_inside = true
 
 [node name="RayPushL" type="RayCast2D" parent="."]
 position = Vector2(-5, -21)
