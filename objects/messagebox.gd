@@ -9,6 +9,7 @@ class_name MessageBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = true
 	$MessageBoxContainer/Panel.modulate.a = opacity
 	change_text()
 	hide_textbox()
