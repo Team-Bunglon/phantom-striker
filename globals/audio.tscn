@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=19 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://hucyck3l1251" path="res://assets/audio/destroy.wav" id="14_wkykv"]
 [ext_resource type="AudioStream" uid="uid://bvs1606q4rq7s" path="res://assets/audio/diamond.wav" id="16_3pwgv"]
 [ext_resource type="AudioStream" uid="uid://d0lvhus8kfa6u" path="res://assets/audio/tutorial.wav" id="17_ou1hp"]
+[ext_resource type="AudioStream" uid="uid://bna3g3secqict" path="res://assets/audio/red.wav" id="18_nv8wh"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
@@ -109,3 +110,8 @@ stream = ExtResource("17_ou1hp")
 volume_db = -4.0
 pitch_scale = 0.7
 bus = &"Sound"
+
+[node name="Red" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("18_nv8wh")
+volume_db = -2.0
+pitch_scale = 0.9

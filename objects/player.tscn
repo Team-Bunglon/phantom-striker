@@ -415,7 +415,37 @@ color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
 collision_mask = 9
+platform_on_leave = 2
 script = ExtResource("1_jlnm5")
+strike_particle_length = null
+looking_left = null
+camera_shake = null
+strikable_tiles = null
+unstrikable_tiles = null
+reacting_tiles = null
+kill_tiles = null
+max_speed = null
+max_launch_x = null
+max_jump_height = null
+acceleration = null
+floor_friction = null
+air_friction = null
+jump_time_to_peak = null
+jump_time_to_descend = null
+jump_lost_multiplier = null
+fall_time_to_terminal = null
+fall_stretch_multiplier = null
+reduced_height_multiplier = null
+white_diamond_x_multiplier = null
+white_diamond_y_multiplier = null
+white_diamond_dia_multiplier = null
+jump_buffer_frame = null
+coyote_frame = null
+wall_buffer_frame = null
+strike_delay_frame = null
+move_delay_frame = null
+stretch_vector = null
+stretch_multiplier = null
 
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(0, -12)

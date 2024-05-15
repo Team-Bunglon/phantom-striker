@@ -27,8 +27,16 @@ class_name Player
 @onready var jump_gravity:  float =	((2.0 * max_jump_height) / (jump_time_to_peak ** 2))
 @onready var fall_gravity:  float =	((2.0 * max_jump_height) / (jump_time_to_descend ** 2))
 
+@export_category("Falling")
+@export var fall_time_to_terminal: float = 0.8 ## The time to reach terminal velocity during a fall, that is the state that the player can't gain anymore fall speed. Any action using 
+@export var fall_stretch_multiplier: float = 0.4 ## The 
+@onready var max_fall_speed: float = fall_gravity * fall_time_to_terminal
+
 @export_category("Launching")
-@export var reduced_height_multiplier:	float = 1.5 ## The multiplier that reduces the height when striking the floor while crouching 
+@export var reduced_height_multiplier: float = 0.666 ## The multiplier that reduces the height when striking the floor while crouching 
+@export var white_diamond_x_multiplier: float = 1.333 ## The multiplier that increase the horizontal distance when striking the white diamond horizontally.
+@export var white_diamond_y_multiplier: float = 1.333 ## The multiplier that increase the jump height when striking the white diamond upward (from below)
+@export var white_diamond_dia_multiplier: Vector2 = Vector2(0.7, 1.0) ## The multiplier that applies to any diagonal launches
 
 @export_category("Frames Timers")		 ## The timers in frame count (in 60FPS). Please use (and create if needed) a timer node for timer in seconds.
 @export var jump_buffer_frame:	int = 8	 ## Let the character perform a jump as soon as he touches the floor if the jump button is pressed before reaching it while within the frame duration.
@@ -88,6 +96,7 @@ func _input(event):
 		die(true)
 
 func _physics_process(delta):
+	print(velocity.y)
 	if is_dying:
 		velocity = Vector2.ZERO
 		return
@@ -171,6 +180,8 @@ func _get_gravity():
 func _jump(delta):
 	velocity_prev.y = velocity.y
 	velocity.y += _get_gravity() * delta
+	if velocity.y >= max_fall_speed:
+		velocity.y = max_fall_speed
 	if velocity.y >= 0 and not is_on_floor() and can_move:
 		on_vertical_launch = false
 		is_airborne = true
@@ -270,12 +281,14 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 				move_delay_count = move_delay_frame
 				launch_x_direction = -direction.x
 				launch_x = max_launch_x
+				if velocity.y > 0.0:
+					velocity.y = 0.0
 				_player_state(int(launch_x_direction))
 			if direction.y < 0.0: # Going Up
 				on_vertical_launch = true
-				velocity.y = jump_velocity * direction.y / temp_mult
+				velocity.y = jump_velocity * direction.y * temp_mult		
 			elif direction.y > 0.0: # Going Down
-				velocity.y = jump_velocity * direction.y * 2
+				velocity.y = max_fall_speed
 			# Sprite Stretching Function
 			if direction.x == 0.0 and direction.y != 0.0: _stretch_sprite()
 			elif direction.x != 0.0: _unstretch_sprite()
@@ -283,17 +296,23 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 			if direction.x != 0.0:
 				move_delay_count = move_delay_frame
 				launch_x_direction = direction.x
-				launch_x = max_launch_x
+				launch_x = max_launch_x * white_diamond_x_multiplier
+				if velocity.y > 0.0:
+					velocity.y = 0.0
 				_player_state(int(-launch_x_direction))
 			if direction.y < 0.0: # Going Down
-				velocity.y = -jump_velocity * direction.y * 4
+				velocity.y = max_fall_speed
 			elif direction.y > 0.0: # Going Up
 				on_vertical_launch = true
-				velocity.y = -jump_velocity * direction.y * 1.5
+				velocity.y = -jump_velocity * direction.y * white_diamond_y_multiplier
+			if direction.x != 0.0 and direction.y > 0.0: # Going diagonal. Fall speed won't be multiplied when going diagonal down.
+				launch_x *= white_diamond_dia_multiplier.x
+				velocity.y *= white_diamond_dia_multiplier.y
 			# Sprite Stretching Function
 			if direction.x == 0.0 and direction.y != 0.0: _stretch_sprite()
 			elif direction.x != 0.0: _unstretch_sprite()
 		elif collider_name in unstrikable_tiles:
+			Audio.play("Red")
 			if camera_shake:
 				$"../Camera2D".shake(2,24)
 
