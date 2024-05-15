@@ -20,7 +20,6 @@ func _ready():
 	if not marker_object.is_empty():
 		marker_node = get_node(marker_object)
 		end_point = marker_node.global_position
-	pass
 
 func _physics_process(delta):
 	_move(delta)

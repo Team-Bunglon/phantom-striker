@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
-[ext_resource type="PackedScene" uid="uid://nfr4e6kfy2d8" path="res://menu/LevelName.tscn" id="2_01ewl"]
+[ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/LevelName.tscn" id="2_01ewl"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_akf2k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_bygm3"]
 [ext_resource type="PackedScene" uid="uid://bb3g2sedbhtr2" path="res://objects/whitediamond.tscn" id="5_bo5kk"]
@@ -608,6 +608,9 @@ object_to_spawn = 0
 direction = Vector2(-400, 0)
 speed = 50.0
 frequency = 1.5
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(536, 344)
 
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
 position = Vector2(200, 424)
