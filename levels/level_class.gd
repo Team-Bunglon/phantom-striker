@@ -1,5 +1,5 @@
 extends Node
-class_name Level
+class_name Level ## The class for all levels
 
 @export var level_name: String = "Sample Room Name"
 

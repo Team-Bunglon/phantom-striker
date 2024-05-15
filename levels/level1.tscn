@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="1_5p0by"]
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_j2ev4"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="2_mcygu"]
-[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_y6yeq"]
+[ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/LevelName.tscn" id="2_wv7p2"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_4bqle"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="5_jh2kp"]
 [ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorialbox.tscn" id="7_5bmw7"]
@@ -17,26 +17,9 @@ size = Vector2(92, 18)
 
 [node name="Level#1" type="Node2D"]
 script = ExtResource("1_j2ev4")
-room_name = "Strike at the Root"
+level_name = "Strike at the Root"
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-
-[node name="RoomName" type="Label" parent="Canvas"]
-z_index = 10
-offset_top = 456.0
-offset_right = 640.0
-offset_bottom = 489.0
-theme_override_fonts/font = ExtResource("2_y6yeq")
-theme_override_font_sizes/font_size = 20
-text = "Sample Room Name"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Canvas"]
-offset_top = 464.0
-offset_right = 640.0
-offset_bottom = 480.0
-color = Color(0.196078, 0.196078, 0.196078, 0.588235)
-metadata/_edit_lock_ = true
+[node name="LevelName" parent="." instance=ExtResource("2_wv7p2")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

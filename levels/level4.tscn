@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsejieijrlltx"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_w4xfr"]
-[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_y8k7r"]
+[ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/LevelName.tscn" id="2_2go6f"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_5xjra"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_w5y6q"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_da7l2"]
@@ -19,25 +19,9 @@ size = Vector2(50, 18)
 
 [node name="Level#4" type="Node2D"]
 script = ExtResource("1_w4xfr")
+level_name = "Leap of Faith"
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-
-[node name="RoomName" type="Label" parent="Canvas"]
-z_index = 10
-offset_top = 454.0
-offset_right = 640.0
-offset_bottom = 487.0
-theme_override_fonts/font = ExtResource("2_y8k7r")
-theme_override_font_sizes/font_size = 20
-text = "Sample Room Name"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Canvas"]
-offset_top = 464.0
-offset_right = 640.0
-offset_bottom = 480.0
-color = Color(0.196078, 0.196078, 0.196078, 0.588235)
-metadata/_edit_lock_ = true
+[node name="LevelName" parent="." instance=ExtResource("2_2go6f")]
 
 [node name="Player" parent="." instance=ExtResource("3_5xjra")]
 position = Vector2(64, 80)

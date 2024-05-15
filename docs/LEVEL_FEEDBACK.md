@@ -75,17 +75,43 @@ This level is just so easy I just end up adding more spikes. Maybe I switch this
 Also, can you be a little bit more creative with the naming? Not just "[Stuff] of Spikes"?
 
 ## Level 7
-Name: Stairs of Spikes -> Step by Step  
-Author: Ivan
+Name: Stairs of Spikes -> Cutting The Traffic  
+Author: Naufal
 
 **[GENERAL]**  
 You forgot to change the level name, don't you? It's a fine level, but I have replace your old moving platform
 
 ## Level 8
-Name: Shine Bright Like A Diamond -> Like a Diamond
+Name: Shine Bright Like A Diamond -> Like A Diamond  
+Author: Naufal
 
 **[GENERAL]**  
-The level name reminds me of Yakuza/Like a Dragon series so I simplify it.
+The level name reminds me of Yakuza/Like A Dragon series so I simplify the name for that reference.
+
+**[TUTORIAL]**  
+The usage of diamond in the original design is pointless as you can still beat the level without even striking the diamond once. This level should teach the player about the black diamond and they should use it in order to beat the level. I've massively designed this level but keep some element.
+
+## Level 9
+Name: Diamond and Spike -> Three's A Crowd  
+Author: Varo
+
+**[GENERAL]**  
+I can't believe you forgot to change the name of the level. Twice!
+
+**[CHALLENGE]**  
+This level is quite easy. So I decide to remove all platforms at the top "floor" (except the top-most platform) and add a black diamond like previously. Unlike the last level, however, you can get to the top-most platform in two ways: 
+1. Using the black diamond in the same way as in the previous level. 
+2. using the side spike on the opening of the third "floor" to bounce yourself in between the two spikes on the top platform and diagonally strike there to launch yourself directly into the win zone.
+
+## Level 10
+Name: Diamond and Spike -> Tight Maneuver  
+Author: Varo
+
+**[CHALLENGE]**  
+I like this level design which forces you to be slower and deliberate with your position with such tight spike placement.
+
+**[TUTORIAL]**  
+I put a tutorial box here which tells the player that they can slow down by holding shift. If they activate Windows's sticky keys, **it's their problem, not ours**. And guess what? It's only a problem with Windows so everyone in the team BUT me as a Linux user has this problem lol.
 
 ## Level 11
 Name: Rising Tension  
@@ -93,6 +119,9 @@ Author: Me
 
 **[CHALLENGE]**  
 I could remove the bottom with a pit but I guess I should give the player a chance to recover back to the starting platform as soon as it regenerates.
+
+**[TUTORIAL]**  
+This level introduces Disintegrating platform and Destroyable platform. I let the player figure this out themselves.
 
 ## Level 12
 Name: On a Prickly Path  
@@ -102,15 +131,27 @@ Author: Me
 If you know where the level name and the collectible's text come from, I'll give you a hug.
 
 **[TUTORIAL]**  
-Teach the player about reducing vertical distance when launching by holding down the crouch button button before striking.
+Teach the player about reducing vertical height when launching by holding down the crouch button button before striking.
 
 **[CHALLENGE]**  
 The challenge is about the timing of the strike when launching in between the tunnel of spikes.
 
+## Level 13
+Name: Deez Nuts -> WIP  
+Author: Azka
+
+**[GENERAL]**
+This level is just isn't up the standard. It's too short, the collectible has no challenge to obtain, and it wastes so much space in the middle. The worst part is that this is the first level I find any violation to LDG.
+
+**[GUIDELINE VIOLATION]**  
+LDG No. 5 has been violated by putting the win zone at the bottom. I have to redesigned this level completely by utilizing the wasted space more.
+
 ### Level 21
-Name
+Name:  
+Author:  
 
 **[GENERAL]**  
 This level is painful to make as not only I have to make the proper spawner, I have
 
 **[CHALLENGE]**  
+aaa

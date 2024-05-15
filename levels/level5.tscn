@@ -1,15 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxvxutvxpaic0"]
+[gd_scene load_steps=11 format=3 uid="uid://bxvxutvxpaic0"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_mxs2c"]
-[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_6jikn"]
+[ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/LevelName.tscn" id="2_pkq3a"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_7ruti"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_rlqyc"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_s54uo"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_q2hfu"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="6_a31u6"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="8_5qbhg"]
-[ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorialbox.tscn" id="9_ufbuh"]
-[ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/messagebox.tscn" id="10_wg0gr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
 size = Vector2(768, 16)
@@ -19,25 +17,9 @@ size = Vector2(50, 18)
 
 [node name="Level#5" type="Node2D"]
 script = ExtResource("1_mxs2c")
+level_name = "Xylematic Platform"
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-
-[node name="RoomName" type="Label" parent="Canvas"]
-z_index = 10
-offset_top = 454.0
-offset_right = 640.0
-offset_bottom = 487.0
-theme_override_fonts/font = ExtResource("2_6jikn")
-theme_override_font_sizes/font_size = 20
-text = "Sample Room Name"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Canvas"]
-offset_top = 464.0
-offset_right = 640.0
-offset_bottom = 480.0
-color = Color(0.196078, 0.196078, 0.196078, 0.588235)
-metadata/_edit_lock_ = true
+[node name="LevelName" parent="." instance=ExtResource("2_pkq3a")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 240)
@@ -85,14 +67,6 @@ shape = SubResource("RectangleShape2D_dduow")
 
 [node name="Collectible" parent="." instance=ExtResource("8_5qbhg")]
 position = Vector2(72, 32)
-
-[node name="TutorialBox" parent="." instance=ExtResource("9_ufbuh")]
-position = Vector2(32, 432)
-message_object = NodePath("../MessageBox")
-
-[node name="MessageBox" parent="." instance=ExtResource("10_wg0gr")]
-line_one = "Hold Shift to slow down your"
-line_two = "walk for finer adjustment"
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
