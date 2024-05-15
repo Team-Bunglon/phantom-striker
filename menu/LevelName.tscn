@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://nfr4e6kfy2d8"]
+
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_gxqni"]
+[ext_resource type="Script" path="res://menu/LevelName.gd" id="1_m7w8o"]
+
+[node name="LevelName" type="CanvasLayer"]
+script = ExtResource("1_m7w8o")
+
+[node name="LevelNameLabel" type="Label" parent="."]
+z_index = 10
+offset_top = 452.0
+offset_right = 640.0
+offset_bottom = 485.0
+theme_override_fonts/font = ExtResource("1_gxqni")
+theme_override_font_sizes/font_size = 20
+text = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+horizontal_alignment = 1
+
+[node name="Panel" type="ColorRect" parent="."]
+offset_top = 460.0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.197937, 0.197937, 0.197937, 0.588235)
