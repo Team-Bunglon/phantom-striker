@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_o6j5x"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_6gv1r"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_0ag72"]
-[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_sao0e"]
+[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_sao0e"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_eeiqd"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_t1q4n"]
-[ext_resource type="PackedScene" uid="uid://dpnilu3rm6idw" path="res://objects/fruitoflife.tscn" id="9_srlbx"]
+[ext_resource type="PackedScene" uid="uid://dpnilu3rm6idw" path="res://objects/fruit_of_life.tscn" id="9_srlbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga6ha"]
 size = Vector2(20, 505)

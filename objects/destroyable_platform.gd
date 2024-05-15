@@ -1,7 +1,8 @@
 extends TileMap
+class_name DestroyablePlatform
 
 @export var respawn_timer: float = 5.0	## The time it takes for the tile to respawn after being destroyed.
-@onready var area_preload: Resource = preload("res://objects/tilearea.tscn")
+@onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
 
 var respawn_tile: Dictionary = {}
 

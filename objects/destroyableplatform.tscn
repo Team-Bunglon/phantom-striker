@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc8xtnlvitx8p"]
-
-[ext_resource type="TileSet" uid="uid://cg1ivgh2yc4co" path="res://assets/sprites/destroyableplatform.tres" id="1_sydhc"]
-[ext_resource type="Script" path="res://objects/destroyableplatform.gd" id="3_0akio"]
-
-[node name="DestroyablePlatform" type="TileMap"]
-tile_set = ExtResource("1_sydhc")
-format = 2
-script = ExtResource("3_0akio")

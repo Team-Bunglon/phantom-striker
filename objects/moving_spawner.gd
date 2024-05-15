@@ -1,6 +1,5 @@
 extends Marker2D
-
-class_name MovingSpawner
+class_name MovingSpawner ## A Marker2D specialized to spawn Moving Platform and Moving Hazard. 
 
 enum OBJ {PLATFORM, HAZARD}
 @export var object_to_spawn: OBJ
@@ -10,8 +9,8 @@ enum OBJ {PLATFORM, HAZARD}
 @export var marker_object: NodePath ## Alternative way to set the final point of the spawned object by using another marker node. If a marker node is given, [param direction] will be ignored. To use [param direction], leave this field empty.
 
 @onready var marker_node: Marker2D
-@onready var platform_preload: Resource = preload("res://objects/movingplatformpoint.tscn")
-@onready var hazard_preload: Resource = preload("res://objects/movinghazardpoint.tscn")
+@onready var platform_preload: Resource = preload("res://objects/moving_platform_point.tscn")
+@onready var hazard_preload: Resource = preload("res://objects/moving_hazard_point.tscn")
 @onready var first_spawn: bool = false
 
 func _ready():

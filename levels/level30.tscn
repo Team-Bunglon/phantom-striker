@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_rsa6c"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_ctdhw"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_4aoc5"]
-[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="4_jiesq"]
-[ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="5_qp31r"]
+[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_jiesq"]
+[ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_qp31r"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_sks4p"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_aoipa"]
-[ext_resource type="PackedScene" uid="uid://e4hdbp7efx78" path="res://objects/movinghazard.tscn" id="8_n17f4"]
-[ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegratingplatform.tscn" id="11_veupl"]
+[ext_resource type="PackedScene" uid="uid://e4hdbp7efx78" path="res://objects/moving_hazard.tscn" id="8_n17f4"]
+[ext_resource type="PackedScene" uid="uid://dvigbor1cvnbw" path="res://objects/disintegrating_platform.tscn" id="11_veupl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(64, 52.5)

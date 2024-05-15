@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dvigbor1cvnbw"]
 
-[ext_resource type="Script" path="res://objects/disintegratingplatform.gd" id="1_cdr2g"]
+[ext_resource type="Script" path="res://objects/disintegrating_platform.gd" id="1_cdr2g"]
 [ext_resource type="Texture2D" uid="uid://brrlat8ooauir" path="res://assets/sprites/disintegrate_platform_temp.png" id="2_2cm2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sup70"]

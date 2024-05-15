@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cibr418efis5b"]
 
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_2g2nj"]
-[ext_resource type="Script" path="res://objects/messagebox.gd" id="1_vkfqa"]
+[ext_resource type="Script" path="res://objects/message_box.gd" id="1_vkfqa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epouy"]
 bg_color = Color(0.137255, 0.137255, 0.137255, 1)

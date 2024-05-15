@@ -4,10 +4,10 @@
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_hfhm6"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_a4c28"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="4_g1dff"]
-[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://assets/sprites/tiles.tres" id="5_5uelr"]
+[ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="5_5uelr"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="6_sgt68"]
-[ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratableplatform.tscn" id="7_uqpp5"]
-[ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://assets/sprites/spikes.tres" id="7_xi5pi"]
+[ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratable_platform.tscn" id="7_uqpp5"]
+[ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="7_xi5pi"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="9_54gw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]

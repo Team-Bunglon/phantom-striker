@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_vs1t1"]
 [ext_resource type="Texture2D" uid="uid://ceg5b0l8ggr83" path="res://icon.svg" id="4_thq15"]
 [ext_resource type="Texture2D" uid="uid://pul8s0lksqe7" path="res://assets/sprites/Logo_Aseprite.png" id="5_8gpn6"]
-[ext_resource type="Script" path="res://menu/Continue.gd" id="7_4sjr5"]
+[ext_resource type="Script" path="res://menu/continue.gd" id="7_4sjr5"]
 [ext_resource type="Texture2D" uid="uid://c0s4r252ya5cy" path="res://assets/sprites/happyghost2.png" id="7_5t864"]
 [ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="8_ixf2x"]
 [ext_resource type="Script" path="res://menu/TotalTime.gd" id="9_ass4e"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d28tu6uihh8rw"]
 
-[ext_resource type="Script" path="res://objects/movingplatformpoint.gd" id="1_knnyg"]
-[ext_resource type="Texture2D" uid="uid://bul5e224h74vp" path="res://assets/sprites/moving_platform.png" id="2_vfme0"]
+[ext_resource type="Script" path="res://objects/moving_platform_point.gd" id="1_gyvag"]
+[ext_resource type="Texture2D" uid="uid://bul5e224h74vp" path="res://assets/sprites/moving_platform.png" id="2_8sdgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um11w"]
 size = Vector2(64, 13)
@@ -10,10 +10,10 @@ size = Vector2(64, 13)
 size = Vector2(96, 1)
 
 [node name="MovingPlatformPoint" type="AnimatableBody2D"]
-script = ExtResource("1_knnyg")
+script = ExtResource("1_gyvag")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vfme0")
+texture = ExtResource("2_8sdgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
