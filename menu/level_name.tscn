@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3bttyiuwhul0"]
 
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_gxqni"]
-[ext_resource type="Script" path="res://menu/LevelName.gd" id="1_m7w8o"]
+[ext_resource type="Script" path="res://menu/level_name.gd" id="1_m7w8o"]
 
 [node name="LevelName" type="CanvasLayer"]
 script = ExtResource("1_m7w8o")

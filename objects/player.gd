@@ -5,8 +5,9 @@ class_name Player
 @export var looking_left: bool = false			## The character will look left at the start of the level.
 @export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
 @export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform", "MovingPlatformPoint"]  ## The tilemap/object that the strike raycast will detect upon and the character will bounce. The string will be checked using "begins_with()" method.
+@export var unstrikable_tiles: Array[String] = ["RedTileMap", "RedSpikeMap"]
 @export var reacting_tiles: Array[String]  = ["DisintegratingPlatform", "DisintegratablePlatform", "DestroyablePlatform"]  ## The tilemap/object that will react when being struck upon. The character will still bounce.
-@export var kill_tiles: Array[String]	   = ["SpikeMap", "MovingHazard"] ## The tilemap/object that will kill the character upon contact. The string will be checked using "begins_with()" method.
+@export var kill_tiles: Array[String]	   = ["SpikeMap", "RedSpikeMap", "MovingHazard"] ## The tilemap/object that will kill the character upon contact. The string will be checked using "begins_with()" method.
 
 @export_category("Max Statistic")			## The maximum state the player can reach
 @export var max_speed:		 float = 300.0	## The maximum speed of the character when manually moving on either X axis.
@@ -292,6 +293,10 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 			# Sprite Stretching Function
 			if direction.x == 0.0 and direction.y != 0.0: _stretch_sprite()
 			elif direction.x != 0.0: _unstretch_sprite()
+		elif collider_name in unstrikable_tiles:
+			if camera_shake:
+				$"../Camera2D".shake(2,24)
+
 
 ## A wrapper to check if none of the strike button are pressed.
 ## I'm sure there's a better way than this.

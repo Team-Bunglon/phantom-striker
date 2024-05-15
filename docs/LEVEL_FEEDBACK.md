@@ -146,9 +146,32 @@ This level is just isn't up the standard. It's too short, the collectible has no
 **[GUIDELINE VIOLATION]**  
 LDG No. 5 has been violated by putting the win zone at the bottom. I have to redesigned this level completely by utilizing the wasted space more.
 
-### Level 21
-Name:  
-Author:  
+## Level 14
+Name: More Nuts -> Think Fast, Spookyhead!  
+Author: Azka
+
+**[GENERAL]**  
+What's with the nuts here? Are you nuts?
+
+Another level with pointless placement of the collectible. I dig the middle area as an optional area to get it instead. The player can choose to ignore it if they like.
+
+**[SPITEFUL]**  
+While I'm not against the idea that the player needs to think fast when they start the level, immediately dropping them off towards the spike without any warning is quite spiteful to me. I added some disintegrating platform to give them a short time to react and *think fast*.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Level 21
 
 **[GENERAL]**  
 This level is painful to make as not only I have to make the proper spawner, I have

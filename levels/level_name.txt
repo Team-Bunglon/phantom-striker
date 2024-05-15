@@ -1,0 +1,34 @@
+These are the original name of all levels available in the project as of commit c4067a5~ (The commit before the level review). I've created this file due to an accident where I reset the export variable of the level name on every single level. Note that the current commit may not have the same level name as in this list due to the level rename and redesign during the level review period.
+
+level0: Debug Level Please Ignore
+level1: Let's Begin!
+level2: Watch Your Step!
+level3: Illusion of Choice
+level4: Jump of Faith
+level5: Platform of Spikes!
+level6: Stairs of Spikes!
+level7: Diamond And Spike
+level8: Shine Bright Like A Diamond
+level9: Diamond And Spike
+level10: Diamond And Spike
+level11: Rising Tension
+level12: On A Prickly Path
+level13: Deez Nuts
+level14: More Nuts
+level15: Are you a challenger?
+level16: Are you fast enough?
+level17: Run Forest Run!
+level18: Fus Ro Dah!
+level19: Up and Down
+level20: Down and Up
+level21: Phloematic Highway
+level22: Slithereen
+level23: The Pit
+level24: Careful Now
+level25: Weee!
+level26: Slow and steady..
+level27: The Floor Is Spike
+level28: The Floor Is Abyss
+level29: Panic Room!
+level30: Gotta Go Fast!
+level31: Fruit of Life
