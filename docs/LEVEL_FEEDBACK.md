@@ -158,20 +158,21 @@ Another level with pointless placement of the collectible. I dig the middle area
 **[SPITEFUL]**  
 While I'm not against the idea that the player needs to think fast when they start the level, immediately dropping them off towards the spike without any warning is quite spiteful to me. I added some disintegrating platform to give them a short time to react and *think fast*.
 
+## Level 15
+name: Are You A Challanger? -> Up For A Challenge?  
+Author: Ivan
 
+**[GENERAL]**  
+The Level Layout is great, but the placement of collectible and the player aren't good. I decide to place the player where the collectible used to be and move the collectible at the end of the level instead. I remove the floor at the bottom left portion of the level with pit since it's just empty and bland to look at initially.
 
+I really like how you place those spikes as a pair and make them look good and spread out well. I tried to do it myself on other level but they tend to not look good on me.
 
-
-
-
-
-
-
-
-
-
+**[CHALLENGE]**  
+Also, this is another level that can be finished without striking, so I decide to create a special version of the collectible where it would disappear as soon as you perform a strike, requiring you to restart the level. It's a fun challenge, isn't it?
 
 ## Level 21
+name: Phloematic Highway
+Author: Me
 
 **[GENERAL]**  
 This level is painful to make as not only I have to make the proper spawner, I have

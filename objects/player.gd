@@ -92,7 +92,7 @@ func _ready():
 	$AnimationPlayer.play("idle" + face[0])
 
 func _input(event):
-	if event.is_action_pressed("restart"):
+	if event.is_action_pressed("restart") and not is_dying:
 		die(true)
 
 func _physics_process(delta):
