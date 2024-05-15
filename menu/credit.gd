@@ -1,4 +1,5 @@
 extends Control
+class_name Credit
 
 # Array to store references to the VBoxContainers
 @onready var vbox_containers = [
@@ -16,6 +17,9 @@ var onLastIndex = false
 func _ready():
 	# Initially, enable the first VBoxContainer
 	vbox_containers[current_vbox_index].visible = true
+	$"Stats/HBoxContainer4/TotalTime".text = str(GameStopwatch.get_elapsed_time_in_seconds())
+	$"Stats/HBoxContainer5/TotalCollectibles".text = str(Global.collectibles)
+	$"Stats/HBoxContainer6/TotalDeaths".text = str(Global.death_count)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and not onLastIndex and input_timer.is_stopped():
