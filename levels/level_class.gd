@@ -1,6 +1,7 @@
 extends Node
 class_name Level ## The class for all levels
 
+## The name of the level. It will be displayed at the bottom of the viewport.
 @export var level_name: String = "Sample Room Name"
 
 func next_level() -> String:

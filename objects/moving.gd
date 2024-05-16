@@ -3,18 +3,18 @@ extends AnimatableBody2D
 ## The parent class that holds the main information for both MovingPlatform and Moving Hazard
 class_name Moving
 
-@export var direction: Vector2		## The direction is relative from the starting position (where you placed your object)
-@export var speed: float = 100.0	## The speed of which the object is moving
-@export var back_and_forth: bool = true	## Should the object go back to its starting position once it reaches its end position? If not, it'll delete itself when it reaches its destination.
-@export var marker_object: NodePath ## Alternative way to set the final point of the moving object by using a marker node. If a marker node is given, [param direction] will be ignored. To use [param direction], leave this field empty.
+@export var direction: Vector2		## The direction for the object to travel to. It is relative from the starting position (where you placed your object in the editor). The destination point will be this object's [param global_position] + [param direction].
+@export var speed: float = 100.0	## The speed of which the object is moving. The speed in pixel/frame is [param speed] * [param delta].
+@export var back_and_forth: bool = true	## Should the object go back to its starting position once it reaches its destination point? If not, it'll despawn when it reaches its destination. Any objects spawned using [MovingSpawner] will have this parameter set to [code]false[/code].
+@export var marker_object: NodePath ## Alternative way to set the destination point by using another marker node. If a marker node is given, [param direction] will be ignored. To use [param direction], leave this field empty.
 
 @onready var marker_node: Marker2D
 @onready var start_point := global_position
 @onready var end_point := global_position + direction
 @onready var towards_end := true
 
-var prev_position := global_position
 var strike_name = name
+var prev_position = global_position
 
 func _ready():
 	if not marker_object.is_empty():
@@ -48,12 +48,3 @@ func create(start: Vector2, dir: Vector2, spd: float, obj_name: String):
 ## For object spawned using a spawner, we have to set the name manually to have it detected by our strike.
 func get_strike_name():
 	return strike_name
-
-## For debugging purpose
-func calculate_distance(time: float, msg := ""):
-	var start_x := global_position.x
-	var start_y := global_position.y
-	await(get_tree().create_timer(time).timeout)
-	var end_x := global_position.x
-	var end_y := global_position.y
-	print(msg + " Dist.x: " + str(abs(end_x - start_x)) + " | Dist.y: " + str(abs(end_y - start_y)))

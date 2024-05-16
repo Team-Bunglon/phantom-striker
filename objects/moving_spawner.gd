@@ -1,12 +1,19 @@
 extends Marker2D
 class_name MovingSpawner ## A Marker2D specialized to spawn Moving Platform and Moving Hazard. 
 
-enum OBJ {PLATFORM, HAZARD}
-@export var object_to_spawn: OBJ
-@export var direction: Vector2		## The direction you want to give to the spawned object
+enum OBJ {
+	## A moving platform for the character to stand and strike on.
+	PLATFORM, 
+	## A moving hazard that can kill the character on contact.
+	HAZARD
+}
+
+@export var object_to_spawn: OBJ	## Select which object you want to spawn.
+@export var direction: Vector2		## The direction you want to give for the spawned object. The destination point of the spawned objects will be this spawner's [param global_position] + [param direction].
 @export var speed: float = 100.0	## The speed you want to give to the spawned object
 @export var frequency: float = 1.0	## The frequency of which this spawner creates a new moving object in seconds
-@export var marker_object: NodePath ## Alternative way to set the final point of the spawned object by using another marker node. If a marker node is given, [param direction] will be ignored. To use [param direction], leave this field empty.
+@export var marker_object: NodePath ## Alternative way to set the destination point of the spawned object by using another marker node. If a marker node is given, [param direction] will be ignored. To use [param direction], leave this field empty.
+@export var auto_spawn: bool = false## Automatically spawn a line of moving objects between the spawner's location and the destination point with the gap of the normalized distance vector between the two points times [param speed] and [param frequency].
 
 @onready var marker_node: Marker2D
 @onready var platform_preload: Resource = preload("res://objects/moving_platform_point.tscn")
@@ -19,23 +26,39 @@ func _ready():
 		direction = marker_node.global_position - global_position
 
 func _physics_process(_delta):
-	if not first_spawn: _spawn_object()
+	if auto_spawn:
+		auto_spawn = false
+		_spawn_object_on_start(direction.normalized() * speed * frequency)
+	if not first_spawn:
+		_spawn_object_on_process()
 
-func _spawn_object():
+func _spawn_object_on_start(step: Vector2):
+	var len_to_target := direction.length()
+
+	var current_step := step
+	var spawn_pos := global_position + current_step
+	var len_to_step := spawn_pos.length()
+
+	while len_to_step <= len_to_target:
+		print("spawn object on ready: " + str(spawn_pos))
+		_spawn_object(spawn_pos, direction, speed)
+		current_step += step
+		spawn_pos = global_position + current_step
+		len_to_step = spawn_pos.length()
+
+func _spawn_object_on_process():
 	first_spawn = true
+	_spawn_object(global_position, direction, speed)
+	await(get_tree().create_timer(frequency, false).timeout)
+	_spawn_object_on_process()
 
+func _spawn_object(pos: Vector2, dir: Vector2, spd: float):
 	match object_to_spawn:
 		OBJ.PLATFORM:
 			var object_moving: MovingPlatformPoint = platform_preload.instantiate()
-			object_moving.create(global_position, direction, speed, "MovingPlatformPoint")
+			object_moving.create(pos, dir, spd, "MovingPlatformPoint")
 			get_parent().add_child(object_moving)
-			#object_moving.calculate_distance(frequency, name)
 		OBJ.HAZARD:
 			var object_moving: MovingHazardPoint = hazard_preload.instantiate()
-			object_moving.create(global_position, direction, speed, "MovingHazardPoint")
+			object_moving.create(pos, dir, spd, "MovingHazardPoint")
 			get_parent().add_child(object_moving)
-			#object_moving.calculate_distance(frequency, name)
-
-	await(get_tree().create_timer(frequency, false).timeout)
-
-	_spawn_object()

@@ -137,7 +137,7 @@ Teach the player about reducing vertical height when launching by holding down t
 The challenge is about the timing of the strike when launching in between the tunnel of spikes.
 
 ## Level 13
-Name: Deez Nuts -> Red Herring
+Name: Deez Nuts -> Red Herring  
 Author: Azka
 
 **[GENERAL]**
@@ -178,13 +178,39 @@ Name: Are You Fast Enough? -> Cold Feet
 Author: Ivan
 
 **[GENERAL]**  
-Another level that can be finished without striking and the placement of the black diamond is entirely pointless. 
+Another level that can be finished without striking and the placement of the black diamond is entirely pointless. Despite that, I really like the sparcity of the platform in this level.
 
 ## Level 17
-Name: Run Forest Run! -> Run, Forest, Run!
+Name: Run Forest Run! -> Run, Forrest, Run!  
+Author: Naufal
 
 **[GENERAL]**  
-Finally, a good level name for once. Though I haven't watched Forrest Gump. I just added some punctuation for the name.
+Finally, a good level name for once, though I haven't watched Forrest Gump. I just added some punctuation for the name.
+
+The same can't be said to the level design. I have no idea what should I make up on this level initially. Considering the level name is about running as fast as you can, I suppose I can turn this level into something about being chased by the moving hazard.
+
+**[CHALLENGE]**  
+As a result, this level is very heavy on moving hazard. The first spawner lane has the same speed as the player while the second lane has faster speed which requires the player to launch themselves like they did back in Level 12.
+
+## Level 18
+Name: Fus Ro Dah -> Launch Me As Though There Were No Tomorrow
+Author: Naufal
+
+**[GENERAL]**  
+This is worse than the previous level in every way and I am even clueless what the original intention of this level is. Did you put the player in the middle by accident?
+
+## Level 19
+Name: Up and Down -> What Goes Up Must Go Down  
+Author: Varo
+
+**[GENERAL]**  
+The level layout is terrific. 
+
+
+## Level 20
+Name: Down and Up
+Author: Varo
+
 
 ## Level 21
 name: Phloematic Highway

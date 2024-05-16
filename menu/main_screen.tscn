@@ -314,6 +314,7 @@ animations = [{
 
 [node name="MainScreen" type="CanvasLayer"]
 script = ExtResource("1_5x4pu")
+debug_level = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

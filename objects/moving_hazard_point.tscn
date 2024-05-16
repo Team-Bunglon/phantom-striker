@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn66xswbbwljd"]
+[gd_scene load_steps=5 format=3 uid="uid://cn66xswbbwljd"]
 
 [ext_resource type="Script" path="res://objects/moving_hazard_point.gd" id="1_jdh53"]
 [ext_resource type="Texture2D" uid="uid://c51adu4n30a8t" path="res://assets/sprites/moving_hazard.png" id="2_0jwe7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um11w"]
 size = Vector2(14, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcv78"]
+radius = 7.0
 
 [node name="MovingHazardPoint" type="AnimatableBody2D"]
 collision_layer = 0
@@ -20,6 +23,6 @@ shape = SubResource("RectangleShape2D_um11w")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_um11w")
+shape = SubResource("CircleShape2D_dcv78")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

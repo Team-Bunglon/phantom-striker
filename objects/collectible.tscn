@@ -447,7 +447,6 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -1.5)
 texture = ExtResource("1_x78in")
 
