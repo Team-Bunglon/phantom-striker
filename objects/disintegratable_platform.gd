@@ -5,6 +5,7 @@ class_name DisintegratablePlatform
 @onready var sprite_preload: Resource = preload("res://objects/disintegratable_sprite.tscn")
 @onready var disarea_preload: Resource = preload("res://objects/disintegratable_area.tscn")
 @onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
+@onready var disintegrating_particle_preload: Resource = preload("res://objects/disintegrating.tscn")
 
 var inside_disarea: Dictionary = {}
 var breaking_tile: Dictionary = {}
@@ -21,6 +22,13 @@ func _ready():
 		breaking_tile[coord] = false
 		respawn_tile[coord] = true
 
+func _disintegrating_particle_create(coord: Vector2):
+	var disintegrating_particle: Disintegrating = disintegrating_particle_preload.instantiate()
+	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	disintegrating_particle.emitting(pos)
+	print("disintegrated at "+ str(pos))
+	get_parent().add_child(disintegrating_particle)
+
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
 	if breaking_tile[coord]:
@@ -35,6 +43,7 @@ func break_platform(coord):
 	set_cell(0, coord, 0, Vector2i(3,0))
 	var sprite := _create_sprite(coord)
 	await(sprite.animation_finished)
+	_disintegrating_particle_create(coord)
 	sprite.visible = false
 
 	# Set to broken strate and Create area 2D to hold that state when the player is inside. 

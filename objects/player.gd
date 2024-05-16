@@ -97,7 +97,7 @@ func _input(event):
 		die(true)
 
 func _physics_process(delta):
-	print(velocity.y)
+	#print(velocity.y)
 	if is_dying:
 		velocity = Vector2.ZERO
 		return
