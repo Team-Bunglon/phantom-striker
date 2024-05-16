@@ -5,7 +5,7 @@ class_name GateMap
 ## In order for the gate to be functional, you need to add [GateKey] to your level and assign them to this GateMap.
 ## Make sure there are as many GateKey as the ammount set in [param key_count].
 @export var key_count: int = 1								  
-@export var fade_duration: float = 2.0						  ## How long the fading animation would last
+@export var fade_duration: float = 2.0						  ## How long the fading animation would last. Note that the collision is disable as soon as the last key is collected.
 @export var color_modulate: Color = Color(0.5, 0.5, 0.5, 0.5) ## The color modulation after the gate is opened
 
 var current_count: int = 0
@@ -21,7 +21,7 @@ func unlock():
 	current_count += 1
 	if current_count >= key_count and not is_opened:
 		is_opened = true
-		Audio.play("Test")
+		Audio.play("Open")
 		tile_set.set_physics_layer_collision_mask(0,0)
 		tile_set.set_physics_layer_collision_layer(0,0)
 		var opacity_tween := create_tween()
