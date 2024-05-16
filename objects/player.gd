@@ -75,6 +75,7 @@ var face: Dictionary = {
 # Variables that shouldn't be changed
 @onready var all_strikeable_tiles: Array[String] = strikable_tiles + reacting_tiles
 @onready var strike_particle_preload: Resource = preload("res://objects/strike.tscn")
+@onready var jump_particle_preload: Resource = preload("res://objects/jump.tscn")
 @onready var strike_dir: Dictionary = {
 	#Vector2(x,y):	["animation_name", "RayCast2D_name"],
 	Vector2(1,0):	["strike_right", "RayCastR"],
@@ -96,7 +97,7 @@ func _input(event):
 		die(true)
 
 func _physics_process(delta):
-	print(velocity.y)
+	#print(velocity.y)
 	if is_dying:
 		velocity = Vector2.ZERO
 		return
@@ -203,9 +204,16 @@ func _jump(delta):
 func _jump_procedure():
 	_stretch_sprite()
 	Audio.play("Jump")
+	_jump_particle_create()
 	velocity.y = -jump_velocity
 	coyote_count = 0
 	jump_buffer_count = 0
+
+func _jump_particle_create():
+	var jump_particle: Jump = jump_particle_preload.instantiate()
+	print(velocity.x)
+	jump_particle.emitting($Center.global_position, velocity.x)
+	get_parent().add_child(jump_particle)
 
 ## Pushing the player when the portion of his head hits the celling instead of stopping him.
 func _jump_push():

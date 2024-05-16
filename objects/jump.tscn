@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b42f28437mphi"]
+
+[ext_resource type="Script" path="res://objects/jump.gd" id="1_60smu"]
+[ext_resource type="Texture2D" uid="uid://nmpsxlowdlmd" path="res://assets/sprites/particle1.png" id="2_wtkf3"]
+
+[sub_resource type="Curve" id="Curve_m26w0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0.7), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qmhfb"]
+curve = SubResource("Curve_m26w0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ut4ke"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 10, 0)
+emission_shape_scale = Vector3(1.5, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 7.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 50, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_qmhfb")
+color = Color(0.666569, 0.666569, 0.666569, 1)
+
+[node name="Jump" type="Node2D"]
+script = ExtResource("1_60smu")
+
+[node name="JumpParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ut4ke")
+texture = ExtResource("2_wtkf3")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+randomness = 0.3
+
+[connection signal="finished" from="JumpParticle" to="." method="_on_jump_particle_finished"]
