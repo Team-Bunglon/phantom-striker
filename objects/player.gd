@@ -97,7 +97,6 @@ func _input(event):
 		die(true)
 
 func _physics_process(delta):
-	#print(velocity.y)
 	if is_dying:
 		velocity = Vector2.ZERO
 		return
@@ -152,6 +151,7 @@ func _move():
 			_wall_buffer_countdown()
 		else:
 			velocity.x = move_toward(velocity.x, 0, floor_friction_current)
+	print(velocity.y)
 	_player_state(int(direction))
 
 ## Performing said horizonal movement
@@ -211,7 +211,6 @@ func _jump_procedure():
 
 func _jump_particle_create():
 	var jump_particle: Jump = jump_particle_preload.instantiate()
-	print(velocity.x)
 	jump_particle.emitting($Center.global_position, velocity.x)
 	get_parent().add_child(jump_particle)
 

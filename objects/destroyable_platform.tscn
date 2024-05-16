@@ -7,3 +7,4 @@
 tile_set = ExtResource("1_sydhc")
 format = 2
 script = ExtResource("3_0akio")
+respawn_timer = null

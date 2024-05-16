@@ -6,11 +6,22 @@ class_name DestroyablePlatform
 @onready var disintegrating_particle_preload: Resource = preload("res://objects/disintegrating.tscn")
 
 var respawn_tile: Dictionary = {}
+var checked_tile: Dictionary = {}
 
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
 	# Set some variables
 	respawn_tile[coord] = true
+	checked_tile[coord] = true
+
+	# Check its neighbor and destroy them
+	for g in get_surrounding_cells(coord):
+		if get_cell_source_id(0, g) != -1:
+			if checked_tile.has(g):
+				if checked_tile[g] == false:
+					break_platform(g)
+			else:
+				break_platform(g)
 
 	# Set to broken strate and Create area 2D to hold that state when the player is inside. 
 	Audio.play("Destroy")
@@ -28,13 +39,13 @@ func break_platform(coord):
 
 	# Delete objects and reset some variables
 	area.queue_free()
-	print(respawn_tile[coord])
+	checked_tile[coord] = false
 
-func _disintegrating_particle_create(coord: Vector2):
+func _disintegrating_particle_create(coord: Vector2i):
 	var disintegrating_particle: Disintegrating = disintegrating_particle_preload.instantiate()
-	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	var pos: Vector2 = coord * 16 + Vector2i(8, 8)
 	disintegrating_particle.emitting(pos)
-	print("destroyed at "+ str(pos))
+	print("destroyed at "+ str(coord))
 	get_parent().add_child(disintegrating_particle)
 
 func _create_area(coord) -> Area2D:

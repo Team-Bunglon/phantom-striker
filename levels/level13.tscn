@@ -56,7 +56,7 @@ layer_0/tile_data = PackedInt32Array(786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 7
 
 [node name="GateMap" parent="." instance=ExtResource("13_lhx8c")]
 layer_0/tile_data = PackedInt32Array(917538, 196608, 1, 917542, 262144, 1, 852006, 262144, 0, 917541, 65536, 0, 852005, 65536, 2, 917540, 65536, 0, 852004, 65536, 2, 917539, 65536, 0, 852003, 65536, 2, 852002, 196608, 0)
-key_count = 2
+key_count = 3
 
 [node name="BlackDiamond" parent="." instance=ExtResource("8_5uc85")]
 position = Vector2(584, 328)
@@ -96,6 +96,10 @@ gate_map_object = NodePath("../GateMap")
 
 [node name="GateKey2" parent="." instance=ExtResource("14_tb2oi")]
 position = Vector2(312, 296)
+gate_map_object = NodePath("../GateMap")
+
+[node name="GateKey3" parent="." instance=ExtResource("14_tb2oi")]
+position = Vector2(208, 296)
 gate_map_object = NodePath("../GateMap")
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
