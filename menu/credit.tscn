@@ -1,18 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://ntq75wuam6vt"]
+[gd_scene load_steps=11 format=3 uid="uid://ntq75wuam6vt"]
 
 [ext_resource type="Script" path="res://menu/credit.gd" id="1_dxt3q"]
 [ext_resource type="Texture2D" uid="uid://dhak7ge0tfif6" path="res://assets/sprites/logo.png" id="1_e16ll"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_vs1t1"]
 [ext_resource type="Texture2D" uid="uid://ceg5b0l8ggr83" path="res://icon.svg" id="4_thq15"]
 [ext_resource type="Texture2D" uid="uid://pul8s0lksqe7" path="res://assets/sprites/Logo_Aseprite.png" id="5_8gpn6"]
-[ext_resource type="Script" path="res://menu/Continue.gd" id="7_4sjr5"]
+[ext_resource type="Script" path="res://menu/continue.gd" id="7_4sjr5"]
 [ext_resource type="Texture2D" uid="uid://c0s4r252ya5cy" path="res://assets/sprites/happyghost2.png" id="7_5t864"]
 [ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="8_ixf2x"]
-[ext_resource type="Script" path="res://menu/TotalTime.gd" id="9_ass4e"]
 [ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/ui_collectible.png" id="10_qyq3d"]
-[ext_resource type="Script" path="res://menu/TotalCollectibles.gd" id="11_sqrn4"]
 [ext_resource type="Texture2D" uid="uid://b5k8nxe2rejwd" path="res://assets/sprites/ui_death.png" id="12_bueif"]
-[ext_resource type="Script" path="res://menu/TotalDeaths.gd" id="13_fmvmc"]
 
 [node name="Credit" type="Control"]
 layout_mode = 3
@@ -380,7 +377,6 @@ theme_override_fonts/font = ExtResource("2_vs1t1")
 theme_override_font_sizes/font_size = 20
 text = "deez"
 horizontal_alignment = 1
-script = ExtResource("9_ass4e")
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Stats"]
 layout_mode = 2
@@ -398,7 +394,6 @@ theme_override_fonts/font = ExtResource("2_vs1t1")
 theme_override_font_sizes/font_size = 20
 text = "deez"
 horizontal_alignment = 1
-script = ExtResource("11_sqrn4")
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Stats"]
 layout_mode = 2
@@ -416,6 +411,5 @@ theme_override_fonts/font = ExtResource("2_vs1t1")
 theme_override_font_sizes/font_size = 20
 text = "deez"
 horizontal_alignment = 1
-script = ExtResource("13_fmvmc")
 
 [connection signal="pressed" from="Credit5/Continue" to="Credit5/Continue" method="_on_pressed"]

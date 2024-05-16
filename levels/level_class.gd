@@ -1,7 +1,7 @@
 extends Node
-class_name Level
+class_name Level ## The class for all levels
 
-@export var room_name: String = "Sample Room Name"
+@export var level_name: String = "Sample Room Name"
 
 func next_level() -> String:
 	var next_level_number: String = str(get_number() + 1)
@@ -14,8 +14,7 @@ func get_number() -> int:
 		return name.to_int()
 
 func _ready():
-	print(name + ": " + room_name)
-	$Canvas/RoomName.text = room_name
+	$LevelName.set_level_name(level_name)
 	Global.current_level = get_number()
 	Global.save_game() # this will save the game on every level change or restart
 	# Music

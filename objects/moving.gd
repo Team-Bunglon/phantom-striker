@@ -5,14 +5,21 @@ class_name Moving
 
 @export var direction: Vector2		## The direction is relative from the starting position (where you placed your object)
 @export var speed: float = 100.0	## The speed of which the object is moving
-@export var back_and_forth: bool = true	## Should the object go back to its starting position? If not, it'll delete itself when it reaches its destination.
+@export var back_and_forth: bool = true	## Should the object go back to its starting position once it reaches its end position? If not, it'll delete itself when it reaches its destination.
+@export var marker_object: NodePath ## Alternative way to set the final point of the moving object by using a marker node. If a marker node is given, [param direction] will be ignored. To use [param direction], leave this field empty.
 
+@onready var marker_node: Marker2D
 @onready var start_point := global_position
 @onready var end_point := global_position + direction
 @onready var towards_end := true
 
 var prev_position := global_position
 var strike_name = name
+
+func _ready():
+	if not marker_object.is_empty():
+		marker_node = get_node(marker_object)
+		end_point = marker_node.global_position
 
 func _physics_process(delta):
 	_move(delta)

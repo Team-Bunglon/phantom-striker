@@ -397,7 +397,7 @@ size = Vector2(12, 21)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.732258, 0.589562), -1.4838, -1.4838, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_wcj86"]
+[sub_resource type="CurveTexture" id="CurveTexture_or6j5"]
 curve = SubResource("Curve_icnat")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t4g31"]
@@ -406,14 +406,16 @@ emission_shape_scale = Vector3(2, 2, 1)
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
-initial_velocity_min = 10.0
-initial_velocity_max = 50.0
+initial_velocity_min = 40.0
+initial_velocity_max = 120.0
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_wcj86")
+scale_curve = SubResource("CurveTexture_or6j5")
 color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
+collision_mask = 9
+platform_on_leave = 2
 script = ExtResource("1_jlnm5")
 
 [node name="Center" type="Marker2D" parent="."]
@@ -447,8 +449,9 @@ position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_1c70r")
 
 [node name="DieParticle" type="GPUParticles2D" parent="."]
+position = Vector2(0, -12)
 emitting = false
-amount = 128
+amount = 160
 process_material = SubResource("ParticleProcessMaterial_t4g31")
 texture = ExtResource("3_ntvri")
 lifetime = 0.5
