@@ -4,7 +4,7 @@ class_name Player
 @export var strike_particle_length: float = 48	## The length of the strike particle emission spawner. Does NOT affect the target position of any directional RayCast2D.
 @export var looking_left: bool = false			## The character will look left at the start of the level.
 @export var camera_shake: bool = true			## Allow camera shaking upon striking impact or death. 
-@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform", "MovingPlatformPoint"]  ## The tilemap/object that the strike raycast will detect upon and the character will bounce. The string will be checked using "begins_with()" method.
+@export var strikable_tiles: Array[String] = ["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform", "MovingPlatformPoint", "GateMap"]  ## The tilemap/object that the strike raycast will detect upon and the character will bounce. The string will be checked using "begins_with()" method.
 @export var unstrikable_tiles: Array[String] = ["RedTileMap", "RedSpikeMap"]
 @export var reacting_tiles: Array[String]  = ["DisintegratingPlatform", "DisintegratablePlatform", "DestroyablePlatform"]  ## The tilemap/object that will react when being struck upon. The character will still bounce.
 @export var kill_tiles: Array[String]	   = ["SpikeMap", "RedSpikeMap", "MovingHazard"] ## The tilemap/object that will kill the character upon contact. The string will be checked using "begins_with()" method.

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn40t5m5fdort"]
+
+[ext_resource type="TileSet" uid="uid://dpgbl4hqjq5g3" path="res://resources/gate_tiles.tres" id="1_u0pkh"]
+[ext_resource type="Script" path="res://objects/gate_map.gd" id="2_uvpyf"]
+
+[node name="GateMap" type="TileMap"]
+tile_set = ExtResource("1_u0pkh")
+format = 2
+script = ExtResource("2_uvpyf")

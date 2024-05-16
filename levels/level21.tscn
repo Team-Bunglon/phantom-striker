@@ -23,7 +23,6 @@ size = Vector2(20, 505)
 
 [node name="Level#21" type="Node2D"]
 script = ExtResource("1_pp20t")
-room_name = "Phloematic Highway"
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 

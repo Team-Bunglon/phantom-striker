@@ -52,7 +52,7 @@ func _input(event):
 			$CollectibleArea.disconnect("body_entered", _on_collectible_area_body_entered)
 
 func _on_collectible_area_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and not is_collected:
 		Audio.play("Obtain")
 		is_collected = true
 		$Obtain.text = obtain_text[randi() % len(obtain_text)]

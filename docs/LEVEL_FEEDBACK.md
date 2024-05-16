@@ -137,7 +137,7 @@ Teach the player about reducing vertical height when launching by holding down t
 The challenge is about the timing of the strike when launching in between the tunnel of spikes.
 
 ## Level 13
-Name: Deez Nuts -> WIP  
+Name: Deez Nuts -> Red Herring
 Author: Azka
 
 **[GENERAL]**
@@ -159,7 +159,7 @@ Another level with pointless placement of the collectible. I dig the middle area
 While I'm not against the idea that the player needs to think fast when they start the level, immediately dropping them off towards the spike without any warning is quite spiteful to me. I added some disintegrating platform to give them a short time to react and *think fast*.
 
 ## Level 15
-name: Are You A Challanger? -> Up For A Challenge?  
+Name: Are You A Challanger? -> Up For A Challenge?  
 Author: Ivan
 
 **[GENERAL]**  
@@ -167,8 +167,24 @@ The Level Layout is great, but the placement of collectible and the player aren'
 
 I really like how you place those spikes as a pair and make them look good and spread out well. I tried to do it myself on other level but they tend to not look good on me.
 
+**[GUIDELINE VIOLATION]**  
+Technically, my intention with LDG No. 7 is that the win area should always be on the ceilling, but due to my wording where it "should always be on top of the level" and it does stay on the top portion of the level, I won't consider this placement as a violation.
+
 **[CHALLENGE]**  
 Also, this is another level that can be finished without striking, so I decide to create a special version of the collectible where it would disappear as soon as you perform a strike, requiring you to restart the level. It's a fun challenge, isn't it?
+
+## Level 16 
+Name: Are You Fast Enough? -> Cold Feet  
+Author: Ivan
+
+**[GENERAL]**  
+Another level that can be finished without striking and the placement of the black diamond is entirely pointless. 
+
+## Level 17
+Name: Run Forest Run! -> Run, Forest, Run!
+
+**[GENERAL]**  
+Finally, a good level name for once. Though I haven't watched Forrest Gump. I just added some punctuation for the name.
 
 ## Level 21
 name: Phloematic Highway
