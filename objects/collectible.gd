@@ -34,9 +34,13 @@ func _ready():
 	else:
 		if shadow_flower:
 			$Sprite2Dark.visible = true
+			$Sprite2Dark.scale = Vector2.ONE
+			$Sprite2Dark.rotation = 0.0
 			$AnimationPlayer.play("idle_dark")
 		else:
 			$Sprite2D.visible = true
+			$Sprite2D.scale = Vector2.ONE
+			$Sprite2D.rotation = 0.0
 			$AnimationPlayer.play("idle")
 
 func _input(event):
