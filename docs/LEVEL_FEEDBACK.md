@@ -229,7 +229,7 @@ This level is painful to make as not only I have to make the proper spawner, I h
 aaa
 
 ## Level 22
-Name: Sithereen  
+Name: Slithereen  
 Author: Me
 
 **[CHALLENGE]**  
@@ -237,7 +237,7 @@ This level should take the meaning of "precision platforming" on the GDD to its 
 
 ## Level 23
 Name: The Pit  
-Author: Ivan
+Author: Varo
 
 **[GENERAL]**  
 I really can't come up with a better level name for this one so I decide to keep it.
@@ -246,13 +246,31 @@ I like the split path the player can take here, but having collectible on the we
 
 ## Level 24
 Name: Careful Now  
-Author: Ivan
+Author: Varo
 
 **[GENERAL]**  
 The name and the level design blends together incredibly well here, but I guess I should take it to the next level. I just need to replace the old moving hazard and add some red spikes here and there and it's perfect. I'm not sure if "Careful Now" is some sort of a reference or as a way to tell the player to be careful.
 
 **[CHALLENGE]**  
 I also make this level feasable without striking as originally you really only need to strike once. And thus, the shadow collectible is back!
+
+## Level 25
+Name: Weee! -> Weeeeee!  
+Author: Ivan
+
+**[CHALLENGE]**  
+
+## Level 26
+Name: Slow and steady.. -> You Can Do It!  
+Author: Ivan 
+
+## Level 27
+
+## Level 28
+
+## Level 29
+
+## Level 30
 
 # Bonus Section
 ### The problem with the original implementation of moving object
