@@ -8,6 +8,10 @@ class_name DestroyablePlatform
 var respawn_tile: Dictionary = {}
 var checked_tile: Dictionary = {}
 
+func _ready():
+	if global_position != Vector2.ZERO:
+		assert(false, "DestroyablePlatform should have (0,0) as its position")
+
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
 	# Set some variables

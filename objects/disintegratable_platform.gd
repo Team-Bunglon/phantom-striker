@@ -16,6 +16,8 @@ var respawn_tile: Dictionary = {}
 enum {AREA, DISAREA} 
 
 func _ready():
+	if global_position != Vector2.ZERO:
+		assert(false, "DisintegratingPlatform should have (0,0) as its position")
 	for coord in get_used_cells(0):
 		_create_area(coord, DISAREA)
 		inside_disarea[coord] = false

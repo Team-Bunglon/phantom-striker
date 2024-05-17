@@ -97,6 +97,8 @@ func _input(event):
 		die(true)
 
 func _physics_process(delta):
+	if global_position.y >= 640 and not is_dying:
+		die(true)
 	if is_dying:
 		velocity = Vector2.ZERO
 		return

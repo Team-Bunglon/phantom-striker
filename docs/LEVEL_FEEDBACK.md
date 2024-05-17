@@ -48,7 +48,7 @@ The level layout is fine, I just add some tiles to make the level look more natu
 **[TUTORIAL]**  
 Teaches the player that the bottom pit at the right will always kill you, true to the room name.  
 
-Also, you don't need to strike to the platform even once to complete the level. Is striking even a choice?
+Also, you don't need to strike to the platform even once to complete the level. Is striking even a choice? Well, I added a shadow collectible as a choice.
 
 ## Level 4
 Name: Jump of Faith  
@@ -219,7 +219,7 @@ Honestly, I don't need to touch this level because it's already good, but I ende
 What I did here is to prevent the player from being stationary (hence the level name). The player needs to keep moving or they'll die.
 
 ## Level 21
-name: Phloematic Highway
+name: Phloematic Highway  
 Author: Me
 
 **[GENERAL]**  
@@ -227,6 +227,32 @@ This level is painful to make as not only I have to make the proper spawner, I h
 
 **[CHALLENGE]**  
 aaa
+
+## Level 22
+Name: Sithereen  
+Author: Me
+
+**[CHALLENGE]**  
+This level should take the meaning of "precision platforming" on the GDD to its fullest.
+
+## Level 23
+Name: The Pit  
+Author: Ivan
+
+**[GENERAL]**  
+I really can't come up with a better level name for this one so I decide to keep it.
+
+I like the split path the player can take here, but having collectible on the west side can cause the player to complety ignore that side as collectible is optional by its nature. It's not your mistake, however, as the gate tiles aren't implemented when you initially designed this level. Don't worry, I kept the general layout of this level.
+
+## Level 24
+Name: Careful Now  
+Author: Ivan
+
+**[GENERAL]**  
+The name and the level design blends together incredibly well here, but I guess I should take it to the next level. I just need to replace the old moving hazard and add some red spikes here and there and it's perfect. I'm not sure if "Careful Now" is some sort of a reference or as a way to tell the player to be careful.
+
+**[CHALLENGE]**  
+I also make this level feasable without striking as originally you really only need to strike once. And thus, the shadow collectible is back!
 
 # Bonus Section
 ### The problem with the original implementation of moving object

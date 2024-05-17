@@ -87,6 +87,7 @@ position = Vector2(600, -8.25)
 shape = SubResource("RectangleShape2D_dduow")
 
 [node name="DestroyablePlatform" parent="." instance=ExtResource("8_d0v5w")]
+respawn_timer = 5.0
 
 [node name="GateKey" parent="." instance=ExtResource("10_xgfb6")]
 position = Vector2(32, 40)
