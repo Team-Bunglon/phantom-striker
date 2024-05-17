@@ -28,7 +28,7 @@ class_name Player
 @onready var fall_gravity:  float =	((2.0 * max_jump_height) / (jump_time_to_descend ** 2))
 
 @export_category("Falling")
-@export var fall_time_to_terminal: float = 0.8 ## The time to reach terminal velocity during a fall, that is the state that the player can't gain anymore fall speed. Any action using 
+@export var fall_time_to_terminal: float = 0.6 ## The time to reach terminal velocity during a fall, that is the state that the player can't gain anymore fall speed. Any action using 
 @export var fall_stretch_multiplier: float = 0.4 ## The 
 @onready var max_fall_speed: float = fall_gravity * fall_time_to_terminal
 
@@ -151,7 +151,6 @@ func _move():
 			_wall_buffer_countdown()
 		else:
 			velocity.x = move_toward(velocity.x, 0, floor_friction_current)
-	print(velocity.y)
 	_player_state(int(direction))
 
 ## Performing said horizonal movement

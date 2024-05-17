@@ -118,18 +118,22 @@ bus = &"Sound"
 stream = ExtResource("18_nv8wh")
 volume_db = -2.0
 pitch_scale = 0.9
+bus = &"Sound"
 
 [node name="Fail" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("19_354f1")
 volume_db = -2.0
 pitch_scale = 1.2
-
-[node name="Open" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("20_cy1d7")
-volume_db = 1.0
-pitch_scale = 0.5
+bus = &"Sound"
 
 [node name="Key" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("21_th7aj")
 volume_db = -5.0
 pitch_scale = 0.8
+bus = &"Sound"
+
+[node name="Open" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("20_cy1d7")
+volume_db = 1.0
+pitch_scale = 0.5
+bus = &"Sound"

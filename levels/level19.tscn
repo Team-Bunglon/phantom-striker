@@ -35,7 +35,7 @@ limit_bottom = 480
 script = ExtResource("3_nyulp")
 
 [node name="Player" parent="." instance=ExtResource("4_sxbty")]
-position = Vector2(344, 432)
+position = Vector2(40, 432)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35

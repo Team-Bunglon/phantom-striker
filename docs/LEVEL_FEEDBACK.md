@@ -22,6 +22,8 @@ Any violation for LDG 9 specifically. I put this as its own category as any spit
 - I may refer level as "room" and I'll use the two terms interchangebly.
 - Not every level in this docs will have all categories. That's just waste of time.
 
+There will be a bonus section about the old implementation of moving objects at the end of this document.
+
 ## Level 1
 Name: Let's Begin -> Strike at the Root  
 Author: Me 
@@ -49,7 +51,7 @@ Teaches the player that the bottom pit at the right will always kill you, true t
 Also, you don't need to strike to the platform even once to complete the level. Is striking even a choice?
 
 ## Level 4
-Name: Jump of Faith -> Leap of Faith  
+Name: Jump of Faith  
 Author: Azka
 
 **[GENERAL]**  
@@ -59,7 +61,7 @@ The big problem of this level is that it's too similar with the previous level. 
 The player should maintain their height away from the spike with their strike.
 
 ## Level 5
-Name: Platform of Spikes -> Xylematic Platform  
+Name: Platform of Spikes -> Xylematic Platforming  
 Author: Ivan
 
 **[GENERAL]**  
@@ -75,7 +77,7 @@ This level is just so easy I just end up adding more spikes. Maybe I switch this
 Also, can you be a little bit more creative with the naming? Not just "[Stuff] of Spikes"?
 
 ## Level 7
-Name: Stairs of Spikes -> Cutting The Traffic  
+Name: Stairs of Spikes -> Cut to the Chase  
 Author: Naufal
 
 **[GENERAL]**  
@@ -168,7 +170,7 @@ The Level Layout is great, but the placement of collectible and the player aren'
 I really like how you place those spikes as a pair and make them look good and spread out well. I tried to do it myself on other level but they tend to not look good on me.
 
 **[GUIDELINE VIOLATION]**  
-Technically, my intention with LDG No. 7 is that the win area should always be on the ceilling, but due to my wording where it "should always be on top of the level" and it does stay on the top portion of the level, I won't consider this placement as a violation.
+Technically, my intention with LDG No. 7 is that the win area should always be on the ceilling, but due to my wording where it "should always be on top of the level" and it does stay on the top portion of the level, I won't consider this placement as a violation from now on.
 
 **[CHALLENGE]**  
 Also, this is another level that can be finished without striking, so I decide to create a special version of the collectible where it would disappear as soon as you perform a strike, requiring you to restart the level. It's a fun challenge, isn't it?
@@ -193,7 +195,7 @@ The same can't be said to the level design. I have no idea what should I make up
 As a result, this level is very heavy on moving hazard. The first spawner lane has the same speed as the player while the second lane has faster speed which requires the player to launch themselves like they did back in Level 12.
 
 ## Level 18
-Name: Fus Ro Dah -> Launch Me As Though There Were No Tomorrow
+Name: Fus Ro Dah -> Launch Me As Though There Were No Tomorrow  
 Author: Naufal
 
 **[GENERAL]**  
@@ -204,13 +206,17 @@ Name: Up and Down -> What Goes Up Must Go Down
 Author: Varo
 
 **[GENERAL]**  
-The level layout is terrific. 
-
+The level layout is great, but it's not difficult enough. That's all.
 
 ## Level 20
-Name: Down and Up
+Name: Down and Up -> Do Not Stop!  
 Author: Varo
 
+**[GENERAL]**  
+Honestly, I don't need to touch this level because it's already good, but I ended give it too much overhaul. Oops...
+
+**[CHALLENGE]**  
+What I did here is to prevent the player from being stationary (hence the level name). The player needs to keep moving or they'll die.
 
 ## Level 21
 name: Phloematic Highway
@@ -221,3 +227,24 @@ This level is painful to make as not only I have to make the proper spawner, I h
 
 **[CHALLENGE]**  
 aaa
+
+# Bonus Section
+### The problem with the original implementation of moving object
+
+This applies to both `MovingPlatform` and `MovingHazard`. The problems mentioned below can all be summed up in one sentence: *It's extremely restrictive.* All objects must move at 4 directions (+1 direction where it would stay in place) with predefined distance and speed and you almost have no control on its movement for specific level. Here's what I mean by "restrictive":
+
+1. You cannot specify the exact direction and distance the object would go towards. It will only move as much as the `AnimationPlayer` tells them to. Adding more direction or distance requires adding more animation on `AnimationPlayer` and that's just laborious and waste of time.
+2. Using `AnimationPlayer` instead of `move_towards()` means it can be difficult to change any of its value (such as distance and speed) for specific level. Changing `AnimationPlayer`'s value directly in the editor means all other moving object in the whole games are affected. You can have export variable to change its value per level but I'm not aware if it's possible in the current version of Godot. Even if it's possible, `move_towards()` is so much easier have its value changed anyway and you don't need to manually animate the object's movement by yourself.
+3. Using String instead of Enum is unintuitive. Using Enum as an export variable is so much easier as other devs can simply choose the desired direction from a drop-down menu, rather than typing it out in a text field and hoping it matches the match case in the code without having to look at the code itself.
+
+Not everything in the game needs to be the same (it's different from being consistent). Something like moving objects should have more control than just giving it five exact options of movement.
+ 
+Fortunately, not everything here is a lost. For instance, the foundation of the implementation is good enough for the creation for the better `MovingPlatformPoint` and `MovingHazardPoint` which replace the old implementation of moving objects. I also learn GDScript has switch statement ("match" as they call it) so that's a nice plus.
+
+For the new moving objects, the `direction` parameter now takes the value of a vector. This way, you have an absolute, 360° of freedom of specifying its direction exactly. Not only that, you can also specify its `speed` and `back_and_forth` property (that is whether you want your object to go back to its starting direction or despawn as soon as it reaches its destination). This works great with the spawner object as well.
+
+Implementation like this may come down to me not being specific enough about the object's direction and export variables. I should tell you about its export variable (such as `direction: Vector2` and `speed: float`) exactly and use `move_towards()` in the code base, but I assume too much here. Take this as a learning experience for both of us ^^
+
+
+
+
