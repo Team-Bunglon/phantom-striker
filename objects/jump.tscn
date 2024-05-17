@@ -16,9 +16,10 @@ emission_shape_offset = Vector3(0, 10, 0)
 emission_shape_scale = Vector3(1.5, 1, 1)
 emission_shape = 1
 emission_sphere_radius = 7.0
-spread = 180.0
-initial_velocity_min = 20.0
-initial_velocity_max = 20.0
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
 gravity = Vector3(0, 50, 0)
 scale_min = 0.8
 scale_max = 1.2
@@ -30,7 +31,7 @@ script = ExtResource("1_60smu")
 
 [node name="JumpParticle" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 30
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_ut4ke")
 texture = ExtResource("2_wtkf3")
 lifetime = 0.5
