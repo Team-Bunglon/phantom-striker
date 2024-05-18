@@ -27,13 +27,6 @@ func _ready():
 		tiles_entered[coord] = false
 		tiles_entered_disarea[coord] = false
 
-func _respawn_particle_create(coord: Vector2):
-	var respawn_particle: Respawn = respawn_particle_preload.instantiate()
-	var pos: Vector2 = coord * 16 + Vector2(8, 8)
-	respawn_particle.emitting(pos)
-	print("respawn at "+ str(pos))
-	get_parent().add_child(respawn_particle)
-
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
 	if tiles_breaking[coord]: return
@@ -76,6 +69,13 @@ func _disintegrating_particle_create(coord: Vector2):
 	var pos: Vector2 = coord * 16 + Vector2(8, 8)
 	disintegrating_particle.emitting(pos)
 	get_parent().add_child(disintegrating_particle)
+
+## Particle stuff #2
+func _respawn_particle_create(coord: Vector2):
+	var respawn_particle: Respawn = respawn_particle_preload.instantiate()
+	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	respawn_particle.emitting(pos)
+	get_parent().add_child(respawn_particle)
 
 ## Create animated sprite. We have to create animation from each tile.
 func _create_sprite(coord) -> AnimatedSprite2D:
