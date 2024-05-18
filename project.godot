@@ -27,6 +27,7 @@ PauseScreen="*res://menu/pause_screen.tscn"
 
 [debug]
 
+settings/gdscript/max_call_stack=512
 gdscript/warnings/integer_division=0
 
 [display]

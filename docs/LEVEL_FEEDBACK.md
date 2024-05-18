@@ -249,7 +249,7 @@ Name: Careful Now
 Author: Varo
 
 **[GENERAL]**  
-The name and the level design blends together incredibly well here, but I guess I should take it to the next level. I just need to replace the old moving hazard and add some red spikes here and there and it's perfect. I'm not sure if "Careful Now" is some sort of a reference or as a way to tell the player to be careful.
+The name and the level design blends together incredibly well here, but I guess I should take it to the next level. I just need to replace the old moving hazard and add some red spikes here and there and it's perfect. I'm not sure if "Careful Now" is some sort of a reference or as a warning to the player.
 
 **[CHALLENGE]**  
 I also make this level feasable without striking as originally you really only need to strike once. And thus, the shadow collectible is back!
@@ -258,17 +258,44 @@ I also make this level feasable without striking as originally you really only n
 Name: Weee! -> Weeeeee!  
 Author: Ivan
 
+**[GENERAL]**  
+Solid level layout.
+
 **[CHALLENGE]**  
+With the level name like that, I expect you should go as fast as possible to beat this level. And guess what? It's pretty fun to launch yourself accross the room and avoid obsticle. 
 
 ## Level 26
 Name: Slow and steady.. -> You Can Do It!  
 Author: Ivan 
 
+**[GENERAL]**  
+Between you and Varo, I can't decide which one of you are great
+
 ## Level 27
+Name: The Floor Is Spike  
+Author: Azka
+
+**[GENERAL]**  
+Honestly, I expect that every single level up until this point has "spike" in its name. Thankfully, this is the last instance of that.
+
+What's disappointing is that the next level is copied from this level with little modification. I think it should go without saying but copying a previous room and modify it a little isn't a good level design principal. I decide to just redo this level.
 
 ## Level 28
+Name: The Floor Is Abyss  
+Author: Azka
+
+**[GENERAL]**  
+You know what, I'll keep the room name. Because I like you a lot.
+
+As I said before, this level layout is copied from the last level, just modified a bit. Though I'll keep the layout of this level this time.
 
 ## Level 29
+Name: Panic Room!  
+Author: Naufal
+
+**[GENERAL]**  
+This level feels unfinished.  
+Fun fact: "Panic Room" is also a name of a room in VVVVVV. Maybe you got the name from that?
 
 ## Level 30
 
