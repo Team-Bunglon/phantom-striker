@@ -8,27 +8,24 @@ class_name DisintegratablePlatform
 @onready var disintegrating_particle_preload: Resource = preload("res://objects/disintegrating.tscn")
 @onready var respawn_particle_preload: Resource = preload("res://objects/respawn.tscn")
 
-var inside_disarea: Dictionary = {}
-var breaking_tile: Dictionary = {}
-var respawn_tile: Dictionary = {}
+var tiles_breaking: Dictionary = {}
+var tiles_entered: Dictionary = {}
+var tiles_entered_disarea: Dictionary = {}
 
-## AREA: The Area2D to check if the character is inside of the tilemap. 
-## DISAREA: The Area2D above the tilemap to engage the breaking procedure when being stepped on from the top.
-enum {AREA, DISAREA} 
+enum {
+	## The Area2D to check if the character is inside the sprite of the tilemap. 
+	AREA, 
+	## The Area2D above the tilemap (1px in height) to engage the breaking procedure when being stepped from the top.
+	DISAREA} 
 
 func _ready():
+	if global_position != Vector2.ZERO:
+		assert(false, "DisintegratingPlatform should have (0,0) as its position")
 	for coord in get_used_cells(0):
 		_create_area(coord, DISAREA)
-		inside_disarea[coord] = false
-		breaking_tile[coord] = false
-		respawn_tile[coord] = true
-
-func _disintegrating_particle_create(coord: Vector2):
-	var disintegrating_particle: Disintegrating = disintegrating_particle_preload.instantiate()
-	var pos: Vector2 = coord * 16 + Vector2(8, 8)
-	disintegrating_particle.emitting(pos)
-	print("disintegrated at "+ str(pos))
-	get_parent().add_child(disintegrating_particle)
+		tiles_breaking[coord] = false
+		tiles_entered[coord] = false
+		tiles_entered_disarea[coord] = false
 
 func _respawn_particle_create(coord: Vector2):
 	var respawn_particle: Respawn = respawn_particle_preload.instantiate()
@@ -39,42 +36,46 @@ func _respawn_particle_create(coord: Vector2):
 
 ## Function to change the tile atlas to a broken state
 func break_platform(coord):
-	if breaking_tile[coord]:
-		return
-
-	# Set some variables
-	breaking_tile[coord] = true
-	respawn_tile[coord] = true
+	if tiles_breaking[coord]: return
+	tiles_breaking[coord] = true
+	tiles_entered[coord] = false
 
 	# Start the disintegrating animation
 	Audio.play("Disintegrate")
 	set_cell(0, coord, 0, Vector2i(3,0))
 	var sprite := _create_sprite(coord)
 	await(sprite.animation_finished)
-	_disintegrating_particle_create(coord)
-	sprite.visible = false
 
-	# Set to broken strate and Create area 2D to hold that state when the player is inside. 
+	# Set to broken state and Create area 2D to hold that state when the player is inside. 
+	sprite.visible = false
 	set_cell(0, coord, 0, Vector2i(4,0))
+	_disintegrating_particle_create(coord)
 	var area := _create_area(coord, AREA)
 	
-	# Waiting Timer
+	# Create timer and wait for respawn
 	await(get_tree().create_timer(respawn_timer, false).timeout)
-
-	# Repawn procedure. If the player is still inside the tile, hold it until he leaves the area2D.
-	if not respawn_tile[coord]:
+	if tiles_entered[coord]:
 		await(area.body_exited)
+
+	# Repawn procedure.
 	set_cell(0, coord, 0, Vector2i(0,0))
 	_respawn_particle_create(coord)
 
 	# Delete objects and reset some variables
 	area.queue_free()
 	sprite.queue_free()
-	breaking_tile[coord] = false
+	tiles_breaking[coord] = false
 
 	# Restart this function again if the player is still inside the disarea Area2D
-	if inside_disarea[coord]:
+	if tiles_entered_disarea[coord]:
 		break_platform(coord)
+
+## Particle stuff
+func _disintegrating_particle_create(coord: Vector2):
+	var disintegrating_particle: Disintegrating = disintegrating_particle_preload.instantiate()
+	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	disintegrating_particle.emitting(pos)
+	get_parent().add_child(disintegrating_particle)
 
 ## Create animated sprite. We have to create animation from each tile.
 func _create_sprite(coord) -> AnimatedSprite2D:
@@ -91,24 +92,24 @@ func _create_area(coord: Vector2i, area_enum) -> Area2D:
 		area = area_preload.instantiate()
 		area.connect("body_entered", func(body): 
 			if body.name == "Player":
-				respawn_tile[coord] = false
+				tiles_entered[coord] = true
 			)
 		area.connect("body_exited", func(body): 
 			if body.name == "Player":
-				respawn_tile[coord] = true
+				tiles_entered[coord] = false
 			)
 	elif area_enum == DISAREA:
 		area = disarea_preload.instantiate()
 		area.connect("body_entered", func(body):
 			var coord_new := local_to_map(area.global_position + Vector2(1,0))
 			if body.name == "Player":
-				inside_disarea[coord_new] = true
+				tiles_entered_disarea[coord_new] = true
 				break_platform(coord_new)
 			)
 		area.connect("body_exited", func(body):
 			var coord_new := local_to_map(area.global_position + Vector2(1,0))
 			if body.name == "Player":
-				inside_disarea[coord_new] = false
+				tiles_entered_disarea[coord_new] = false
 			)
 	area.global_position = map_to_local(coord)
 	add_child(area)

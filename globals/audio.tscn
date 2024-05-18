@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=23 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://c2j3nnlacbw" path="res://assets/audio/fail2.wav" id="19_354f1"]
 [ext_resource type="AudioStream" uid="uid://dmws6gallpsy4" path="res://assets/audio/open.wav" id="20_cy1d7"]
 [ext_resource type="AudioStream" uid="uid://buyt340ypu2xg" path="res://assets/audio/key.wav" id="21_th7aj"]
+[ext_resource type="AudioStream" uid="uid://dvysredevuis" path="res://assets/audio/trigger.wav" id="22_dqo2o"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
@@ -118,18 +119,26 @@ bus = &"Sound"
 stream = ExtResource("18_nv8wh")
 volume_db = -2.0
 pitch_scale = 0.9
+bus = &"Sound"
 
 [node name="Fail" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("19_354f1")
 volume_db = -2.0
 pitch_scale = 1.2
-
-[node name="Open" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("20_cy1d7")
-volume_db = 1.0
-pitch_scale = 0.5
+bus = &"Sound"
 
 [node name="Key" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("21_th7aj")
 volume_db = -5.0
 pitch_scale = 0.8
+bus = &"Sound"
+
+[node name="Open" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("20_cy1d7")
+volume_db = 1.0
+pitch_scale = 0.5
+bus = &"Sound"
+
+[node name="Trigger" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("22_dqo2o")
+pitch_scale = 0.85

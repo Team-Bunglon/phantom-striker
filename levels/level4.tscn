@@ -19,7 +19,7 @@ size = Vector2(50, 18)
 
 [node name="Level#4" type="Node2D"]
 script = ExtResource("1_w4xfr")
-level_name = "Leap of Faith"
+level_name = "Jump of Faith"
 
 [node name="LevelName" parent="." instance=ExtResource("2_2go6f")]
 

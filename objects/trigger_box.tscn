@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2qt7uesxt0ab"]
+
+[ext_resource type="Script" path="res://objects/trigger_box.gd" id="1_uay7g"]
+[ext_resource type="Texture2D" uid="uid://bycod0o55qcsd" path="res://assets/sprites/trigger_box.png" id="2_640bu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74g87"]
+size = Vector2(16, 16)
+
+[node name="TriggerBox" type="Area2D"]
+script = ExtResource("1_uay7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_640bu")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_74g87")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

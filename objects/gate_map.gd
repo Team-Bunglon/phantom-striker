@@ -14,6 +14,7 @@ var is_opened: bool = false
 func _ready():
 	tile_set.set_physics_layer_collision_mask(0,1)
 	tile_set.set_physics_layer_collision_layer(0,1)
+	z_index = 0
 
 ## Increase [param current_count] on the gate map by one.
 ## If [param current_count] is equal to the amount set for [param key_count], the gate will unlock, disabling all of its collision.
@@ -21,6 +22,7 @@ func unlock():
 	current_count += 1
 	if current_count >= key_count and not is_opened:
 		is_opened = true
+		z_index = -2
 		Audio.play("Open")
 		tile_set.set_physics_layer_collision_mask(0,0)
 		tile_set.set_physics_layer_collision_layer(0,0)

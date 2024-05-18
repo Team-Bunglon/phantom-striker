@@ -20,7 +20,7 @@ size = Vector2(50, 18)
 
 [node name="Level#5" type="Node2D"]
 script = ExtResource("1_mxs2c")
-level_name = "Xylematic Platform"
+level_name = "Xylematic Platforming"
 
 [node name="LevelName" parent="." instance=ExtResource("2_pkq3a")]
 

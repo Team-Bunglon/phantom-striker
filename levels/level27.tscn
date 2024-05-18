@@ -16,7 +16,6 @@ size = Vector2(68, 18)
 
 [node name="Level#27" type="Node2D"]
 script = ExtResource("1_kw1cg")
-room_name = "The Floor Is Spike"
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
@@ -56,6 +55,9 @@ layer_0/tile_data = PackedInt32Array(1769473, 0, 0, 1769474, 0, 0, 1769475, 0, 0
 
 [node name="DestroyablePlatform" parent="." instance=ExtResource("6_u7bj4")]
 layer_0/tile_data = PackedInt32Array(983060, 0, 0, 983061, 0, 0, 655373, 0, 0, 655372, 0, 0, 1310733, 0, 0, 1310732, 0, 0)
+respawn_timer = 5.0
+spike_object = NodePath("")
+red_spike_object = NodePath("")
 
 [node name="WinZone" type="Area2D" parent="."]
 

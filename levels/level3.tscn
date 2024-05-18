@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://grwigsgkep04"]
+[gd_scene load_steps=11 format=3 uid="uid://grwigsgkep04"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_wt3ed"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_6ufwq"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_ypsx4"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_26p74"]
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_you4m"]
+[ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="8_vp4nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pptrr"]
 size = Vector2(768, 16)
@@ -22,35 +23,10 @@ level_name = "Illusion of Choice"
 
 [node name="Player" parent="." instance=ExtResource("3_mc5hf")]
 position = Vector2(48, 448)
-strike_particle_length = 48.0
-looking_left = false
-camera_shake = true
 strikable_tiles = Array[String](["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform", "MovingPlatformPoint"])
-unstrikable_tiles = Array[String](["RedTileMap", "RedSpikeMap"])
-reacting_tiles = Array[String](["DisintegratingPlatform", "DisintegratablePlatform", "DestroyablePlatform"])
-kill_tiles = Array[String](["SpikeMap", "RedSpikeMap", "MovingHazard"])
-max_speed = 300.0
-max_launch_x = 600.0
 max_jump_height = 80.0
-acceleration = 100.0
-floor_friction = 120.0
-air_friction = 8.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
-jump_lost_multiplier = 2.0
-fall_time_to_terminal = 0.8
-fall_stretch_multiplier = 0.4
-reduced_height_multiplier = 0.666
-white_diamond_x_multiplier = 1.333
-white_diamond_y_multiplier = 1.333
-white_diamond_dia_multiplier = Vector2(0.7, 1)
-jump_buffer_frame = 8
-coyote_frame = 5
-wall_buffer_frame = 4
-strike_delay_frame = 1
-move_delay_frame = 10
-stretch_vector = Vector2(0.7, 1.3)
-stretch_multiplier = 1.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_hnnsm")
@@ -87,6 +63,10 @@ position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("7_you4m")
 metadata/_edit_lock_ = true
+
+[node name="Collectible" parent="." instance=ExtResource("8_vp4nq")]
+position = Vector2(64, 64)
+shadow_flower = true
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

@@ -8,6 +8,7 @@ enum OBJ {
 	HAZARD
 }
 
+@export var auto_start: bool = true ## Start spawning object on scene ready. If disabled and reneabled later, [param auto_spawn] will always be set to false.
 @export var object_to_spawn: OBJ	## Select which object you want to spawn.
 @export var direction: Vector2		## The direction you want to give for the spawned object. The destination point of the spawned objects will be this spawner's [param global_position] + [param direction].
 @export var speed: float = 100.0	## The speed you want to give to the spawned object
@@ -18,7 +19,7 @@ enum OBJ {
 @onready var marker_node: Marker2D
 @onready var platform_preload: Resource = preload("res://objects/moving_platform_point.tscn")
 @onready var hazard_preload: Resource = preload("res://objects/moving_hazard_point.tscn")
-@onready var first_spawn: bool = false
+@onready var first_spawn: bool = true
 
 func _ready():
 	if not marker_object.is_empty():
@@ -26,10 +27,14 @@ func _ready():
 		direction = marker_node.global_position - global_position
 
 func _physics_process(_delta):
+	if not auto_start:
+		auto_spawn = false
+		return
 	if auto_spawn:
 		auto_spawn = false
 		_spawn_object_on_start(direction.normalized() * speed * frequency)
-	if not first_spawn:
+	if first_spawn:
+		first_spawn = false
 		_spawn_object_on_process()
 
 func _spawn_object_on_start(step: Vector2):
@@ -47,7 +52,6 @@ func _spawn_object_on_start(step: Vector2):
 		len_to_step = spawn_pos.length()
 
 func _spawn_object_on_process():
-	first_spawn = true
 	_spawn_object(global_position, direction, speed)
 	await(get_tree().create_timer(frequency, false).timeout)
 	_spawn_object_on_process()
@@ -62,3 +66,12 @@ func _spawn_object(pos: Vector2, dir: Vector2, spd: float):
 			var object_moving: MovingHazardPoint = hazard_preload.instantiate()
 			object_moving.create(pos, dir, spd, "MovingHazardPoint")
 			get_parent().add_child(object_moving)
+
+func _on_trigger_box_triggered():
+	auto_start = true
+
+func _on_trigger_box_2_triggered():
+	_on_trigger_box_triggered()
+
+func _on_trigger_box_3_triggered():
+	_on_trigger_box_triggered()
