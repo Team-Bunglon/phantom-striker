@@ -32,24 +32,22 @@ func _physics_process(_delta):
 		return
 	if auto_spawn:
 		auto_spawn = false
-		_spawn_object_on_start(direction.normalized() * speed * frequency)
+		_spawn_object_on_line(direction.normalized() * speed * frequency, direction)
 	if first_spawn:
 		first_spawn = false
 		_spawn_object_on_process()
 
-func _spawn_object_on_start(step: Vector2):
-	var len_to_target := direction.length()
-
+func _spawn_object_on_line(step: Vector2, dir: Vector2):
+	var len_to_target := dir.length()
 	var current_step := step
 	var spawn_pos := global_position + current_step
-	var len_to_step := spawn_pos.length()
+	var len_to_step := current_step.length()
 
 	while len_to_step <= len_to_target:
-		print("spawn object on ready: " + str(spawn_pos))
 		_spawn_object(spawn_pos, direction, speed)
 		current_step += step
 		spawn_pos = global_position + current_step
-		len_to_step = spawn_pos.length()
+		len_to_step = current_step.length()
 
 func _spawn_object_on_process():
 	_spawn_object(global_position, direction, speed)

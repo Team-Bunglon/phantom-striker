@@ -1,8 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://cymvpxtr5hvfj"]
+[gd_scene load_steps=24 format=3 uid="uid://cymvpxtr5hvfj"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_jlnm5"]
 [ext_resource type="Texture2D" uid="uid://f58i8o5y2e4l" path="res://assets/sprites/player.png" id="2_gd2j6"]
 [ext_resource type="Texture2D" uid="uid://nmpsxlowdlmd" path="res://assets/sprites/particle1.png" id="3_ntvri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r862m"]
+size = Vector2(0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qtler"]
 
 [sub_resource type="Animation" id="Animation_33vor"]
 length = 0.001
@@ -388,8 +393,6 @@ _data = {
 "walk_right_slow": SubResource("Animation_jmc7l")
 }
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qtler"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1c70r"]
 size = Vector2(12, 21)
 
@@ -419,24 +422,16 @@ floor_block_on_wall = false
 platform_on_leave = 2
 script = ExtResource("1_jlnm5")
 
+[node name="PlayerPoint" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPoint"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_r862m")
+
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(0, -12)
-
-[node name="StrikeDelayTimer" type="Timer" parent="."]
-wait_time = 0.2
-
-[node name="ExplodeTimer" type="Timer" parent="."]
-wait_time = 0.5
-
-[node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-autostart = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_67khg")
-}
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_qtler")
@@ -444,6 +439,11 @@ texture = ExtResource("2_gd2j6")
 offset = Vector2(0, -12)
 hframes = 5
 vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_67khg")
+}
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10.5)
@@ -459,6 +459,17 @@ lifetime = 0.5
 one_shot = true
 preprocess = 0.1
 explosiveness = 1.0
+
+[node name="StrikeDelayTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
 
 [node name="RayCastU" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
@@ -535,8 +546,8 @@ target_position = Vector2(0, -5)
 position = Vector2(5, -21)
 target_position = Vector2(0, -5)
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="DieParticle" to="." method="_on_die_particle_finished"]
 [connection signal="timeout" from="StrikeDelayTimer" to="." method="_on_strike_delay_timer_timeout"]
 [connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="finished" from="DieParticle" to="." method="_on_die_particle_finished"]

@@ -189,7 +189,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwr1l"]
-size = Vector2(28, 28)
+size = Vector2(32, 32)
 
 [node name="WhiteDiamond" type="StaticBody2D"]
 collision_layer = 2

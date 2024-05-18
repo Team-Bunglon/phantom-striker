@@ -22,6 +22,8 @@ func _ready():
 		end_point = marker_node.global_position
 
 func _physics_process(delta):
+	if direction == Vector2.ZERO or speed == 0.0:
+		return
 	_move(delta)
 
 func _move(delta):

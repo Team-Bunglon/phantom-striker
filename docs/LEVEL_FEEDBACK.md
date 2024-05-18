@@ -285,16 +285,19 @@ Name: The Floor Is Abyss
 Author: Azka
 
 **[GENERAL]**  
-You know what, I'll keep the room name. Because I like you a lot.
+You know what, I'll keep the room name [because](https://www.youtube.com/watch?v=ngF_lKu3lm8).
 
 As I said before, this level layout is copied from the last level, just modified a bit. Though I'll keep the layout of this level this time.
 
 ## Level 29
-Name: Panic Room!  
+Name: Panic Room! -> Panic Room  
 Author: Naufal
 
 **[GENERAL]**  
-This level feels unfinished.  
+This level feels unfinished. A big chunk of the level is wasted on the giant block on the left side. And what's a thing that makes you panic in this room? The moving hazard that'll kill you at the start if you don't move for a second? I may as well call it spiteful, but it's not that bad tbh.
+
+I'll hollow out the wasted block and add something to make you feel like you are panicking: The rising moving hazard
+
 Fun fact: "Panic Room" is also a name of a room in VVVVVV. Maybe you got the name from that?
 
 ## Level 30

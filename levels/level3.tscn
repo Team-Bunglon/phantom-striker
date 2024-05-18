@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_you4m"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="8_vp4nq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pptrr"]
-size = Vector2(768, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wjyw"]
 size = Vector2(50, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pptrr"]
+size = Vector2(768, 16)
 
 [node name="Level#3" type="Node2D"]
 script = ExtResource("1_wt3ed")
@@ -21,12 +21,27 @@ level_name = "Illusion of Choice"
 
 [node name="LevelName" parent="." instance=ExtResource("2_6ufwq")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_you4m")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_mc5hf")]
 position = Vector2(48, 448)
 strikable_tiles = Array[String](["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform", "MovingPlatformPoint"])
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-48, -448)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_26p74")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_hnnsm")
@@ -38,35 +53,21 @@ tile_set = ExtResource("5_ypsx4")
 format = 2
 layer_0/tile_data = PackedInt32Array(589862, 196608, 0, 655398, 196608, 0, 720934, 196608, 0, 786470, 196608, 0, 852006, 196608, 0, 917542, 196608, 0, 983078, 196608, 0, 983041, 131072, 0, 917505, 131072, 0, 851969, 131072, 0, 786433, 131072, 0, 720897, 131072, 0, 655361, 131072, 0, 589825, 131072, 0, 65551, 65536, 0, 65550, 65536, 0, 65549, 65536, 0, 65548, 65536, 0, 65547, 65536, 0, 65546, 65536, 0, 65545, 65536, 0, 65544, 65536, 0, 65543, 65536, 0, 65542, 65536, 0, 65541, 65536, 0, 65540, 65536, 0, 65539, 65536, 0, 65538, 65536, 0, 786448, 65536, 0, 786449, 65536, 0, 786450, 65536, 0, 786451, 65536, 0, 786452, 65536, 0, 786453, 65536, 0, 786454, 65536, 0, 524289, 131072, 0, 458753, 131072, 0, 393217, 131072, 0, 327681, 131072, 0, 262145, 131072, 0, 196609, 131072, 0, 131073, 131072, 0)
 
-[node name="KillZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(320, 504)
-shape = SubResource("RectangleShape2D_pptrr")
-
 [node name="WinZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(601, -9)
 shape = SubResource("RectangleShape2D_1wjyw")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_26p74")
+[node name="KillZone" type="Area2D" parent="."]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_you4m")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(320, 504)
+shape = SubResource("RectangleShape2D_pptrr")
 
 [node name="Collectible" parent="." instance=ExtResource("8_vp4nq")]
 position = Vector2(64, 64)
 shadow_flower = true
 
-[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
