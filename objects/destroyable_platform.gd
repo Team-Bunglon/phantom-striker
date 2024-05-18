@@ -4,6 +4,7 @@ class_name DestroyablePlatform
 @export var respawn_timer: float = 5.0	## The time it takes for the tile to respawn after being destroyed.
 @onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
 @onready var disintegrating_particle_preload: Resource = preload("res://objects/disintegrating.tscn")
+@onready var respawn_particle_preload: Resource = preload("res://objects/respawn.tscn")
 
 var respawn_tile: Dictionary = {}
 var checked_tile: Dictionary = {}
@@ -36,6 +37,7 @@ func break_platform(coord):
 	if not respawn_tile[coord]:
 		await(area.body_exited)
 	set_cell(0, coord, 0, Vector2i(0,0))
+	_respawn_particle_create(coord)
 
 	# Delete objects and reset some variables
 	area.queue_free()
@@ -47,6 +49,13 @@ func _disintegrating_particle_create(coord: Vector2i):
 	disintegrating_particle.emitting(pos)
 	print("destroyed at "+ str(coord))
 	get_parent().add_child(disintegrating_particle)
+
+func _respawn_particle_create(coord: Vector2):
+	var respawn_particle: Respawn = respawn_particle_preload.instantiate()
+	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	respawn_particle.emitting(pos)
+	print("respawn at "+ str(pos))
+	get_parent().add_child(respawn_particle)
 
 func _create_area(coord) -> Area2D:
 	var area: Area2D = area_preload.instantiate()
