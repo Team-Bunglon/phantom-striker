@@ -29,11 +29,26 @@ level_name = "Launch Me As Though There Were No Tomorrow"
 
 [node name="LevelName" parent="." instance=ExtResource("2_h2yni")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_qw3v0")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_a8w56")]
 position = Vector2(56, 448)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-56, -448)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_oe3v4")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_rvy1u")
@@ -61,20 +76,6 @@ layer_0/tile_data = PackedInt32Array(458758, 0, 0, 458759, 0, 0, 786447, 0, 0, 7
 position = Vector2(650, 104)
 shape = SubResource("RectangleShape2D_dduow")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_oe3v4")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_qw3v0")
-metadata/_edit_lock_ = true
-
 [node name="KillZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
@@ -89,26 +90,26 @@ position = Vector2(-14, 307.75)
 shape = SubResource("RectangleShape2D_yq0r1")
 metadata/_edit_lock_ = true
 
-[node name="MessageBox" parent="." instance=ExtResource("10_uocqk")]
-visible = false
-line_one = "Strike the white diamonds"
-line_two = "to lauch yourself into the air!"
+[node name="Collectible" parent="." instance=ExtResource("9_o82se")]
+position = Vector2(288, 240)
 
-[node name="TutorialBox" parent="." instance=ExtResource("11_1ifli")]
-position = Vector2(32, 432)
-message_object = NodePath("../MessageBox")
-
-[node name="WhiteDiamond" parent="." instance=ExtResource("12_s4b6b")]
+[node name="WhiteDiamond1" parent="." instance=ExtResource("12_s4b6b")]
 position = Vector2(56, 288)
 
 [node name="WhiteDiamond2" parent="." instance=ExtResource("12_s4b6b")]
 position = Vector2(424, 296)
 
-[node name="WhiteDiamond4" parent="." instance=ExtResource("12_s4b6b")]
+[node name="WhiteDiamond3" parent="." instance=ExtResource("12_s4b6b")]
 position = Vector2(376, 64)
 
-[node name="Collectible" parent="." instance=ExtResource("9_o82se")]
-position = Vector2(288, 240)
+[node name="TutorialBox" parent="." instance=ExtResource("11_1ifli")]
+position = Vector2(32, 432)
+message_object = NodePath("../MessageBox")
+
+[node name="MessageBox" parent="." instance=ExtResource("10_uocqk")]
+visible = false
+line_one = "Strike the white diamonds"
+line_two = "to lauch yourself into the air!"
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

@@ -66,8 +66,8 @@ position = Vector2(88, 384)
 message_object = NodePath("../MessageBox")
 
 [node name="MessageBox" parent="." instance=ExtResource("8_o1msq")]
-line_one = "Strike the floor to lauch youself"
-line_two = "and gain more jump height"
+line_one = "Strike the floor with [Arrow Keys]"
+line_two = "or [IJKL] to launch yourself"
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

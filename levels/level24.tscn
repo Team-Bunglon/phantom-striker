@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="13_23lx6"]
 [ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/moving_hazard_point.tscn" id="14_fr3h4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
-size = Vector2(768, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
+size = Vector2(768, 16)
 
 [node name="Level#24" type="Node2D"]
 script = ExtResource("1_mg8md")
@@ -25,20 +25,27 @@ level_name = "Careful Now"
 
 [node name="LevelName" parent="." instance=ExtResource("2_4xff3")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("3_npuym")
+texture = ExtResource("6_qswir")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_x415f")]
 position = Vector2(32, 400)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(288, -160)
+scale = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("3_npuym")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("5_wf4nw")
@@ -55,17 +62,11 @@ tile_set = ExtResource("7_nsukm")
 format = 2
 layer_0/tile_data = PackedInt32Array(1048577, 65536, 0, 1048578, 65536, 0, 1048579, 65536, 0, 1048580, 65536, 0, 1048581, 65536, 0, 1048582, 65536, 0, 1048585, 65536, 0, 1048586, 65536, 0, 1048589, 65536, 0, 1048590, 65536, 0, 1048593, 65536, 0, 1048594, 65536, 0, 1048597, 65536, 0, 1048598, 65536, 0, 1048599, 65536, 0, 1048600, 65536, 0, 1048601, 65536, 0, 1048602, 65536, 0, 1048603, 65536, 0, 1048604, 65536, 0, 1048605, 65536, 0, 1048606, 65536, 0, 1048607, 65536, 0, 1048608, 65536, 0, 851990, 0, 0, 851991, 0, 0, 786433, 131072, 0, 720897, 131072, 0, 655361, 131072, 0, 589825, 131072, 0, 524289, 131072, 0, 458753, 131072, 0, 393217, 131072, 0, 327681, 131072, 0, 458772, 0, 0, 1310727, 65536, 0, 1310728, 65536, 0, 1114123, 65536, 0, 1114124, 65536, 0, 1245203, 65536, 0, 1245204, 65536, 0, 1376271, 65536, 0, 1376272, 65536, 0, 524310, 65536, 0, 524311, 65536, 0, 524312, 65536, 0, 524313, 65536, 0, 524314, 65536, 0, 524315, 65536, 0, 720930, 65536, 0, 720931, 65536, 0, 720932, 65536, 0, 720933, 65536, 0)
 
-[node name="DestroyablePlatform" parent="." instance=ExtResource("8_acfpm")]
+[node name="WinZone" type="Area2D" parent="."]
 
-[node name="DisintegratablePlatform" parent="." instance=ExtResource("8_spjf6")]
-layer_0/tile_data = PackedInt32Array(-983033, 0, 0, 1245219, 0, 0, 1245220, 0, 0, 1245221, 0, 0, 1245218, 0, 0, 458781, 0, 0, 458782, 0, 0, 458783, 0, 0, 458784, 0, 0, 458785, 0, 0, 458786, 0, 0, 458787, 0, 0, 458788, 0, 0, 458789, 0, 0, 458790, 0, 0)
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("6_qswir")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
+position = Vector2(40, -8)
+shape = SubResource("RectangleShape2D_dduow")
 
 [node name="KillZone" type="Area2D" parent="."]
 
@@ -73,135 +74,134 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 504)
 shape = SubResource("RectangleShape2D_61ngw")
 
-[node name="WinZone" type="Area2D" parent="."]
+[node name="DisintegratablePlatform" parent="." instance=ExtResource("8_spjf6")]
+layer_0/tile_data = PackedInt32Array(-983033, 0, 0, 1245219, 0, 0, 1245220, 0, 0, 1245221, 0, 0, 1245218, 0, 0, 458781, 0, 0, 458782, 0, 0, 458783, 0, 0, 458784, 0, 0, 458785, 0, 0, 458786, 0, 0, 458787, 0, 0, 458788, 0, 0, 458789, 0, 0, 458790, 0, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
-position = Vector2(40, -8)
-shape = SubResource("RectangleShape2D_dduow")
+[node name="DestroyablePlatform" parent="." instance=ExtResource("8_acfpm")]
 
 [node name="Collectible" parent="." instance=ExtResource("13_23lx6")]
 position = Vector2(40, 40)
 shadow_flower = true
 
 [node name="MovingHazardPoint1" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(352, 472)
-direction = Vector2(0, -208)
-speed = 208.0
-
-[node name="MovingHazardPoint2" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(416, 472)
-direction = Vector2(0, -208)
-speed = 208.0
-
-[node name="MovingHazardPoint3" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(480, 472)
-direction = Vector2(0, -208)
-speed = 208.0
-
-[node name="MovingHazardPoint14" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(160, 472)
 direction = Vector2(0, -208)
 speed = 208.0
 
-[node name="MovingHazardPoint20" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint2" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(224, 472)
 direction = Vector2(0, -208)
 speed = 208.0
 
-[node name="MovingHazardPoint21" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint3" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(288, 472)
 direction = Vector2(0, -208)
 speed = 208.0
 
-[node name="MovingHazardPoint22" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint4" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(352, 472)
+direction = Vector2(0, -208)
+speed = 208.0
+
+[node name="MovingHazardPoint5" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(416, 472)
+direction = Vector2(0, -208)
+speed = 208.0
+
+[node name="MovingHazardPoint6" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(480, 472)
+direction = Vector2(0, -208)
+speed = 208.0
+
+[node name="MovingHazardPoint7" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(352, 264)
 direction = Vector2(0, 208)
 speed = 208.0
 
-[node name="MovingHazardPoint23" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint8" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(416, 264)
 direction = Vector2(0, 208)
 speed = 208.0
 
-[node name="MovingHazardPoint24" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint9" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(480, 264)
 direction = Vector2(0, 208)
 speed = 208.0
 
-[node name="MovingHazardPoint4" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(64, 168)
-direction = Vector2(288, 0)
-speed = 240.0
-
-[node name="MovingHazardPoint5" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(352, 200)
-direction = Vector2(-288, 0)
-speed = 240.0
-
-[node name="MovingHazardPoint6" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint10" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(352, 152)
 direction = Vector2(96, 0)
 speed = 240.0
 
-[node name="MovingHazardPoint7" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint11" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(352, 200)
+direction = Vector2(-288, 0)
+speed = 240.0
+
+[node name="MovingHazardPoint12" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(64, 168)
+direction = Vector2(288, 0)
+speed = 240.0
+
+[node name="MovingHazardPoint13" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(208, 144)
 direction = Vector2(0, 96)
 speed = 81.0
 
-[node name="MovingHazardPoint8" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint14" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(120, 120)
 direction = Vector2(0, -80)
 speed = 80.0
 
-[node name="MovingHazardPoint9" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(120, 40)
-direction = Vector2(0, 80)
-speed = 80.0
-
-[node name="MovingHazardPoint10" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint15" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(184, 120)
 direction = Vector2(0, -80)
 speed = 80.0
 
-[node name="MovingHazardPoint11" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(184, 40)
-direction = Vector2(0, 80)
-speed = 80.0
-
-[node name="MovingHazardPoint12" parent="." instance=ExtResource("14_fr3h4")]
+[node name="MovingHazardPoint16" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(248, 120)
 direction = Vector2(0, -80)
 speed = 80.0
 
-[node name="MovingHazardPoint13" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(248, 40)
-direction = Vector2(0, 80)
-speed = 80.0
-
-[node name="MovingHazardPoint15" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(344, 24)
-direction = Vector2(0, 80)
-speed = 80.0
-
-[node name="MovingHazardPoint16" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(408, 24)
-direction = Vector2(0, 80)
-speed = 80.0
-
 [node name="MovingHazardPoint17" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(472, 24)
+position = Vector2(120, 40)
 direction = Vector2(0, 80)
 speed = 80.0
 
 [node name="MovingHazardPoint18" parent="." instance=ExtResource("14_fr3h4")]
-position = Vector2(536, 24)
+position = Vector2(184, 40)
 direction = Vector2(0, 80)
 speed = 80.0
 
 [node name="MovingHazardPoint19" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(248, 40)
+direction = Vector2(0, 80)
+speed = 80.0
+
+[node name="MovingHazardPoint20" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(344, 24)
+direction = Vector2(0, 80)
+speed = 80.0
+
+[node name="MovingHazardPoint21" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(408, 24)
+direction = Vector2(0, 80)
+speed = 80.0
+
+[node name="MovingHazardPoint22" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(472, 24)
+direction = Vector2(0, 80)
+speed = 80.0
+
+[node name="MovingHazardPoint23" parent="." instance=ExtResource("14_fr3h4")]
+position = Vector2(536, 24)
+direction = Vector2(0, 80)
+speed = 80.0
+
+[node name="MovingHazardPoint24" parent="." instance=ExtResource("14_fr3h4")]
 position = Vector2(600, 24)
 direction = Vector2(0, 80)
 speed = 80.0
 
-[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

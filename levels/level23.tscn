@@ -17,11 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="12_ltnnt"]
 [ext_resource type="PackedScene" uid="uid://bb3g2sedbhtr2" path="res://objects/diamond_white.tscn" id="15_duhd5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
-size = Vector2(768, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(48, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
+size = Vector2(768, 16)
 
 [node name="Level#23" type="Node2D"]
 script = ExtResource("1_akyin")
@@ -29,20 +29,27 @@ level_name = "The Pit"
 
 [node name="LevelName" parent="." instance=ExtResource("2_tsjbg")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("3_niyqy")
+texture = ExtResource("6_0cgns")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_sdw4q")]
 position = Vector2(320, 448)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -208)
+scale = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("3_niyqy")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("5_jeklv")
@@ -54,9 +61,6 @@ tile_set = ExtResource("6_ibmcr")
 format = 2
 layer_0/tile_data = PackedInt32Array(1572885, 589824, 4, 1507349, 196608, 4, 1441813, 196608, 4, 1376277, 196608, 4, 1310741, 196608, 4, 1245205, 196608, 4, 1179669, 196608, 4, 1114133, 196608, 4, 1048597, 196608, 4, 983061, 196608, 4, 917525, 196608, 4, 851989, 196608, 4, 786453, 196608, 4, 720917, 196608, 4, 655381, 196608, 4, 589845, 196608, 4, 524309, 196608, 4, 458773, 196608, 4, 393237, 196608, 4, 327701, 458752, 4, 1572884, 196608, 3, 1572883, 196608, 3, 1572882, 524288, 4, 1507346, 196608, 4, 1441810, 196608, 4, 1376274, 196608, 4, 1310738, 196608, 4, 1245202, 196608, 4, 1179666, 196608, 4, 1114130, 196608, 4, 1048594, 196608, 4, 983058, 196608, 4, 917522, 196608, 4, 851986, 196608, 4, 786450, 196608, 4, 720914, 196608, 4, 655378, 196608, 4, 589842, 196608, 4, 524306, 196608, 4, 458770, 196608, 4, 393234, 196608, 4, 327698, 196608, 4, 262162, 196608, 4, 196626, 196608, 4, 131090, 196608, 4, 65554, 458752, 4)
 
-[node name="GateMap" parent="." instance=ExtResource("9_my62t")]
-layer_0/tile_data = PackedInt32Array(1572889, 262144, 1, 1507353, 262144, 0, 1572888, 65536, 0, 1507352, 65536, 2, 1572887, 196608, 1, 1507351, 196608, 0, 1572880, 327680, 2, 1572879, 196608, 3, 1572878, 196608, 3, 1572877, 196608, 3, 1572876, 196608, 3, 1572875, 196608, 3, 1572874, 196608, 3, 1572873, 196608, 3, 1572872, 196608, 3, 1572871, 393216, 2, 1376269, 262144, 1, 1310733, 0, 1, 1245197, 0, 1, 1179661, 0, 1, 1114125, 0, 1, 1048589, 262144, 0, 1376268, 0, 3, 1376267, 196608, 3, 1376266, 196608, 3, 1376265, 196608, 3, 1376264, 196608, 3, 1376263, 196608, 3, 1376262, 196608, 3, 1376261, 65536, 3, 1376260, 196608, 1, 1048580, 196608, 0, 1310725, 0, 1, 1245189, 0, 1, 1179653, 0, 1, 1114117, 0, 1, 1048581, 262144, 0, 786448, 327680, 2, 786447, 196608, 3, 786446, 196608, 3, 786445, 196608, 3, 786444, 196608, 3, 786443, 196608, 3, 786442, 196608, 3, 786441, 196608, 3, 786440, 196608, 3, 786439, 393216, 2, 524296, 196608, 3, 524295, 196608, 3, 524294, 196608, 3, 524293, 196608, 3, 524292, 393216, 2, 524301, 327680, 2, 524300, 196608, 3, 524299, 196608, 3, 524298, 196608, 3, 524297, 196608, 3, 1310724, 131072, 1, 1245188, 131072, 1, 1179652, 131072, 1, 1114116, 131072, 1, 1310732, 131072, 1, 1245196, 131072, 1, 1179660, 131072, 1, 1114124, 131072, 1, 1048588, 196608, 0, 1507348, 262144, 1, 1441812, 0, 1, 1376276, 0, 1, 1310740, 0, 1, 1245204, 0, 1, 1179668, 0, 1, 1114132, 0, 1, 1048596, 0, 1, 983060, 0, 1, 917524, 0, 1, 851988, 0, 1, 786452, 0, 1, 720916, 0, 1, 655380, 0, 1, 589844, 0, 1, 524308, 0, 1, 458772, 0, 1, 393236, 0, 1, 327700, 0, 1, 262164, 0, 1, 196628, 0, 1, 131092, 0, 1, 1507347, 196608, 1, 1441811, 131072, 1, 1376275, 131072, 1, 1310739, 131072, 1, 1245203, 131072, 1, 1179667, 131072, 1, 1114131, 131072, 1, 1048595, 131072, 1, 983059, 131072, 1, 917523, 131072, 1, 851987, 131072, 1, 786451, 131072, 1, 720915, 131072, 1, 655379, 131072, 1, 589843, 131072, 1, 524307, 131072, 1, 458771, 131072, 1, 393235, 131072, 1, 327699, 131072, 1, 262163, 131072, 1, 196627, 131072, 1, 131091, 131072, 1, 65555, 196608, 0, 65556, 262144, 0)
-
 [node name="SpikeMap" type="TileMap" parent="."]
 tile_set = ExtResource("7_icxbr")
 format = 2
@@ -67,12 +71,11 @@ tile_set = ExtResource("8_s7bry")
 format = 2
 layer_0/tile_data = PackedInt32Array(65553, 196608, 0, 131089, 196608, 0, 196625, 196608, 0, 262161, 196608, 0, 327697, 196608, 0, 393233, 196608, 0, 458769, 196608, 0, 524305, 196608, 0, 589841, 196608, 0, 655377, 196608, 0, 720913, 196608, 0, 786449, 196608, 0, 851985, 196608, 0, 917521, 196608, 0, 1048593, 196608, 0, 1179665, 196608, 0, 1310737, 196608, 0, 1441809, 196608, 0, 1572881, 196608, 0, 983057, 196608, 0, 1114129, 196608, 0, 1245201, 196608, 0, 1376273, 196608, 0, 1507345, 196608, 0, 1572886, 131072, 0, 1507350, 131072, 0, 1441814, 131072, 0, 1376278, 131072, 0, 1310742, 131072, 0, 1245206, 131072, 0, 1179670, 131072, 0, 1114134, 131072, 0, 1048598, 131072, 0, 983062, 131072, 0, 917526, 131072, 0, 851990, 131072, 0, 786454, 131072, 0, 720918, 131072, 0, 655382, 131072, 0, 589846, 131072, 0, 524310, 131072, 0, 458774, 131072, 0, 393238, 131072, 0, 327702, 131072, 0, 262165, 0, 0)
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("6_0cgns")
-metadata/_edit_lock_ = true
+[node name="WinZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
+position = Vector2(600, -8.25)
+shape = SubResource("RectangleShape2D_dduow")
 
 [node name="KillZone" type="Area2D" parent="."]
 
@@ -80,17 +83,42 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 504)
 shape = SubResource("RectangleShape2D_61ngw")
 
-[node name="WinZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
-position = Vector2(600, -8.25)
-shape = SubResource("RectangleShape2D_dduow")
-
 [node name="DestroyablePlatform" parent="." instance=ExtResource("8_d0v5w")]
+
+[node name="GateMap" parent="." instance=ExtResource("9_my62t")]
+layer_0/tile_data = PackedInt32Array(1572889, 262144, 1, 1507353, 262144, 0, 1572888, 65536, 0, 1507352, 65536, 2, 1572887, 196608, 1, 1507351, 196608, 0, 1572880, 327680, 2, 1572879, 196608, 3, 1572878, 196608, 3, 1572877, 196608, 3, 1572876, 196608, 3, 1572875, 196608, 3, 1572874, 196608, 3, 1572873, 196608, 3, 1572872, 196608, 3, 1572871, 393216, 2, 1376269, 262144, 1, 1310733, 0, 1, 1245197, 0, 1, 1179661, 0, 1, 1114125, 0, 1, 1048589, 262144, 0, 1376268, 0, 3, 1376267, 196608, 3, 1376266, 196608, 3, 1376265, 196608, 3, 1376264, 196608, 3, 1376263, 196608, 3, 1376262, 196608, 3, 1376261, 65536, 3, 1376260, 196608, 1, 1048580, 196608, 0, 1310725, 0, 1, 1245189, 0, 1, 1179653, 0, 1, 1114117, 0, 1, 1048581, 262144, 0, 786448, 327680, 2, 786447, 196608, 3, 786446, 196608, 3, 786445, 196608, 3, 786444, 196608, 3, 786443, 196608, 3, 786442, 196608, 3, 786441, 196608, 3, 786440, 196608, 3, 786439, 393216, 2, 524296, 196608, 3, 524295, 196608, 3, 524294, 196608, 3, 524293, 196608, 3, 524292, 393216, 2, 524301, 327680, 2, 524300, 196608, 3, 524299, 196608, 3, 524298, 196608, 3, 524297, 196608, 3, 1310724, 131072, 1, 1245188, 131072, 1, 1179652, 131072, 1, 1114116, 131072, 1, 1310732, 131072, 1, 1245196, 131072, 1, 1179660, 131072, 1, 1114124, 131072, 1, 1048588, 196608, 0, 1507348, 262144, 1, 1441812, 0, 1, 1376276, 0, 1, 1310740, 0, 1, 1245204, 0, 1, 1179668, 0, 1, 1114132, 0, 1, 1048596, 0, 1, 983060, 0, 1, 917524, 0, 1, 851988, 0, 1, 786452, 0, 1, 720916, 0, 1, 655380, 0, 1, 589844, 0, 1, 524308, 0, 1, 458772, 0, 1, 393236, 0, 1, 327700, 0, 1, 262164, 0, 1, 196628, 0, 1, 131092, 0, 1, 1507347, 196608, 1, 1441811, 131072, 1, 1376275, 131072, 1, 1310739, 131072, 1, 1245203, 131072, 1, 1179667, 131072, 1, 1114131, 131072, 1, 1048595, 131072, 1, 983059, 131072, 1, 917523, 131072, 1, 851987, 131072, 1, 786451, 131072, 1, 720915, 131072, 1, 655379, 131072, 1, 589843, 131072, 1, 524307, 131072, 1, 458771, 131072, 1, 393235, 131072, 1, 327699, 131072, 1, 262163, 131072, 1, 196627, 131072, 1, 131091, 131072, 1, 65555, 196608, 0, 65556, 262144, 0)
 
 [node name="GateKey" parent="." instance=ExtResource("10_xgfb6")]
 position = Vector2(32, 40)
 gate_map_object = NodePath("../GateMap")
+
+[node name="Collectible" parent="." instance=ExtResource("12_ltnnt")]
+z_index = -1
+position = Vector2(320, 368)
+
+[node name="BlackDiamond1" parent="." instance=ExtResource("11_q681m")]
+z_index = -1
+position = Vector2(384, 200)
+
+[node name="BlackDiamond2" parent="." instance=ExtResource("11_q681m")]
+z_index = -1
+position = Vector2(408, 200)
+
+[node name="BlackDiamond3" parent="." instance=ExtResource("11_q681m")]
+z_index = -1
+position = Vector2(536, 128)
+
+[node name="BlackDiamond4" parent="." instance=ExtResource("11_q681m")]
+z_index = -1
+position = Vector2(560, 128)
+
+[node name="WhiteDiamond1" parent="." instance=ExtResource("15_duhd5")]
+z_index = -1
+position = Vector2(320, 128)
+
+[node name="WhiteDiamond2" parent="." instance=ExtResource("15_duhd5")]
+z_index = -1
+position = Vector2(320, 256)
 
 [node name="MovingHazardPoint1" parent="." instance=ExtResource("11_savnu")]
 position = Vector2(280, 376)
@@ -182,33 +210,5 @@ position = Vector2(360, 248)
 direction = Vector2(224, 0)
 speed = 250.0
 
-[node name="BlackDiamond1" parent="." instance=ExtResource("11_q681m")]
-z_index = -1
-position = Vector2(408, 200)
-
-[node name="BlackDiamond2" parent="." instance=ExtResource("11_q681m")]
-z_index = -1
-position = Vector2(384, 200)
-
-[node name="BlackDiamond3" parent="." instance=ExtResource("11_q681m")]
-z_index = -1
-position = Vector2(560, 128)
-
-[node name="BlackDiamond4" parent="." instance=ExtResource("11_q681m")]
-z_index = -1
-position = Vector2(536, 128)
-
-[node name="WhiteDiamond" parent="." instance=ExtResource("15_duhd5")]
-z_index = -1
-position = Vector2(320, 128)
-
-[node name="WhiteDiamond2" parent="." instance=ExtResource("15_duhd5")]
-z_index = -1
-position = Vector2(320, 256)
-
-[node name="Collectible" parent="." instance=ExtResource("12_ltnnt")]
-z_index = -1
-position = Vector2(320, 368)
-
-[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

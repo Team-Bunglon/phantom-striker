@@ -21,11 +21,26 @@ level_name = "Slithereen"
 
 [node name="LevelName" parent="." instance=ExtResource("2_sscd4")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_n81s1")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_xsp7q")]
 position = Vector2(48, 448)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-48, -448)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_rquyx")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_p7and")
@@ -49,36 +64,22 @@ shape = SubResource("RectangleShape2D_dduow")
 position = Vector2(320, 504)
 shape = SubResource("RectangleShape2D_h40i0")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_rquyx")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_n81s1")
-metadata/_edit_lock_ = true
-
-[node name="WhiteDiamond" parent="." instance=ExtResource("8_2jlln")]
+[node name="WhiteDiamond1" parent="." instance=ExtResource("8_2jlln")]
 position = Vector2(50, 330)
 
-[node name="WhiteDiamond5" parent="." instance=ExtResource("8_2jlln")]
+[node name="WhiteDiamond2" parent="." instance=ExtResource("8_2jlln")]
 position = Vector2(48, 200)
 
-[node name="WhiteDiamond2" parent="." instance=ExtResource("8_2jlln")]
+[node name="WhiteDiamond3" parent="." instance=ExtResource("8_2jlln")]
 position = Vector2(306, 330)
 
-[node name="WhiteDiamond6" parent="." instance=ExtResource("8_2jlln")]
+[node name="WhiteDiamond4" parent="." instance=ExtResource("8_2jlln")]
 position = Vector2(304, 200)
 
-[node name="WhiteDiamond3" parent="." instance=ExtResource("8_2jlln")]
+[node name="WhiteDiamond5" parent="." instance=ExtResource("8_2jlln")]
 position = Vector2(560, 72)
 
-[node name="WhiteDiamond4" parent="." instance=ExtResource("8_2jlln")]
+[node name="WhiteDiamond6" parent="." instance=ExtResource("8_2jlln")]
 position = Vector2(600, 72)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

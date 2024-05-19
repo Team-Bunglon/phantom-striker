@@ -22,15 +22,30 @@ size = Vector2(768, 16)
 
 [node name="Level#26" type="Node2D"]
 script = ExtResource("1_vlesk")
-level_name = "You Can Do It!"
+level_name = "You Can Do It"
 
 [node name="LevelName" parent="." instance=ExtResource("2_5veq4")]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_wgqji")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_fd8f5")]
 position = Vector2(32, 400)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-32, -400)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_23f4y")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_ewhtx")
@@ -42,37 +57,11 @@ tile_set = ExtResource("5_sbbf0")
 format = 2
 layer_0/tile_data = PackedInt32Array(262152, 0, 0, 524300, 0, 0, 589837, 0, 0, 65548, 65536, 0, 131085, 65536, 0, 131086, 65536, 0, 196623, 65536, 0, 262160, 65536, 0, 327697, 65536, 0, 393234, 65536, 0, 589838, 0, 0, 589839, 0, 0, 655376, 0, 0, 720913, 0, 0, 393235, 65536, 0, 393236, 65536, 0, 458773, 65536, 0, 458774, 65536, 0, 524312, 65536, 0, 589850, 65536, 0, 655388, 65536, 0, 786464, 65536, 0, 852002, 65536, 0, 1114140, 0, 0, 1310752, 0, 0, 1245212, 65536, 0, 1245211, 65536, 0, 1245210, 65536, 0, 1245209, 65536, 0, 1245208, 65536, 0, 1245207, 65536, 0, 1245206, 65536, 0, 1245205, 65536, 0, 1245204, 65536, 0, 1245203, 65536, 0, 1245202, 65536, 0, 1245201, 65536, 0, 1245200, 65536, 0, 1245199, 65536, 0, 1245198, 65536, 0, 1245197, 65536, 0, 1245196, 65536, 0, 1245195, 65536, 0, 1245194, 65536, 0, 1245193, 65536, 0, 1245192, 65536, 0, 1245191, 65536, 0, 1245190, 65536, 0, 1245189, 65536, 0, 1114139, 0, 0, 1310751, 0, 0, 1376290, 65536, 0, 1310754, 0, 0, 1376289, 65536, 0, 1245188, 65536, 0, 65547, 65536, 0, 1310753, 0, 0, 524299, 0, 0, 655369, 0, 0, 655368, 0, 0, 655367, 0, 0, 393224, 65536, 0, 393223, 65536, 0, 327689, 131072, 0, 393222, 65536, 0, 1245213, 65536, 0, 1245214, 65536, 0, 852001, 65536, 0, 983064, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 851987, 131072, 0, 917523, 131072, 0, 786450, 0, 0, 851972, 0, 0, 786437, 0, 0, 720902, 0, 0, 655370, 0, 0, 589834, 196608, 0, 458757, 65536, 0, 458756, 65536, 0, 458755, 65536, 0, 524290, 65536, 0, 1245187, 65536, 0, 1245186, 65536, 0, 1245185, 65536, 0, 524289, 65536, 0, 524311, 65536, 0, 589849, 65536, 0, 655387, 65536, 0, 786463, 65536, 0, 1114137, 0, 0, 1114138, 0, 0, 589853, 65536, 0, 589854, 65536, 0, 852003, 65536, 0, 852004, 65536, 0, 852005, 65536, 0, 852006, 65536, 0)
 
-[node name="DestroyablePlatform" parent="." instance=ExtResource("6_4yhsd")]
-layer_0/tile_data = PackedInt32Array(983074, 0, 0, 983075, 0, 0, 983076, 0, 0, 983077, 0, 0, 983078, 0, 0, 983073, 0, 0, 917535, 0, 0, 917536, 0, 0, 917537, 0, 0, 917538, 0, 0, 983071, 0, 0, 983072, 0, 0, 917539, 0, 0, 917540, 0, 0, 917541, 0, 0, 917542, 0, 0)
-respawn_timer = 5.0
-spike_object = NodePath("")
-red_spike_object = NodePath("")
-
-[node name="DisintegratablePlatform" parent="." instance=ExtResource("13_ganj4")]
-layer_0/tile_data = PackedInt32Array(1638430, 0, 0, 1638431, 0, 0, 1638432, 0, 0, 1638433, 0, 0, 1638434, 0, 0)
-
-[node name="Collectible" parent="." instance=ExtResource("10_8yucr")]
-position = Vector2(40, 256)
-
 [node name="WinZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(-8, 32.5312)
 shape = SubResource("RectangleShape2D_dduow")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_23f4y")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_wgqji")
-metadata/_edit_lock_ = true
 
 [node name="KillZone" type="Area2D" parent="."]
 
@@ -80,15 +69,24 @@ metadata/_edit_lock_ = true
 position = Vector2(318, 490)
 shape = SubResource("RectangleShape2D_xt656")
 
-[node name="BlackDiamond" parent="." instance=ExtResource("9_inyp7")]
+[node name="DisintegratablePlatform" parent="." instance=ExtResource("13_ganj4")]
+layer_0/tile_data = PackedInt32Array(1638430, 0, 0, 1638431, 0, 0, 1638432, 0, 0, 1638433, 0, 0, 1638434, 0, 0)
+
+[node name="DestroyablePlatform" parent="." instance=ExtResource("6_4yhsd")]
+layer_0/tile_data = PackedInt32Array(983074, 0, 0, 983075, 0, 0, 983076, 0, 0, 983077, 0, 0, 983078, 0, 0, 983073, 0, 0, 917535, 0, 0, 917536, 0, 0, 917537, 0, 0, 917538, 0, 0, 983071, 0, 0, 983072, 0, 0, 917539, 0, 0, 917540, 0, 0, 917541, 0, 0, 917542, 0, 0)
+
+[node name="Collectible" parent="." instance=ExtResource("10_8yucr")]
+position = Vector2(40, 256)
+
+[node name="BlackDiamond1" parent="." instance=ExtResource("9_inyp7")]
 position = Vector2(296, 416)
 
-[node name="MovingPlatformPoint" parent="." instance=ExtResource("11_hj2cm")]
+[node name="MovingPlatformPoint1" parent="." instance=ExtResource("11_hj2cm")]
 position = Vector2(592, 264)
 direction = Vector2(0, 192)
 speed = 150.0
 
-[node name="MovingHazardPoint" parent="." instance=ExtResource("13_k45bf")]
+[node name="MovingHazardPoint1" parent="." instance=ExtResource("13_k45bf")]
 position = Vector2(104, 104)
 direction = Vector2(224, 0)
 speed = 200.0

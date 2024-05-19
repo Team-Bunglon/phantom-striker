@@ -65,7 +65,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_lc4mt")
 
 [node name="Player" parent="." instance=ExtResource("3_tbp1c")]
-position = Vector2(32, 384)
+position = Vector2(40, 384)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
@@ -133,9 +133,6 @@ shape = SubResource("RectangleShape2D_3wikf")
 position = Vector2(312, -108)
 shape = SubResource("RectangleShape2D_hrq6w")
 
-[node name="Collectible" parent="." instance=ExtResource("9_h7g2i")]
-position = Vector2(600, -32)
-
 [node name="DisintegratablePlatform" parent="." instance=ExtResource("8_8vg26")]
 layer_0/tile_data = PackedInt32Array(655389, 0, 0, 655390, 0, 0)
 
@@ -163,7 +160,10 @@ gate_map_object = NodePath("../GateMap")
 position = Vector2(128, 256)
 gate_map_object = NodePath("../GateMap")
 
-[node name="WhiteDiamond" parent="." instance=ExtResource("13_r3l0c")]
+[node name="Collectible" parent="." instance=ExtResource("9_h7g2i")]
+position = Vector2(600, -32)
+
+[node name="WhiteDiamond1" parent="." instance=ExtResource("13_r3l0c")]
 position = Vector2(56, 224)
 
 [node name="MovingPlatformPoint1" parent="." instance=ExtResource("11_6xahu")]

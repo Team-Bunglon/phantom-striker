@@ -66,14 +66,14 @@ shape = SubResource("RectangleShape2D_dduow")
 position = Vector2(320, 504)
 shape = SubResource("RectangleShape2D_61ngw")
 
-[node name="MessageBox" parent="." instance=ExtResource("8_0qa13")]
-visible = false
-line_one = "While being launched, move towards the"
-line_two = "launch direction to cover more distance!"
-
 [node name="TutorialBox" parent="." instance=ExtResource("9_dywex")]
 position = Vector2(32, 368)
 message_object = NodePath("../MessageBox")
+
+[node name="MessageBox" parent="." instance=ExtResource("8_0qa13")]
+visible = false
+line_one = "While launched, move towards the"
+line_two = "launch direction to go further"
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
