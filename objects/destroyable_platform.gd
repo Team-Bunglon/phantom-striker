@@ -7,6 +7,7 @@ class_name DestroyablePlatform
 @export var red_spike_object: NodePath ## The red spike object this platform should associate. If there's a red spike inside this object, it'll turn red.
 @onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
 @onready var disintegrating_particle_preload: Resource = preload("res://objects/disintegrating.tscn")
+@onready var respawn_particle_preload: Resource = preload("res://objects/respawn.tscn")
 
 var spike_node: TileMap
 var red_spike_node: TileMap
@@ -48,9 +49,9 @@ func _physics_process(_delta):
 		_break_cluster(cluster_temp)
 
 ## The function to be called when being struck by the player. [br]
-## It will form a cluster of destroyable platforms by 
+## It will form a cluster of destroyable platforms by
 ## checking its neighbors and perform recursion.
-## A cluster must be formed within a single frame. 
+## A cluster must be formed within a single frame.
 func break_platform(coord: Vector2i):
 	tiles_check[coord] = true
 	cluster.append(coord)
@@ -90,7 +91,7 @@ func _break_platform_procedure(coord: Vector2i, cluster_array: Array[Vector2i]):
 	if not tiles_orig.has(coord):
 		tiles_orig[coord] = Vector2i(0,0)
 
-	# Set to broken state and Create area 2D to hold that state when the player is inside. 
+	# Set to broken state and Create area 2D to hold that state when the player is inside.
 	Audio.play("Destroy")
 	set_cell(0, coord, 0, Vector2i(3,0))
 	_disintegrating_particle_create(coord)
@@ -99,6 +100,7 @@ func _break_platform_procedure(coord: Vector2i, cluster_array: Array[Vector2i]):
 ## Respawn every platform inside a cluster
 func _respawn_platform_procedure(coord: Vector2i):
 	set_cell(0, coord, 0, tiles_orig[coord]) # Repawn procedure. If the player is still inside the tile, hold it until he leaves the area2D.
+	_respawn_particle_create(coord)
 	tiles_area[coord].queue_free()			 # Delete objects and reset some variables
 
 ## Particle stuff
@@ -107,6 +109,13 @@ func _disintegrating_particle_create(coord: Vector2i):
 	var pos: Vector2 = coord * 16 + Vector2i(8, 8)
 	disintegrating_particle.emitting(pos)
 	get_parent().add_child(disintegrating_particle)
+
+## Particle stuff #2
+func _respawn_particle_create(coord: Vector2):
+	var respawn_particle: Respawn = respawn_particle_preload.instantiate()
+	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	respawn_particle.emitting(pos)
+	get_parent().add_child(respawn_particle)
 
 ## Factory function to create the area after the platform is destroyed.
 func _create_area(coord: Vector2i, cluster_array: Array[Vector2i]) -> Area2D:

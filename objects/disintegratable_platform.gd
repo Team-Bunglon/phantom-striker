@@ -7,6 +7,7 @@ class_name DisintegratablePlatform
 @onready var disarea_preload: Resource = preload("res://objects/disintegratable_area.tscn")
 @onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
 @onready var disintegrating_particle_preload: Resource = preload("res://objects/disintegrating.tscn")
+@onready var respawn_particle_preload: Resource = preload("res://objects/respawn.tscn")
 
 var tiles_breaking: Dictionary = {}
 var tiles_entered: Dictionary = {}
@@ -57,6 +58,7 @@ func break_platform(coord):
 
 	# Repawn procedure.
 	set_cell(0, coord, 0, Vector2i(0,0))
+	_respawn_particle_create(coord)
 
 	# Delete objects and reset some variables
 	area.queue_free()
@@ -73,6 +75,13 @@ func _disintegrating_particle_create(coord: Vector2):
 	var pos: Vector2 = coord * 16 + Vector2(8, 8)
 	disintegrating_particle.emitting(pos)
 	get_parent().add_child(disintegrating_particle)
+
+## Particle stuff #2
+func _respawn_particle_create(coord: Vector2):
+	var respawn_particle: Respawn = respawn_particle_preload.instantiate()
+	var pos: Vector2 = coord * 16 + Vector2(8, 8)
+	respawn_particle.emitting(pos)
+	get_parent().add_child(respawn_particle)
 
 ## Create animated sprite. We have to create animation from each tile.
 func _create_sprite(coord) -> AnimatedSprite2D:
