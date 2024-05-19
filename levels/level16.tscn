@@ -156,7 +156,7 @@ position = Vector2(88, 424)
 position = Vector2(512, 240)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
-[connection signal="triggered" from="TriggerBox" to="MovingSpawner2" method="_on_trigger_box_triggered"]
 [connection signal="triggered" from="TriggerBox" to="MovingSpawner1" method="_on_trigger_box_triggered"]
-[connection signal="triggered" from="TriggerBox2" to="MovingSpawner6" method="_on_trigger_box_2_triggered"]
+[connection signal="triggered" from="TriggerBox" to="MovingSpawner2" method="_on_trigger_box_triggered"]
 [connection signal="triggered" from="TriggerBox2" to="MovingSpawner5" method="_on_trigger_box_2_triggered"]
+[connection signal="triggered" from="TriggerBox2" to="MovingSpawner6" method="_on_trigger_box_2_triggered"]
