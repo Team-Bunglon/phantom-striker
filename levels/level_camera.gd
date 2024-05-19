@@ -30,11 +30,18 @@ func _random_offset() -> Vector2:
 	)
 
 func _on_move_camera_area_area_entered(area:Node2D):
-	print(area)
 	if area.name == "PlayerPoint":
 		global_position.y = -80
 		limit_top = -80
 		limit_bottom = 400
+		position_smoothing_enabled = true
+		position_smoothing_speed = 8
+
+func _on_move_camera_area_2_area_entered(area:Node2D):
+	if area.name == "PlayerPoint":
+		global_position.y = -560
+		limit_top = -560
+		limit_bottom = -80
 		position_smoothing_enabled = true
 		position_smoothing_speed = 8
 

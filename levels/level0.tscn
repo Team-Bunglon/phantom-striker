@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://rn1v4rl2w1yc"]
+[gd_scene load_steps=26 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_01ewl"]
@@ -20,12 +20,17 @@
 [ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorial_box.tscn" id="15_nag0m"]
 [ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/moving_hazard_point.tscn" id="17_gc0uw"]
 [ext_resource type="PackedScene" uid="uid://60ybqx0xxej3" path="res://objects/moving_spawner.tscn" id="18_bfgx0"]
+[ext_resource type="PackedScene" uid="uid://dvj0v6wjfsaw7" path="res://objects/moving_spawner_line.tscn" id="18_uvj2a"]
+[ext_resource type="PackedScene" uid="uid://dqihqad1xwer3" path="res://objects/mystery.tscn" id="22_crrlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
 size = Vector2(768, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1r1n"]
+size = Vector2(18, 82)
 
 [node name="Level#0" type="Node2D"]
 script = ExtResource("1_80v0g")
@@ -53,8 +58,6 @@ limit_top = 0
 limit_right = 640
 limit_bottom = 480
 script = ExtResource("8_qwcse")
-shake_strength = null
-shake_length = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_bygm3")
@@ -141,6 +144,13 @@ marker_object = NodePath("../Marker2D")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(512, 264)
 
+[node name="MovingSpawnerLine" parent="." instance=ExtResource("18_uvj2a")]
+position = Vector2(576, 224)
+line_direction = Vector2(0, -260)
+direction = Vector2(-800, 0)
+speed = 50.0
+frequency = 2.0
+
 [node name="TutorialBox" parent="." instance=ExtResource("15_nag0m")]
 position = Vector2(245, 310)
 message_object = NodePath("../MessageBox")
@@ -150,5 +160,15 @@ message_object = NodePath("../MessageBox")
 [node name="Collectible" parent="." instance=ExtResource("12_03yfn")]
 position = Vector2(288, 304)
 
+[node name="Mystery" parent="." instance=ExtResource("22_crrlc")]
+position = Vector2(224, 224)
+
+[node name="StopSpawnHazardArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopSpawnHazardArea"]
+position = Vector2(73, 201)
+shape = SubResource("RectangleShape2D_b1r1n")
+
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
+[connection signal="body_entered" from="StopSpawnHazardArea" to="MovingSpawnerLine" method="_on_stop_spawn_hazard_area_body_entered"]

@@ -1,5 +1,5 @@
 extends MovingSpawner
-class_name MovingSpawnerLine ## Spawn moving object in a 
+class_name MovingSpawnerLine ## Spawn moving object in a line
 
 @export var gap: float = 24
 @export var line_direction: Vector2
@@ -16,4 +16,4 @@ func _spawn_object_on_process():
 	_spawn_object(global_position, direction, speed)
 	_spawn_object_on_line(line_direction.normalized() * gap, line_direction)
 	await(get_tree().create_timer(frequency, false).timeout)
-	_spawn_object_on_process()
+	can_spawn = true

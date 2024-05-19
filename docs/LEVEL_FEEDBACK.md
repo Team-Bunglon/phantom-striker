@@ -301,6 +301,15 @@ I'll hollow out the wasted block and add something to make you feel like you are
 Fun fact: "Panic Room" is also a name of a room in VVVVVV. Maybe you got the name from that?
 
 ## Level 30
+Name: Gotta Go Fast! -> The Final Trial  
+Author: Naufal
+
+**[GENERAL]**  
+This looks even unfinished. Though I'm not really disappointed with this because I understand you may be busy with other assignment. The "branches" you add in the level looks great and that gives me an idea of how the final level should look like.
+
+**[CHALLENGE]**  
+The challege for the last level should be special. And that is the fact that this is the only level that spans accross two screens: the top and the bottom. This may shock the player at first but there's nothing stopping you from going to the top section as soon as the level starts and see how different this level is.
+
 
 # Bonus Section
 ### The problem with the original implementation of moving object

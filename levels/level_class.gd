@@ -33,7 +33,3 @@ func _on_win_zone_body_entered(body:Node2D):
 	if body.name == "Player":
 		Audio.play("Start")
 		get_tree().change_scene_to_file(next_level())
-
-
-func _on_top_area_body_entered(body):
-	pass # Replace with function body.
