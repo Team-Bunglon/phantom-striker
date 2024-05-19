@@ -19,7 +19,7 @@ size = Vector2(128, 17)
 size = Vector2(768, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fy8s"]
-size = Vector2(20, 505)
+size = Vector2(24, 513.5)
 
 [node name="Level#21" type="Node2D"]
 script = ExtResource("1_pp20t")
@@ -27,11 +27,26 @@ level_name = "Phloematic Highway"
 
 [node name="LevelName" parent="." instance=ExtResource("2_gshc3")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_72hf6")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_8dp86")]
 position = Vector2(320, 416)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-320, -416)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_7sgwt")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_2773l")
@@ -54,117 +69,23 @@ shape = SubResource("RectangleShape2D_dduow")
 position = Vector2(320, 504)
 shape = SubResource("RectangleShape2D_h40i0")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_7sgwt")
+[node name="InvisibleBlock" type="StaticBody2D" parent="."]
+position = Vector2(664, 16)
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_72hf6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleBlock"]
+position = Vector2(-12, 223.25)
+shape = SubResource("RectangleShape2D_3fy8s")
 metadata/_edit_lock_ = true
 
-[node name="MovingSpawner" parent="." instance=ExtResource("8_twqub")]
-position = Vector2(656, 368)
-object_to_spawn = 0
-direction = Vector2(-800, 0)
-speed = 120.0
-frequency = 1.2
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleBlock"]
+position = Vector2(-676, 225)
+shape = SubResource("RectangleShape2D_3fy8s")
+metadata/_edit_lock_ = true
 
-[node name="MovingSpawner2" parent="." instance=ExtResource("8_twqub")]
-position = Vector2(-32, 296)
-direction = Vector2(800, 0)
-speed = 200.0
-frequency = 0.6
+[node name="Collectible" parent="." instance=ExtResource("11_14vkb")]
+position = Vector2(208, 32)
 
-[node name="MovingSpawner3" parent="." instance=ExtResource("8_twqub")]
-position = Vector2(-32, 232)
-object_to_spawn = 0
-direction = Vector2(800, 0)
-speed = 250.0
-frequency = 0.6
-
-[node name="MovingSpawner4" parent="." instance=ExtResource("8_twqub")]
-position = Vector2(672, 136)
-gizmo_extents = 278.2
-direction = Vector2(-800, 0)
-speed = 300.0
-frequency = 0.5
-
-[node name="MovingSpawner5" parent="." instance=ExtResource("8_twqub")]
-position = Vector2(704, 96)
-gizmo_extents = 278.2
-object_to_spawn = 0
-direction = Vector2(-800, 0)
-speed = 270.0
-frequency = 0.7
-
-[node name="MovingSpawner6" parent="." instance=ExtResource("8_twqub")]
-position = Vector2(-39, 56)
-gizmo_extents = 278.2
-direction = Vector2(264, 0)
-speed = 500.0
-frequency = 0.5
-
-[node name="MovingHazardPoint" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(90, 296)
-direction = Vector2(800, 0)
-speed = 200.0
-back_and_forth = false
-
-[node name="MovingHazardPoint2" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(212, 296)
-direction = Vector2(800, 0)
-speed = 200.0
-back_and_forth = false
-
-[node name="MovingHazardPoint3" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(332, 296)
-direction = Vector2(800, 0)
-speed = 200.0
-back_and_forth = false
-
-[node name="MovingHazardPoint4" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(452, 296)
-direction = Vector2(800, 0)
-speed = 200.0
-back_and_forth = false
-
-[node name="MovingHazardPoint5" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(572, 296)
-direction = Vector2(800, 0)
-speed = 200.0
-back_and_forth = false
-
-[node name="MovingHazardPoint6" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(522, 136)
-direction = Vector2(-800, 0)
-speed = 300.0
-back_and_forth = false
-
-[node name="MovingHazardPoint7" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(372, 136)
-direction = Vector2(-800, 0)
-speed = 300.0
-back_and_forth = false
-
-[node name="MovingHazardPoint8" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(222, 136)
-direction = Vector2(-800, 0)
-speed = 300.0
-back_and_forth = false
-
-[node name="MovingHazardPoint9" parent="." instance=ExtResource("9_vbrm0")]
-position = Vector2(72, 136)
-direction = Vector2(-800, 0)
-speed = 300.0
-back_and_forth = false
-
-[node name="MovingPlatformPoint" parent="." instance=ExtResource("9_h8fq7")]
+[node name="MovingPlatformPoint1" parent="." instance=ExtResource("9_h8fq7")]
 position = Vector2(512, 368)
 direction = Vector2(-800, 0)
 speed = 120.0
@@ -230,21 +151,99 @@ direction = Vector2(-800, 0)
 speed = 270.0
 back_and_forth = false
 
-[node name="Collectible" parent="." instance=ExtResource("11_14vkb")]
-position = Vector2(208, 32)
+[node name="MovingHazardPoint1" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(90, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
 
-[node name="InvisibleBlock" type="StaticBody2D" parent="."]
-position = Vector2(664, 16)
+[node name="MovingHazardPoint2" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(212, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleBlock"]
-position = Vector2(-14, 219)
-shape = SubResource("RectangleShape2D_3fy8s")
-metadata/_edit_lock_ = true
+[node name="MovingHazardPoint3" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(332, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleBlock"]
-position = Vector2(-674, 225)
-shape = SubResource("RectangleShape2D_3fy8s")
-metadata/_edit_lock_ = true
+[node name="MovingHazardPoint4" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(452, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingHazardPoint5" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(572, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+back_and_forth = false
+
+[node name="MovingHazardPoint6" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(522, 136)
+direction = Vector2(-800, 0)
+speed = 300.0
+back_and_forth = false
+
+[node name="MovingHazardPoint7" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(372, 136)
+direction = Vector2(-800, 0)
+speed = 300.0
+back_and_forth = false
+
+[node name="MovingHazardPoint8" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(222, 136)
+direction = Vector2(-800, 0)
+speed = 300.0
+back_and_forth = false
+
+[node name="MovingHazardPoint9" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(72, 136)
+direction = Vector2(-800, 0)
+speed = 300.0
+back_and_forth = false
+
+[node name="MovingHazardPoint10" parent="." instance=ExtResource("9_vbrm0")]
+position = Vector2(8, 56)
+direction = Vector2(208, 0)
+speed = 500.0
+
+[node name="MovingSpawner1" parent="." instance=ExtResource("8_twqub")]
+position = Vector2(656, 368)
+object_to_spawn = 0
+direction = Vector2(-800, 0)
+speed = 120.0
+frequency = 1.2
+
+[node name="MovingSpawner2" parent="." instance=ExtResource("8_twqub")]
+position = Vector2(-32, 296)
+direction = Vector2(800, 0)
+speed = 200.0
+frequency = 0.6
+
+[node name="MovingSpawner3" parent="." instance=ExtResource("8_twqub")]
+position = Vector2(-32, 232)
+object_to_spawn = 0
+direction = Vector2(800, 0)
+speed = 250.0
+frequency = 0.6
+
+[node name="MovingSpawner4" parent="." instance=ExtResource("8_twqub")]
+position = Vector2(672, 136)
+gizmo_extents = 278.2
+direction = Vector2(-800, 0)
+speed = 300.0
+frequency = 0.5
+
+[node name="MovingSpawner5" parent="." instance=ExtResource("8_twqub")]
+position = Vector2(704, 96)
+gizmo_extents = 278.2
+object_to_spawn = 0
+direction = Vector2(-800, 0)
+speed = 270.0
+frequency = 0.7
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

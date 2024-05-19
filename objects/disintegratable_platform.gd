@@ -2,6 +2,7 @@ extends TileMap
 class_name DisintegratablePlatform
 
 @export var respawn_timer: float = 5.0	## The time it takes for the tile to respawn after being destroyed.
+@export var can_respawn: bool = true
 @onready var sprite_preload: Resource = preload("res://objects/disintegratable_sprite.tscn")
 @onready var disarea_preload: Resource = preload("res://objects/disintegratable_area.tscn")
 @onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
@@ -43,6 +44,11 @@ func break_platform(coord):
 	sprite.visible = false
 	set_cell(0, coord, 0, Vector2i(4,0))
 	_disintegrating_particle_create(coord)
+
+	if not can_respawn:
+		sprite.queue_free()
+		return
+
 	var area := _create_area(coord, AREA)
 	
 	# Create timer and wait for respawn

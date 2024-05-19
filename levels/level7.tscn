@@ -19,11 +19,26 @@ level_name = "Cut to the Chase"
 
 [node name="LevelName" parent="." instance=ExtResource("2_fwfq3")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("8_hvguo")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_vkyox")]
 position = Vector2(52, 440)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-52, -440)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("7_a0j1u")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_iyf1f")
@@ -41,25 +56,11 @@ layer_0/tile_data = PackedInt32Array(1769490, 0, 0, 1769491, 0, 0, 1769492, 0, 0
 position = Vector2(561, -11)
 shape = SubResource("RectangleShape2D_dduow")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("7_a0j1u")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("8_hvguo")
-metadata/_edit_lock_ = true
-
-[node name="MovingPlatformPoint" parent="." instance=ExtResource("9_814qc")]
+[node name="MovingPlatformPoint1" parent="." instance=ExtResource("9_814qc")]
 position = Vector2(560, 416)
 direction = Vector2(0, -136)
 
-[node name="MovingHazardPoint" parent="." instance=ExtResource("9_rlej1")]
+[node name="MovingHazardPoint1" parent="." instance=ExtResource("9_rlej1")]
 position = Vector2(88, 256)
 direction = Vector2(416, 0)
 speed = 350.0
@@ -71,10 +72,7 @@ speed = 350.0
 
 [node name="MovingHazardPoint3" parent="." instance=ExtResource("9_rlej1")]
 position = Vector2(584, 144)
+direction = Vector2(-464, 0)
 speed = 450.0
-marker_object = NodePath("../Marker2D")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(120, 144)
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

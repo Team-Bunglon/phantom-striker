@@ -20,11 +20,26 @@ level_name = "Tight Maneuver"
 
 [node name="LevelName" parent="." instance=ExtResource("2_h3v6y")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("8_17awx")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_lgxhm")]
 position = Vector2(328, 442)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-328, -442)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_eq16t")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_1buop")
@@ -42,20 +57,6 @@ layer_0/tile_data = PackedInt32Array(1769493, 196608, 0, 1703957, 196608, 0, 157
 position = Vector2(320, -8)
 shape = SubResource("RectangleShape2D_dduow")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_eq16t")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("8_17awx")
-metadata/_edit_lock_ = true
-
 [node name="DestroyablePlatform" parent="." instance=ExtResource("8_oj5j4")]
 
 [node name="TutorialBox" parent="." instance=ExtResource("10_cchjk")]
@@ -64,7 +65,7 @@ message_object = NodePath("../MessageBox")
 
 [node name="MessageBox" parent="." instance=ExtResource("11_bwgso")]
 visible = false
-line_one = "Hold Shift to walk slower"
-line_two = "for finer adjustment"
+line_one = "Hold [Shift]"
+line_two = "to walk slower"
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

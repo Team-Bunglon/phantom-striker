@@ -10,11 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/message_box.tscn" id="8_0qa13"]
 [ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorial_box.tscn" id="9_dywex"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
-size = Vector2(768, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(92, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ngw"]
+size = Vector2(768, 16)
 
 [node name="Level#2" type="Node2D"]
 script = ExtResource("1_mrip6")
@@ -22,12 +22,27 @@ level_name = "Watch your Step!"
 
 [node name="LevelName" parent="." instance=ExtResource("2_gl2af")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("6_0vnm1")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_d04lr")]
 position = Vector2(72, 384)
 strikable_tiles = Array[String](["TileMap", "SpikeMap", "BlackDiamond", "MovingPlatform", "MovingPlatformPoint"])
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-72, -384)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("5_a8ykx")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_yvocw")
@@ -39,40 +54,26 @@ tile_set = ExtResource("5_lxj3q")
 format = 2
 layer_0/tile_data = PackedInt32Array(1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0)
 
-[node name="KillZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(320, 504)
-shape = SubResource("RectangleShape2D_61ngw")
-
 [node name="WinZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(46, -9)
 shape = SubResource("RectangleShape2D_dduow")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("5_a8ykx")
+[node name="KillZone" type="Area2D" parent="."]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("6_0vnm1")
-metadata/_edit_lock_ = true
-
-[node name="MessageBox" parent="." instance=ExtResource("8_0qa13")]
-visible = false
-line_one = "While being launched, move towards the"
-line_two = "launch direction to cover more distance!"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(320, 504)
+shape = SubResource("RectangleShape2D_61ngw")
 
 [node name="TutorialBox" parent="." instance=ExtResource("9_dywex")]
 position = Vector2(32, 368)
 message_object = NodePath("../MessageBox")
 
-[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
+[node name="MessageBox" parent="." instance=ExtResource("8_0qa13")]
+visible = false
+line_one = "While launched, move towards the"
+line_two = "launch direction to go further"
+
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

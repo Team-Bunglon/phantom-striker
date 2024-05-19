@@ -1,6 +1,6 @@
 # Notes
-1. This is a Godot 4 project. Make sure you use Godot 4 version 4.2.X
-2. Last document update: 05/09
+1. This is a Godot 4 project. Make sure you use Godot 4 version 4.2.2
+2. Last document update: 05/19
 
 # Guidelines
 1. Please only use English when involving everything within this repository (commit message, merge request, variables, comments, etc.)
@@ -30,7 +30,8 @@ There's no specific guideline for commit message so write what you want as long 
 5. Any bottomless pit will always kill the player. NO EXCEPTION!
 6. The player shouldn't go out of bound from either side of the wall. If there's no tilemap that serves as the wall on either side, add an invisible collision outside of the viewport.
 7. The win area should always be on top of the level.
-	-  Make sure that there's always one path that leads to the win area.
+	- Make sure that there's always one path that leads to the win area.
+	- The win area can either be on the ceilling or on the top one-third portion of the side walls.
 	- The win area can be in any size. If there's no tilemap that serves as the ceiling, the win area would have the size of the entire width of the viewport.
 8. The player character doesn't always need to start at the bottom of the level. You can put him anywhere as long as there's any challege to reach the win area.
 9. Don't be spiteful. That is designing a level that feels like you hate your player. The rule of thumb is just don't do what Cat Mario or other "rage game" does. The following is the example, but not limited, to level design that can be considered as "spiteful".
@@ -39,7 +40,7 @@ There's no specific guideline for commit message so write what you want as long 
 	- Anything that against what the player has been taught indirectly from the previous level (like putting the win area at the bottom. They've learned that they need to avoid any bottomless pit so they'll try to avoid it as well).
 10. Do NOT change the player export variable except `looking_left`. Changing it means the player has to relearn how the player control and that's a spiteful game design. Every level MUST have consistent variables for the player. 
 11. Please discuss with me first if you need to do something that requires a change of the fundamental mechanic, rule, and flow of the game in your level.
-12. Try to not make the player stuck on the level in such a way that they can't complete the level and have to press the restart button (softlock). The more way the player can be softlocked, the more frustrating the game can become. 
+12. ~~Try to not make the player stuck on the level in such a way that they can't complete the level and have to press the restart button (softlock). The more way the player can be softlocked, the more frustrating the game can become.~~ This rule no longer applies.
 
 ### Note
 Some of the level might be readjusted by me for any reason from finetuning the difficulty to removing any violating element as previously mention. I may or may not mention this directly at the discord server so look at the commit message if I happen to change your level.

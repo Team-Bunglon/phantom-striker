@@ -2,6 +2,7 @@ extends TileMap
 class_name DestroyablePlatform
 
 @export var respawn_timer: float = 5.0 ## The time it takes for the tile to respawn after being destroyed.
+@export var can_respawn: bool = true
 @export var spike_object: NodePath	   ## The spike object this platform should associate. If there's a spike inside this object, it'll turn white.
 @export var red_spike_object: NodePath ## The red spike object this platform should associate. If there's a red spike inside this object, it'll turn red.
 @onready var area_preload: Resource = preload("res://objects/tile_area.tscn")
@@ -71,6 +72,9 @@ func _break_cluster(cluster_array: Array[Vector2i]):
 	for c in cluster_array:
 		tiles_check[c] = false
 		_break_platform_procedure(c, cluster_array)
+
+	if not can_respawn:
+		return
 
 	# Create timer and wait for respawn
 	await(get_tree().create_timer(respawn_timer, false).timeout)

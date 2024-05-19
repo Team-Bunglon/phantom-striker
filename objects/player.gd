@@ -280,7 +280,7 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 			collider.struck()
 		if collider_name in all_strikeable_tiles:
 			if camera_shake:
-				$"../Camera2D".shake(4,12)
+				$Camera2D.shake(4,12)
 			if collider_name in reacting_tiles: 
 				var coords = raycast.get_collision_point() - raycast.get_collision_normal()
 				if collider.has_method("break_platform"):
@@ -322,8 +322,7 @@ func _strike_response(direction: Vector2, raycast: RayCast2D):
 		elif collider_name in unstrikable_tiles:
 			Audio.play("Red")
 			if camera_shake:
-				$"../Camera2D".shake(2,24)
-
+				$Camera2D.shake(2,24)
 
 ## A wrapper to check if none of the strike button are pressed.
 ## I'm sure there's a better way than this.
@@ -432,7 +431,7 @@ func die(quick_death := false):
 
 ## Explode animation for the character
 func _explode():
-	if camera_shake: $"../Camera2D".shake()
+	if camera_shake: $Camera2D.shake()
 	Audio.play("Death")
 	$Sprite.visible = false
 	$DieParticle.emitting = true

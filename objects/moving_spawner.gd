@@ -19,7 +19,7 @@ enum OBJ {
 @onready var marker_node: Marker2D
 @onready var platform_preload: Resource = preload("res://objects/moving_platform_point.tscn")
 @onready var hazard_preload: Resource = preload("res://objects/moving_hazard_point.tscn")
-@onready var first_spawn: bool = true
+@onready var can_spawn: bool = true
 
 func _ready():
 	if not marker_object.is_empty():
@@ -32,39 +32,40 @@ func _physics_process(_delta):
 		return
 	if auto_spawn:
 		auto_spawn = false
-		_spawn_object_on_start(direction.normalized() * speed * frequency)
-	if first_spawn:
-		first_spawn = false
+		_spawn_object_on_line(direction.normalized() * speed * frequency, direction)
+	if can_spawn:
+		can_spawn = false
 		_spawn_object_on_process()
 
-func _spawn_object_on_start(step: Vector2):
-	var len_to_target := direction.length()
-
+func _spawn_object_on_line(step: Vector2, dir: Vector2):
+	var len_to_target := dir.length()
 	var current_step := step
 	var spawn_pos := global_position + current_step
-	var len_to_step := spawn_pos.length()
+	var len_to_step := current_step.length()
 
 	while len_to_step <= len_to_target:
-		print("spawn object on ready: " + str(spawn_pos))
 		_spawn_object(spawn_pos, direction, speed)
 		current_step += step
 		spawn_pos = global_position + current_step
-		len_to_step = spawn_pos.length()
+		len_to_step = current_step.length()
 
 func _spawn_object_on_process():
 	_spawn_object(global_position, direction, speed)
 	await(get_tree().create_timer(frequency, false).timeout)
-	_spawn_object_on_process()
+	can_spawn = true # I could use recursion but this is probably the better option.
 
 func _spawn_object(pos: Vector2, dir: Vector2, spd: float):
 	match object_to_spawn:
 		OBJ.PLATFORM:
 			var object_moving: MovingPlatformPoint = platform_preload.instantiate()
 			object_moving.create(pos, dir, spd, "MovingPlatformPoint")
+			object_moving.add_to_group(name + "Platform")
 			get_parent().add_child(object_moving)
 		OBJ.HAZARD:
 			var object_moving: MovingHazardPoint = hazard_preload.instantiate()
 			object_moving.create(pos, dir, spd, "MovingHazardPoint")
+			object_moving.add_to_group(name + "Hazard")
+			print(name + "Hazard")
 			get_parent().add_child(object_moving)
 
 func _on_trigger_box_triggered():
@@ -75,3 +76,14 @@ func _on_trigger_box_2_triggered():
 
 func _on_trigger_box_3_triggered():
 	_on_trigger_box_triggered()
+
+func _on_stop_spawn_platform_area_body_entered(body:Node2D):
+	if body.name == "Player":
+		get_tree().call_group(name + "Platform", "queue_free")
+		queue_free()
+
+func _on_stop_spawn_hazard_area_body_entered(body:Node2D):
+	print("nothing")
+	if body.name == "Player":
+		get_tree().call_group(name + "Hazard", "queue_free")
+		queue_free()

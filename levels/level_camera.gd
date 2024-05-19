@@ -10,7 +10,7 @@ var rng = RandomNumberGenerator.new()
 var shake_strength_current: float = 0.0
 var shake_length_current: float = shake_length
 
-## "Baby, I'm just gonna make the camera shake, shake, shake, shake, shake."
+## "Baby, I'm just gonna make the camera shake, shake, shake, shake, shake."[br][br]
 ## `strength` determines how strong the shake is.
 ## The bigger the `length`, the shorter the shake effect is applied.
 ## You can set the default strength and length at the camera2D's exported value
@@ -28,3 +28,36 @@ func _random_offset() -> Vector2:
 		rng.randf_range(-shake_strength_current, shake_strength_current),
 		rng.randf_range(-shake_strength_current, shake_strength_current)
 	)
+
+func _on_move_camera_area_area_entered(area:Node2D):
+	if area.name == "PlayerPoint":
+		global_position.y = -80
+		limit_top = -80
+		limit_bottom = 400
+		position_smoothing_enabled = true
+		position_smoothing_speed = 8
+
+func _on_move_camera_area_2_area_entered(area:Node2D):
+	if area.name == "PlayerPoint":
+		global_position.y = -560
+		limit_top = -560
+		limit_bottom = -80
+		position_smoothing_enabled = true
+		position_smoothing_speed = 8
+
+func _on_bottom_area_area_entered(area:Node2D):
+	if area.name == "PlayerPoint":
+		global_position.y = 0
+		limit_top = 0
+		limit_bottom = 480
+		position_smoothing_enabled = true
+		position_smoothing_speed = 8
+
+func _on_top_area_area_entered(area:Area2D):
+	print(area.name)
+	if area.name == "PlayerPoint":
+		global_position.y = -480
+		limit_top = -480
+		limit_bottom = 0
+		position_smoothing_enabled = true
+		position_smoothing_speed = 8

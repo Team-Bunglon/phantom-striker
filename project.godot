@@ -184,6 +184,7 @@ slow={
 2d_physics/layer_2="Bounce"
 2d_physics/layer_3="Propel"
 2d_physics/layer_4="Hurt"
+2d_physics/layer_5="Player"
 
 [rendering]
 

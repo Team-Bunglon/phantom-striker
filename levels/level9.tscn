@@ -18,11 +18,26 @@ level_name = "Three Lane's A Crowd"
 
 [node name="LevelName" parent="." instance=ExtResource("2_7lr50")]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_0047m")
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_metbn")]
 position = Vector2(64, 448)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-64, -448)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
+script = ExtResource("6_4ecdf")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_pcyur")
@@ -39,20 +54,6 @@ layer_0/tile_data = PackedInt32Array(1769484, 0, 0, 1769485, 0, 0, 1769486, 0, 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 position = Vector2(88, -9)
 shape = SubResource("RectangleShape2D_dduow")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 480
-script = ExtResource("6_4ecdf")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_0047m")
-metadata/_edit_lock_ = true
 
 [node name="BlackDiamond" parent="." instance=ExtResource("8_l5y87")]
 position = Vector2(512, 128)
