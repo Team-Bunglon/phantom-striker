@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_pkq3a"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_7ruti"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_rlqyc"]
+[ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_x3ym1"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_s54uo"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_q2hfu"]
-[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="6_a31u6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(50, 18)
@@ -20,12 +20,7 @@ level_name = "Step by Step"
 
 [node name="LevelName" parent="." instance=ExtResource("2_pkq3a")]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("6_a31u6")
-metadata/_edit_lock_ = true
+[node name="BackgroundRoot" parent="." instance=ExtResource("3_x3ym1")]
 
 [node name="Player" parent="." instance=ExtResource("3_rlqyc")]
 position = Vector2(32, 448)

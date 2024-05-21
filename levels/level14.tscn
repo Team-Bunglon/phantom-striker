@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_xdraf"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_r61ox"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_8n3ny"]
+[ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_vo6dr"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_1bau5"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_qv66m"]
 [ext_resource type="TileSet" uid="uid://chyy7781d0llo" path="res://resources/red_spikes.tres" id="6_ovk1b"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_qu23s"]
-[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_c1ruw"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="8_hysia"]
 [ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratable_platform.tscn" id="9_fgl8b"]
 
@@ -23,12 +23,8 @@ level_name = "Think Fast, Spookyhead!"
 
 [node name="LevelName" parent="." instance=ExtResource("2_r61ox")]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_c1ruw")
-metadata/_edit_lock_ = true
+[node name="BackgroundTrunk" parent="." instance=ExtResource("3_vo6dr")]
+scroll_factor = 3
 
 [node name="Player" parent="." instance=ExtResource("3_8n3ny")]
 position = Vector2(56, 64)

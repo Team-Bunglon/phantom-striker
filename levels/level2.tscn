@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_gl2af"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="2_yvocw"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_d04lr"]
+[ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_jh4oi"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="5_a8ykx"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_lxj3q"]
-[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="6_0vnm1"]
 [ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/message_box.tscn" id="8_0qa13"]
 [ext_resource type="PackedScene" uid="uid://gd4ksfsvmsui" path="res://objects/tutorial_box.tscn" id="9_dywex"]
 
@@ -22,12 +22,7 @@ level_name = "Watch your Step!"
 
 [node name="LevelName" parent="." instance=ExtResource("2_gl2af")]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("6_0vnm1")
-metadata/_edit_lock_ = true
+[node name="BackgroundRoot" parent="." instance=ExtResource("3_jh4oi")]
 
 [node name="Player" parent="." instance=ExtResource("3_d04lr")]
 position = Vector2(72, 384)
