@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkq0tbvylto6"]
+[gd_scene load_steps=13 format=3 uid="uid://dkq0tbvylto6"]
 
 [ext_resource type="Script" path="res://backgrounds/bg_trunk.gd" id="1_bub83"]
 [ext_resource type="TileSet" uid="uid://bvqakg6cuf8ub" path="res://resources/tiles_test.tres" id="2_7a6wm"]
-[ext_resource type="Texture2D" uid="uid://b21eflyptdfby" path="res://assets/backgrounds/bg2_4_cloud.png" id="3_7b45h"]
 [ext_resource type="Texture2D" uid="uid://guyi2xpfx6r4" path="res://assets/backgrounds/bg2_1_trunk.png" id="3_jo11k"]
+[ext_resource type="Texture2D" uid="uid://bpletlrule4vh" path="res://assets/backgrounds/bg2_4_cloud_long.png" id="3_l6hl1"]
 [ext_resource type="Texture2D" uid="uid://2orcndqrxa7f" path="res://assets/backgrounds/bg2_0_bottom.png" id="4_6ywl6"]
 [ext_resource type="Texture2D" uid="uid://bcy035rtw7c0l" path="res://assets/backgrounds/bg2_2_top.png" id="5_rchdk"]
-[ext_resource type="Texture2D" uid="uid://qs3owocca3xn" path="res://assets/backgrounds/bg2_3_hill.png" id="6_t5p70"]
+[ext_resource type="Texture2D" uid="uid://dr1rnm3pleuh5" path="res://assets/backgrounds/bg2_3_hill.png" id="6_t5p70"]
+[ext_resource type="Texture2D" uid="uid://2hp4eqhtnxsg" path="res://assets/backgrounds/bg2_6_fruit.png" id="7_qg83q"]
+[ext_resource type="Texture2D" uid="uid://ev8nu87wfhc7" path="res://assets/backgrounds/bg2_5_sky.png" id="9_rcm7e"]
 
 [sub_resource type="Animation" id="Animation_gat7e"]
 length = 0.001
@@ -63,23 +65,10 @@ libraries = {
 "": SubResource("AnimationLibrary_k63j7")
 }
 
-[node name="BackgroundCloud" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(960, 120)
-scale = Vector2(2, 2)
-texture = ExtResource("3_7b45h")
-
 [node name="BackgroundSub" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("3_jo11k")
-metadata/_edit_lock_ = true
-
-[node name="BackgroundBottom" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("4_6ywl6")
 metadata/_edit_lock_ = true
 
 [node name="BackgroundTop" type="Sprite2D" parent="."]
@@ -89,9 +78,38 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_rchdk")
 metadata/_edit_lock_ = true
 
-[node name="BackgroundMain" type="Sprite2D" parent="."]
+[node name="BackgroundBottom" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("4_6ywl6")
+metadata/_edit_lock_ = true
+
+[node name="BackgroundCloud" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 z_index = -1
-position = Vector2(320, 208)
+position = Vector2(960, 120)
+scale = Vector2(2, 2)
+texture = ExtResource("3_l6hl1")
+
+[node name="BackgroundFruit" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("7_qg83q")
+metadata/_edit_lock_ = true
+
+[node name="BackgroundMain" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(320, 216)
 scale = Vector2(2, 2)
 texture = ExtResource("6_t5p70")
+metadata/_edit_lock_ = true
+
+[node name="BackgroundSky" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(320, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("9_rcm7e")
 metadata/_edit_lock_ = true

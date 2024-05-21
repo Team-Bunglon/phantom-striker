@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3rtxm2u5l0mt"]
+[gd_scene load_steps=10 format=3 uid="uid://b3rtxm2u5l0mt"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_o6j5x"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_udvgn"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_0ag72"]
-[ext_resource type="Texture2D" uid="uid://er5huv37grhr" path="res://assets/backgrounds/bg3_3_top.png" id="3_lw81l"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="4_o3ity"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_sao0e"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_eeiqd"]
@@ -21,14 +20,9 @@ level_name = "The Fruit Of Life"
 
 [node name="LevelName" parent="." instance=ExtResource("2_udvgn")]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("3_lw81l")
-metadata/_edit_lock_ = true
-
 [node name="BackgroundTrunk" parent="." instance=ExtResource("4_o3ity")]
+is_fruit = true
+scroll_factor = 10
 show_sub = false
 
 [node name="Player" parent="." instance=ExtResource("3_0ag72")]
