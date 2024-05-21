@@ -1,34 +1,32 @@
-These are the original name of all levels available in the project as of commit c4067a5~ (The commit before the level review). I've created this file due to an accident where I reset the export variable of the level name on every single level. Note that the current commit may not have the same level name as in this list due to the level rename and redesign during the level review period.
-
-level0: Debug Level Please Ignore
-level1: Let's Begin!
-level2: Watch Your Step!
-level3: Illusion of Choice
-level4: Jump of Faith
-level5: Platform of Spikes!
-level6: Stairs of Spikes!
-level7: Diamond And Spike
-level8: Shine Bright Like A Diamond
-level9: Diamond And Spike
-level10: Diamond And Spike
-level11: Rising Tension
-level12: On A Prickly Path
-level13: Deez Nuts
-level14: More Nuts
-level15: Are you a challenger?
-level16: Are you fast enough?
-level17: Run Forest Run!
-level18: Fus Ro Dah!
-level19: Up and Down
-level20: Down and Up
-level21: Phloematic Highway
-level22: Slithereen
-level23: The Pit
-level24: Careful Now
-level25: Weee!
-level26: Slow and steady..
-level27: The Floor Is Spike
-level28: The Floor Is Abyss
-level29: Panic Room!
-level30: Gotta Go Fast!
-level31: Fruit of Life
+00: Debug Level Please Ignore
+01: Strike at the Root
+02: Watch your Step!
+03: Jump of Faith
+04: Illusion of Choice
+05: Step by Step
+06: Xylematic Platforming
+07: Cut to the Chase
+08: Like a Diamond
+09: Three Lane's A Crowd
+10: Tight Maneuver
+11: Tension Rising
+12: On a Prickly Path
+13: Red Herring
+14: Think Fast, Spookyhead!
+15: Up For A Challenge?
+16: Run, Forrest, Run!
+17: Cold Feet
+18: Launch Me As Though There Were No Tomorrow
+19: What Goes Up Must Come Down
+20: Come Josephine
+21: Phloematic Highway
+22: Slithereen
+23: Careful Now
+24: Weeeeee!
+25: The Pit
+26: You Can Do It
+27: Four Walls
+28: The Floor Is Abyss
+29: Panic Room
+30: The Final Trial
+31: The Fruit Of Life
