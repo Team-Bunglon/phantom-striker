@@ -11,7 +11,7 @@ class_name LevelBox
 func _ready():
 	visible = true
 	$LevelNotificationContainer/Panel.modulate.a = opacity
-	change_text()
+	#change_text()
 	hide_textbox()
 
 func hide_textbox():
@@ -32,7 +32,7 @@ func translate_group(level_number: int) -> String:
 	else:
 		return "Debug Mode"
 
-func change_text():
+func refresh_text():
 	$LevelNotificationContainer/MarginContainer/VBoxContainer/Text1.text = translate_group(Global.current_level)
 	$LevelNotificationContainer/MarginContainer/VBoxContainer/Text2.text = str(Global.current_level) + "F"
 

@@ -7,6 +7,7 @@ extends Node
 var has_applied_setting_on_launch: bool = false ## Apply the setting everytime when the game is launched
 var game_running: bool = false	## A flag to tell if the player is in the game or outside of it.
 var is_paused: bool = false		## A flag for other script to know if the game is paused
+var is_level_notification_appear: bool = false ## A flag for the level notification to appear
 
 # Countables
 var has_started_game = false: ## Check if the player has pressed the start button for continue button. It is greyed out if the game is launched for the first time or after the player has finished the game.
@@ -52,7 +53,7 @@ var fullscreen: String = "No":
 	set(value):
 		fullscreen = value
 		save_game()
-
+		
 # Some function
 func reset_global_value():
 	current_level = 1

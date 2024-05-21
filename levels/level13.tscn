@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://xfgvi7qsrd81"]
+[gd_scene load_steps=18 format=3 uid="uid://xfgvi7qsrd81"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_d0gbm"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://objects/level_notification.tscn" id="2_53ymj"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_sxdus"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_haun3"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_tqdju"]
@@ -22,6 +23,8 @@ size = Vector2(82, 16)
 [node name="Level#13" type="Node2D"]
 script = ExtResource("1_d0gbm")
 level_name = "Red Herring"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_53ymj")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_sxdus")]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://bktjy6d3x88rs"]
+[gd_scene load_steps=29 format=3 uid="uid://bktjy6d3x88rs"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_eha67"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://objects/level_notification.tscn" id="2_rvcrv"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_y8oe7"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_ivxsm"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_tbp1c"]
@@ -48,6 +49,8 @@ size = Vector2(672, 8)
 [node name="Level#29" type="Node2D"]
 script = ExtResource("1_eha67")
 level_name = "Panic Room"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_rvcrv")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_y8oe7")]
 

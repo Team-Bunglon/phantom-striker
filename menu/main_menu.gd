@@ -19,9 +19,11 @@ func _ready():
 		$Cursor.cursor_index = 1
 
 func _on_continue_selected():
+	Global.is_level_notification_appear = true
 	emit_signal("continue_game")
 
 func _on_start_selected():
+	Global.is_level_notification_appear = true
 	emit_signal("start_game")
 
 func _on_options_selected():

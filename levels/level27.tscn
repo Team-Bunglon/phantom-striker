@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfxvlj176yhhd"]
+[gd_scene load_steps=21 format=3 uid="uid://cfxvlj176yhhd"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_kw1cg"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_f01a8"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://objects/level_notification.tscn" id="2_lm651"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_1kleu"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_76ery"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_qkub4"]
@@ -27,6 +28,8 @@ size = Vector2(768, 16)
 [node name="Level#27" type="Node2D"]
 script = ExtResource("1_kw1cg")
 level_name = "Four Walls"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_lm651")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_f01a8")]
 

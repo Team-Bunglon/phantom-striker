@@ -18,6 +18,10 @@ func _ready():
 	$LevelName.set_level_name(level_name)
 	Global.current_level = get_number()
 	Global.save_game() # this will save the game on every level change or restart
+	if (Global.is_level_notification_appear):
+		$LevelNotification.refresh_text()
+		$LevelNotification.appear()
+		Global.is_level_notification_appear = false
 	# Music
 	var current_level = get_number()
 	if current_level >= 0 and current_level < 21:
@@ -32,4 +36,5 @@ func _on_kill_zone_body_entered(body:Node2D):
 func _on_win_zone_body_entered(body:Node2D):
 	if body.name == "Player":
 		Audio.play("Start")
+		Global.is_level_notification_appear = true
 		get_tree().change_scene_to_file(next_level())

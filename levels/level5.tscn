@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo4o4lq3w443r"]
+[gd_scene load_steps=11 format=3 uid="uid://bo4o4lq3w443r"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_mxs2c"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://objects/level_notification.tscn" id="2_grhea"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_pkq3a"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_7ruti"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_rlqyc"]
@@ -17,6 +18,8 @@ size = Vector2(768, 16)
 [node name="Level#5" type="Node2D"]
 script = ExtResource("1_mxs2c")
 level_name = "Step by Step"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_grhea")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_pkq3a")]
 
