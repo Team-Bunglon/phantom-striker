@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwn4fc2mx2e80"]
 
-[ext_resource type="Script" path="res://objects/level_notification.gd" id="1_gsdyq"]
+[ext_resource type="Script" path="res://menu/level_notification.gd" id="1_gsdyq"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_fi224"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epouy"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_mg8md"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_4xff3"]
-[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://objects/level_notification.tscn" id="2_uo4av"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_uo4av"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_npuym"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_x2e2k"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="4_x415f"]
