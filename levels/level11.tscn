@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg50mxs8iww3c"]
+[gd_scene load_steps=15 format=3 uid="uid://bg50mxs8iww3c"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_2jhgm"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_dithq"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_dlu31"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_r3gku"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_s6u8e"]
@@ -23,6 +24,8 @@ size = Vector2(24, 505)
 [node name="Level#11" type="Node2D"]
 script = ExtResource("1_2jhgm")
 level_name = "Tension Rising"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_dithq")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_dlu31")]
 

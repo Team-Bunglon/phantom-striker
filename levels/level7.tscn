@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://csiwjwdsfopou"]
+[gd_scene load_steps=12 format=3 uid="uid://csiwjwdsfopou"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_8juri"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_7cnre"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_fwfq3"]
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_fydov"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_vkyox"]
@@ -16,6 +17,8 @@ size = Vector2(95.5, 18)
 [node name="Level#7" type="Node2D"]
 script = ExtResource("1_8juri")
 level_name = "Cut to the Chase"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_7cnre")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_fwfq3")]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3rtxm2u5l0mt"]
+[gd_scene load_steps=11 format=3 uid="uid://b3rtxm2u5l0mt"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_o6j5x"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_d0u5s"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_udvgn"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_0ag72"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="4_o3ity"]
@@ -17,6 +18,8 @@ size = Vector2(672, 16)
 [node name="Level#31" type="Node2D"]
 script = ExtResource("1_o6j5x")
 level_name = "The Fruit Of Life"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_d0u5s")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_udvgn")]
 

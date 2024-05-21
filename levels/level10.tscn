@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6yoytx0col3d"]
+[gd_scene load_steps=13 format=3 uid="uid://b6yoytx0col3d"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_6h343"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_h3v6y"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_pvbvs"]
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_5axqm"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_lgxhm"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_1buop"]
@@ -17,6 +18,8 @@ size = Vector2(68, 16)
 [node name="Level#10" type="Node2D"]
 script = ExtResource("1_6h343")
 level_name = "Tight Maneuver"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_pvbvs")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_h3v6y")]
 

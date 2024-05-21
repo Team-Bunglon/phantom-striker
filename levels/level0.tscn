@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://rn1v4rl2w1yc"]
+[gd_scene load_steps=27 format=3 uid="uid://rn1v4rl2w1yc"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_80v0g"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_01ewl"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_nu2pl"]
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_44f18"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_akf2k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_bygm3"]
@@ -35,6 +36,8 @@ size = Vector2(49, 49)
 [node name="Level#0" type="Node2D"]
 script = ExtResource("1_80v0g")
 level_name = "Debug Level Please Ignore"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_nu2pl")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_01ewl")]
 

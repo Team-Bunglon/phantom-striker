@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dim1m3354rhtr"]
+[gd_scene load_steps=20 format=3 uid="uid://dim1m3354rhtr"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_rsa6c"]
+[ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_1u0dn"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_efklm"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_4aoc5"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_8evth"]
@@ -28,6 +29,8 @@ size = Vector2(640, 480)
 [node name="Level#30" type="Node2D"]
 script = ExtResource("1_rsa6c")
 level_name = "The Final Trial"
+
+[node name="LevelNotification" parent="." instance=ExtResource("2_1u0dn")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_efklm")]
 
