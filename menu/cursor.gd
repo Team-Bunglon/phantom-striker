@@ -37,11 +37,10 @@ func _process(_delta):
 			if menu_item_current.name in cancel_labels:
 				Audio.play("Cancel")
 			elif menu_item_current.name == "Start":
-				print("Don't play anything")
+				print("")
 			else:
 				Audio.play("Accept")
 			select_menu(menu_item_current)
-
 	
 	if Input.is_action_just_pressed("ui_increase") and cursor_can_choose:
 		var menu_item_current := get_menu_item(cursor_index)

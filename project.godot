@@ -44,7 +44,11 @@ enabled=PackedStringArray("res://addons/stopwatch/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://docs/": "gray"
+"res://addons/": "gray",
+"res://assets/": "orange",
+"res://docs/": "gray",
+"res://globals/": "yellow",
+"res://resources/": "yellow"
 }
 
 [input]

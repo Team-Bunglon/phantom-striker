@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://menu/continue.gd" id="7_4sjr5"]
 [ext_resource type="Texture2D" uid="uid://c0s4r252ya5cy" path="res://assets/sprites/happyghost2.png" id="7_5t864"]
 [ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="8_ixf2x"]
-[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/ui_collectible.png" id="10_qyq3d"]
+[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/collectible.png" id="10_qyq3d"]
 [ext_resource type="Texture2D" uid="uid://b5k8nxe2rejwd" path="res://assets/sprites/ui_death.png" id="12_bueif"]
 
 [node name="Credit" type="Control"]

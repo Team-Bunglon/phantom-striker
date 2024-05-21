@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccbyvma21rb1d" path="res://menu/confirm.tscn" id="4_o351n"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="5_58d74"]
 [ext_resource type="Texture2D" uid="uid://b5k8nxe2rejwd" path="res://assets/sprites/ui_death.png" id="6_ype3w"]
-[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/ui_collectible.png" id="7_mo58g"]
+[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/collectible.png" id="7_mo58g"]
 [ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="8_kpruf"]
 
 [node name="PauseScreen" type="CanvasLayer"]

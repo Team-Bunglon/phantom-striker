@@ -65,7 +65,6 @@ func _spawn_object(pos: Vector2, dir: Vector2, spd: float):
 			var object_moving: MovingHazardPoint = hazard_preload.instantiate()
 			object_moving.create(pos, dir, spd, "MovingHazardPoint")
 			object_moving.add_to_group(name + "Hazard")
-			print(name + "Hazard")
 			get_parent().add_child(object_moving)
 
 func _on_trigger_box_triggered():
@@ -83,7 +82,6 @@ func _on_stop_spawn_platform_area_body_entered(body:Node2D):
 		queue_free()
 
 func _on_stop_spawn_hazard_area_body_entered(body:Node2D):
-	print("nothing")
 	if body.name == "Player":
 		get_tree().call_group(name + "Hazard", "queue_free")
 		queue_free()

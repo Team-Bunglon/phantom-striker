@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objects/mystery.gd" id="1_gojq3"]
 [ext_resource type="Texture2D" uid="uid://cpw57f1lxtmni" path="res://assets/sprites/mystery_table.png" id="1_w2xjt"]
-[ext_resource type="AudioStream" uid="uid://c0ger71d2g0wd" path="res://assets/sprites/mystery.wav" id="3_kso2a"]
+[ext_resource type="AudioStream" uid="uid://c0ger71d2g0wd" path="res://assets/audio/mystery.wav" id="3_kso2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmm8x"]
 size = Vector2(48, 32)

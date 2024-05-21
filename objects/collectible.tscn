@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://blix7dlirci3u"]
 
 [ext_resource type="Script" path="res://objects/collectible.gd" id="1_m2p20"]
-[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/ui_collectible.png" id="1_x78in"]
-[ext_resource type="Texture2D" uid="uid://ccs8ku0ptti7a" path="res://assets/sprites/ui_collectible_alt.png" id="3_bt5v5"]
+[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/collectible.png" id="1_x78in"]
+[ext_resource type="Texture2D" uid="uid://ccs8ku0ptti7a" path="res://assets/sprites/collectible_alt.png" id="3_bt5v5"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="3_k5igr"]
 [ext_resource type="Texture2D" uid="uid://nmpsxlowdlmd" path="res://assets/sprites/particle1.png" id="5_03bgn"]
 

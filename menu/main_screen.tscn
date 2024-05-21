@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://menu/main_screen.gd" id="1_5x4pu"]
 [ext_resource type="Texture2D" uid="uid://dhak7ge0tfif6" path="res://assets/sprites/logo.png" id="2_tuxra"]
-[ext_resource type="Texture2D" uid="uid://3gm4qoj6s3f8" path="res://assets/sprites/title_bg.png" id="3_o2gi6"]
-[ext_resource type="Texture2D" uid="uid://jn3imajvoy83" path="res://assets/sprites/title_fg1.png" id="4_g6fja"]
-[ext_resource type="Texture2D" uid="uid://bsl756u6a4gyn" path="res://assets/sprites/title_fg2.png" id="5_v380f"]
+[ext_resource type="Texture2D" uid="uid://3gm4qoj6s3f8" path="res://assets/misc/title_bg.png" id="3_o2gi6"]
+[ext_resource type="Texture2D" uid="uid://jn3imajvoy83" path="res://assets/misc/title_fg1.png" id="4_g6fja"]
+[ext_resource type="Texture2D" uid="uid://bsl756u6a4gyn" path="res://assets/misc/title_fg2.png" id="5_v380f"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="6_1t8xw"]
 [ext_resource type="PackedScene" uid="uid://d3sd5a738c3i8" path="res://menu/main_menu.tscn" id="7_hl2f1"]
 [ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="8_lv5bq"]

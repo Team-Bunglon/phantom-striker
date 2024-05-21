@@ -14,7 +14,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("ui_accept") and $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("idle")
-	if event.is_action_pressed("debug"):
+	if event.is_action_pressed("debug") and Global.debug_mode:
 		_start_level("level" + str(debug_level))
 
 func _start_level(level_name: String, new_game := true):
