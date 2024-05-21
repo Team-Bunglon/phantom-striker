@@ -64,6 +64,7 @@ bus = &"Sound"
 
 [node name="Hit" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("4_bsjk2")
+volume_db = -1.0
 bus = &"Sound"
 
 [node name="Death" type="AudioStreamPlayer" parent="Sound"]
@@ -135,7 +136,7 @@ bus = &"Sound"
 
 [node name="Open" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("20_cy1d7")
-volume_db = 1.0
+volume_db = 2.0
 pitch_scale = 0.5
 bus = &"Sound"
 

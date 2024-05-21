@@ -1,13 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://bktjy6d3x88rs"]
+[gd_scene load_steps=28 format=3 uid="uid://bktjy6d3x88rs"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_eha67"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_y8oe7"]
+[ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_ivxsm"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_tbp1c"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_24nth"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_jg8vh"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_f514k"]
 [ext_resource type="PackedScene" uid="uid://bn40t5m5fdort" path="res://objects/gate_map.tscn" id="7_bwbyo"]
-[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_lc4mt"]
 [ext_resource type="TileSet" uid="uid://chyy7781d0llo" path="res://resources/red_spikes.tres" id="7_vybr8"]
 [ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratable_platform.tscn" id="8_8vg26"]
 [ext_resource type="PackedScene" uid="uid://blix7dlirci3u" path="res://objects/collectible.tscn" id="9_h7g2i"]
@@ -19,6 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://bb3g2sedbhtr2" path="res://objects/diamond_white.tscn" id="13_r3l0c"]
 [ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/moving_hazard_point.tscn" id="18_34iam"]
 [ext_resource type="PackedScene" uid="uid://dqihqad1xwer3" path="res://objects/mystery.tscn" id="19_23ok7"]
+
+[sub_resource type="Gradient" id="Gradient_d8x7x"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2suu0"]
+gradient = SubResource("Gradient_d8x7x")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dduow"]
 size = Vector2(16, 128)
@@ -44,28 +51,15 @@ level_name = "Panic Room"
 
 [node name="LevelName" parent="." instance=ExtResource("2_y8oe7")]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_lc4mt")
-metadata/_edit_lock_ = true
+[node name="BackgroundBranch" parent="." instance=ExtResource("3_ivxsm")]
 
-[node name="Background2" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 144)
-scale = Vector2(2, 2)
-texture = ExtResource("7_lc4mt")
-metadata/_edit_lock_ = true
-
-[node name="Background3" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, -320)
-scale = Vector2(2, 2)
-texture = ExtResource("7_lc4mt")
+[node name="BackgroundSecret" type="Sprite2D" parent="."]
+position = Vector2(7048, -344)
+scale = Vector2(55.1875, 496)
+texture = SubResource("GradientTexture1D_2suu0")
 
 [node name="Player" parent="." instance=ExtResource("3_tbp1c")]
-position = Vector2(40, 384)
+position = Vector2(32, 384)
 max_jump_height = 80.0
 jump_time_to_peak = 0.4
 jump_time_to_descend = 0.35

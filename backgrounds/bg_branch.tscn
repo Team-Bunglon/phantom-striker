@@ -1,97 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkq0tbvylto6"]
+[gd_scene load_steps=5 format=3 uid="uid://kyel1hdn48jx"]
 
-[ext_resource type="Script" path="res://backgrounds/bg_trunk.gd" id="1_bub83"]
-[ext_resource type="TileSet" uid="uid://bvqakg6cuf8ub" path="res://resources/tiles_test.tres" id="2_7a6wm"]
-[ext_resource type="Texture2D" uid="uid://b21eflyptdfby" path="res://assets/backgrounds/bg2_4_cloud.png" id="3_7b45h"]
-[ext_resource type="Texture2D" uid="uid://guyi2xpfx6r4" path="res://assets/backgrounds/bg2_1_trunk.png" id="3_jo11k"]
-[ext_resource type="Texture2D" uid="uid://2orcndqrxa7f" path="res://assets/backgrounds/bg2_0_bottom.png" id="4_6ywl6"]
-[ext_resource type="Texture2D" uid="uid://bcy035rtw7c0l" path="res://assets/backgrounds/bg2_2_top.png" id="5_rchdk"]
-[ext_resource type="Texture2D" uid="uid://qs3owocca3xn" path="res://assets/backgrounds/bg2_3_hill.png" id="6_t5p70"]
+[ext_resource type="Script" path="res://backgrounds/bg_class.gd" id="1_ucyer"]
+[ext_resource type="TileSet" uid="uid://bvqakg6cuf8ub" path="res://resources/tiles_test.tres" id="2_0rmu3"]
+[ext_resource type="Texture2D" uid="uid://dvbecd6gsavub" path="res://assets/backgrounds/bg3_1_branch.png" id="3_fekia"]
+[ext_resource type="Texture2D" uid="uid://c6viijwbqy68j" path="res://assets/backgrounds/bg3_2_final.png" id="4_f5rh8"]
 
-[sub_resource type="Animation" id="Animation_gat7e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundCloud:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(960, 120)]
-}
-
-[sub_resource type="Animation" id="Animation_oc85h"]
-resource_name = "idle"
-length = 30.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundCloud:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 30),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(960, 120), Vector2(-320, 120)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k63j7"]
-_data = {
-"RESET": SubResource("Animation_gat7e"),
-"idle": SubResource("Animation_oc85h")
-}
-
-[node name="BackgroundTrunk" type="Node2D"]
+[node name="BackgroundBranch" type="Node2D"]
 z_index = -100
-script = ExtResource("1_bub83")
+script = ExtResource("1_ucyer")
 
 [node name="TestTileMap" type="TileMap" parent="."]
 visible = false
 z_index = 1
-tile_set = ExtResource("2_7a6wm")
+tile_set = ExtResource("2_0rmu3")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 524289, 3, 65536, 196609, 4, 131072, 196609, 4, 196608, 196609, 4, 262144, 196609, 4, 327680, 196609, 4, 393216, 196609, 4, 458752, 196609, 4, 524288, 196609, 4, 589824, 196609, 4, 655360, 196609, 4, 720896, 196609, 4, 786432, 196609, 4, 851968, 196609, 4, 983040, 196609, 4, 917504, 196609, 4, 1048576, 196609, 4, 1114112, 196609, 4, 1179648, 196609, 4, 1245184, 196609, 4, 1310720, 196609, 4, 1376256, 196609, 4, 1441792, 196609, 4, 1572864, 196609, 4, 1507328, 196609, 4, 1638400, 196609, 4, 1703936, 196609, 4, 1769472, 196609, 4, 1900544, 524289, 4, 1900545, 196609, 3, 1900582, 196609, 3, 1900583, 589825, 4, 1900581, 196609, 3, 1900580, 196609, 3, 1900579, 196609, 3, 1900578, 196609, 3, 1900577, 196609, 3, 1900576, 196609, 3, 1900575, 196609, 3, 1900574, 196609, 3, 1900573, 196609, 3, 1900572, 196609, 3, 1900571, 196609, 3, 1900570, 196609, 3, 1900569, 196609, 3, 1900568, 196609, 3, 1900567, 196609, 3, 1900566, 196609, 3, 1900565, 196609, 3, 1900564, 196609, 3, 1900563, 196609, 3, 1900562, 196609, 3, 1900561, 196609, 3, 1900560, 196609, 3, 1900559, 196609, 3, 1900558, 196609, 3, 1900557, 196609, 3, 1900556, 196609, 3, 1900555, 196609, 3, 1900554, 196609, 3, 1900553, 196609, 3, 1900552, 196609, 3, 1900551, 196609, 3, 1900550, 196609, 3, 1900549, 196609, 3, 1900548, 196609, 3, 1900547, 196609, 3, 1900546, 196609, 3, 1835008, 196609, 4, 39, 589825, 3, 38, 196609, 3, 37, 196609, 3, 36, 196609, 3, 35, 196609, 3, 34, 196609, 3, 33, 196609, 3, 32, 196609, 3, 31, 196609, 3, 30, 196609, 3, 29, 196609, 3, 28, 196609, 3, 27, 196609, 3, 26, 196609, 3, 25, 196609, 3, 24, 196609, 3, 23, 196609, 3, 22, 196609, 3, 21, 196609, 3, 20, 196609, 3, 19, 196609, 3, 18, 196609, 3, 17, 196609, 3, 16, 196609, 3, 15, 196609, 3, 14, 196609, 3, 13, 196609, 3, 12, 196609, 3, 11, 196609, 3, 10, 196609, 3, 9, 196609, 3, 8, 196609, 3, 7, 196609, 3, 6, 196609, 3, 5, 196609, 3, 4, 196609, 3, 3, 196609, 3, 2, 196609, 3, 1, 196609, 3, 1769511, 196609, 4, 1703975, 196609, 4, 1638439, 196609, 4, 1572903, 196609, 4, 1507367, 196609, 4, 1441831, 196609, 4, 1376295, 196609, 4, 1310759, 196609, 4, 1245223, 196609, 4, 1179687, 196609, 4, 1114151, 196609, 4, 1048615, 196609, 4, 983079, 196609, 4, 917543, 196609, 4, 852007, 196609, 4, 786471, 196609, 4, 720935, 196609, 4, 655399, 196609, 4, 589863, 196609, 4, 524327, 196609, 4, 458791, 196609, 4, 393255, 196609, 4, 327719, 196609, 4, 262183, 196609, 4, 196647, 196609, 4, 131111, 196609, 4, 65575, 196609, 4, 1835047, 196609, 4)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_k63j7")
-}
-
-[node name="BackgroundCloud" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(960, 120)
-scale = Vector2(2, 2)
-texture = ExtResource("3_7b45h")
-
 [node name="BackgroundSub" type="Sprite2D" parent="."]
-position = Vector2(320, 240)
+position = Vector2(320, 192)
 scale = Vector2(2, 2)
-texture = ExtResource("3_jo11k")
-metadata/_edit_lock_ = true
-
-[node name="BackgroundBottom" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("4_6ywl6")
-metadata/_edit_lock_ = true
-
-[node name="BackgroundTop" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("5_rchdk")
+texture = ExtResource("3_fekia")
 metadata/_edit_lock_ = true
 
 [node name="BackgroundMain" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(320, 208)
+position = Vector2(320, 0)
 scale = Vector2(2, 2)
-texture = ExtResource("6_t5p70")
+texture = ExtResource("4_f5rh8")
 metadata/_edit_lock_ = true

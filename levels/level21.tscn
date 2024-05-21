@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_pp20t"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_gshc3"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_8dp86"]
+[ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_vklfe"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_2773l"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_o3taw"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_7sgwt"]
-[ext_resource type="Texture2D" uid="uid://bj18c5gdkp3oh" path="res://assets/aseprite/background_1.png" id="7_72hf6"]
 [ext_resource type="PackedScene" uid="uid://60ybqx0xxej3" path="res://objects/moving_spawner.tscn" id="8_twqub"]
 [ext_resource type="PackedScene" uid="uid://d28tu6uihh8rw" path="res://objects/moving_platform_point.tscn" id="9_h8fq7"]
 [ext_resource type="PackedScene" uid="uid://cn66xswbbwljd" path="res://objects/moving_hazard_point.tscn" id="9_vbrm0"]
@@ -27,12 +27,7 @@ level_name = "Phloematic Highway"
 
 [node name="LevelName" parent="." instance=ExtResource("2_gshc3")]
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -100
-position = Vector2(320, 240)
-scale = Vector2(2, 2)
-texture = ExtResource("7_72hf6")
-metadata/_edit_lock_ = true
+[node name="BackgroundBranch" parent="." instance=ExtResource("3_vklfe")]
 
 [node name="Player" parent="." instance=ExtResource("3_8dp86")]
 position = Vector2(320, 416)
