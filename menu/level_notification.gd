@@ -30,7 +30,7 @@ func translate_group(level_number: int) -> String:
 	elif (level_number == 31):
 		return "The Fruit"
 	else:
-		return "Debug Mode"
+		return "Forbidden"
 
 func refresh_text():
 	$LevelNotificationContainer/MarginContainer/VBoxContainer/Text1.text = translate_group(Global.current_level)
