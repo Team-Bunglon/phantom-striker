@@ -30,7 +30,7 @@ level_name = "Tension Rising"
 [node name="LevelName" parent="." instance=ExtResource("2_dlu31")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_r3gku")]
-is_bottom = true
+trunk_background = 2
 
 [node name="Player" parent="." instance=ExtResource("3_s6u8e")]
 position = Vector2(320, 384)

@@ -35,7 +35,7 @@ level_name = "The Final Trial"
 [node name="LevelName" parent="." instance=ExtResource("2_efklm")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_8evth")]
-show_sub = false
+sub_or_alt = -1
 
 [node name="Player" parent="." instance=ExtResource("3_4aoc5")]
 position = Vector2(320, 416)

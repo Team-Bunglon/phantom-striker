@@ -64,6 +64,7 @@ var on_strike_delay:	bool = false	# Boolean for $StrikeDelayTimer, or when the c
 var can_move:			bool = false	# Boolean at the start of the level after the character spawns.
 var can_strike:			bool = false	# Boolean to prevent the character from doing a continous striking when the strike input is being held.
 var is_dying:			bool = false	# The character is in dying state (animation).
+var is_win:				bool = false
 var on_moving_platform:	bool = false
 var on_vertical_launch: bool = false
 var face: Dictionary = {
@@ -93,13 +94,13 @@ func _ready():
 	$AnimationPlayer.play("idle" + face[0])
 
 func _input(event):
-	if event.is_action_pressed("restart") and not is_dying:
+	if event.is_action_pressed("restart") and not is_dying and not is_win:
 		die(true)
 
 func _physics_process(delta):
 	if global_position.y >= 640 and not is_dying:
 		die(true)
-	if is_dying:
+	if is_dying or is_win:
 		velocity = Vector2.ZERO
 		return
 	_jump(delta)
@@ -451,3 +452,8 @@ func _on_cooldown_timer_timeout():
 func _on_animation_player_animation_finished(anim_name:StringName):
 	if anim_name.begins_with("die"):
 		_explode()
+
+func _on_fruit_of_life_you_win():
+	_unstretch_sprite()
+	is_win = true
+

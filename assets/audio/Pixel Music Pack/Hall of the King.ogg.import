@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Hall of the King.ogg-cd56aa398987979c44a7a3c7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -1,8 +1,8 @@
 extends Node
 class_name AudioGlobal
 
-## The duration of which the music would cross fade
-@export var fade_duration: float = 2.0
+@export var fade_duration: float = 2.0 ## The duration of which the music would cross fade
+@export var pause_duration: float = 1.0 ## The duration of which the music would fade pause
 
 # These two variables should be null on start
 @onready var music_node: AudioStreamPlayer
@@ -12,6 +12,9 @@ class_name AudioGlobal
 ## Play a sound effect. Do NOT play music using this, use music_play().
 func play(audio_name: String):
 	get_node("Sound/" + audio_name).playing = true
+
+func stop(audio_name: String):
+	get_node("Sound/" + audio_name).playing = false
 
 ## Use this to play music as well as changing to other music.
 func music_play(music_name: String, is_fading = true):
@@ -27,6 +30,8 @@ func music_play(music_name: String, is_fading = true):
 	# During mid game when music is changed
 	elif music_node != null:
 		if music_node.get_name() == music_name:
+			music_node.volume_db = default_db[music_node.name]
+			music_node.stream_paused = false
 			return
 		music_prev = music_node
 		music_node = _get_music(music_name)
@@ -37,8 +42,22 @@ func music_play(music_name: String, is_fading = true):
 			fade_in_tween.tween_method(_change_music_node_volume, 0.0, 1.0, fade_duration)
 		else:
 			music_node.volume_db = default_db[music_node.name]
+			music_node.stream_paused = false
 			music_node.playing = true
 			music_prev.playing = false
+
+## Pause the currently played music, use music_play().
+func music_pause(is_fading = true):
+	if music_node == null:
+		return
+
+	var fade_out_tween := create_tween()
+	fade_out_tween.finished.connect(_on_music_paused)
+
+	if is_fading:
+		fade_out_tween.tween_method(_change_music_node_volume, 1.0, 0.0, pause_duration)
+	else:
+		music_node.stream_paused = true
 
 ## If you need to get the currently playing music for some reason, use this.
 func get_currently_playing_music():
@@ -57,5 +76,8 @@ func _get_music(music_name: String) -> AudioStreamPlayer:
 	return new_music_node
 
 func _on_music_faded():
+	music_node.stream_paused = false
 	music_prev.playing = false
 
+func _on_music_paused():
+	music_node.stream_paused = true

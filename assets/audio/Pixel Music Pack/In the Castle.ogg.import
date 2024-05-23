@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/In the Castle.ogg-5a32b4686b80377508d387ee933
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

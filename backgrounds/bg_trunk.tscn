@@ -51,6 +51,7 @@ _data = {
 [node name="BackgroundTrunk" type="Node2D"]
 z_index = -100
 script = ExtResource("1_bub83")
+sub_or_alt = -1
 
 [node name="TestTileMap" type="TileMap" parent="."]
 visible = false
@@ -65,7 +66,7 @@ libraries = {
 "": SubResource("AnimationLibrary_k63j7")
 }
 
-[node name="BackgroundSub" type="Sprite2D" parent="."]
+[node name="BackgroundMid" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("3_jo11k")
@@ -85,13 +86,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_6ywl6")
 metadata/_edit_lock_ = true
 
-[node name="BackgroundCloud" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-z_index = -1
-position = Vector2(960, 120)
-scale = Vector2(2, 2)
-texture = ExtResource("3_l6hl1")
-
 [node name="BackgroundFruit" type="Sprite2D" parent="."]
 visible = false
 z_index = -2
@@ -99,6 +93,13 @@ position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("7_qg83q")
 metadata/_edit_lock_ = true
+
+[node name="BackgroundCloud" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(960, 120)
+scale = Vector2(2, 2)
+texture = ExtResource("3_l6hl1")
 
 [node name="BackgroundMain" type="Sprite2D" parent="."]
 z_index = -3

@@ -32,7 +32,7 @@ level_name = "Come Josephine"
 [node name="LevelName" parent="." instance=ExtResource("2_m0ql5")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_eqgcl")]
-is_top = true
+trunk_background = 1
 scroll_factor = 9
 
 [node name="Player" parent="." instance=ExtResource("4_rfku2")]

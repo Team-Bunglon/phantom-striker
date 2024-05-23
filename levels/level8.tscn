@@ -28,6 +28,7 @@ level_name = "Like a Diamond"
 [node name="LevelName" parent="." instance=ExtResource("2_j5eyp")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_sli2u")]
+sub_or_alt = 1
 
 [node name="Player" parent="." instance=ExtResource("3_8lp61")]
 position = Vector2(80, 448)

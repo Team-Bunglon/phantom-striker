@@ -22,6 +22,7 @@ level_name = "Three Lane's A Crowd"
 [node name="LevelName" parent="." instance=ExtResource("2_7lr50")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_wqm37")]
+sub_or_alt = 1
 
 [node name="Player" parent="." instance=ExtResource("3_metbn")]
 position = Vector2(64, 448)

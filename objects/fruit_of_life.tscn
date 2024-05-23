@@ -1,19 +1,306 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpnilu3rm6idw"]
+[gd_scene load_steps=16 format=3 uid="uid://dpnilu3rm6idw"]
 
-[ext_resource type="Texture2D" uid="uid://ukioie2ddyml" path="res://assets/sprites/fruit_of_life_temp.png" id="1_3qayc"]
 [ext_resource type="Script" path="res://objects/fruit_of_life.gd" id="1_ms2t1"]
+[ext_resource type="Texture2D" uid="uid://bdp0nv2uww2pq" path="res://assets/sprites/fruit_of_life.png" id="2_cbwhe"]
+[ext_resource type="Texture2D" uid="uid://dngntmf0t5j34" path="res://assets/sprites/fruit_of_life_full.png" id="2_n0ogr"]
+[ext_resource type="AudioStream" uid="uid://4y8jtnqae6v1" path="res://assets/audio/heartbeat.wav" id="4_kju1l"]
+[ext_resource type="Texture2D" uid="uid://dnno0tubgdfv0" path="res://assets/sprites/particle2.png" id="5_5b3d1"]
+
+[sub_resource type="Animation" id="Animation_ibac8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteFruit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteBase:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteFruit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_hvn1q"]
+resource_name = "idle"
+length = 10.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteFruit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 1.1, 1.2, 1.3, 1.5, 1.6, 2.2, 2.3, 2.4, 2.6, 2.7, 3.4, 3.5, 3.6, 3.8, 3.9, 4.5, 4.6, 4.7, 4.9, 5, 5.6, 5.7, 5.8, 6, 6.1, 6.7, 6.8, 6.9, 7.1, 7.2, 7.9, 8, 8.1, 8.3, 8.4, 9, 9.1, 9.2, 9.4, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteBase:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteFruit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l7ulu"]
+resource_name = "win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteBase:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteFruit:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -116)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteFruit:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -116)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfo1e"]
+_data = {
+"RESET": SubResource("Animation_ibac8"),
+"idle": SubResource("Animation_hvn1q"),
+"win": SubResource("Animation_l7ulu")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ygaq"]
-radius = 14.0
+radius = 17.0
 height = 38.0
+
+[sub_resource type="Gradient" id="Gradient_r1mmx"]
+offsets = PackedFloat32Array(0, 0.137931)
+colors = PackedColorArray(1, 0.764706, 0, 0, 1, 0.764706, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3572a"]
+gradient = SubResource("Gradient_r1mmx")
+
+[sub_resource type="Curve" id="Curve_ytd3x"]
+_data = [Vector2(0.00849859, 0.50442), 0.0, 0.0, 0, 0, Vector2(0.402266, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a16ys"]
+curve = SubResource("Curve_ytd3x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6wp2"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 400.0
+initial_velocity_max = 500.0
+angular_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 80.0
+linear_accel_max = 100.0
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_a16ys")
+color_ramp = SubResource("GradientTexture1D_3572a")
 
 [node name="FruitOfLife" type="Area2D"]
 script = ExtResource("1_ms2t1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3qayc")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gfo1e")
+}
+
+[node name="SpriteFruit" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_cbwhe")
+
+[node name="SpriteBase" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_n0ogr")
+hframes = 3
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5ygaq")
 
+[node name="Heart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kju1l")
+volume_db = 2.0
+bus = &"Sound"
+
+[node name="WinTimer" type="Timer" parent="."]
+wait_time = 3.5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, -4)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_g6wp2")
+texture = ExtResource("5_5b3d1")
+lifetime = 2.0
+randomness = 0.1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

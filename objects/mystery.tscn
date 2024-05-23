@@ -7,8 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmm8x"]
 size = Vector2(48, 32)
 
-[sub_resource type="Animation" id="Animation_1mtmp"]
-resource_name = "off"
+[sub_resource type="Animation" id="Animation_n7n2x"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,7 +34,8 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_n7n2x"]
+[sub_resource type="Animation" id="Animation_1mtmp"]
+resource_name = "off"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -115,7 +115,7 @@ libraries = {
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kso2a")
-volume_db = -3.0
+volume_db = -6.0
 pitch_scale = 1.2
 bus = &"Sound"
 

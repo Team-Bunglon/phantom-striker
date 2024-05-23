@@ -23,6 +23,7 @@ level_name = "Cut to the Chase"
 [node name="LevelName" parent="." instance=ExtResource("2_fwfq3")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_fydov")]
+sub_or_alt = 1
 
 [node name="Player" parent="." instance=ExtResource("3_vkyox")]
 position = Vector2(52, 440)

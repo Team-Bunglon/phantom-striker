@@ -24,7 +24,7 @@ level_name = "Tight Maneuver"
 [node name="LevelName" parent="." instance=ExtResource("2_h3v6y")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_5axqm")]
-show_sub = false
+sub_or_alt = -1
 
 [node name="Player" parent="." instance=ExtResource("3_lgxhm")]
 position = Vector2(328, 448)
