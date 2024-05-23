@@ -27,6 +27,26 @@ var collectibles: int = 0: ## How many collectibles the player has obtain.
 		collectibles = value
 		save_game()
 var collected: Dictionary = {} ## Keep track of the collected collectible so the player doesn't have to collect it again if they die.
+var strike_count: int = 0:
+	set(value):
+		strike_count = value
+		save_game()
+var hardest: String = "":
+	set(value):
+		hardest = value
+		save_game()
+var hardest_death: int = 0:
+	set(value):
+		hardest_death = value
+		save_game()
+var current: String = "":
+	set(value):
+		current = value
+		save_game()
+var current_death: int = 0:
+	set(value):
+		current_death = value
+		save_game()
 
 # Saveable variable maybe??????
 var music_vol: int = 5:
@@ -61,6 +81,18 @@ func reset_global_value():
 	collectibles = 0
 	collected = {}
 	GameStopwatch.reset()
+	strike_count = 0
+	hardest = ""
+	hardest_death = 0
+	current = ""
+	current_death = 0
+
+func hardest_check():
+	if current_level == 1:
+		hardest = current
+	if current_death > hardest_death:
+		hardest = current
+		hardest_death = current_death
 
 func _ready():
 	load_game()
@@ -83,11 +115,18 @@ func save_game():
 		"death_count": death_count,
 		"collectibles": collectibles,
 		"collected": collected,
-		"time":  GameStopwatch.get_elapsed_time_in_seconds()
+		"time":  GameStopwatch.get_elapsed_time_in_seconds(),
+		"strike_count": strike_count,
+		"hardest": hardest,
+		"hardest_death": hardest_death,
+		"current": current,
+		"current_death": current_death
 	}
 	
 	save_file(save)
-	if debug_mode: print("Save Val | Start: " + str(has_started_game) + ", lvl: " + str(death_count) + ", ded: " + str(death_count) + ", collect: " + str(collectibles) + ", list: " + str(collected))
+	if debug_mode: 
+		print("Save Val | Start: " + str(has_started_game) + ", lvl: " + str(death_count) + ", ded: " + str(death_count) + ", collect: " + str(collectibles) + ", list: " + str(collected))
+		print("strike_count: " + str(strike_count) + ", hardest: " + hardest + "_" + str(hardest_death) + ", current: " + current + "_" + str(current_death))
 
 func load_game():
 	var save: Save
@@ -109,6 +148,11 @@ func load_game():
 	collectibles = save.countables.get("collectibles", 0)
 	collected = save.countables.get("collected", {})
 	GameStopwatch.set_elapsed_time_in_seconds(save.countables.get("time", 0))
+	strike_count = save.countables.get("strike_count", 0)
+	hardest = save.countables.get("hardest", "")
+	hardest_death = save.countables.get("hardest_death", 0)
+	current = save.countables.get("current", "")
+	current_death = save.countables.get("current_death", 0)
 
 func save_exists():
 	return FileAccess.file_exists(save_location)
