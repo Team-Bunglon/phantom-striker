@@ -245,6 +245,7 @@ func _strike():
 			var strike_raycast: RayCast2D = get_node(strike_dir[direction_xy][1])
 			_strike_response(direction_xy, strike_raycast)
 			_strike_particle_create(strike_raycast)
+			Global.strike_count += 1
 			strike_delay_count = strike_delay_frame
 			on_strike_delay = true
 			can_strike = false
@@ -422,6 +423,7 @@ func _unstretch_sprite_delta(delta):
 ## quick_death skips the first animation before the character explodes.
 func die(quick_death := false):
 	Global.death_count += 1
+	Global.current_death += 1
 	is_dying = true
 	$Sprite.scale = Vector2.ONE
 	if quick_death:
