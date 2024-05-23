@@ -226,3 +226,4 @@ offset_bottom = 496.0
 [connection signal="finished_win" from="FruitOfLife" to="." method="_on_fruit_of_life_finished_win"]
 [connection signal="you_win" from="FruitOfLife" to="." method="_on_fruit_of_life_you_win"]
 [connection signal="you_win" from="FruitOfLife" to="Player" method="_on_fruit_of_life_you_win"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

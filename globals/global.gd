@@ -135,3 +135,15 @@ func load_file():
 	save.countables = data.get("countables")
 	
 	return save
+
+## A helper function that return an array filled with false of [param length]. [br]
+## [param true_index] will set one index into true. Set [param true_index] as -1 to have it all false.
+func get_visible_array(length: int, true_index: int = -1) -> Array[bool]:
+	var bool_arr: Array[bool] = []
+	bool_arr.resize(length)
+	bool_arr.fill(false)
+	if true_index != -1:
+		bool_arr[true_index] = true
+
+	return bool_arr
+

@@ -355,7 +355,7 @@ offset_bottom = 490.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_1t8xw")
 theme_override_font_sizes/font_size = 20
-text = "Version Alpha"
+text = "Version"
 
 [node name="MainMenu" parent="." instance=ExtResource("7_hl2f1")]
 visible = false

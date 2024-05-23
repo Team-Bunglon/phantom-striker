@@ -23,5 +23,4 @@ func _on_body_entered(body):
 		$WinTimer.start()
 	
 func _on_win_timer_timeout():
-	print("where?")
 	emit_signal("finished_win")

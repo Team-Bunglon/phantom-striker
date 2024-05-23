@@ -30,7 +30,7 @@ func _set_visible(this: bool, pause: bool, option: bool, confirm_restart: bool, 
 
 func _update_text():
 	$"HBoxCount/LabelDeath".text = str(Global.death_count)
-	$"HBoxCount/LabelCollect".text = str(Global.collectibles)
+	$"HBoxCount/LabelCollect".text = str(Global.collectibles) + "/12"
 	$"HBoxCount/LabelTime".text = GameStopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}")
 
 func _on_pause_menu_resume_game():

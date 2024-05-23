@@ -35,11 +35,7 @@ func _physics_process(_delta):
 	cloud_posx = cloud.position.x
 
 func _set_trunk_bg(val: int):
-	var bool_arr: Array[bool] = []
-	bool_arr.resize(len(POS))
-	bool_arr.fill(false)
-	bool_arr[val] = true
-
+	var bool_arr: Array[bool] = Global.get_visible_array(len(POS), val)
 	$BackgroundMid.visible = bool_arr[0]
 	$BackgroundTop.visible = bool_arr[1]
 	$BackgroundBottom.visible = bool_arr[2]

@@ -20,12 +20,6 @@ func _ready():
 	_set_extra_bg(sub_or_alt)
 
 func _set_extra_bg(val: int):
-	var bool_arr: Array[bool] = []
-	bool_arr.resize(len(BG))
-	bool_arr.fill(false)
-
-	if val != -1:
-		bool_arr[val] = true
-
+	var bool_arr: Array[bool] = Global.get_visible_array(len(BG), val)
 	if bg_sub != null: bg_sub.visible = bool_arr[0]
 	if bg_alt != null: bg_alt.visible = bool_arr[1]
