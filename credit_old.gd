@@ -1,5 +1,6 @@
 extends Control
 class_name Credit
+# I like this code, but I have to replace it sadly.
 
 # Array to store references to the VBoxContainers
 @onready var vbox_containers = [

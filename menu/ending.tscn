@@ -1,0 +1,279 @@
+[gd_scene load_steps=13 format=3 uid="uid://ntq75wuam6vt"]
+
+[ext_resource type="Script" path="res://menu/ending.gd" id="1_jr3f4"]
+[ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="2_5j2v4"]
+[ext_resource type="Texture2D" uid="uid://bkcativr1vcre" path="res://assets/misc/ending.png" id="3_juiqa"]
+[ext_resource type="Texture2D" uid="uid://c0s4r252ya5cy" path="res://assets/sprites/happyghost2.png" id="4_se6gv"]
+[ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="5_gjhyt"]
+[ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/collectible.png" id="6_m2iap"]
+[ext_resource type="Texture2D" uid="uid://b5k8nxe2rejwd" path="res://assets/sprites/ui_death.png" id="7_rrdk7"]
+
+[sub_resource type="Animation" id="Animation_a7gxp"]
+resource_name = "start"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_beiwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IHaveToKeepThis:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 256)]
+}
+
+[sub_resource type="Animation" id="Animation_5vecb"]
+resource_name = "spooky"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IHaveToKeepThis:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 256), Vector2(496, 256)]
+}
+
+[sub_resource type="Animation" id="Animation_k8hs7"]
+resource_name = "end"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0lchc"]
+_data = {
+"RESET": SubResource("Animation_beiwu"),
+"end": SubResource("Animation_k8hs7"),
+"spooky": SubResource("Animation_5vecb"),
+"start": SubResource("Animation_a7gxp")
+}
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jr3f4")
+
+[node name="EndingText" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 576.0
+offset_bottom = 256.0
+
+[node name="Line1" type="Label" parent="EndingText"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "Congratulations! You have reached the fruit of life and recieve the gift of a physical body."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Divide" type="Label" parent="EndingText"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Line2" type="Label" parent="EndingText"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "Now how do you get off from the tree top?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="NewGhost" type="TextureRect" parent="."]
+z_index = -1
+texture_filter = 4
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 960.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_juiqa")
+metadata/_edit_lock_ = true
+
+[node name="IHaveToKeepThis" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 256.0
+offset_right = 1000.0
+offset_bottom = 616.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_se6gv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0lchc")
+}
+
+[node name="Stats" type="VBoxContainer" parent="."]
+visible = false
+clip_contents = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 328.0
+offset_right = 352.0
+offset_bottom = 464.0
+scale = Vector2(0.996972, 1)
+
+[node name="Label7" type="Label" parent="Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "Final Stats:"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("5_gjhyt")
+expand_mode = 2
+
+[node name="TotalTime" type="Label" parent="Stats/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "deez"
+horizontal_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("6_m2iap")
+expand_mode = 2
+
+[node name="TotalCollectibles" type="Label" parent="Stats/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "deez"
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer6"]
+layout_mode = 2
+texture = ExtResource("7_rrdk7")
+expand_mode = 2
+
+[node name="TotalDeaths" type="Label" parent="Stats/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5j2v4")
+theme_override_font_sizes/font_size = 20
+text = "deez"
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

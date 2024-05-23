@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dg32hngigw8w4"]
+[gd_scene load_steps=26 format=3 uid="uid://dg32hngigw8w4"]
 
 [ext_resource type="Script" path="res://globals/audio.gd" id="1_n4bf6"]
 [ext_resource type="AudioStream" uid="uid://bd7w82k6vssya" path="res://assets/audio/jump.wav" id="1_qx440"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dvysredevuis" path="res://assets/audio/trigger.wav" id="22_dqo2o"]
 [ext_resource type="AudioStream" uid="uid://4y8jtnqae6v1" path="res://assets/audio/heartbeat.wav" id="23_uo4iv"]
 [ext_resource type="AudioStream" uid="uid://dd6juqigsshh0" path="res://assets/audio/win.wav" id="24_03qyn"]
+[ext_resource type="AudioStream" uid="uid://gdmmogghk1th" path="res://assets/audio/boo.wav" id="25_t12dd"]
 
 [node name="Audio" type="Node"]
 process_mode = 3
@@ -158,4 +159,9 @@ bus = &"Sound"
 stream = ExtResource("24_03qyn")
 volume_db = -2.0
 pitch_scale = 0.8
+bus = &"Sound"
+
+[node name="Boo" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("25_t12dd")
+volume_db = 3.0
 bus = &"Sound"

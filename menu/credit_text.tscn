@@ -415,7 +415,6 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundFruit" parent="." instance=ExtResource("3_nfo5i")]
 visible = false
-is_fruit = true
 metadata/_edit_lock_ = true
 
 [node name="Transition" type="Sprite2D" parent="."]

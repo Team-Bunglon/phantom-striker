@@ -334,11 +334,13 @@ texture = ExtResource("2_7frpy")
 
 [node name="TitleBg" type="Sprite2D" parent="."]
 z_index = -1
+texture_filter = 4
 position = Vector2(320, 480)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_o2gi6")
 
 [node name="TitleFg" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
 position = Vector2(320, 360)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_34mvu")

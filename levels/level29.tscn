@@ -194,7 +194,7 @@ auto_start = false
 speed = 0.0
 
 [node name="MovingHazardPoint1" parent="." groups=["MovingSpawnerLineHazard"] instance=ExtResource("18_34iam")]
-position = Vector2(120, -88)
+position = Vector2(136, -88)
 auto_start = false
 direction = Vector2(0, 96)
 speed = 64.0
