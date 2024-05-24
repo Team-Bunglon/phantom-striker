@@ -19,6 +19,9 @@ func _process(_delta):
 		cursor_can_choose = false
 		return 
 
+	if Global.transition_animation:
+		return
+
 	var input := Vector2.ZERO
 
 	if Input.is_action_just_pressed("ui_up"):

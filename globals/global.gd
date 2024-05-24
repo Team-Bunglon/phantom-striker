@@ -8,6 +8,8 @@ var has_applied_setting_on_launch: bool = false ## Apply the setting everytime w
 var game_running: bool = false	## A flag to tell if the player is in the game or outside of it.
 var is_paused: bool = false		## A flag for other script to know if the game is paused
 var is_level_notification_appear: bool = false ## A flag for the level notification to appear
+var is_starting_new_game: bool = false ## A flag for starting the game from the start. Either from main menu or restarting the whole game from pause menu.
+var transition_animation: bool = false ## A flag to disable all cursors movement when a transition is playing and a cursor is shown on screen.
 
 # Countables
 var has_started_game = false: ## Check if the player has pressed the start button for continue button. It is greyed out if the game is launched for the first time or after the player has finished the game.

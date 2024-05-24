@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkwc0atq1rafk"]
+[gd_scene load_steps=14 format=3 uid="uid://bkwc0atq1rafk"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_mrip6"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_04d86"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="2_yvocw"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_d04lr"]
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_jh4oi"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_5sa8a"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="5_a8ykx"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_lxj3q"]
 [ext_resource type="PackedScene" uid="uid://cibr418efis5b" path="res://objects/message_box.tscn" id="8_0qa13"]
@@ -24,6 +25,8 @@ level_name = "Watch your Step!"
 [node name="LevelNotification" parent="." instance=ExtResource("2_04d86")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_gl2af")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_5sa8a")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_jh4oi")]
 

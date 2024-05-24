@@ -8,13 +8,14 @@ func _ready():
 	_set_visible(false, false, false, false, false)
 
 func _input(event):
-	if event.is_action_pressed("pause") and not Global.is_paused and Global.game_running:
+	if event.is_action_pressed("pause") and not Global.is_paused and Global.game_running and not $AnimationPlayer.is_playing():
 		GameStopwatch.paused = true
 		get_tree().paused = true
 		Audio.play("Accept")
 		_update_text()
 		_set_visible(true, true, false, false, false)
 		Global.is_paused = true
+		$Transition.visible = false
 
 ## this: The pause screen itself
 ## pause: pause menu (the one you select with your cursor in the pause screen)
@@ -51,20 +52,13 @@ func _on_pause_menu_main_menu():
 	_set_visible(true, false, false, false, true)
 
 func _on_confirm_restart_yes_selected():
-	_on_pause_menu_resume_game()
-	Global.reset_global_value()
-	Audio.play("Start")
-	$"PauseMenu/Cursor".cursor_index = 0
-	$"ConfirmRestart/Cursor".cursor_index = 0
-	get_tree().change_scene_to_file("res://levels/level1.tscn")
+	Global.transition_animation = true
+	Audio.play("Begin")
+	$AnimationPlayer.play("fade_in")
 
 func _on_confirm_menu_yes_selected():
-	_on_pause_menu_resume_game()
-	$"PauseMenu/Cursor".cursor_index = 0
-	$"ConfirmMenu/Cursor".cursor_index = 0
-	# Quitting the game is equivalent to restarting the game, which counts as death
-	Global.death_count += 1
-	get_tree().change_scene_to_file("res://menu/main_screen.tscn")
+	Global.transition_animation = true
+	$AnimationPlayer.play("fade_in_menu")
 
 func _on_option_menu_visibility_changed():
 	if $OptionMenu.visible:
@@ -93,3 +87,24 @@ func _on_confirm_menu_visibility_changed():
 		_update_text()
 		$Title.visible = true
 		$HBoxCount.visible = true
+
+func _on_animation_player_animation_finished(anim_name:StringName):
+	if anim_name == "fade_in":
+		_on_pause_menu_resume_game()
+		Global.reset_global_value()
+		Global.is_starting_new_game = true
+		Global.transition_animation = false
+
+		$"PauseMenu/Cursor".cursor_index = 0
+		$"ConfirmRestart/Cursor".cursor_index = 0
+
+		get_tree().change_scene_to_file("res://levels/level1.tscn")
+	elif anim_name == "fade_in_menu":
+		_on_pause_menu_resume_game()
+		Global.death_count += 1
+		Global.transition_animation = false
+
+		$"PauseMenu/Cursor".cursor_index = 0
+		$"ConfirmMenu/Cursor".cursor_index = 0
+
+		get_tree().change_scene_to_file("res://menu/main_screen.tscn")

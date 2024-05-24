@@ -38,7 +38,12 @@ func refresh_text():
 
 func appear():
 	show_textbox()
-	timer.start(1)
+	timer.start()
 
 func _on_timer_timeout():
 	hide_textbox()
+
+func set_timer(val: int):
+	timer.stop()
+	timer.wait_time = val
+	timer.start()

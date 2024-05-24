@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsejieijrlltx"]
+[gd_scene load_steps=15 format=3 uid="uid://dsejieijrlltx"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_w4xfr"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_2go6f"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_18kv7"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_5xjra"]
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_lg0ci"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_70y1l"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_w5y6q"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_da7l2"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_7a3w7"]
@@ -25,6 +26,8 @@ level_name = "Jump of Faith"
 [node name="LevelNotification" parent="." instance=ExtResource("2_18kv7")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_2go6f")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_70y1l")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_lg0ci")]
 
