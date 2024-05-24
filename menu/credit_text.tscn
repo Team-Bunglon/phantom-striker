@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://oegluvynj82j"]
+[gd_scene load_steps=23 format=3 uid="uid://oegluvynj82j"]
 
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_7yea8"]
 [ext_resource type="Script" path="res://menu/credit_text.gd" id="1_hhboj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://pul8s0lksqe7" path="res://assets/sprites/Logo_Aseprite.png" id="3_yt0rf"]
 [ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/collectible.png" id="4_45f2e"]
 [ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="5_knahf"]
+[ext_resource type="Texture2D" uid="uid://1s7gfjsoi22j" path="res://assets/sprites/ui_strike.png" id="9_d5uhx"]
 [ext_resource type="Texture2D" uid="uid://c5ludhbp05skh" path="res://assets/misc/transition.png" id="9_rqkie"]
 
 [sub_resource type="Animation" id="Animation_7ckat"]
@@ -569,6 +570,24 @@ theme_override_constants/margin_top = 12
 layout_mode = 2
 alignment = 1
 
+[node name="RectStrike" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("9_d5uhx")
+expand_mode = 2
+
+[node name="LabelStrike" type="Label" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+
+[node name="Margin0" type="MarginContainer" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
 [node name="RectDeath" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -651,6 +670,7 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundFruit" parent="." instance=ExtResource("3_nfo5i")]
 visible = false
+trunk_background = 3
 metadata/_edit_lock_ = true
 
 [node name="Transition" type="Sprite2D" parent="."]

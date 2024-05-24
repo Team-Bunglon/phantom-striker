@@ -7,10 +7,6 @@ func _ready():
 	Audio.music_play("MusicCredit")
 	$AnimationPlayer.play("start")
 
-	$"Stats/HBoxContainer4/TotalTime".text = str(GameStopwatch.get_elapsed_time_in_seconds())
-	$"Stats/HBoxContainer5/TotalCollectibles".text = str(Global.collectibles)
-	$"Stats/HBoxContainer6/TotalDeaths".text = str(Global.death_count)
-
 func _input(event):
 	if event.is_action_pressed("ui_accept") and $Timer.is_stopped() and not $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("end")

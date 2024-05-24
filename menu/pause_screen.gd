@@ -29,6 +29,7 @@ func _set_visible(this: bool, pause: bool, option: bool, confirm_restart: bool, 
 	$ConfirmMenu.visible = confirm_menu
 
 func _update_text():
+	$"HBoxCount/LabelStrike".text = str(Global.strike_count)
 	$"HBoxCount/LabelDeath".text = str(Global.death_count)
 	$"HBoxCount/LabelCollect".text = str(Global.collectibles) + "/12"
 	$"HBoxCount/LabelTime".text = GameStopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}")

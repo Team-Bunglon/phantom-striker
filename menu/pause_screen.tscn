@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cffdc0mse6ebp"]
+[gd_scene load_steps=10 format=3 uid="uid://cffdc0mse6ebp"]
 
 [ext_resource type="Script" path="res://menu/pause_screen.gd" id="1_kuke2"]
 [ext_resource type="PackedScene" uid="uid://485fwe28sgac" path="res://menu/pause_menu.tscn" id="1_rmae5"]
 [ext_resource type="PackedScene" uid="uid://cg1jg4d1hfoep" path="res://menu/option_menu.tscn" id="2_lu6ax"]
 [ext_resource type="PackedScene" uid="uid://ccbyvma21rb1d" path="res://menu/confirm.tscn" id="4_o351n"]
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="5_58d74"]
+[ext_resource type="Texture2D" uid="uid://1s7gfjsoi22j" path="res://assets/sprites/ui_strike.png" id="6_l7j4u"]
 [ext_resource type="Texture2D" uid="uid://b5k8nxe2rejwd" path="res://assets/sprites/ui_death.png" id="6_ype3w"]
 [ext_resource type="Texture2D" uid="uid://drr5rida50gpe" path="res://assets/sprites/collectible.png" id="7_mo58g"]
 [ext_resource type="Texture2D" uid="uid://cabreiqttbi55" path="res://assets/sprites/ui_time.png" id="8_kpruf"]
@@ -59,6 +60,24 @@ offset_top = 153.0
 offset_right = 640.0
 offset_bottom = 185.0
 alignment = 1
+
+[node name="RectStrike" type="TextureRect" parent="HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_l7j4u")
+expand_mode = 2
+
+[node name="LabelStrike" type="Label" parent="HBoxCount"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_58d74")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+
+[node name="Margin0" type="MarginContainer" parent="HBoxCount"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
 
 [node name="RectDeath" type="TextureRect" parent="HBoxCount"]
 custom_minimum_size = Vector2(32, 32)

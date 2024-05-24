@@ -13,7 +13,6 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		GameStopwatch.paused = true
-		Global.has_started_game = false
 		Global.game_running = false
 
 		Audio.play("Win")

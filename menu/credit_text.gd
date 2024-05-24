@@ -11,6 +11,7 @@ func _ready():
 	$"StatTexts/Stats/HBoxCount/LabelDeath".text = str(Global.death_count)
 	$"StatTexts/Stats/HBoxCount/LabelCollect".text = str(Global.collectibles) + "/12"
 	$"StatTexts/Stats/HBoxCount/LabelTime".text = GameStopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}")
+	$"StatTexts/Stats/HBoxCount/LabelStrike".text = str(Global.strike_count)
 
 	if Global.death_count > 0:
 		$"StatTexts/Stats/Hardest".text = "Hardest Floor (" + str(Global.hardest_death) + " deaths):"
@@ -33,6 +34,11 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and $Timer.is_stopped() and not $AnimationPlayer.is_playing() and not is_scrolling:
 		is_fading = true
 		$AnimationPlayer.play("fade_out")
+	
+	if event.is_action_pressed("debug") and Global.debug_mode:
+		var random_number: int = randi_range(0,3)
+		print("random: " + str(random_number))
+		_set_random_bg(random_number)
 
 func _set_random_bg(val: int):
 	var bool_arr: Array[bool] = Global.get_visible_array(4, val)
