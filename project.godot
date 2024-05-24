@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Phantom Striker"
-config/version="1.0.0-RC1"
+config/version="1.0.0"
 run/main_scene="res://menu/main_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
