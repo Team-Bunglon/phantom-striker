@@ -1,12 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cucgbe7ce67fu"]
+[gd_scene load_steps=11 format=3 uid="uid://cucgbe7ce67fu"]
 
 [ext_resource type="FontFile" uid="uid://cyv5okyo2hgew" path="res://assets/poco.ttf" id="1_ckmxe"]
 [ext_resource type="Script" path="res://menu/prologue.gd" id="1_na1pw"]
 [ext_resource type="Texture2D" uid="uid://bvm526mmcsud6" path="res://assets/sprites/ui_fruit.png" id="2_s5ikw"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4qat0"]
-line_spacing = 1.0
-font_size = 20
 
 [sub_resource type="Animation" id="Animation_728q7"]
 length = 0.001
@@ -184,8 +180,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_ckmxe")
 theme_override_font_sizes/font_size = 20
-text = "A legend speaks of a fruit that grants the perfect biological form to any being. It grows atop the ancient Tree of Vitality once every century. Reaching it is a recarious quest as the tree comes equiped with countless hazards."
-label_settings = SubResource("LabelSettings_4qat0")
+text = "A legend speaks of a fruit that grants the perfect biological form to any being. It grows atop the ancient Tree of Vitality once every century. Reaching it is a recarious quest as the tree comes equiped with countless hazards.
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

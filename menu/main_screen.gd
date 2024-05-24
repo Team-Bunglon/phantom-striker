@@ -50,6 +50,7 @@ func _on_main_menu_start_game():
 		$MainMenu.visible = false
 		$ConfirmStart.visible = true
 	else:
+		Audio.play("Start")
 		$AnimationPlayer.play("prologue")
 
 func _on_main_menu_option():

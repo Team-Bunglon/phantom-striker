@@ -7,6 +7,7 @@ class_name CursorClass
 @export var menu_object: NodePath ## The container the label menu are located in. It should only be a VBoxContainer.
 @export var cursor_offset: Vector2 ## The offset of which the cursor's sprite is located by its central point.
 @export var cancel_labels: Array[String] = ["Resume", "Return", "No"]
+@export var silent_labels: Array[String] = ["Start", "Continue"]
 
 @onready var menu_parent := get_node(menu_object)
 @onready var cursor_parent := get_parent()
@@ -39,7 +40,7 @@ func _process(_delta):
 		if menu_item_current != null:
 			if menu_item_current.name in cancel_labels:
 				Audio.play("Cancel")
-			elif menu_item_current.name == "Start":
+			elif menu_item_current.name in silent_labels:
 				print("")
 			else:
 				Audio.play("Accept")

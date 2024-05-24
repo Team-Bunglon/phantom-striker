@@ -405,7 +405,7 @@ theme_override_colors/font_color = Color(0.760784, 0.396078, 0.172549, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_7yea8")
 theme_override_font_sizes/font_size = 20
-text = "Lazy Dayze"
+text = "In The Castle"
 horizontal_alignment = 1
 
 [node name="Artist" type="Label" parent="Texts/VBox/CreditMusic/Music1"]
@@ -413,7 +413,8 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_7yea8")
 theme_override_font_sizes/font_size = 20
-text = "DBOYD"
+text = "alkakrab
+"
 horizontal_alignment = 1
 
 [node name="Music2" type="HBoxContainer" parent="Texts/VBox/CreditMusic"]
