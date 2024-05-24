@@ -15,6 +15,7 @@ func get_number() -> int:
 		return name.to_int()
 
 func _ready():
+	var current_level = get_number()
 	$LevelName.set_level_name(level_name)
 
 	Global.current_level = get_number()
@@ -22,17 +23,18 @@ func _ready():
 	Global.hardest_check()
 	Global.save_game() # this will save the game on every level change or restart
 
-	if Global.is_level_notification_appear:
+	if Global.is_level_notification_appear and current_level < 31:
 		$LevelNotification.refresh_text()
 		$LevelNotification.appear()
 		Global.is_level_notification_appear = false
 
 	# Music
-	var current_level = get_number()
 	if current_level >= 0 and current_level < 21:
 		Audio.music_play("Music120")
-	else:
+	elif current_level >= 21 and current_level < 30:
 		Audio.music_play("Music2130")
+	else:
+		Audio.music_pause()
 	
 	# Transition
 	if Global.is_starting_new_game:

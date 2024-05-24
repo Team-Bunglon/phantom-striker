@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://p24rk7o5jcjq"]
+[gd_scene load_steps=19 format=3 uid="uid://p24rk7o5jcjq"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_niem0"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_h2yni"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_nsqlc"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_72gj4"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_a8w56"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_dew3v"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_rvy1u"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_lwgcg"]
 [ext_resource type="TileSet" uid="uid://r6l718155igh" path="res://resources/red_tiles.tres" id="5_quqev"]
@@ -31,6 +32,8 @@ level_name = "Launch Me As Though There Were No Tomorrow"
 [node name="LevelNotification" parent="." instance=ExtResource("2_nsqlc")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_h2yni")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_dew3v")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_72gj4")]
 scroll_factor = 7

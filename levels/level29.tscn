@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://bktjy6d3x88rs"]
+[gd_scene load_steps=32 format=3 uid="uid://bktjy6d3x88rs"]
 
 [ext_resource type="Script" path="res://levels/level_penultimate.gd" id="1_qmm4w"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_rvcrv"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_y8oe7"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_ivxsm"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_tbp1c"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_2wltf"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_24nth"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_jg8vh"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_f514k"]
@@ -55,6 +56,8 @@ level_name = "Panic Room"
 [node name="LevelNotification" parent="." instance=ExtResource("2_rvcrv")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_y8oe7")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_2wltf")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_ivxsm")]
 
@@ -264,6 +267,15 @@ message_object = NodePath("../MessageBox4")
 visible = false
 line_one = "⏚⍀⍜ ⌰⟟⏁⟒⍀⏃⌰⌰⊬ ⎎⟟⋏⟟⌇⊑ ⟟⏁"
 line_two = "- Ivan"
+
+[node name="TutorialBox5" parent="." instance=ExtResource("21_u7quu")]
+position = Vector2(528, -496)
+message_object = NodePath("../MessageBox5")
+
+[node name="MessageBox5" parent="." instance=ExtResource("22_as153")]
+visible = false
+line_one = "First to the key, first to the egg"
+line_two = "- Naufal"
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]
 [connection signal="area_entered" from="MoveCameraArea" to="Player/Camera2D" method="_on_move_camera_area_area_entered"]

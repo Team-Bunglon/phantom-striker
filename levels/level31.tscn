@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3rtxm2u5l0mt"]
+[gd_scene load_steps=16 format=3 uid="uid://b3rtxm2u5l0mt"]
 
 [ext_resource type="Script" path="res://levels/level_fruit.gd" id="1_fl7nc"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_d0u5s"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_udvgn"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_0ag72"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_6p155"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="4_o3ity"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_sao0e"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_eeiqd"]
@@ -155,13 +156,15 @@ _data = {
 
 [node name="Level#31" type="Node2D"]
 script = ExtResource("1_fl7nc")
-level_name = "The Fruit Of Life"
+level_name = "The Fruit of Life"
 
 [node name="LevelNotification" parent="." instance=ExtResource("2_d0u5s")]
 visible = false
 
 [node name="LevelName" parent="." instance=ExtResource("2_udvgn")]
 visible = false
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_6p155")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("4_o3ity")]
 trunk_background = 3

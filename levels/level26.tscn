@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxxl3asf8w5sb"]
+[gd_scene load_steps=18 format=3 uid="uid://cxxl3asf8w5sb"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_vlesk"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_5veq4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_fd8f5"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_ggu0h"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_ewhtx"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_k6fte"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_sbbf0"]
 [ext_resource type="PackedScene" uid="uid://dc8xtnlvitx8p" path="res://objects/destroyable_platform.tscn" id="6_4yhsd"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_23f4y"]
@@ -28,6 +29,8 @@ level_name = "You Can Do It"
 [node name="LevelNotification" parent="." instance=ExtResource("2_quyrn")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_5veq4")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_k6fte")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_ggu0h")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnihnc8kc7pqg"]
+[gd_scene load_steps=17 format=3 uid="uid://cnihnc8kc7pqg"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_m1t4c"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_3qc7g"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_4ni8x"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_cywl2"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="4_866er"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_npn1i"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="5_65twu"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="7_47v7g"]
 [ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratable_platform.tscn" id="7_lrqm3"]
@@ -27,6 +28,8 @@ level_name = "Run, Forrest, Run!"
 [node name="LevelNotification" parent="." instance=ExtResource("2_3qc7g")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_w3nuv")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_npn1i")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_4ni8x")]
 scroll_factor = 5

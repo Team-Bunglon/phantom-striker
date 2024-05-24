@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cumag3o0vp6xh"]
+[gd_scene load_steps=15 format=3 uid="uid://cumag3o0vp6xh"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_lcxwt"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_1lcrx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_a4c28"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_tamek"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="4_g1dff"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_udb40"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="5_5uelr"]
 [ext_resource type="PackedScene" uid="uid://br48ymmvs4x35" path="res://objects/disintegratable_platform.tscn" id="7_uqpp5"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="7_xi5pi"]
@@ -25,6 +26,8 @@ level_name = "Up For A Challenge?"
 [node name="LevelNotification" parent="." instance=ExtResource("2_1lcrx")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_x5rce")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_udb40")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_tamek")]
 scroll_factor = 4

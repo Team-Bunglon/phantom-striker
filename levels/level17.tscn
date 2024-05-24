@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1co1f0xwktv1"]
+[gd_scene load_steps=17 format=3 uid="uid://c1co1f0xwktv1"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_xgsho"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_jmcxh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_744fx"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_g2q2y"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_mk7wk"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_sj678"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_hhu5c"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_1ecga"]
 [ext_resource type="TileSet" uid="uid://chyy7781d0llo" path="res://resources/red_spikes.tres" id="6_i6epr"]
@@ -29,6 +30,8 @@ level_name = "Cold Feet"
 [node name="LevelNotification" parent="." instance=ExtResource("2_jmcxh")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_kmion")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_sj678")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_g2q2y")]
 scroll_factor = 6

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqalw1vl2ii0j"]
+[gd_scene load_steps=13 format=3 uid="uid://cqalw1vl2ii0j"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_a4pjh"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_nyk4w"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_sscd4"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_hm163"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_xsp7q"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_ja4k7"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_p7and"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_qit3l"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_rquyx"]
@@ -23,6 +24,8 @@ level_name = "Slithereen"
 [node name="LevelNotification" parent="." instance=ExtResource("2_nyk4w")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_sscd4")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_ja4k7")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_hm163")]
 

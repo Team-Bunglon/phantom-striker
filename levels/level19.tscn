@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2dthxxcwble0"]
+[gd_scene load_steps=17 format=3 uid="uid://d2dthxxcwble0"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_c5xj1"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_at0wg"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_av6c0"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="3_nyulp"]
 [ext_resource type="PackedScene" uid="uid://dkq0tbvylto6" path="res://backgrounds/bg_trunk.tscn" id="3_rs83w"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_5c8rg"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="4_sxbty"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="5_ou4p0"]
 [ext_resource type="TileSet" uid="uid://r6l718155igh" path="res://resources/red_tiles.tres" id="6_sbafq"]
@@ -27,6 +28,8 @@ level_name = "What Goes Up Must Come Down"
 [node name="LevelNotification" parent="." instance=ExtResource("2_at0wg")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_av6c0")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_5c8rg")]
 
 [node name="BackgroundTrunk" parent="." instance=ExtResource("3_rs83w")]
 scroll_factor = 8

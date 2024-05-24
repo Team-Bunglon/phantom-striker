@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csiwjwdsfopou"]
+[gd_scene load_steps=13 format=3 uid="uid://csiwjwdsfopou"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_8juri"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_7cnre"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_fydov"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_vkyox"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_iyf1f"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_p4cpq"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_7htx0"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="7_a0j1u"]
 [ext_resource type="PackedScene" uid="uid://d28tu6uihh8rw" path="res://objects/moving_platform_point.tscn" id="9_814qc"]
@@ -21,6 +22,8 @@ level_name = "Cut to the Chase"
 [node name="LevelNotification" parent="." instance=ExtResource("2_7cnre")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_fwfq3")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_p4cpq")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_fydov")]
 sub_or_alt = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://og3ss00qyt1a"]
+[gd_scene load_steps=16 format=3 uid="uid://og3ss00qyt1a"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_vyfr4"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_j5eyp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_8lp61"]
 [ext_resource type="PackedScene" uid="uid://bt8rys4gdifi7" path="res://backgrounds/bg_root.tscn" id="3_sli2u"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_0jp4k"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_pttkk"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_d685k"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_prwhr"]
 [ext_resource type="PackedScene" uid="uid://otb601806wvr" path="res://objects/diamond_black.tscn" id="7_n2vhs"]
@@ -26,6 +27,8 @@ level_name = "Like a Diamond"
 [node name="LevelNotification" parent="." instance=ExtResource("2_seaw4")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_j5eyp")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_pttkk")]
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("3_sli2u")]
 sub_or_alt = 1

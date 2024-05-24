@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfxvlj176yhhd"]
+[gd_scene load_steps=22 format=3 uid="uid://cfxvlj176yhhd"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_kw1cg"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_f01a8"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_lm651"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_1kleu"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_76ery"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_8s62k"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_qkub4"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_34ek7"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_sd2ov"]
@@ -32,6 +33,8 @@ level_name = "Four Walls"
 [node name="LevelNotification" parent="." instance=ExtResource("2_lm651")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_f01a8")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_8s62k")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_1kleu")]
 

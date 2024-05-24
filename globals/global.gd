@@ -1,7 +1,7 @@
 extends Node
 
 @export var save_location: String = "user://save.json"
-@export var debug_mode: bool = true ## Please disable this for production build
+@export var debug_mode: bool = false ## Please disable this for production build
 
 # Booleans when the game process is running
 var has_applied_setting_on_launch: bool = false ## Apply the setting everytime when the game is launched

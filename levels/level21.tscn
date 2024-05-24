@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://culfpbk6h4rjq"]
+[gd_scene load_steps=17 format=3 uid="uid://culfpbk6h4rjq"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_pp20t"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_gshc3"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_r7pwr"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_8dp86"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_vklfe"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_4gjos"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_2773l"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_o3taw"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="6_7sgwt"]
@@ -29,6 +30,8 @@ level_name = "Phloematic Highway"
 [node name="LevelNotification" parent="." instance=ExtResource("2_r7pwr")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_gshc3")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_4gjos")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_vklfe")]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://da1sjgylemy2v"]
+[gd_scene load_steps=21 format=3 uid="uid://da1sjgylemy2v"]
 
 [ext_resource type="Script" path="res://levels/level_class.gd" id="1_nj708"]
 [ext_resource type="PackedScene" uid="uid://c3bttyiuwhul0" path="res://menu/level_name.tscn" id="2_mpyow"]
 [ext_resource type="PackedScene" uid="uid://bwn4fc2mx2e80" path="res://menu/level_notification.tscn" id="2_ui618"]
 [ext_resource type="PackedScene" uid="uid://cymvpxtr5hvfj" path="res://objects/player.tscn" id="3_5alrh"]
 [ext_resource type="PackedScene" uid="uid://kyel1hdn48jx" path="res://backgrounds/bg_branch.tscn" id="3_7uoi6"]
+[ext_resource type="PackedScene" uid="uid://bbb8bl65jyo06" path="res://menu/level_transition.tscn" id="4_8vjsv"]
 [ext_resource type="TileSet" uid="uid://dnx1extlu8pxs" path="res://resources/tiles.tres" id="4_a3m7r"]
 [ext_resource type="TileSet" uid="uid://r6l718155igh" path="res://resources/red_tiles.tres" id="5_fxaxd"]
 [ext_resource type="TileSet" uid="uid://orhoddg6nkpl" path="res://resources/spikes.tres" id="5_qhxk4"]
@@ -31,6 +32,8 @@ level_name = "The Pit"
 [node name="LevelNotification" parent="." instance=ExtResource("2_ui618")]
 
 [node name="LevelName" parent="." instance=ExtResource("2_mpyow")]
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_8vjsv")]
 
 [node name="BackgroundBranch" parent="." instance=ExtResource("3_7uoi6")]
 
