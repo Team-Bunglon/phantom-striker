@@ -35,6 +35,10 @@ var hardest: String = "":
 	set(value):
 		hardest = value
 		save_game()
+var hardest_level: int = 1:
+	set(value):
+		hardest_level = value
+		save_game()
 var hardest_death: int = 0:
 	set(value):
 		hardest_death = value
@@ -83,6 +87,7 @@ func reset_global_value():
 	GameStopwatch.reset()
 	strike_count = 0
 	hardest = ""
+	hardest_level = 1
 	hardest_death = 0
 	current = ""
 	current_death = 0
@@ -92,6 +97,7 @@ func hardest_check():
 		hardest = current
 	if current_death > hardest_death:
 		hardest = current
+		hardest_level = current_level
 		hardest_death = current_death
 
 func _ready():
@@ -118,6 +124,7 @@ func save_game():
 		"time":  GameStopwatch.get_elapsed_time_in_seconds(),
 		"strike_count": strike_count,
 		"hardest": hardest,
+		"hardest_level": hardest_level,
 		"hardest_death": hardest_death,
 		"current": current,
 		"current_death": current_death
@@ -150,6 +157,7 @@ func load_game():
 	GameStopwatch.set_elapsed_time_in_seconds(save.countables.get("time", 0))
 	strike_count = save.countables.get("strike_count", 0)
 	hardest = save.countables.get("hardest", "")
+	hardest_level = save.countables.get("hardest_level", 1)
 	hardest_death = save.countables.get("hardest_death", 0)
 	current = save.countables.get("current", "")
 	current_death = save.countables.get("current_death", 0)

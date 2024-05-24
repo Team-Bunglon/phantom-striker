@@ -61,6 +61,7 @@ offset_bottom = 185.0
 alignment = 1
 
 [node name="RectDeath" type="TextureRect" parent="HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("6_ype3w")
 expand_mode = 2
@@ -76,6 +77,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 24
 
 [node name="RectCollect" type="TextureRect" parent="HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_mo58g")
 expand_mode = 2
@@ -91,6 +93,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 24
 
 [node name="RectTime" type="TextureRect" parent="HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("8_kpruf")
 expand_mode = 2

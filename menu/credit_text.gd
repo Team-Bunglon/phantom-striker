@@ -12,6 +12,13 @@ func _ready():
 	$"StatTexts/Stats/HBoxCount/LabelCollect".text = str(Global.collectibles) + "/12"
 	$"StatTexts/Stats/HBoxCount/LabelTime".text = GameStopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}")
 
+	if Global.death_count > 0:
+		$"StatTexts/Stats/Hardest".text = "Hardest Floor (" + str(Global.hardest_death) + " deaths):"
+		$"StatTexts/Stats/LevelName".text = str(Global.hardest_level) + "F - " + Global.hardest
+	else:
+		$"StatTexts/Stats/Hardest".text = "You beat the game without dying once"
+		$"StatTexts/Stats/LevelName".text = "Awesome!"
+
 	is_fading = true
 	$AnimationPlayer.play("fade_in")
 

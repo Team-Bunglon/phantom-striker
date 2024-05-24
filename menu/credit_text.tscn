@@ -219,90 +219,6 @@ libraries = {
 "": SubResource("AnimationLibrary_10xwt")
 }
 
-[node name="StatTexts" type="HBoxContainer" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-offset_left = 128.0
-offset_top = 192.0
-offset_right = 512.0
-offset_bottom = 300.0
-alignment = 1
-
-[node name="Stats" type="VBoxContainer" parent="StatTexts"]
-clip_contents = true
-layout_mode = 2
-
-[node name="Thanks" type="Label" parent="StatTexts/Stats"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.780392, 0.654902, 0.356863, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7yea8")
-theme_override_font_sizes/font_size = 20
-text = "Thank You For Playing!"
-horizontal_alignment = 1
-
-[node name="Stats" type="Label" parent="StatTexts/Stats"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7yea8")
-theme_override_font_sizes/font_size = 30
-text = "Final Stats:"
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="StatTexts/Stats"]
-layout_mode = 2
-theme_override_constants/margin_top = 12
-
-[node name="HBoxCount" type="HBoxContainer" parent="StatTexts/Stats"]
-layout_mode = 2
-alignment = 1
-
-[node name="RectDeath" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-texture = ExtResource("3_xsrx7")
-expand_mode = 2
-
-[node name="LabelDeath" type="Label" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7yea8")
-theme_override_font_sizes/font_size = 20
-text = "0"
-
-[node name="Margin1" type="MarginContainer" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-
-[node name="RectCollect" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-texture = ExtResource("4_45f2e")
-expand_mode = 2
-
-[node name="LabelCollect" type="Label" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7yea8")
-theme_override_font_sizes/font_size = 20
-text = "0/12"
-
-[node name="Margin2" type="MarginContainer" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-
-[node name="RectTime" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-texture = ExtResource("5_knahf")
-expand_mode = 2
-
-[node name="LabelTime" type="Label" parent="StatTexts/Stats/HBoxCount"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7yea8")
-theme_override_font_sizes/font_size = 20
-text = "00:00"
-
 [node name="Texts" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 128.0
@@ -609,6 +525,117 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_7yea8")
 theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="StatTexts" type="HBoxContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_top = -1.0
+offset_right = 640.0
+offset_bottom = 479.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="StatTexts"]
+clip_contents = true
+layout_mode = 2
+alignment = 1
+
+[node name="Thanks" type="Label" parent="StatTexts/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 0.654902, 0.356863, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "Thank You For Playing!"
+horizontal_alignment = 1
+
+[node name="Stats" type="Label" parent="StatTexts/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 30
+text = "Final Stats:"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="StatTexts/Stats"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="HBoxCount" type="HBoxContainer" parent="StatTexts/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="RectDeath" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_xsrx7")
+expand_mode = 2
+
+[node name="LabelDeath" type="Label" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Margin1" type="MarginContainer" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="RectCollect" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_45f2e")
+expand_mode = 2
+
+[node name="LabelCollect" type="Label" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "0/12"
+
+[node name="Margin2" type="MarginContainer" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="RectTime" type="TextureRect" parent="StatTexts/Stats/HBoxCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_knahf")
+expand_mode = 2
+
+[node name="LabelTime" type="Label" parent="StatTexts/Stats/HBoxCount"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+
+[node name="MarginContainer2" type="MarginContainer" parent="StatTexts/Stats"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="Hardest" type="Label" parent="StatTexts/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.984314, 0.545098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "Hardest Floor (X deaths):"
+horizontal_alignment = 1
+
+[node name="LevelName" type="Label" parent="StatTexts/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7yea8")
+theme_override_font_sizes/font_size = 20
+text = "Sample Level Name"
 horizontal_alignment = 1
 
 [node name="BackgroundRoot" parent="." instance=ExtResource("1_tfm6s")]
